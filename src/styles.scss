@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Colors
+$primary-dark: '';
+$primary-yellow: '';
+
+// Fonts
+$font-family: 'Sk-Modernist';
+@font-face {
+  font-family: 'Okta Neue';
+  src: url('assets/fonts/Sk-Modernist-Mono.woff') format('woff');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Okta Neue';
+  src: url('assets/fonts/Sk-Modernist-Regular.woff') format('woff');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Okta Neue';
+  src: url('assets/fonts/Sk-Modernist-Bold.woff') format('woff');
+  font-weight: 700;
+}

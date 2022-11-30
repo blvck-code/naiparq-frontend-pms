@@ -1,0 +1,196 @@
+.naiparq-dash {
+  height: 100vh;
+
+  &-container {
+    height: 100%;
+    display: flex;
+  }
+
+  &-sidenav {
+    height: 100%;
+    width: 262px;
+    background: #121212;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 3rem 1.5rem;
+
+      .logo-nav,
+      .dash-util-items {
+
+        .dash-branding {
+          margin-bottom: 1.625rem;
+          padding-left: 1rem;
+        }
+
+        .dash-nav-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          align-content: center;
+          margin-bottom: 0.25rem;
+          padding-top: 0.875rem;
+          padding-bottom: 0.875rem;
+          padding-inline: 10px;
+          //padding-left: 1rem;
+          //padding: 10px 5px;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+
+          p {
+            padding-left: 0.75rem;
+            margin-bottom: 0;
+            font-size: 1rem;
+            color: #fff;
+          }
+
+          &:hover,
+          &.active-nav{
+            background: #FBCE33;
+            color: #000000;
+
+            svg {
+              path {
+                fill: #000000;
+              }
+            }
+
+            p {
+              color: #000000;
+            }
+          }
+        }
+      }
+
+      .dash-util-items {
+        width: 100%;
+        //margin-top: auto;
+        .dash-nav-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          align-content: center;
+          margin-bottom: 0.25rem;
+          padding-top: 0.875rem;
+          padding-bottom: 0.875rem;
+          padding-inline: 10px;
+          //padding-left: 1rem;
+          //padding: 10px 5px;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+
+          p {
+            padding-left: 0.75rem;
+            font-size: 1rem;
+            color: #fff;
+          }
+
+          &:hover,
+          &.active-nav{
+            background: #FBCE33;
+            color: #000000;
+
+            svg {
+              path {
+                fill: #000000;
+              }
+            }
+
+            p {
+              color: #000000;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.naiparq-dash-main-content-container {
+  height: 100vh;
+  width: calc(100vw - 250px);
+
+  .dash-main-content {
+    height: 100%;
+    padding: 1.5rem 2.5rem;
+
+    .dash-top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.125rem;
+
+      .dash-nav-title {
+        &:first-child {
+          margin-bottom: 0;
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+      }
+
+      .top-nav-items {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 2.5rem;
+        }
+      }
+    }
+  }
+}
+
+.nav-user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 210px;
+  padding: 6px;
+  border-radius: 100px;
+  background-color: #fafafa;
+  cursor: pointer;
+
+  .img-name {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 36px;
+      width: 36px;
+      margin-right: 0.75rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  svg {
+    margin-right: 1rem;
+  }
+}
+
+.user-profile-dropdown {
+  .dropdown-menu {
+    &.show {
+      width: 100%;
+    }
+  }
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dash-content-outlet {
+  height: calc(100% - 66px);
+}

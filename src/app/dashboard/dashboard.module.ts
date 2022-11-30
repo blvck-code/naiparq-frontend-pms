@@ -8,6 +8,9 @@ import { AssetsManagementComponent } from './components/assets-management/assets
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AccountComponent } from './components/account/account.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { DashComponent } from './components/dash/dash.component';
+import { DashboardComponent } from './dashboard.component';
+import {DashboardRoutingModule} from "./dashboard-routing.module";
 
 
 
@@ -20,10 +23,13 @@ import { SettingsComponent } from './components/settings/settings.component';
     AssetsManagementComponent,
     UserManagementComponent,
     AccountComponent,
-    SettingsComponent
+    SettingsComponent,
+    DashComponent,
+    DashboardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule { }

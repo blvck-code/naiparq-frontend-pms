@@ -102,10 +102,41 @@ body {
   border: none;
   padding: 12px;
   border-radius: 10px;
+  position: relative;
+  transition: all 250ms ease-in-out;
 
   &.naiparq-btn-primary {
     width: auto;
     background: #FBCE33;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &.btn-loading {
+    opacity: 0.5;
+    .btn-text {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      width: 30px;
+      height: 30px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: 2px solid transparent;
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: btn-loading-spinner 1s ease infinite;
+    }
   }
 }
 
@@ -125,6 +156,14 @@ body {
   }
 }
 
+@keyframes btn-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
 
 // Naiparq Scroll Bar
 /// Pea Scroll

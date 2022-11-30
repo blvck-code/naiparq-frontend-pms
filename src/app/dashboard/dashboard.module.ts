@@ -11,6 +11,10 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { DashComponent } from './components/dash/dash.component';
 import { DashboardComponent } from './dashboard.component';
 import {DashboardRoutingModule} from "./dashboard-routing.module";
+import { CashPaymentComponent } from './components/cash-payment/cash-payment.component';
+import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
+import { AssetManagementComponent } from './components/asset-management/asset-management.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 
@@ -25,7 +29,11 @@ import {DashboardRoutingModule} from "./dashboard-routing.module";
     AccountComponent,
     SettingsComponent,
     DashComponent,
-    DashboardComponent
+    DashboardComponent,
+    CashPaymentComponent,
+    MotoristManagementComponent,
+    AssetManagementComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,65 @@
+.naiparq-cash-payment-container {
+  height: calc(100% - 66px);
+  margin-top: 25px;
+  overflow-y: hidden;
+  width: 90%;
+  background: #ffffff;
+  padding: 15px 45px;
+  border-radius: 14px;
+
+
+ .naiparq-cash-payment-title-bar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 1.125rem;
+   width: 100%;
+
+
+   p {
+     font-weight: 400;
+     font-size: 21px;
+     line-height: 20px;
+   }
+
+   .cash-table-btns {
+
+   }
+  }
+
+  .naiparq-cash-payment-table {
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+
+    tbody {
+      td {
+        padding: 15px 0;
+      }
+    }
+  }
+
+  .naiparq-cash-payment-table-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+
+    p {
+      font-weight: 400;
+      font-size: 21px;
+      line-height: 20px;
+      letter-spacing: 0.2px;
+      color: #4BC1F1;
+    }
+  }
+}
+.sticky-top {
+  background: #ffffff;
+  height: 75px;
+  top: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.2px;
+
+  color: #4BC1F1;
+}

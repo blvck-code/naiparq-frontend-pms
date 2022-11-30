@@ -119,6 +119,7 @@
   .dash-main-content {
     height: 100%;
     padding: 1.5rem 2.5rem;
+    background: #FAFAFA;
 
     .dash-top-nav {
       display: flex;
@@ -193,4 +194,5 @@
 
 .dash-content-outlet {
   height: calc(100% - 66px);
+  overflow: hidden;
 }

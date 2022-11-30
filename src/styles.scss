@@ -39,10 +39,30 @@ html {
 }
 
 body {
+  // Text Colors
+  --text-primary: #252733;
+  --text-secondary: #4BC1F1;
+
+  // Background colors
+  --bkg-one-color: #fafafa;
+  --bkg-two-color: #121212;
+}
+
+body.dark-theme {
+  // Text Colors
+  --text-primary: #FFFFFF;
+  --text-secondary: #FBCE33;
+
+  // Background colors
+  --bkg-one-color: #171719;
+  --bkg-two-color: #212125;
+}
+
+body {
   font-family: 'Okta Neue', sans-serif !important;
   font-weight: normal;
   margin: 0;
-  background: #E5E5E5;
+  background: var(--bkg-color);
   overflow: hidden;
 }
 
@@ -54,7 +74,7 @@ body {
   padding: 10px 20px;
 
     label {
-      color: #fff;
+      color: var(--text-color);
       font-family: 'Sk-Modernist', sans-serif;
       font-size: 14px;
       line-height: 17px;

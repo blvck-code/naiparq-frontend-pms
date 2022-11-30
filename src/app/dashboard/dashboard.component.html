@@ -9,7 +9,7 @@
           <div class="dash-branding">
             <img src="assets/images/naiparq-logo-white.png" alt="Naiparq logo">
             <div class="toggle-theme">
-              <input type="checkbox" name="toggle theme">
+              <input (change)="changeTheme($event.target)" type="checkbox" name="toggle theme">
             </div>
           </div>
 

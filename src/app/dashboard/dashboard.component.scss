@@ -9,7 +9,7 @@
   &-sidenav {
     height: 100%;
     width: 262px;
-    background: #121212;
+    background: var(--bkg-two-color);
 
     &-content {
       display: flex;
@@ -33,6 +33,7 @@
             position: relative;
 
             input {
+              cursor: pointer;
               position: relative;
               width: 52px;
               height: 32px;
@@ -159,7 +160,7 @@
   .dash-main-content {
     height: 100%;
     padding: 1.5rem 2.5rem;
-    background: #FAFAFA;
+    background: var(--bkg-one-color);
 
     .dash-top-nav {
       display: flex;

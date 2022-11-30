@@ -17,6 +17,17 @@ export class DashboardComponent implements OnInit {
     this.onInitHandler();
   }
 
+
+  changeTheme(event: any): void {
+    const checked = event.checked;
+
+    if (checked) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }
+
   onInitHandler(): void {
     this.currentUrl = this.getCurrentUrl(this.router.url);
     this.router.events.subscribe({

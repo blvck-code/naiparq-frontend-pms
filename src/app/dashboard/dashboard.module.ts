@@ -8,6 +8,13 @@ import { AssetsManagementComponent } from './components/assets-management/assets
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AccountComponent } from './components/account/account.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { DashComponent } from './components/dash/dash.component';
+import { DashboardComponent } from './dashboard.component';
+import {DashboardRoutingModule} from "./dashboard-routing.module";
+import { CashPaymentComponent } from './components/cash-payment/cash-payment.component';
+import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
+import { AssetManagementComponent } from './components/asset-management/asset-management.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 
@@ -20,10 +27,17 @@ import { SettingsComponent } from './components/settings/settings.component';
     AssetsManagementComponent,
     UserManagementComponent,
     AccountComponent,
-    SettingsComponent
+    SettingsComponent,
+    DashComponent,
+    DashboardComponent,
+    CashPaymentComponent,
+    MotoristManagementComponent,
+    AssetManagementComponent,
+    NotificationsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule { }

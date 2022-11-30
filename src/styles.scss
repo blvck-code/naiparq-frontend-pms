@@ -21,3 +21,88 @@ $font-family: 'Sk-Modernist';
   src: url('assets/fonts/Sk-Modernist-Bold.woff') format('woff');
   font-weight: 700;
 }
+
+html {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #004C4D;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+body {
+  font-family: 'Okta Neue', sans-serif !important;
+  font-weight: normal;
+  margin: 0;
+}
+
+
+// Form
+.naiparq-form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+
+    label {
+      color: #fff;
+      font-family: 'Sk-Modernist', sans-serif;
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 400;
+    }
+
+  .naiparq-form-input {
+    width: auto;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background: transparent;
+    margin: 10px 0;
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #ffffff;
+
+    &:focus,
+    &:active {
+      background: transparent;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  p {
+    color: #ffffff;
+    font-size: 12px;
+
+    a {
+      color: #FBCE33;
+      margin-left: 5px;
+    }
+  }
+
+}
+
+
+// Buttons
+.naiparq-btn {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: 'Sk-Modernist', sans-serif;
+  font-style: normal;
+  color: #000;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+
+  &.naiparq-btn-primary {
+    width: auto;
+    background: #FBCE33;
+  }
+}

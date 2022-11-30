@@ -5,6 +5,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { VerifyComponent } from './components/verify/verify.component';
 import { ResetComponent } from './components/reset/reset.component';
 import { ConfirmResetComponent } from './components/confirm-reset/confirm-reset.component';
+import { AuthComponent } from './auth.component';
+import {AuthRoutingModule} from "./auth-routing.module";
 
 
 
@@ -14,10 +16,12 @@ import { ConfirmResetComponent } from './components/confirm-reset/confirm-reset.
     RegisterComponent,
     VerifyComponent,
     ResetComponent,
-    ConfirmResetComponent
+    ConfirmResetComponent,
+    AuthComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }

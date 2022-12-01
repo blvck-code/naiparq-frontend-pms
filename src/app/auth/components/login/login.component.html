@@ -3,23 +3,26 @@
     <div class="naiparq-logo">
       <img src="assets/images/naiparq-logo.png" alt="Naiparq">
     </div>
-    <form class="naiparq-login-form">
 
-      <div class="naiparq-form-group">
+    <form [formGroup]="loginForm" class="naiparq-login-form" (ngSubmit)="login()">
+
+      <fieldset class="naiparq-form-group">
         <label for="pNumber">Phone Number</label>
-        <input type="text" id="pNumber" class="naiparq-form-input">
-      </div>
+        <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+      </fieldset>
 
-      <div class="naiparq-form-group">
-<!--        Add view password-->
+      <fieldset class="naiparq-form-group">
+<!--       Todo Add view password-->
         <label for="password">Password</label>
-        <input type="password" id="password" class="naiparq-form-input">
-      </div>
+        <input formControlName="password" type="password" id="password" class="naiparq-form-input">
+      </fieldset>
 
       <div class="naiparq-form-group">
         <button
           class="naiparq-btn naiparq-btn-primary"
           type="submit"
+          [disabled]="isSubmitting"
+          [class.btn-loading]="isSubmitting"
         >
           <span class="btn-text">Log in</span>
         </button>

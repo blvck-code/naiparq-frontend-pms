@@ -1,9 +1,26 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+const naiparqBaseURL = '';
+const naiparqWsURL = '';
 
 export const environment = {
-  production: false
+  production: false,
+
+  // Accounts Module URLS
+  naiparqLogin: naiparqBaseURL + 'accounts/login/',
+  naiparqRegister: naiparqBaseURL + 'accounts/register/',
+  naiparqLogout: naiparqBaseURL + 'accounts/logout/'
+
+
+  // Drive In Module URLS
+
+  // Billing Module URLS
+
+  // Pricing Module URLS
+
+  // Device Module URLS
+
 };
 
 /*

@@ -7,6 +7,7 @@ import { ResetComponent } from './components/reset/reset.component';
 import { ConfirmResetComponent } from './components/confirm-reset/confirm-reset.component';
 import { AuthComponent } from './auth.component';
 import {AuthRoutingModule} from "./auth-routing.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -21,7 +22,8 @@ import {AuthRoutingModule} from "./auth-routing.module";
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

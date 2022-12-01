@@ -20,7 +20,10 @@ import { AuthService } from './auth.service';
 export class AuthGuard
   implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad
 {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -31,8 +34,7 @@ export class AuthGuard
     | boolean
     | UrlTree {
     const url: string = state.url;
-    // return this.checkLogin(url);
-    return true;
+    return this.checkLogin(url);
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
@@ -66,11 +68,11 @@ export class AuthGuard
     | UrlTree {
     return true;
   }
-  // checkLogin(url: string): true | UrlTree {
-  //   if (this.authService.isLoggedIn()) {
-  //     return true;
-  //   }
-  //   this.authService.redirectUrl = url;
-  //   return this.router.parseUrl('/auth');
-  // }
+  checkLogin(url: string): true | UrlTree {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    }
+    this.authService.redirectUrl = url;
+    return this.router.parseUrl('/auth');
+  }
 }

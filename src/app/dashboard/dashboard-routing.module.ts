@@ -9,13 +9,14 @@ import {AssetsManagementComponent} from "./components/assets-management/assets-m
 import {CashPaymentComponent} from "./components/cash-payment/cash-payment.component";
 import {MotoristManagementComponent} from "./components/motorist-management/motorist-management.component";
 import {NotificationsComponent} from "./components/notifications/notifications.component";
+import {AuthGuard} from "../auth/services/auth.guard";
 
 
 const dashRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [], // Todo Add auth guard here
+    canActivate: [AuthGuard], // Todo Add auth guard here
     children:[
       {
         path: '',

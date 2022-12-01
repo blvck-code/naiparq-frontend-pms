@@ -35,7 +35,7 @@ const dashRoutes: Routes = [
       },
       {
         path: 'settings',
-        component: SettingsComponent
+        component: SettingsComponent,
       },
       {
         path: 'account',
@@ -46,7 +46,7 @@ const dashRoutes: Routes = [
         component: AssetsManagementComponent
       }
     ]
-  }
+  },
 ]
 
 @NgModule({

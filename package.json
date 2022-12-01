@@ -1,5 +1,6 @@
 {
   "name": "naiparq-frontend-pms",
+  "license" : "MIT license",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

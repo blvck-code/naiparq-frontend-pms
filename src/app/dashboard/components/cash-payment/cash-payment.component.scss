@@ -2,8 +2,7 @@
   height: calc(100% - 66px);
   margin-top: 25px;
   overflow-y: hidden;
-  width: 90%;
-  background: #ffffff;
+  background: var(--bkg-four-color);
   padding: 15px 45px;
   border-radius: 14px;
 
@@ -20,6 +19,7 @@
      font-weight: 400;
      font-size: 21px;
      line-height: 20px;
+     color: var(--text-primary);
    }
 
    .cash-table-btns {
@@ -31,30 +31,35 @@
     height: calc(100% - 100px);
     overflow-y: scroll;
 
+    thead {
+      color: var(--text-secondary);
+    }
+
     tbody {
       td {
-        padding: 15px 0;
+        padding: 15px;
+        color: var(--text-primary);
       }
     }
   }
+}
+.naiparq-cash-payment-table-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-top: 15px;
 
-  .naiparq-cash-payment-table-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    margin-top: 15px;
-
-    p {
-      font-weight: 400;
-      font-size: 21px;
-      line-height: 20px;
-      letter-spacing: 0.2px;
-      color: #4BC1F1;
-    }
+  p {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: var(--text-secondary);
   }
 }
+
 .sticky-top {
-  background: #ffffff;
+  background: var(--bkg-four-color);
   height: 75px;
   top: 0;
   font-weight: 400;
@@ -62,5 +67,4 @@
   line-height: 19px;
   letter-spacing: 0.2px;
 
-  color: #4BC1F1;
 }

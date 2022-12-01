@@ -19,7 +19,6 @@
         >
           <path
             d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
-            fill="#1B212D"
           />
         </svg>
         Filters
@@ -31,24 +30,24 @@
   <div class="naiparq-cash-payment-table">
     <table class="table">
       <thead class="table-nav sticky-top">
-      <tr>
-        <th scope="col">
-          <span class="table-title"> Number Plate </span>
-        </th>
-        <th scope="col">
-          <span class="table-title"> Time In </span>
-        </th>
-        <th scope="col">
-          <span class="table-title"> Time Out </span>
-        </th>
-        <th scope="col">
-          <span class="table-title"> Amount Paid </span>
-        </th>
-      </tr>
+        <tr>
+          <th scope="col">
+            <span class="table-title"> Number Plate </span>
+          </th>
+          <th scope="col">
+            <span class="table-title"> Time In </span>
+          </th>
+          <th scope="col">
+            <span class="table-title"> Time Out </span>
+          </th>
+          <th scope="col">
+            <span class="table-title"> Amount Paid </span>
+          </th>
+        </tr>
       </thead>
 
-      <tbody>
-        <tr *ngFor="let client of numSeq(35)">
+      <tbody class="table-body">
+        <tr *ngFor="let client of numSeq(15)">
           <td>
             <div class="table-text">
               <span>KDB 000B</span>
@@ -70,12 +69,10 @@
     </table>
   </div>
 
-  <div class="naiparq-cash-payment-table-footer">
-    <p>Total: KES 10,000</p>
-  </div>
-
 </div>
-
+<div class="naiparq-cash-payment-table-footer">
+  <p>Total: KES 10,000</p>
+</div>
 <!-- Modal -->
 <div
   class="modal fade add-plate-modal"

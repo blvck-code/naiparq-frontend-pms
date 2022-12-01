@@ -110,5 +110,7 @@
       }
     }
   },
-  "defaultProject": "naiparq-frontend-pms"
+  "cli": {
+    "analytics": "f214d6ca-41a5-441f-94fa-13562a0282a1"
+  }
 }

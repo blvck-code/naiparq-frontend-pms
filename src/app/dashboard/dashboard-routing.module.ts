@@ -16,7 +16,7 @@ const dashRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [AuthGuard], // Todo Add auth guard here
+    canActivate: [], // Todo Add auth guard here AuthGuard
     children:[
       {
         path: '',

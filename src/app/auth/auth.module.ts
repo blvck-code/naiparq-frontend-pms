@@ -8,6 +8,10 @@ import { ConfirmResetComponent } from './components/confirm-reset/confirm-reset.
 import { AuthComponent } from './auth.component';
 import {AuthRoutingModule} from "./auth-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {authReducer} from "./state/auth.reducer";
+import {AuthEffects} from "./state/auth.effects";
 
 
 
@@ -23,7 +27,9 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature('userCenter', authReducer),
+    EffectsModule.forFeature([AuthEffects])
   ]
 })
 export class AuthModule { }

@@ -21,8 +21,8 @@
         <button
           class="naiparq-btn naiparq-btn-primary"
           type="submit"
-          [disabled]="isSubmitting"
-          [class.btn-loading]="isSubmitting"
+          [disabled]="(isLoading$ | async)"
+          [class.btn-loading]="(isLoading$ | async)"
         >
           <span class="btn-text">Log in</span>
         </button>

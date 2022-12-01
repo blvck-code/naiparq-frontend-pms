@@ -38,22 +38,6 @@ export class AuthService {
     return this.http.post('', '')
   }
 
-  // logout(): void {
-  //   this.http.get(env.naiparqLogout, this.getHeaders()).subscribe({
-  //     next: (res: any) => {
-  //       console.log('Logout response', res);
-  //       this.storageService.clearToken();
-  //       // this.store.dispatch(new authActions.LogOutSuccess(res));
-  //       this.router.navigate(['/auth']);
-  //       this.sharedSrv.showNotification('Logged out successfully.', 'success')
-  //     },
-  //     error: (err: any) => {
-  //       console.log('Error', err);
-  //       this.sharedSrv.showNotification('Logged out failed, please try again.', 'error')
-  //     },
-  //   });
-  // }
-
   isLoggedIn(): boolean {
     const expiry = this.storageService.getExpiry();
     if (expiry) {

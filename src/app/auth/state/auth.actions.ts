@@ -1,6 +1,7 @@
 import {Action} from "@ngrx/store";
 import {LoginResponseModel} from "../model/login.model";
 import {AuthState, initialState} from "./auth.reducer";
+import {RegisterModel, RegisterResponseModel} from "../model/register.model";
 
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
@@ -14,6 +15,11 @@ export enum AuthActionsTypes {
   LOGIN = 'userCenter/login',
   LOGIN_SUCCESS = 'userCenter/loginSuccess',
   LOGIN_FAIL = 'userCenter/loginFail',
+
+  // Sign Up
+  REGISTER = 'userCenter/register',
+  REGISTER_SUCCESS = 'userCenter/registerSuccess',
+  REGISTER_FAIL = 'useCenter/registerFail',
 
   // Refresh Token
   REFRESH_TOKEN = 'userCenter/refreshToken',
@@ -45,7 +51,8 @@ export class ResetInvalid implements ActionExecutable<AuthState> {
     return {
       ...state,
       loginStatus: {
-        ...state.loginStatus,
+        isLoading: false,
+        isLoggedIn: false,
         invalid: false
       }
     }
@@ -132,6 +139,37 @@ export class LogOutFail implements ActionExecutable<AuthState>{
   }
 }
 
+// Sign Up
+export class SignUp implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.REGISTER;
+  constructor(public payload: RegisterModel) {}
+
+  execute(state: AuthState): AuthState{
+    return {
+      ...state
+    }
+  }
+}
+export class SignUpSuccess implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.REGISTER_SUCCESS;
+  constructor(public payload: RegisterResponseModel) {}
+
+  execute(state: AuthState): AuthState{
+    return {
+      ...state
+    }
+  }
+}
+export class SignUpFail implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.REGISTER_FAIL;
+  constructor(public payload: string) {}
+
+  execute(state: AuthState): AuthState{
+    return {
+      ...state
+    }
+  }
+}
 export type AuthActions =
   // Log In
     LogIn
@@ -142,4 +180,20 @@ export type AuthActions =
   | LogOutSuccess
   | LogOutFail
   // Reset Invalid
-  | ResetInvalid;
+  | ResetInvalid
+  //
+  | SignUp
+  | SignUpSuccess
+  | SignUpFail;
+
+
+// export class SignUp implements ActionExecutable<AuthState> {
+//   readonly type = AuthActionsTypes.REGISTER;
+//   constructor(public payload: RegisterModel) {}
+//
+//   execute(state: AuthState): AuthState{
+//     return {
+//       ...state
+//     }
+//   }
+// }

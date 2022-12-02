@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 import { Store } from "@ngrx/store";
 import * as authActions from '../../state/auth.actions';
 import {AuthState} from "../../state/auth.reducer";
-import {BehaviorSubject, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {authMessage, isInvalid, isLoggedInLoading} from "../../state/auth.selector";
 
 @Component({

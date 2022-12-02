@@ -4329,6 +4329,20 @@
     "deepmerge" "^4.2.2"
     "tslib" "^2.3.0"
 
+"ngx-cookie-service@^15.0.0":
+  "integrity" "sha512-KU1JCjfpDTvD6L0FhHN9W/oP3Sue8yMAAK6XY3h/MEhrPS7vx6t3+h0ulY8l8R/9d1cmlQVyTHn1Jd1Jdf5K+g=="
+  "resolved" "https://registry.npmjs.org/ngx-cookie-service/-/ngx-cookie-service-15.0.0.tgz"
+  "version" "15.0.0"
+  dependencies:
+    "tslib" "^2.0.0"
+
+"ngx-online-status@^2.0.0":
+  "integrity" "sha512-rh7nb0p+6KF/C9BUg4ry135rMqcwrQ5OD1OqTgZHACj41oW/FfXowWft+NnkZmJuVEvwXk2kik6xU14t2foMjQ=="
+  "resolved" "https://registry.npmjs.org/ngx-online-status/-/ngx-online-status-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "tslib" "^2.3.0"
+
 "nice-napi@^1.0.2":
   "integrity" "sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA=="
   "resolved" "https://registry.npmjs.org/nice-napi/-/nice-napi-1.0.2.tgz"

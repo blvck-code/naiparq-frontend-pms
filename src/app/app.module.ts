@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { OnlineStatusModule } from 'ngx-online-status';
 
 // NgRx
 import {ActionReducer, MetaReducer, StoreModule} from "@ngrx/store";
@@ -13,6 +14,8 @@ import {SharedModule} from "./shared/shared.module";
 import {AuthModule} from "./auth/auth.module";
 import {EffectsModule} from "@ngrx/effects";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {CookieService} from "ngx-cookie-service";
+import {ErrorInterceptor} from "./interceptors/error.interceptor";
 
 // Setting user details on localstorage
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -30,6 +33,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     HttpClientModule,
     AuthModule,
     SharedModule,
+    OnlineStatusModule,
     StoreModule.forRoot({}, {metaReducers}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
@@ -39,9 +43,15 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     }),
   ],
   providers: [
+    CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],

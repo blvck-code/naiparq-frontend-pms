@@ -28,8 +28,12 @@ export class AuthService {
     };
   }
 
-  login(loginData: LoginModel): Observable<LoginResponseModel> {
+  logIn(loginData: LoginModel): Observable<LoginResponseModel> {
     return this.http.post<LoginResponseModel>(env.naiparqLogin, loginData)
+  }
+
+  logOut(): Observable<{ message: string }> {
+    return this.http.get<{ message: string }>(env.naiparqLogout)
   }
 
   refreshToken(): Observable<any> {

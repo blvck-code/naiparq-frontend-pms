@@ -115,7 +115,7 @@
 
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" [routerLink]='["/dashboard/settings"]'>Settings</a></li>
-                <li><a class="dropdown-item">Logout</a></li>
+                <li><a (click)="logOut()" class="dropdown-item">Logout</a></li>
               </ul>
 
             </div>

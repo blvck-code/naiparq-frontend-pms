@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 
+// NgRx
+import {Store} from "@ngrx/store";
+import {AuthState} from "../auth/state/auth.reducer";
+
+import * as authActions from '../auth/state/auth.actions';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,7 +16,8 @@ export class DashboardComponent implements OnInit {
   currentUrl: string = '';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private store: Store<AuthState>
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +44,10 @@ export class DashboardComponent implements OnInit {
         }
       },
     });
+  }
+
+  logOut(): void {
+    this.store.dispatch(new authActions.LogOut())
   }
 
   getCurrentUrl(url: string): string {

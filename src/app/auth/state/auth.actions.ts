@@ -1,7 +1,6 @@
 import {Action} from "@ngrx/store";
 import {LoginResponseModel} from "../model/login.model";
-import {AuthState} from "./auth.reducer";
-
+import {AuthState, initialState} from "./auth.reducer";
 
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
@@ -86,8 +85,39 @@ export class LogInFail implements ActionExecutable<AuthState> {
   }
 }
 
+// Log Out
+export class LogOut implements ActionExecutable<AuthState>{
+  readonly type = AuthActionsTypes.LOGOUT;
+  constructor() {}
+  execute(state: AuthState): AuthState {
+    return {
+      ...state
+    }
+  }
+}
+export class LogOutSuccess implements ActionExecutable<AuthState>{
+  readonly type = AuthActionsTypes.LOGOUT_SUCCESS;
+  constructor(public payload: { message: string }) {}
+  execute(state: AuthState): AuthState {
+    return state = initialState
+  }
+}
+export class LogOutFail implements ActionExecutable<AuthState>{
+  readonly type = AuthActionsTypes.LOGOUT_FAIL;
+  constructor(public payload: string) {}
+  execute(state: AuthState): AuthState {
+    return {
+      ...state
+    }
+  }
+}
+
 export type AuthActions =
   // Log In
     LogIn
   | LogInSuccess
-  | LogInFail;
+  | LogInFail
+  // Log Out
+  | LogOut
+  | LogOutSuccess
+  | LogOutFail;

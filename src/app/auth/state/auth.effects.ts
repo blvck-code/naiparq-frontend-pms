@@ -10,6 +10,7 @@ import {SharedService} from "../../shared/services/shared.service";
 import * as authActions from './auth.actions';
 import {Router} from "@angular/router";
 import {StorageService} from "../../shared/services/storage.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable()
 
@@ -24,14 +25,28 @@ export class AuthEffects {
   ) {
   }
 
-  login$: Observable<Action> = createEffect(() => {
+  handleError = (err: HttpErrorResponse): string => {
+    let errMsg: string;
+    console.log('Auth Error ==>>>', err);
+
+    if (err.error.email) {
+      errMsg = err.error.email.toString();
+    } else if (err.error['non_field_errors'][0]) {
+      errMsg = err.error['non_field_errors'][0];
+    } else {
+      errMsg = 'Invalid login credentials.';
+    }
+    return errMsg
+  }
+
+  logIn$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.LogIn>(
         authActions.AuthActionsTypes.LOGIN
       ),
       map((action: authActions.LogIn) => action.payload),
       switchMap((userCredentials: LoginModel) => {
-        return this.authSrv.login(userCredentials).pipe(
+        return this.authSrv.logIn(userCredentials).pipe(
           map(
             (userInfo) => {
               this.storage.setToken(userInfo.token);
@@ -41,18 +56,9 @@ export class AuthEffects {
               return new authActions.LogInSuccess(userInfo)
             }
           ),
-          catchError((err) => {
-            let errMsg: string;
-
-            if (err.error.email) {
-              errMsg = err.error.email.toString();
-            } else if (err.error['non_field_errors'][0]) {
-              errMsg = err.error['non_field_errors'][0];
-            } else {
-              errMsg = 'Invalid login credentials.';
-            }
-            this.sharedSrv.showNotification(errMsg, 'error');
-            return of(new authActions.LogInFail(errMsg))
+          catchError((err: HttpErrorResponse) => {
+            this.sharedSrv.showNotification(this.handleError(err), 'error');
+            return of(new authActions.LogInFail(this.handleError(err)))
           })
         )
       })
@@ -69,5 +75,27 @@ export class AuthEffects {
       })
     )
   }, { dispatch: false });
+
+  logOut$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<authActions.LogOut>(
+        authActions.AuthActionsTypes.LOGOUT
+      ),
+      switchMap(() => {
+        return this.authSrv.logOut().pipe(
+          map(
+            (response: { message: string }) => {
+              this.sharedSrv.showNotification('Logged out successfully', 'success')
+              return new authActions.LogOutSuccess(response)
+            }
+          ),
+          catchError((err: HttpErrorResponse) => {
+            this.sharedSrv.showNotification('Logout failed', 'error')
+            return of(new authActions.LogOutFail(this.handleError(err)))
+          })
+        )
+      })
+    )
+  });
 
 }

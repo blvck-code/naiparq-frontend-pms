@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, Validators} from "@angular/forms";
-import {LoginModel, LoginResponseModel} from "../../model/login.model";
+import {LoginModel} from "../../model/login.model";
 import {AuthService} from "../../services/auth.service";
-import {HttpErrorResponse} from "@angular/common/http";
 import {StorageService} from "../../../shared/services/storage.service";
 import {SharedService} from "../../../shared/services/shared.service";
 import {Router} from "@angular/router";
@@ -26,8 +25,6 @@ export class LoginComponent implements OnInit {
   });
   // errMsg$: Observable<string> = this.store.select(getAuthMessage);
   isLoading$: Observable<boolean> = this.store.select(isLoggedInLoading);
-  formInvalid: boolean = false;
-  showPass: boolean = false;
 
   constructor(
     private router: Router,

@@ -18,3 +18,7 @@ export const isLoggedInLoading = createSelector(
   getAuthState,
   state => state.loginStatus.isLoading
 )
+export const userToken = createSelector(
+  getAuthState,
+  state => state.userInfo.token
+)

@@ -1,6 +1,5 @@
 import {TokenModel, UserModel} from "../model/user.model";
 import * as authActions from './auth.actions';
-import {AuthActions} from "./auth.actions";
 
 export interface AuthState {
   userInfo: {
@@ -38,7 +37,7 @@ export const initialState: AuthState = {
 };
 
 export function authReducer(
-  state = initialState,
+  state: AuthState = initialState,
   action: authActions.AuthActions
 ): AuthState {
   if (!action.execute) {

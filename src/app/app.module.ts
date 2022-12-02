@@ -1,9 +1,9 @@
-import {inject, InjectionToken, NgModule, isDevMode} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 // NgRx
 import {ActionReducer, MetaReducer, StoreModule} from "@ngrx/store";
@@ -12,6 +12,7 @@ import {localStorageSync} from "ngrx-store-localstorage";
 import {SharedModule} from "./shared/shared.module";
 import {AuthModule} from "./auth/auth.module";
 import {EffectsModule} from "@ngrx/effects";
+import {AuthInterceptor} from "./auth/services/auth.interceptor";
 
 // Setting user details on localstorage
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -37,7 +38,13 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       logOnly: !isDevMode()
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

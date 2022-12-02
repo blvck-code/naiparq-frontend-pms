@@ -18,8 +18,6 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private storageService: StorageService,
-    private router: Router,
-    private sharedSrv: SharedService
   ) {}
 
   getHeaders(): any {

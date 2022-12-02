@@ -10,6 +10,9 @@ import { StorageService } from '../../shared/services/storage.service';
 
 // NgRx
 import { Store } from '@ngrx/store';
+import {TokenModel} from "../model/user.model";
+import {AuthState} from "../state/auth.reducer";
+import {userToken} from "../state/auth.selector";
 // import { AppState } from '../../app.state';
 // import { getToken } from '../state/auth.selectors';
 // import { TokenModel } from '../models/userInfo.model';
@@ -29,9 +32,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private storageService: StorageService,
-    private store: Store<AppState>
+    private store: Store<AuthState>
   ) {
-    this.store.select(getToken).subscribe((data: TokenModel | null) => {
+    this.store.select(userToken).subscribe((data: TokenModel | null) => {
       if (
         this.token.access == '' ||
         this.token.refresh !== this.getAccessToken(data)
@@ -48,8 +51,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return (
       request.url.includes('/api/v1/accounts/login') ||
       request.url.includes('/api/v1/accounts/register') ||
-      request.url.includes('/api/v1/accounts/password/reset/') ||
-      request.url.includes('/api/v1/administration/category/')
+      request.url.includes('/api/v1/accounts/password/reset/')
     )
   }
 
@@ -71,7 +73,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (this.refreshTokenInProgress) {
       // If refreshTokenInProgress is true, we will wait until refreshTokenSubject has a non-null value
-      // – which means the new token is ready and we can retry the request again
+      // – which means the new token is ready, and we can retry the request again
       return this.refreshTokenSubject.pipe(
         filter((result) => result !== null),
         take(1),
@@ -118,19 +120,20 @@ export class AuthInterceptor implements HttpInterceptor {
       return request;
     }
 
-    let newRequest = request.clone({
+    return request.clone({
       setHeaders: {
         Authorization: 'Bearer ' + accessToken,
       },
     });
-    return newRequest;
+    // return newRequest;
   }
 
   isRefreshTokenProgress(accessToken: string, expTime: string) {
     if (this.isExpired(expTime)) {
       // Set the refreshTokenSubject to null so that subsequent API calls will wait until the new token has been retrieved
       this.refreshTokenSubject.next(null);
-      this.store.dispatch(new authActions.RefreshToken(this.token.refresh))
+      //' Todo Add refresh token
+      // this.store.dispatch(new authActions.RefreshToken(this.token.refresh))
       return false;
     } else {
       return false;

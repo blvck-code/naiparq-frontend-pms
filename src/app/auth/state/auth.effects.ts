@@ -9,16 +9,18 @@ import {SharedService} from "../../shared/services/shared.service";
 // Actions
 import * as authActions from './auth.actions';
 import {Router} from "@angular/router";
+import {StorageService} from "../../shared/services/storage.service";
 
 @Injectable()
 
 export class AuthEffects {
 
   constructor(
+    private router: Router,
     private actions$: Actions,
     private authSrv: AuthService,
+    private storage: StorageService,
     private sharedSrv: SharedService,
-    private router: Router
   ) {
   }
 
@@ -32,6 +34,9 @@ export class AuthEffects {
         return this.authSrv.login(userCredentials).pipe(
           map(
             (userInfo) => {
+              this.storage.setToken(userInfo.token);
+              this.storage.setUser(userInfo.user);
+
               this.sharedSrv.showNotification('Logged in successfully', 'success');
               return new authActions.LogInSuccess(userInfo)
             }

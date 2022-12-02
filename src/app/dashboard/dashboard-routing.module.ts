@@ -2,7 +2,6 @@ import {RouterModule, Routes} from "@angular/router";
 import {DashComponent} from "./components/dash/dash.component";
 import {DashboardComponent} from "./dashboard.component";
 import {NgModule} from "@angular/core";
-import {AnalyticsComponent} from "./components/analytics/analytics.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {AccountComponent} from "./components/account/account.component";
 import {AssetsManagementComponent} from "./components/assets-management/assets-management.component";
@@ -16,7 +15,7 @@ const dashRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [], // Todo Add auth guard here AuthGuard
+    canActivate: [AuthGuard], // Todo Add auth guard here AuthGuard
     children:[
       {
         path: '',

@@ -31,6 +31,8 @@ export class AuthEffects {
 
     if (err.error.email) {
       errMsg = err.error.email.toString();
+    } else if (err.error.phone_number) {
+      errMsg = err.error.phone_number.toString();
     } else if (err.error['non_field_errors'][0]) {
       errMsg = err.error['non_field_errors'][0];
     } else {
@@ -49,14 +51,17 @@ export class AuthEffects {
         return this.authSrv.logIn(userCredentials).pipe(
           map(
             (userInfo) => {
+              // Setting localstorage
               this.storage.setToken(userInfo.token);
               this.storage.setUser(userInfo.user);
 
-              this.sharedSrv.showNotification('Logged in successfully', 'success');
+              this.sharedSrv.showNotification(`Welcome back ${userInfo.user.first_name} ${userInfo.user.last_name}`, 'success');
               return new authActions.LogInSuccess(userInfo)
             }
           ),
           catchError((err: HttpErrorResponse) => {
+            console.log('Log in error ==>>', err);
+
             this.sharedSrv.showNotification(this.handleError(err), 'error');
             return of(new authActions.LogInFail(this.handleError(err)))
           })
@@ -70,7 +75,7 @@ export class AuthEffects {
       ofType<authActions.LogInSuccess>(
         authActions.AuthActionsTypes.LOGIN_SUCCESS
       ),
-      tap((action) => {
+      tap((action: Action) => {
         this.router.navigate(['/dashboard'])
       })
     )
@@ -85,7 +90,11 @@ export class AuthEffects {
         return this.authSrv.logOut().pipe(
           map(
             (response: { message: string }) => {
-              this.sharedSrv.showNotification('Logged out successfully', 'success')
+              // Clear localstorage
+              this.storage.clearToken();
+              this.router.navigate(['/auth']);
+
+              this.sharedSrv.showNotification('We hope to see you again', 'success');
               return new authActions.LogOutSuccess(response)
             }
           ),

@@ -11,7 +11,7 @@ import { Store } from "@ngrx/store";
 import * as authActions from '../../state/auth.actions';
 import {AuthState} from "../../state/auth.reducer";
 import {Observable} from "rxjs";
-import {isLoggedInLoading} from "../../state/auth.selector";
+import {authMessage, isLoggedInLoading} from "../../state/auth.selector";
 
 @Component({
   selector: 'app-login',
@@ -23,8 +23,9 @@ export class LoginComponent implements OnInit {
     phone: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
-  // errMsg$: Observable<string> = this.store.select(getAuthMessage);
+  errMsg$: Observable<string> = this.store.select(authMessage);
   isLoading$: Observable<boolean> = this.store.select(isLoggedInLoading);
+  formInvalid: boolean = false;
 
   constructor(
     private router: Router,
@@ -38,39 +39,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  resetInput(): void {
+    this.formInvalid = false;
+  }
+
+  invalidInput(): void {
+    this.formInvalid = true;
+  }
+
   login(): void {
     const loginData: LoginModel = {
       phone_number: this.loginForm.value.phone,
       password: this.loginForm.value.password
     }
     this.store.dispatch(new authActions.LogIn(loginData));
-
-    // this.authSrv.login(loginData).subscribe({
-    //   next: (res: LoginResponseModel) => {
-    //
-    //
-    //     this.isSubmitting = false;
-    //     this.storageService.setToken(res.token);
-    //     this.storageService.setUser(res.user);
-    //     this.router.navigate(['/dashboard']);
-    //     this.sharedSrv.showNotification('Logged in successfully.', 'success');
-    //
-    //   },
-    //   error: (err: HttpErrorResponse) => {
-    //     this.isSubmitting = false;
-    //     let errMsg: string;
-    //
-    //     if (err.error.email) {
-    //       errMsg = err.error.email.toString();
-    //     } else if (err.error['non_field_errors'][0]) {
-    //       errMsg = err.error['non_field_errors'][0];
-    //     } else {
-    //       errMsg = 'Invalid login credentials.';
-    //     }
-    //     this.sharedSrv.showNotification(errMsg, 'error');
-    //   }
-    // })
-
   }
 
 }

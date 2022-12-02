@@ -99,7 +99,7 @@ export class LogOutSuccess implements ActionExecutable<AuthState>{
   readonly type = AuthActionsTypes.LOGOUT_SUCCESS;
   constructor(public payload: { message: string }) {}
   execute(state: AuthState): AuthState {
-    return state = initialState
+    return state = initialState;
   }
 }
 export class LogOutFail implements ActionExecutable<AuthState>{

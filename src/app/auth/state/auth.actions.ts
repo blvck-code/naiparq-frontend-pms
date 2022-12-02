@@ -8,6 +8,7 @@ export interface ActionExecutable<T> extends Action {
 
 export enum AuthActionsTypes {
   AUTO_LOGIN = 'userCenter/autoLogin',
+  RESET_INVALID = 'userCenter/resetInvalid',
 
   // Log In
   LOGIN = 'userCenter/login',
@@ -35,6 +36,22 @@ export enum AuthActionsTypes {
   LOGOUT_FAIL = 'userCenter/logoutFail',
 }
 
+// Reset Form Invalid
+export class ResetInvalid implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.RESET_INVALID;
+  constructor() {}
+
+  execute(state: AuthState) {
+    return {
+      ...state,
+      loginStatus: {
+        ...state.loginStatus,
+        invalid: false
+      }
+    }
+  }
+}
+
 // Log In
 export class LogIn implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGIN;
@@ -45,7 +62,8 @@ export class LogIn implements ActionExecutable<AuthState> {
       ...state,
       loginStatus: {
         isLoading: true,
-        isLoggedIn: false
+        isLoggedIn: false,
+        invalid: false
       }
     }
   }
@@ -61,6 +79,7 @@ export class LogInSuccess implements ActionExecutable<AuthState> {
       loginStatus: {
         isLoading: false,
         isLoggedIn: true,
+        invalid: false
       },
     }
   }
@@ -80,6 +99,7 @@ export class LogInFail implements ActionExecutable<AuthState> {
       loginStatus: {
         isLoading: false,
         isLoggedIn: false,
+        invalid: true
       },
     }
   }
@@ -120,4 +140,6 @@ export type AuthActions =
   // Log Out
   | LogOut
   | LogOutSuccess
-  | LogOutFail;
+  | LogOutFail
+  // Reset Invalid
+  | ResetInvalid;

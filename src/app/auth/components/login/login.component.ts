@@ -10,8 +10,8 @@ import {Router} from "@angular/router";
 import { Store } from "@ngrx/store";
 import * as authActions from '../../state/auth.actions';
 import {AuthState} from "../../state/auth.reducer";
-import {Observable} from "rxjs";
-import {authMessage, isLoggedInLoading} from "../../state/auth.selector";
+import {BehaviorSubject, Observable} from "rxjs";
+import {authMessage, isInvalid, isLoggedInLoading} from "../../state/auth.selector";
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   });
   errMsg$: Observable<string> = this.store.select(authMessage);
   isLoading$: Observable<boolean> = this.store.select(isLoggedInLoading);
-  formInvalid: boolean = false;
+  isInvalid$: Observable<boolean> = this.store.select(isInvalid);
 
   constructor(
     private router: Router,
@@ -37,14 +37,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  resetInput(): void {
-    this.formInvalid = false;
-  }
-
-  invalidInput(): void {
-    this.formInvalid = true;
+    this.store.dispatch(new authActions.ResetInvalid());
   }
 
   login(): void {

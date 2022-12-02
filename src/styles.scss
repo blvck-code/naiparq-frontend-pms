@@ -85,6 +85,21 @@ body {
       color: #FFFFFF;
     }
 
+  &.is-invalid {
+
+    input {
+      border: 1px solid #ff0000;
+      color: #ff0000;
+      animation: shake 300ms;
+    }
+
+    .pea-login-password {
+      svg {
+        color: #ff0000;
+      }
+    }
+  }
+
   .naiparq-form-input {
     width: auto;
     border: 1px solid #fff;
@@ -96,9 +111,10 @@ body {
     color: #ffffff;
 
     &:focus,
-    &:active {
+    &:active,
+    &:focus-visible {
       background: transparent;
-      border: 1px solid #ffffff;
+      border: 1px solid #fff;
     }
   }
 

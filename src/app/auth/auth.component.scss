@@ -22,16 +22,22 @@
       justify-content: center;
       margin-bottom: 30px;
     }
-
-    .naiparq-login-form {
-
-      .login-message {
-        text-align: center;
-
-        span {
-          color: #ff0000;
-        }
-      }
-    }
   }
+}
+
+@keyframes shake {
+  25%{ transform: translateX(4px);}
+  50%{ transform: translateX(-4px);}
+  75%{ transform: translateX(4px);}
+}
+
+.show-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  height: 56px;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
 }

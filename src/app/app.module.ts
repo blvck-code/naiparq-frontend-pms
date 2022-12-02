@@ -12,7 +12,7 @@ import {localStorageSync} from "ngrx-store-localstorage";
 import {SharedModule} from "./shared/shared.module";
 import {AuthModule} from "./auth/auth.module";
 import {EffectsModule} from "@ngrx/effects";
-import {AuthInterceptor} from "./auth/services/auth.interceptor";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
 
 // Setting user details on localstorage
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {

@@ -6,13 +6,13 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { BehaviorSubject, filter, Observable, switchMap, take } from 'rxjs';
-import { StorageService } from '../../shared/services/storage.service';
+import { StorageService } from '../shared/services/storage.service';
 
 // NgRx
 import { Store } from '@ngrx/store';
-import {TokenModel} from "../model/user.model";
-import {AuthState} from "../state/auth.reducer";
-import {userToken} from "../state/auth.selector";
+import {TokenModel} from "../auth/model/user.model";
+import {AuthState} from "../auth/state/auth.reducer";
+import {userToken} from "../auth/state/auth.selector";
 // import { AppState } from '../../app.state';
 // import { getToken } from '../state/auth.selectors';
 // import { TokenModel } from '../models/userInfo.model';
@@ -60,9 +60,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // Todo add forgot password and verify urls
-    if (
-      this.validateURL(request)
-    ) {
+    if (this.validateURL(request)) {
       return next.handle(request);
     }
 
@@ -96,8 +94,9 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private getAccessToken(data: TokenModel | null): string {
+
     if (data && data.access) {
-      return data.refresh;
+      return data.access;
     } else {
       return '';
     }
@@ -116,7 +115,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const accessToken = this.token.access;
 
     if (!accessToken) {
-      console.log('Request ==>>', request)
       return request;
     }
 

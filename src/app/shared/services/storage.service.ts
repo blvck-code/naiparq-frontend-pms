@@ -38,7 +38,8 @@ export class StorageService {
     this.storage.removeItem('ap');
     this.storage.removeItem('rp');
     this.storage.removeItem('ep');
-    this.storage.removeItem('userCenter')
+    this.storage.removeItem('userCenter');
+    localStorage.clear();
   }
   getToken(): any {
     return this.storage.getItem('ap');

@@ -10,7 +10,7 @@ export const environment = {
   // Accounts Module URLS
   naiparqLogin: naiparqBaseURL + 'accounts/login/',
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
-  naiparqLogout: naiparqBaseURL + 'accounts/logout/'
+  naiparqLogout: naiparqBaseURL + 'accounts/logout'
 
 
   // Drive In Module URLS

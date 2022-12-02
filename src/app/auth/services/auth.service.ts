@@ -7,6 +7,7 @@ import {StorageService} from "../../shared/services/storage.service";
 import {Router} from "@angular/router";
 import {SharedService} from "../../shared/services/shared.service";
 import dayjs from 'dayjs';
+import {RegisterModel, RegisterResponseModel} from "../model/register.model";
 
 
 @Injectable({
@@ -34,6 +35,10 @@ export class AuthService {
 
   logOut(): Observable<{ message: string }> {
     return this.http.get<{ message: string }>(env.naiparqLogout)
+  }
+
+  register(registerData: RegisterModel): Observable<RegisterResponseModel> {
+    return this.http.post<RegisterResponseModel>(env.naiparqRegister, registerData);
   }
 
   refreshToken(): Observable<any> {

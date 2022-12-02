@@ -1,43 +1,35 @@
-<div class="naiparq-login">
-  <div class="naiparq-login-wrap">
-    <div class="naiparq-logo">
-      <img src="assets/images/naiparq-logo.png" alt="Naiparq">
-    </div>
+<form [formGroup]="loginForm" class="naiparq-login-form" (ngSubmit)="login()">
 
-    <form [formGroup]="loginForm" class="naiparq-login-form" (ngSubmit)="login()">
+  <fieldset class="naiparq-form-group">
+    <label for="pNumber">Phone Number</label>
+    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+  </fieldset>
 
-      <fieldset class="naiparq-form-group">
-        <label for="pNumber">Phone Number</label>
-        <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
-      </fieldset>
-
-      <fieldset class="naiparq-form-group">
+  <fieldset class="naiparq-form-group">
 <!--       Todo Add view password-->
-        <label for="password">Password</label>
-        <input formControlName="password" type="password" id="password" class="naiparq-form-input">
-      </fieldset>
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" id="password" class="naiparq-form-input">
+  </fieldset>
 
-      <div class="naiparq-form-group">
-        <button
-          class="naiparq-btn naiparq-btn-primary"
-          type="submit"
-          [disabled]="(isLoading$ | async)"
-          [class.btn-loading]="(isLoading$ | async)"
-        >
-          <span class="btn-text">Log in</span>
-        </button>
-      </div>
-        <div class="login-message">
-          <span>{{ errMsg$ | async }}</span>
-        </div>
-      <div class="naiparq-form-group">
-        <p>
-          <!--      Todo add the add icon-->
-          Don't have an account? <a href="">Register Here</a>
-        </p>
-      </div>
-
-    </form>
-
+  <div class="naiparq-form-group">
+    <button
+      class="naiparq-btn naiparq-btn-primary"
+      type="submit"
+      [disabled]="(isLoading$ | async)"
+      [class.btn-loading]="(isLoading$ | async)"
+    >
+      <span class="btn-text">Log in</span>
+    </button>
   </div>
-</div>
+    <div class="login-message">
+      <span>{{ errMsg$ | async }}</span>
+    </div>
+  <div class="naiparq-form-group">
+    <p>
+      <!--      Todo add the add icon-->
+      Don't have an account? <a [routerLink]="['/auth/register']">Register Here</a>
+    </p>
+  </div>
+
+</form>
+

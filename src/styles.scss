@@ -75,14 +75,14 @@ body {
 .naiparq-form-group {
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
+  padding: 5px 20px;
 
     label {
-      color: var(--text-color);
       font-family: 'Sk-Modernist', sans-serif;
       font-size: 14px;
       line-height: 17px;
       font-weight: 400;
+      color: #FFFFFF;
     }
 
   .naiparq-form-input {

@@ -1,1 +1,54 @@
-<p>register works!</p>
+<form class="naiparq-login-form">
+  <fieldset class="naiparq-form-group">
+    <label for="pNumber">First name</label>
+    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+  </fieldset>
+
+  <fieldset class="naiparq-form-group">
+    <label for="pNumber">Last name</label>
+    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+  </fieldset>
+
+  <fieldset class="naiparq-form-group">
+    <label for="pNumber">Phone Number</label>
+    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+  </fieldset>
+
+  <fieldset class="naiparq-form-group">
+    <label for="pNumber">Email</label>
+    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+  </fieldset>
+
+  <fieldset class="naiparq-form-group">
+    <!--       Todo Add view password-->
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" id="password" class="naiparq-form-input">
+  </fieldset>
+
+  <fieldset class="naiparq-form-group">
+    <!--       Todo Add view password-->
+    <label for="password">Confirm Password</label>
+    <input formControlName="password" type="password" id="password" class="naiparq-form-input">
+  </fieldset>
+
+
+  <div class="naiparq-form-group">
+    <button
+      class="naiparq-btn naiparq-btn-primary"
+      type="submit"
+    >
+      <span class="btn-text">Sign Up</span>
+    </button>
+  </div>
+  <div class="login-message">
+<!--    <span>{{ errMsg$ | async }}</span>-->
+  </div>
+  <div class="naiparq-form-group">
+    <p>
+      <!--      Todo add the add icon-->
+      Already have an account? <a [routerLink]="['/auth']">Log In</a>
+    </p>
+  </div>
+
+</form>
+

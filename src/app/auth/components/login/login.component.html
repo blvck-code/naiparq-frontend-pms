@@ -2,13 +2,13 @@
 
   <fieldset [class.is-invalid]="isInvalid$ | async" class="naiparq-form-group">
     <label for="pNumber">Phone Number</label>
-    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
+    <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input naiparq-login-input ">
   </fieldset>
 
   <fieldset [class.is-invalid]="isInvalid$ | async" class="naiparq-form-group">
 <!--       Todo Add view password-->
     <label for="password">Password</label>
-    <input formControlName="password" type="password" id="password" class="naiparq-form-input">
+    <input formControlName="password" type="password" id="password" class="naiparq-form-input naiparq-login-input ">
   </fieldset>
 
   <div class="naiparq-form-group">

@@ -1,11 +1,11 @@
 <form [formGroup]="loginForm" class="naiparq-login-form" (ngSubmit)="login()">
 
-  <fieldset class="naiparq-form-group">
+  <fieldset [class.is-invalid]="isInvalid$ | async" class="naiparq-form-group">
     <label for="pNumber">Phone Number</label>
     <input type="text" id="pNumber" formControlName="phone"  class="naiparq-form-input">
   </fieldset>
 
-  <fieldset class="naiparq-form-group">
+  <fieldset [class.is-invalid]="isInvalid$ | async" class="naiparq-form-group">
 <!--       Todo Add view password-->
     <label for="password">Password</label>
     <input formControlName="password" type="password" id="password" class="naiparq-form-input">
@@ -26,8 +26,7 @@
     </div>
   <div class="naiparq-form-group">
     <p>
-      <!--      Todo add the add icon-->
-      Don't have an account? <a [routerLink]="['/auth/register']">Register Here</a>
+      Don't have an account? <a [routerLink]="['/auth/register']">Register Here →</a>
     </p>
   </div>
 

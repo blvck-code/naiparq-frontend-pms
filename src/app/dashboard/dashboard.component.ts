@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 
 // NgRx
@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import {AuthState} from "../auth/state/auth.reducer";
 
 import * as authActions from '../auth/state/auth.actions';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,23 +15,45 @@ import * as authActions from '../auth/state/auth.actions';
 })
 export class DashboardComponent implements OnInit {
   currentUrl: string = '';
+  darkTheme: boolean = false;
+  @ViewChild('toggleTheme') 'toggleTheme': ElementRef
 
   constructor(
     private router: Router,
-    private store: Store<AuthState>
+    private store: Store<AuthState>,
+    private cookie: CookieService
   ) { }
 
   ngOnInit(): void {
     this.onInitHandler();
   }
 
+  handleClickTheme(): void {
+    this.toggleTheme.nativeElement.click()
+  }
 
   changeTheme(event: any): void {
     const checked = event.checked;
 
     if (checked) {
+      this.darkTheme = true;
+      document.body.classList.add('dark-theme');
+      this.cookie.set('theme', 'dark-theme', 30);
+    } else {
+      this.darkTheme = false;
+      document.body.classList.remove('dark-theme');
+      this.cookie.set('theme', 'light-theme', 30);
+    }
+  }
+
+  checkTheme(): void {
+    const theme = this.cookie.get('theme');
+
+    if (theme === 'dark-theme'){
+      this.darkTheme = true;
       document.body.classList.add('dark-theme');
     } else {
+      this.darkTheme = false;
       document.body.classList.remove('dark-theme');
     }
   }
@@ -44,6 +67,8 @@ export class DashboardComponent implements OnInit {
         }
       },
     });
+
+    this.checkTheme();
   }
 
   logOut(): void {

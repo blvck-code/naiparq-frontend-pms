@@ -10,6 +10,7 @@ export interface AuthState {
   loginStatus: {
     isLoading: boolean;
     isLoggedIn: boolean;
+    invalid: boolean,
   };
 }
 
@@ -33,6 +34,7 @@ export const initialState: AuthState = {
   loginStatus: {
     isLoading: false,
     isLoggedIn: false,
+    invalid: false,
   },
 };
 

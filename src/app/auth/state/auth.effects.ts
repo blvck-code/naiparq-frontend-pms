@@ -11,6 +11,7 @@ import * as authActions from './auth.actions';
 import {Router} from "@angular/router";
 import {StorageService} from "../../shared/services/storage.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {RegisterModel, RegisterResponseModel} from "../model/register.model";
 
 @Injectable()
 
@@ -23,22 +24,6 @@ export class AuthEffects {
     private storage: StorageService,
     private sharedSrv: SharedService,
   ) {
-  }
-
-  handleError = (err: HttpErrorResponse): string => {
-    let errMsg: string;
-    console.log('Auth Error ==>>>', err);
-
-    if (err.error.email) {
-      errMsg = err.error.email.toString();
-    } else if (err.error.phone_number) {
-      errMsg = err.error.phone_number.toString();
-    } else if (err.error['non_field_errors'][0]) {
-      errMsg = err.error['non_field_errors'][0];
-    } else {
-      errMsg = 'Invalid login credentials.';
-    }
-    return errMsg
   }
 
   logIn$: Observable<Action> = createEffect(() => {
@@ -60,10 +45,11 @@ export class AuthEffects {
             }
           ),
           catchError((err: HttpErrorResponse) => {
-            console.log('Log in error ==>>', err);
+            this.storage.clearToken();
+            console.log('Login error ==>>', err)
 
-            this.sharedSrv.showNotification(this.handleError(err), 'error');
-            return of(new authActions.LogInFail(this.handleError(err)))
+            this.sharedSrv.showNotification(err.message, 'error');
+            return of(new authActions.LogInFail(err.message))
           })
         )
       })
@@ -99,12 +85,36 @@ export class AuthEffects {
             }
           ),
           catchError((err: HttpErrorResponse) => {
-            this.sharedSrv.showNotification('Logout failed', 'error')
-            return of(new authActions.LogOutFail(this.handleError(err)))
+            this.sharedSrv.showNotification(err.message, 'error')
+            return of(new authActions.LogOutFail(err.message))
           })
         )
       })
     )
   });
+
+  signUp$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<authActions.SignUp>(
+        authActions.AuthActionsTypes.REGISTER
+      ),
+      map((action: authActions.SignUp) => action.payload),
+      switchMap((registerContent: RegisterModel) => {
+        return this.authSrv.register(registerContent).pipe(
+          map(
+            (resp: RegisterResponseModel) => {
+              this.sharedSrv.showNotification(resp.message, 'success')
+              return new authActions.SignUpSuccess(resp)
+            }
+          ),
+          catchError((err: HttpErrorResponse) => {
+            this.sharedSrv.showNotification(err.message, 'error')
+            this.storage.clearToken();
+            return of(new authActions.SignUpFail(err.message))
+          })
+        )
+      })
+    )
+  })
 
 }

@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  naiparq_pms_frontend:
+    build: src
+    volumes:
+      - frontend_pms_volume:/var/www/html/:rw
+
+volumes:
+  frontend_pms_volume:
+    external: true

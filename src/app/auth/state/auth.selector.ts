@@ -26,3 +26,7 @@ export const userToken = createSelector(
   getAuthState,
   state => state.userInfo.token
 )
+export const userName = createSelector(
+  getAuthState,
+  state => `${state.userInfo.user?.first_name.toUpperCase()}  ${state.userInfo.user?.last_name.toUpperCase()}`
+)

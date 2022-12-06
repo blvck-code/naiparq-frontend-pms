@@ -7,6 +7,8 @@ import {AuthState} from "../auth/state/auth.reducer";
 
 import * as authActions from '../auth/state/auth.actions';
 import {CookieService} from "ngx-cookie-service";
+import {Observable} from "rxjs";
+import {userName} from "../auth/state/auth.selector";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +19,8 @@ export class DashboardComponent implements OnInit {
   currentUrl: string = '';
   darkTheme: boolean = false;
   @ViewChild('toggleTheme') 'toggleTheme': ElementRef
+
+  userName$: Observable<string> = this.store.select(userName);
 
   constructor(
     private router: Router,
@@ -82,7 +86,7 @@ export class DashboardComponent implements OnInit {
     } else if (url === '/dashboard/notifications') {
       newUrl = 'Notifications';
     } else if (url === '/dashboard/cash-payment') {
-      newUrl = 'Cash Payment';
+      newUrl = 'Drive In';
     } else if (url === '/dashboard/motorist-management') {
       newUrl = 'Motorist Management';
     } else if (url === '/dashboard/settings') {

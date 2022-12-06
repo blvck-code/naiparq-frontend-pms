@@ -24,7 +24,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   handleError = (err: HttpErrorResponse): ErrorModel => {
     let errMsg: string;
-    console.log('Auth Error ==>>>', err);
+    console.log('First time error ==>>>', err);
 
     if (err.error.email) {
       errMsg = err.error.email.toString();
@@ -40,7 +40,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       message: errMsg,
       status: err.status
     }
-    console.log(this.error);
+    console.log('Final error content ==>>', this.error);
     return this.error
   }
 

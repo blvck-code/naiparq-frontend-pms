@@ -102,13 +102,16 @@ body {
 
   .naiparq-form-input {
     width: auto;
-    border: 1px solid #fff;
     border-radius: 10px;
     background: transparent;
     margin: 10px 0;
     padding: 15px 20px;
     font-size: 14px;
-    color: #ffffff;
+
+    &.naiparq-login-input {
+      border: 1px solid #fff;
+      color: #ffffff;
+    }
 
     &:focus,
     &:active,
@@ -232,6 +235,7 @@ body {
 
   .modal-content {
     padding: 20px 15px;
+    background-color: var(--bkg-one-color);
 
     .modal-header {
       border: none;
@@ -240,8 +244,9 @@ body {
         font-size: 25px;
         line-height: 20px;
         letter-spacing: 0.2px;
-        color: #252733;
+        color: var(--text-primary);
       }
+
 
       .naiparq-close-btn {
         background: #FFFFFF;
@@ -264,7 +269,7 @@ body {
         padding-inline: 0;
 
         label {
-          color: #000000;
+          color: var(--text-primary);
           font-weight: 400;
           font-size: 14px;
           line-height: 17px;
@@ -272,6 +277,7 @@ body {
 
         .naiparq-form-input {
           border: 1px solid #B1ADAD;
+          color: var(--text-primary);
         }
       }
     }

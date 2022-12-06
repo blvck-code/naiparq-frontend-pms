@@ -15,6 +15,7 @@ import { CashPaymentComponent } from './components/cash-payment/cash-payment.com
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { AssetManagementComponent } from './components/asset-management/asset-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -35,9 +36,10 @@ import { NotificationsComponent } from './components/notifications/notifications
     AssetManagementComponent,
     NotificationsComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        ReactiveFormsModule
+    ]
 })
 export class DashboardModule { }

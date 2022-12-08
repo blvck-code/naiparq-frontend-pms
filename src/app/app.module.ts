@@ -16,6 +16,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {CookieService} from "ngx-cookie-service";
 import {ErrorInterceptor} from "./interceptors/error.interceptor";
+import {environment} from "../environments/environment";
 
 // Setting user details on localstorage
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -39,7 +40,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     StoreDevtoolsModule.instrument({
       name: 'Naiparq',
       maxAge: 25,
-      logOnly: !isDevMode()
+      logOnly: environment.production
     }),
   ],
   providers: [

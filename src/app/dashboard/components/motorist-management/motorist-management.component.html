@@ -1,1 +1,139 @@
-<p>motorist-management works!</p>
+<div class="naiparq-cash-payment-container table-wrap  naiparq-scrollbar">
+
+  <div class="naiparq-cash-payment-title-bar d-flex justify-content-between">
+    <p>December 09, 2022</p>
+
+    <div class="cash-table-btns d-flex">
+
+      <button data-bs-toggle="modal" data-bs-target="#addGuest" class="naiparq-btn naiparq-btn-primary me-2">
+        Add Guest
+      </button>
+
+      <button data-bs-toggle="modal" class="naiparq-btn naiparq-btn-primary me-2">
+        Blacklist Vehicle
+      </button>
+
+    </div>
+  </div>
+
+  <div class="naiparq-table-content">
+    <table class="table">
+      <thead class="table-nav sticky-top">
+      <tr>
+        <th scope="col">
+          <span class="table-title">Number Plate</span>
+        </th>
+        <th scope="col">
+          <span class="table-title">Type</span>
+        </th>
+        <th scope="col">
+          <span class="table-title">Action</span>
+        </th>
+      </tr>
+      </thead>
+
+      <tbody class="table-body">
+      <tr *ngFor="let num of numSeq(35)">
+        <td>
+          <div class="table-text">
+            <span>KDB 000B</span>
+          </div>
+        </td>
+
+        <td>
+          <div class="table-text">
+            <span>Staff</span>
+          </div>
+        </td>
+
+        <!--        Actions -->
+        <td>
+          <div class="table-text table-actions d-flex">
+
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 5.99113L14.0089 2.5C13.8928 2.38392 13.755 2.29184 13.6034 2.22902C13.4517 2.1662 13.2892 2.13387 13.125 2.13387C12.9609 2.13387 12.7983 2.1662 12.6467 2.22902C12.495 2.29184 12.3572 2.38392 12.2411 2.5L10.1832 4.55795L10.1831 4.55807L10.183 4.55818L2.86618 11.875C2.74972 11.9908 2.6574 12.1285 2.59454 12.2802C2.53169 12.432 2.49956 12.5946 2.5 12.7589V16.25C2.50038 16.5814 2.6322 16.8991 2.86654 17.1335C3.10088 17.3678 3.4186 17.4996 3.75 17.5H7.24114C7.40536 17.5004 7.56803 17.4683 7.71975 17.4055C7.87146 17.3426 8.00921 17.2503 8.125 17.1339L17.5 7.75886C17.7341 7.52426 17.8655 7.20639 17.8655 6.87499C17.8655 6.5436 17.7341 6.22573 17.5 5.99113ZM15 8.49113L11.5089 5L13.125 3.38387L16.6161 6.875L15 8.49113Z" fill="#4BC1F1"/>
+            </svg>
+
+          </div>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade add-plate-modal"
+  id="addGuest"
+  tabindex="-1"
+  aria-labelledby="addNumberPlate"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="d-flex align-items-center gap-2">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" fill="#FBCE33" fill-opacity="0.24"/>
+            <path d="M28.5 17.25H33" stroke="#FBCE33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M30.75 15V19.5" stroke="#FBCE33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.9053 32.2491C15.8274 30.6531 17.1532 29.3278 18.7497 28.4064C20.3461 27.485 22.1569 27 24.0002 27C25.8434 27 27.6542 27.4851 29.2506 28.4065C30.8471 29.3279 32.1729 30.6533 33.0949 32.2493" stroke="#FBCE33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29.6298 23.0796C29.2287 24.1625 28.5236 25.1066 27.599 25.7984C26.6744 26.4902 25.5697 26.9004 24.4176 26.9796C23.2656 27.0588 22.1152 26.8037 21.1046 26.245C20.094 25.6862 19.2662 24.8476 18.7207 23.8298C18.1752 22.812 17.9352 21.6583 18.0294 20.5074C18.1237 19.3565 18.5482 18.2573 19.252 17.3418C19.9559 16.4263 20.9091 15.7335 21.9971 15.3466C23.0851 14.9597 24.2617 14.8952 25.3855 15.1608" stroke="#FBCE33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h5 class="modal-title">
+            Add Guests
+          </h5>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeAddGuest
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+               stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <form class="modal-body">
+
+        <div class="naiparq-form-group">
+          <label for="nPlate">
+            Number Plate
+          </label>
+          <input formControlName="license_plate" type="text" id="nPlate" class="naiparq-form-input">
+        </div>
+
+        <div class="naiparq-form-group">
+          <label for="nPlate">
+            From
+          </label>
+          <input formControlName="license_plate" type="text" class="naiparq-form-input">
+        </div>
+
+        <div class="naiparq-form-group">
+          <label for="nPlate">
+            To
+          </label>
+          <input formControlName="license_plate" type="text"class="naiparq-form-input">
+        </div>
+
+        <div class="naiparq-form-group">
+          <button
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+          >
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

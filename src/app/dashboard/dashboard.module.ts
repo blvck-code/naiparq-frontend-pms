@@ -10,14 +10,11 @@ import { AccountComponent } from './components/account/account.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { DashComponent } from './components/dash/dash.component';
 import { DashboardComponent } from './dashboard.component';
-import {DashboardRoutingModule} from "./dashboard-routing.module";
-import { CashPaymentComponent } from './components/cash-payment/cash-payment.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
-import { AssetManagementComponent } from './components/asset-management/asset-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import {ReactiveFormsModule} from "@angular/forms";
-
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,15 +28,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     SettingsComponent,
     DashComponent,
     DashboardComponent,
-    CashPaymentComponent,
+    DriveInComponent,
     MotoristManagementComponent,
-    AssetManagementComponent,
-    NotificationsComponent
+    NotificationsComponent,
   ],
-    imports: [
-        CommonModule,
-        DashboardRoutingModule,
-        ReactiveFormsModule
-    ]
+  imports: [CommonModule, DashboardRoutingModule, ReactiveFormsModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}

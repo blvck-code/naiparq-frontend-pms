@@ -1,50 +1,35 @@
 <div class="settings-container pea-scrollbar">
   <div class="form-title">
-    <p>Personal Information</p>
+    <p>Admin Information</p>
     <button type="button">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.0495 3.00019L4.2078 10.2418C3.94947 10.5168 3.69947 11.0585 3.64947 11.4335L3.34114 14.1335C3.2328 15.1085 3.9328 15.7752 4.89947 15.6085L7.5828 15.1502C7.9578 15.0835 8.48284 14.8085 8.74117 14.5252L15.5828 7.28352C16.7662 6.03352 17.2995 4.60852 15.4578 2.86685C13.6245 1.14185 12.2328 1.75019 11.0495 3.00019Z" stroke="#29A073" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M9.90883 4.20816C10.2672 6.50816 12.1338 8.26649 14.4505 8.49983M2.5 18.3333H17.5" stroke="#29A073" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11.0495 3.00017L4.2078 10.2418C3.94947 10.5168 3.69947 11.0585 3.64947 11.4335L3.34114 14.1335C3.2328 15.1085 3.9328 15.7752 4.89947 15.6085L7.5828 15.1502C7.9578 15.0835 8.48284 14.8085 8.74117 14.5252L15.5828 7.2835C16.7662 6.0335 17.2995 4.6085 15.4578 2.86684C13.6245 1.14184 12.2328 1.75017 11.0495 3.00017Z" stroke="#4BC1F1" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.90883 4.20816C10.2672 6.50816 12.1338 8.26649 14.4505 8.49983M2.5 18.3333H17.5" stroke="#4BC1F1" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       Edit
     </button>
   </div>
 
-  <form class="settings-form">
+  <form class="settings-form" [formGroup]="userInfoForm">
 
     <div class="form-content">
-      <div class="form-profile-pic">
-
-        <label for="firstName">Profile photo</label>
-        <fieldset class="profile-img-box">
-          <img src="" alt="">
-          <div class="edit-icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.75 5.39202L12.608 2.25C12.5036 2.14553 12.3795 2.06266 12.243 2.00612C12.1066 1.94958 11.9603 1.92048 11.8125 1.92048C11.6648 1.92048 11.5185 1.94958 11.382 2.00612C11.2455 2.06266 11.1215 2.14553 11.017 2.25L9.16487 4.10216L9.16476 4.10226L9.16466 4.10236L2.57956 10.6875C2.47475 10.7917 2.39166 10.9157 2.33509 11.0522C2.27852 11.1888 2.2496 11.3352 2.25 11.483V14.625C2.25035 14.9233 2.36898 15.2092 2.57989 15.4201C2.79079 15.631 3.07674 15.7497 3.375 15.75H6.51703C6.66482 15.7504 6.81123 15.7215 6.94777 15.6649C7.08432 15.6084 7.20829 15.5253 7.3125 15.4205L15.75 6.98298C15.9607 6.77183 16.079 6.48575 16.079 6.18749C16.079 5.88924 15.9607 5.60316 15.75 5.39202ZM13.5 7.64202L10.358 4.5L11.8125 3.04548L14.9545 6.1875L13.5 7.64202Z" fill="#004445"/>
-            </svg>
-          </div>
-          <input #profileRef style="display: none" type="file">
-        </fieldset>
-
-      </div>
 
       <fieldset class="form-row">
         <div class="form-row-item">
           <label for="firstName">First Name</label>
-          <input formControlName="first_name" class="pea-form-input" type="text" id="firstName">
+          <input formControlName="first_name" class="naiparq-form-input" type="text" id="firstName">
         </div>
         <div class="form-row-item">
           <label for="lastName">Last Name</label>
-          <input formControlName="last_name" class="pea-form-input" type="text" id="lastName">
+          <input formControlName="last_name" class="naiparq-form-input" type="text" id="lastName">
         </div>
       </fieldset>
 
       <div class="form-row">
-
         <fieldset class="form-row-item">
           <label for="birthDay">Date of Birth</label>
           <div class="form-item-group post">
-            <input formControlName="date_of_birth" class="pea-form-input" type="date" id="birthDay">
+            <input formControlName="date_of_birth" class="naiparq-form-input" type="date" id="birthDay">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6.66667 1.66667V4.16667V1.66667ZM13.3333 1.66667V4.16667V1.66667ZM2.91667 7.57497H17.0833H2.91667ZM17.5 7.08333V14.1667C17.5 16.6667 16.25 18.3333 13.3333 18.3333H6.66667C3.75 18.3333 2.5 16.6667 2.5 14.1667V7.08333C2.5 4.58333 3.75 2.91667 6.66667 2.91667H13.3333C16.25 2.91667 17.5 4.58333 17.5 7.08333Z" stroke="#A2A2A8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M6.91211 13.9167H6.91959M13.0791 11.4167H13.0866H13.0791ZM13.0791 13.9167H13.0866H13.0791ZM9.99643 11.4167H10.0039H9.99643ZM9.99643 13.9167H10.0039H9.99643ZM6.91211 11.4167H6.91959H6.91211Z" stroke="#A2A2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -55,7 +40,7 @@
 
         <fieldset class="form-row-item">
           <label for="userPhone">Mobile Number</label>
-          <input formControlName="phone_number" class="pea-form-input" type="text" id="userPhone">
+          <input formControlName="phone_number" class="naiparq-form-input" type="text" id="userPhone">
         </fieldset>
 
       </div>
@@ -65,14 +50,14 @@
         <fieldset class="form-row-item">
           <label for="birthDay">ID Number</label>
           <div class="form-item-group post">
-            <input formControlName="id_number" class="pea-form-input" type="text" id="id_number">
+            <input formControlName="id_number" class="naiparq-form-input" type="text" id="id_number">
           </div>
         </fieldset>
 
 
         <fieldset class="form-row-item">
           <label for="userPhone">Gender</label>
-          <select formControlName="gender" class="form-select" id="gender" aria-label="Select gender">
+          <select formControlName="gender" class="form-select naiparq-form-input" id="gender" aria-label="Select gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
@@ -81,17 +66,29 @@
 
       </div>
 
-      <fieldset class="form-row-item max-input">
-        <label for="userEmail">Email</label>
-        <div class="form-item-group pre">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.3333 3.33333H2.66659C1.65406 3.33333 0.833252 4.12928 0.833252 5.11111V14.8889C0.833252 15.8707 1.65406 16.6667 2.66659 16.6667H17.3333C18.3458 16.6667 19.1666 15.8707 19.1666 14.8889V5.11111C19.1666 4.12928 18.3458 3.33333 17.3333 3.33333Z" stroke="#A2A2A8" stroke-width="1.5"/>
-            <path d="M1.25 4.16667L9.3532 11.4283C9.71922 11.7461 10.2798 11.7461 10.6458 11.4283L18.75 4.16667" stroke="#A2A2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1.66675 15.8333L7.43451 10M18.3334 15.8333L12.5657 10L18.3334 15.8333Z" stroke="#A2A2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <input formControlName="email" class="pea-form-input" type="email" id="userEmail">
-        </div>
+      <div class="form-row">
+        <fieldset class="form-row-item max-input">
+          <label for="userEmail">Email</label>
+          <div class="form-item-group pre email">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.3333 3.33333H2.66659C1.65406 3.33333 0.833252 4.12928 0.833252 5.11111V14.8889C0.833252 15.8707 1.65406 16.6667 2.66659 16.6667H17.3333C18.3458 16.6667 19.1666 15.8707 19.1666 14.8889V5.11111C19.1666 4.12928 18.3458 3.33333 17.3333 3.33333Z" stroke="#A2A2A8" stroke-width="1.5"/>
+              <path d="M1.25 4.16667L9.3532 11.4283C9.71922 11.7461 10.2798 11.7461 10.6458 11.4283L18.75 4.16667" stroke="#A2A2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1.66675 15.8333L7.43451 10M18.3334 15.8333L12.5657 10L18.3334 15.8333Z" stroke="#A2A2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <input formControlName="email" class="naiparq-form-input" type="email" id="userEmail">
+          </div>
+        </fieldset>
+      </div>
 
+      <fieldset class="form-row">
+        <div class="form-row-item">
+          <label for="firstName">New Password</label>
+          <input formControlName="first_name" class="naiparq-form-input" type="text" id="firstName">
+        </div>
+        <div class="form-row-item">
+          <label for="lastName">Confirm Password</label>
+          <input formControlName="last_name" class="naiparq-form-input" type="text" id="lastName">
+        </div>
       </fieldset>
 
       <button type="submit">Update</button>

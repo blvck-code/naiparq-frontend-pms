@@ -1,5 +1,6 @@
 .settings-container {
   height: 100%;
+  width: 90%;
   overflow: hidden !important;
 
   .form-title {
@@ -11,6 +12,7 @@
       color: #004445;
       font-size: 1.25rem;
       font-weight: 500;
+      padding: 15px 0;
     }
 
     button {
@@ -18,7 +20,7 @@
       align-items: center;
       border: none;
       background-color: transparent;
-      color: #27AE60;
+      color: #4BC1F1;
       font-size: 1.125rem;
       font-weight: 500;
 
@@ -76,7 +78,6 @@
 
 .settings-form {
   height: calc(100% - 98px);
-  width: 75%;
 
   .form-profile-pic {
     margin: 5px 0 25px;
@@ -118,14 +119,12 @@
     }
   }
 
-
-
   button {
     padding: 0.875rem 3.75rem;
     border: none;
     border-radius: 10px;
-    background-color: #00DF94;
-    color: #004445;
+    background-color: #FBCE33;
+    color: #1B212D;
     font-weight: 500;
   }
 

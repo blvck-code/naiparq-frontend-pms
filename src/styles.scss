@@ -203,12 +203,236 @@ body {
   }
 }
 
+// Input
+
+
 @keyframes btn-loading-spinner {
   from {
     transform: rotate(0turn);
   }
   to {
     transform: rotate(1turn);
+  }
+}
+
+form {
+  padding: 20px 0;
+  width: 100%;
+
+  .form-row  {
+    display: flex;
+    justify-content: space-between;
+
+    .form-row-item {
+      display: flex;
+      flex-direction: column;
+      width: 48%;
+      margin-bottom: 1.625rem;
+
+      &.text-area {
+        width: 100%;
+      }
+
+      label {
+        margin-bottom: 0.625rem;
+        color: #004445;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .dropdown-menu {
+        max-height: 400px;
+        overflow-y: scroll;
+      }
+
+      .naiparq-form-input {
+        height: 48px;
+        padding-left: 1rem;
+        border: 1px solid #cbced5;
+        border-radius: 10px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+        }
+
+        &.pea-select-input {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-right: 1rem;
+          cursor: pointer;
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+
+        &.is-invalid {
+          border: 1px solid #cc0000;
+        }
+      }
+
+      textarea {
+        min-height: 100px;
+      }
+
+      &.is-invalid {
+        label {
+          color: #ff0000;
+        }
+        input {
+          border: 1px solid #ff0000;
+          color: #ff0000;
+        }
+
+        .pea-login-password {
+          svg {
+            color: #ff0000;
+          }
+        }
+      }
+
+      .dropdown-menu {
+        &.show {
+          width: 100%;
+
+          .dropdown-item {
+            cursor: pointer;
+
+            &:active {
+              background-color: #004445;
+            }
+          }
+        }
+      }
+
+      &.drag-drop {
+        width: 100%;
+
+        .pea-form-input {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 120px;
+          border-color: #000;
+          border-style: dashed;
+          background-color: #e5f6f6;
+          align-items: center;
+
+          img {
+            object-fit: none;
+          }
+
+          p {
+            color: #004445;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+
+            svg {
+              cursor: pointer;
+            }
+          }
+          span {
+            color: #00df94;
+            cursor: pointer;
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+
+      &.biz-cert {
+        .pea-form-input {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-color: #000;
+          border-style: dashed;
+          background-color: #e5f6f6;
+        }
+
+        p {
+          margin-bottom: 0;
+          color: #004445;
+          font-size: 0.875rem;
+          font-weight: 600;
+          text-align: center;
+
+          svg {
+            cursor: pointer;
+          }
+        }
+        span {
+          color: #00df94;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+      }
+      &.max-input {
+        width: 100%;
+      }
+    }
+
+  }
+
+  .form-item-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 100%;
+      padding-left: 3rem;
+    }
+
+    &.post {
+      svg {
+        margin-left: -2rem;
+        cursor: pointer;
+      }
+    }
+
+    &.pre {
+      justify-content: flex-end;
+
+      svg {
+        margin-right: -2rem;
+        cursor: pointer;
+        z-index: 3;
+      }
+
+      &.email input {
+        padding-left: 3rem !important;
+      }
+    }
+
+    &.pre-post {
+      position: relative;
+      justify-content: center;
+      padding-left: 2px;
+
+      svg {
+        z-index: 3;
+
+        &:first-child {
+          margin-right: -2rem;
+        }
+        &.toggle-pass {
+          margin-left: -2rem;
+          cursor: pointer;
+        }
+      }
+
+      input {
+        padding-left: 3rem;
+      }
+    }
   }
 }
 

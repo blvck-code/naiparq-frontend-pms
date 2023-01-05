@@ -1,37 +1,36 @@
-import {RouterModule, Routes} from "@angular/router";
-import {DashComponent} from "./components/dash/dash.component";
-import {DashboardComponent} from "./dashboard.component";
-import {NgModule} from "@angular/core";
-import {SettingsComponent} from "./components/settings/settings.component";
-import {AccountComponent} from "./components/account/account.component";
-import {AssetsManagementComponent} from "./components/assets-management/assets-management.component";
-import {CashPaymentComponent} from "./components/cash-payment/cash-payment.component";
-import {MotoristManagementComponent} from "./components/motorist-management/motorist-management.component";
-import {NotificationsComponent} from "./components/notifications/notifications.component";
-import {AuthGuard} from "../auth/services/auth.guard";
-
+import { RouterModule, Routes } from '@angular/router';
+import { DashComponent } from './components/dash/dash.component';
+import { DashboardComponent } from './dashboard.component';
+import { NgModule } from '@angular/core';
+import { SettingsComponent } from './components/settings/settings.component';
+import { AccountComponent } from './components/account/account.component';
+import { AssetsManagementComponent } from './components/assets-management/assets-management.component';
+import { DriveInComponent } from './components/drive-in/drive-in.component';
+import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { AuthGuard } from '../auth/services/auth.guard';
 
 const dashRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard], // Todo Add auth guard here AuthGuard
-    children:[
+    children: [
       {
         path: '',
-        component: DashComponent
+        component: DashComponent,
       },
       {
         path: 'notifications',
-        component: NotificationsComponent
+        component: NotificationsComponent,
       },
       {
-        path: 'cash-payment',
-        component: CashPaymentComponent
+        path: 'drive-in',
+        component: DriveInComponent,
       },
       {
         path: 'motorist-management',
-        component: MotoristManagementComponent
+        component: MotoristManagementComponent,
       },
       {
         path: 'settings',
@@ -39,18 +38,18 @@ const dashRoutes: Routes = [
       },
       {
         path: 'account',
-        component: AccountComponent
+        component: AccountComponent,
       },
       {
         path: 'asset-management',
-        component: AssetsManagementComponent
-      }
-    ]
+        component: AssetsManagementComponent,
+      },
+    ],
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(dashRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class DashboardRoutingModule {}

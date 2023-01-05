@@ -153,11 +153,32 @@ body {
   &.naiparq-btn-primary {
     width: auto;
     background: #FBCE33;
-
-    &:hover {
-      opacity: 0.65;
-    }
   }
+
+  &.naiparq-btn-success {
+    width: 83px;
+    height: 34px;
+    border: 1px solid #01852E;
+    color: #01852E;
+    background: #AFEEC5;
+    border-radius: 40px;
+    padding: 0;
+  }
+
+  &.naiparq-btn-danger {
+    padding: 0;
+    width: 83px;
+    height: 34px;
+    border: 1px solid #F10808;
+    color: #F10808;
+    background: #EEAFAF;
+    border-radius: 40px;
+  }
+
+  &:hover {
+    opacity: 0.65;
+  }
+
 
   &.btn-loading {
     opacity: 0.65;
@@ -235,7 +256,8 @@ form {
 
       label {
         margin-bottom: 0.625rem;
-        color: #004445;
+        //color: #004445;
+        color: var(--text-primary);
         font-size: 0.875rem;
         font-weight: 500;
       }
@@ -248,9 +270,12 @@ form {
       .naiparq-form-input {
         height: 48px;
         padding-left: 1rem;
-        border: 1px solid #cbced5;
+        //border: 1px solid #cbced5;
         border-radius: 10px;
         font-size: 1rem;
+
+        border: 1px solid #B1ADAD;
+        color: var(--text-primary);
 
         &:focus {
           outline: none;
@@ -292,91 +317,6 @@ form {
           }
         }
       }
-
-      .dropdown-menu {
-        &.show {
-          width: 100%;
-
-          .dropdown-item {
-            cursor: pointer;
-
-            &:active {
-              background-color: #004445;
-            }
-          }
-        }
-      }
-
-      &.drag-drop {
-        width: 100%;
-
-        .pea-form-input {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          height: 120px;
-          border-color: #000;
-          border-style: dashed;
-          background-color: #e5f6f6;
-          align-items: center;
-
-          img {
-            object-fit: none;
-          }
-
-          p {
-            color: #004445;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-align: center;
-
-            svg {
-              cursor: pointer;
-            }
-          }
-          span {
-            color: #00df94;
-            cursor: pointer;
-          }
-
-          input {
-            display: none;
-          }
-        }
-      }
-
-      &.biz-cert {
-        .pea-form-input {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-color: #000;
-          border-style: dashed;
-          background-color: #e5f6f6;
-        }
-
-        p {
-          margin-bottom: 0;
-          color: #004445;
-          font-size: 0.875rem;
-          font-weight: 600;
-          text-align: center;
-
-          svg {
-            cursor: pointer;
-          }
-        }
-        span {
-          color: #00df94;
-          cursor: pointer;
-        }
-        input {
-          display: none;
-        }
-      }
-      &.max-input {
-        width: 100%;
-      }
     }
 
   }
@@ -412,32 +352,10 @@ form {
       }
     }
 
-    &.pre-post {
-      position: relative;
-      justify-content: center;
-      padding-left: 2px;
-
-      svg {
-        z-index: 3;
-
-        &:first-child {
-          margin-right: -2rem;
-        }
-        &.toggle-pass {
-          margin-left: -2rem;
-          cursor: pointer;
-        }
-      }
-
-      input {
-        padding-left: 3rem;
-      }
-    }
   }
 }
 
 // Naiparq Scroll Bar
-/// Pea Scroll
 .naiparq-scrollbar {
   ::-webkit-scrollbar {
     width: 5px;
@@ -504,6 +422,34 @@ form {
           color: var(--text-primary);
         }
       }
+    }
+  }
+}
+
+// Naiparq Table Styles
+table {
+  height: calc(100% - 100px);
+  overflow-y: scroll;
+
+  thead {
+    color: var(--text-secondary);
+    background: #FFFFFF;
+  }
+
+  tbody {
+    td {
+      padding: 15px;
+      color: var(--text-primary);
+
+      .table-actions {
+        display: flex;
+        grid-gap: 10px;
+
+        svg {
+          cursor: pointer;
+        }
+      }
+
     }
   }
 }

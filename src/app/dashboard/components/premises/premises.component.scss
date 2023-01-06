@@ -1,0 +1,22 @@
+.naiparq-space {
+  border: 1px solid red;
+  overflow-y: hidden;
+
+  .naiparq-space-container {
+    margin: 40px 0;
+    overflow-y: scroll;
+
+    .naiparq-space-item {
+      margin: 20px 0 10px;
+
+      .naiparq-space-title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 23px;
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+  }
+}

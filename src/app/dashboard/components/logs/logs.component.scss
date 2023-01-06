@@ -1,0 +1,15 @@
+.naiparq-cash-payment-table {
+  height: calc(100% - 100px);
+  overflow-y: scroll;
+
+  thead {
+    color: var(--text-secondary);
+  }
+
+  tbody {
+    td {
+      padding: 15px;
+      color: var(--text-primary);
+    }
+  }
+}

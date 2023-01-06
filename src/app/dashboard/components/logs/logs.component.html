@@ -1,1 +1,54 @@
-<p>logs works!</p>
+<div class="naiparq-cash-payment-container table-wrap naiparq-scrollbar">
+  <div class="naiparq-cash-payment-table">
+    <table class="table">
+      <thead class="table-nav sticky-top">
+        <tr>
+          <th scope="col">
+            <span class="table-title">Device Name</span>
+          </th>
+          <th scope="col">
+            <span class="table-title">Type</span>
+          </th>
+          <th scope="col">
+            <span class="table-title">Destination</span>
+          </th>
+          <th scope="col">
+            <span class="table-title">Time In</span>
+          </th>
+          <th scope="col">
+            <span class="table-title">Time Out</span>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="table-body">
+        <tr *ngFor="let num of numSeq(15)">
+          <td>
+            <div class="table-text">
+              <span>Karish Center</span>
+            </div>
+          </td>
+
+          <td>
+            <div class="table-text">
+              <span>Barrier</span>
+            </div>
+          </td>
+
+          <!--        Buttons -->
+          <td>
+            <p>Business Complex A</p>
+          </td>
+
+          <!--        Actions -->
+          <td>
+            <p>11:00PM</p>
+          </td>
+          <td>
+            <p>11:00PM</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

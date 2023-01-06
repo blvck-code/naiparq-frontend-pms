@@ -1,1 +1,41 @@
-<p>premises works!</p>
+<div class="naiparq-space container naiparq-scrollbar">
+  <div class="naiparq- d-flex justify-content-between">
+    <p></p>
+    <div class="cash-table-btns d-flex">
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#addNumberPlate"
+        class="naiparq-btn naiparq-btn-primary me-2"
+      >
+        Add Space
+      </button>
+
+      <button class="filter-btn alt-btn">
+        <svg
+          width="14"
+          height="10"
+          viewBox="0 0 14 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
+          />
+        </svg>
+        Filters
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 py-5 naiparq-scrollbar"
+  >
+    <div
+      class="naiparq-space-item flex flex-col justify-center content-center"
+      *ngFor="let item of numSeq(10)"
+    >
+      <img src="assets/images/naiparq-space.jpg" alt="" />
+      <h5 class="naiparq-space-title">Business Complex A</h5>
+    </div>
+  </div>
+</div>

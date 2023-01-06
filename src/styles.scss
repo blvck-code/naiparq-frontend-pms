@@ -1,24 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 // Colors
-$primary-dark: '';
-$primary-yellow: '';
+$primary-dark: "";
+$primary-yellow: "";
 
 // Fonts
-$font-family: 'Sk-Modernist';
+$font-family: "Sk-Modernist";
 @font-face {
-  font-family: 'Okta Neue';
-  src: url('assets/fonts/Sk-Modernist-Mono.woff') format('woff');
+  font-family: "Okta Neue";
+  src: url("assets/fonts/Sk-Modernist-Mono.woff") format("woff");
   font-weight: 300;
 }
 @font-face {
-  font-family: 'Okta Neue';
-  src: url('assets/fonts/Sk-Modernist-Regular.woff') format('woff');
+  font-family: "Okta Neue";
+  src: url("assets/fonts/Sk-Modernist-Regular.woff") format("woff");
   font-weight: normal;
 }
 @font-face {
-  font-family: 'Okta Neue';
-  src: url('assets/fonts/Sk-Modernist-Bold.woff') format('woff');
+  font-family: "Okta Neue";
+  src: url("assets/fonts/Sk-Modernist-Bold.woff") format("woff");
   font-weight: 700;
 }
 
@@ -30,7 +33,7 @@ html {
     background: #f1f1f1;
   }
   &::-webkit-scrollbar-thumb {
-    background: #004C4D;
+    background: #004c4d;
     border-radius: 3px;
   }
   &::-webkit-scrollbar-thumb:hover {
@@ -41,7 +44,7 @@ html {
 body {
   // Text Colors
   --text-primary: #252733;
-  --text-secondary: #4BC1F1;
+  --text-secondary: #4bc1f1;
 
   // Background colors
   --bkg-one-color: #fafafa;
@@ -52,8 +55,8 @@ body {
 
 body.dark-theme {
   // Text Colors
-  --text-primary: #FFFFFF;
-  --text-secondary: #FBCE33;
+  --text-primary: #ffffff;
+  --text-secondary: #fbce33;
 
   // Background colors
   --bkg-one-color: #171719;
@@ -63,13 +66,12 @@ body.dark-theme {
 }
 
 body {
-  font-family: 'Okta Neue', sans-serif !important;
+  font-family: "Okta Neue", sans-serif !important;
   font-weight: normal;
   margin: 0;
   background: var(--bkg-color);
   overflow: hidden;
 }
-
 
 // Form
 .naiparq-form-group {
@@ -77,16 +79,15 @@ body {
   flex-direction: column;
   padding: 5px 20px;
 
-    label {
-      font-family: 'Sk-Modernist', sans-serif;
-      font-size: 14px;
-      line-height: 17px;
-      font-weight: 400;
-      color: #FFFFFF;
-    }
+  label {
+    font-family: "Sk-Modernist", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #ffffff;
+  }
 
   &.is-invalid {
-
     input {
       border: 1px solid #ff0000;
       color: #ff0000;
@@ -126,21 +127,20 @@ body {
     font-size: 12px;
 
     a {
-      color: #FBCE33;
+      color: #fbce33;
       margin-left: 5px;
-      font-family: 'Okta Neue', sans-serif;
+      font-family: "Okta Neue", sans-serif;
       font-size: 12px;
     }
   }
 }
-
 
 // Buttons
 .naiparq-btn {
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
-  font-family: 'Sk-Modernist', sans-serif;
+  font-family: "Sk-Modernist", sans-serif;
   font-style: normal;
   color: #000;
   border: none;
@@ -152,15 +152,15 @@ body {
 
   &.naiparq-btn-primary {
     width: auto;
-    background: #FBCE33;
+    background: #fbce33;
   }
 
   &.naiparq-btn-success {
     width: 83px;
     height: 34px;
-    border: 1px solid #01852E;
-    color: #01852E;
-    background: #AFEEC5;
+    border: 1px solid #01852e;
+    color: #01852e;
+    background: #afeec5;
     border-radius: 40px;
     padding: 0;
   }
@@ -169,16 +169,15 @@ body {
     padding: 0;
     width: 83px;
     height: 34px;
-    border: 1px solid #F10808;
-    color: #F10808;
-    background: #EEAFAF;
+    border: 1px solid #f10808;
+    color: #f10808;
+    background: #eeafaf;
     border-radius: 40px;
   }
 
   &:hover {
     opacity: 0.65;
   }
-
 
   &.btn-loading {
     opacity: 0.65;
@@ -189,7 +188,7 @@ body {
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       pointer-events: none;
       width: 30px;
@@ -238,7 +237,7 @@ form {
   padding: 20px 0;
   width: 100%;
 
-  .form-row  {
+  .form-row {
     display: flex;
     justify-content: space-between;
 
@@ -247,6 +246,10 @@ form {
       flex-direction: column;
       width: 48%;
       margin-bottom: 1.625rem;
+
+      &.form-row-email {
+        width: 100%;
+      }
 
       &.text-area {
         width: 100%;
@@ -266,14 +269,22 @@ form {
       }
 
       .naiparq-form-input {
-        height: 48px;
-        padding-left: 1rem;
-        //border: 1px solid #cbced5;
+        padding: 10px 20px;
+        width: 100%;
         border-radius: 10px;
-        font-size: 1rem;
-
-        border: 1px solid #B1ADAD;
+        background-position: 2% 50%;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        transition: 0.5s all ease-in-out;
+        border: 1px solid #b1adad;
+        background-color: var(--bkg-three-color);
+        font-size: 16px;
         color: var(--text-primary);
+
+        &::placeholder {
+          color: var(--text-primary);
+          opacity: 0.9;
+        }
 
         &:focus {
           outline: none;
@@ -316,7 +327,6 @@ form {
         }
       }
     }
-
   }
 
   .form-item-group {
@@ -326,30 +336,14 @@ form {
 
     input {
       width: 100%;
-      padding-left: 3rem;
     }
 
     &.post {
       svg {
-        margin-left: -2rem;
+        margin-left: -40px;
         cursor: pointer;
       }
     }
-
-    &.pre {
-      justify-content: flex-end;
-
-      svg {
-        margin-right: -2rem;
-        cursor: pointer;
-        z-index: 3;
-      }
-
-      &.email input {
-        padding-left: 3rem !important;
-      }
-    }
-
   }
 }
 
@@ -372,7 +366,6 @@ form {
 
 // Modal {
 .modal {
-
   .modal-content {
     padding: 20px 15px;
     background-color: var(--bkg-one-color);
@@ -387,10 +380,9 @@ form {
         color: var(--text-primary);
       }
 
-
       .naiparq-close-btn {
-        background: #FFFFFF;
-        border: 1px solid #F2F2F2;
+        background: #ffffff;
+        border: 1px solid #f2f2f2;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         display: flex;
@@ -416,7 +408,7 @@ form {
         }
 
         .naiparq-form-input {
-          border: 1px solid #B1ADAD;
+          border: 1px solid #b1adad;
           color: var(--text-primary);
         }
       }
@@ -457,9 +449,7 @@ form {
             cursor: pointer;
           }
         }
-
       }
     }
   }
 }
-

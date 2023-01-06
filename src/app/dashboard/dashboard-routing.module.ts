@@ -9,6 +9,11 @@ import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { AuthGuard } from '../auth/services/auth.guard';
+import { PremisesComponent } from './components/premises/premises.component';
+import { LogsComponent } from './components/logs/logs.component';
+import { RevenuesComponent } from './components/revenues/revenues.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 const dashRoutes: Routes = [
   {
@@ -21,6 +26,22 @@ const dashRoutes: Routes = [
         component: DashComponent,
       },
       {
+        path: 'premises',
+        component: PremisesComponent,
+      },
+      {
+        path: 'logs',
+        component: LogsComponent,
+      },
+      {
+        path: 'revenues',
+        component: RevenuesComponent,
+      },
+      {
+        path: 'analytics',
+        component: AnalyticsComponent,
+      },
+      {
         path: 'notifications',
         component: NotificationsComponent,
       },
@@ -31,6 +52,10 @@ const dashRoutes: Routes = [
       {
         path: 'motorist-management',
         component: MotoristManagementComponent,
+      },
+      {
+        path: 'user-management',
+        component: UserManagementComponent,
       },
       {
         path: 'settings',

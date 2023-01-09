@@ -21,7 +21,6 @@
 
       .logo-nav,
       .dash-util-items {
-
         .dash-branding {
           margin-bottom: 1.625rem;
           padding-left: 1rem;
@@ -37,7 +36,7 @@
             svg {
               height: 20px;
               width: 20px;
-              color: #FBCE33;
+              color: #fbce33;
               cursor: pointer;
             }
           }
@@ -66,8 +65,8 @@
           }
 
           &:hover,
-          &.active-nav{
-            background: #FBCE33;
+          &.active-nav {
+            background: #fbce33;
             color: #000000;
 
             svg {
@@ -108,8 +107,8 @@
           }
 
           &:hover,
-          &.active-nav{
-            background: #FBCE33;
+          &.active-nav {
+            background: #fbce33;
             color: #000000;
 
             svg {
@@ -144,12 +143,11 @@
       margin-bottom: 1.125rem;
 
       .dash-nav-title {
-        &:first-child {
-          margin-bottom: 0;
-          font-size: 1.5rem;
-          font-weight: 500;
-          color: var(--text-primary);
-        }
+        margin-left: 10px;
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--text-primary);
       }
 
       .top-nav-items {
@@ -157,7 +155,6 @@
         align-items: center;
 
         .nav-search {
-
           input {
             width: 223px;
             padding: 10px 20px 10px 45px;
@@ -193,7 +190,7 @@
           position: relative;
 
           svg {
-            fill: var(--text-primary);;
+            fill: var(--text-primary);
             position: relative;
             font-size: 54px;
             animation: notify 1s forwards infinite;
@@ -209,10 +206,18 @@
 }
 
 @keyframes notify {
-  10% { rotate: 15deg; }
-  20% { rotate: -15deg; }
-  30% { rotate: 15deg; }
-  50% { rotate: 0deg; }
+  10% {
+    rotate: 15deg;
+  }
+  20% {
+    rotate: -15deg;
+  }
+  30% {
+    rotate: 15deg;
+  }
+  50% {
+    rotate: 0deg;
+  }
 }
 
 .nav-user-profile {
@@ -256,7 +261,6 @@
   .dropdown-menu {
     background-color: var(--bkg-three-color);
     border: 1px solid var(--text-primary);
-
 
     &.show {
       width: 100%;

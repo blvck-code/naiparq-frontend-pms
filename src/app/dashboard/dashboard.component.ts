@@ -1,24 +1,24 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {NavigationEnd, Router} from "@angular/router";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 // NgRx
-import {Store} from "@ngrx/store";
-import {AuthState} from "../auth/state/auth.reducer";
+import { Store } from '@ngrx/store';
+import { AuthState } from '../auth/state/auth.reducer';
 
 import * as authActions from '../auth/state/auth.actions';
-import {CookieService} from "ngx-cookie-service";
-import {Observable} from "rxjs";
-import {userName} from "../auth/state/auth.selector";
+import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
+import { userName } from '../auth/state/auth.selector';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   currentUrl: string = '';
   darkTheme: boolean = false;
-  @ViewChild('toggleTheme') 'toggleTheme': ElementRef
+  @ViewChild('toggleTheme') 'toggleTheme': ElementRef;
 
   userName$: Observable<string> = this.store.select(userName);
 
@@ -26,14 +26,14 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private store: Store<AuthState>,
     private cookie: CookieService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.onInitHandler();
   }
 
   handleClickTheme(): void {
-    this.toggleTheme.nativeElement.click()
+    this.toggleTheme.nativeElement.click();
   }
 
   changeTheme(event: any): void {
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
   checkTheme(): void {
     const theme = this.cookie.get('theme');
 
-    if (theme === 'dark-theme'){
+    if (theme === 'dark-theme') {
       this.darkTheme = true;
       document.body.classList.add('dark-theme');
     } else {
@@ -76,27 +76,38 @@ export class DashboardComponent implements OnInit {
   }
 
   logOut(): void {
-    this.store.dispatch(new authActions.LogOut())
+    this.store.dispatch(new authActions.LogOut());
   }
 
   getCurrentUrl(url: string): string {
     let newUrl = '';
     if (url === '/dashboard') {
       newUrl = 'Dashboard';
+    } else if (url === '/dashboard/premises') {
+      newUrl = 'Space';
     } else if (url === '/dashboard/notifications') {
       newUrl = 'Notifications';
     } else if (url === '/dashboard/cash-payment') {
       newUrl = 'Drive In';
     } else if (url === '/dashboard/motorist-management') {
       newUrl = 'Motorist Management';
+    } else if (url === '/dashboard/drive-in') {
+      newUrl = 'Drive In';
     } else if (url === '/dashboard/settings') {
       newUrl = 'Settings';
     } else if (url === '/dashboard/account') {
       newUrl = 'Account';
     } else if (url === '/dashboard/asset-management') {
       newUrl = 'Asset Management';
+    } else if (url === '/dashboard/user-management') {
+      newUrl = 'User Management';
+    } else if (url === '/dashboard/logs') {
+      newUrl = 'Logs';
+    } else if (url === '/dashboard/revenues') {
+      newUrl = 'Revenues';
+    } else if (url === '/dashboard/analytics') {
+      newUrl = 'Analytics';
     }
     return newUrl;
   }
-
 }

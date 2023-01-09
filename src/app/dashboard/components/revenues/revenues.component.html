@@ -1,1 +1,83 @@
-<p>revenues works!</p>
+<div class="naiparq-revenue">
+  <div class="naiparq-revenue-container container">
+    <!--    Revenue Header-->
+    <div class="naiparq-revenue-header">
+      <div class="naiparq-revenue-header-date">
+        <h4>May 22, 2022</h4>
+      </div>
+      <div class="naiparq-revenue-header-amounts d-flex gap-3 py-4">
+        <div class="naiparq-revenue-item">
+          <p>Total Revenue</p>
+          <h4>KES 200, 000</h4>
+        </div>
+
+        <div class="naiparq-revenue-item">
+          <p>Commission</p>
+          <h4>KES 80, 000</h4>
+        </div>
+      </div>
+    </div>
+
+    <!--    Revenue Chart Graph -->
+    <div class="naiparq-revenue-chart p-3 mt-4">
+      <div class="container vertical sample">
+        <div class="graph-title">
+          <p class="graph-title-text">Transaction trend</p>
+
+          <div class="graph-legend">
+            <div class="legend-icon"></div>
+            <p>Income</p>
+            <div class="legend-icon expense"></div>
+            <p>Expenses</p>
+
+            <div class="dropdown">
+              <div
+                class="graph-period"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <p>Last 7 days</p>
+                <svg
+                  width="9"
+                  height="6"
+                  viewBox="0 0 9 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.9425 0.442497L4.5 3.8775L1.0575 0.442497L0 1.5L4.5 6L9 1.5L7.9425 0.442497Z"
+                    fill="#1B212D"
+                  />
+                </svg>
+              </div>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Option 1</a></li>
+                <li><a class="dropdown-item" href="#">Option 2</a></li>
+                <li><a class="dropdown-item" href="#">Option 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="legend">
+          <igx-legend orientation="Horizontal" name="Legend" #legend>
+          </igx-legend>
+        </div>
+        <div class="container fill">
+          <igx-category-chart
+            chartType="Spline"
+            isTransitionInEnabled="true"
+            yAxisTitle="Money"
+            [dataSource]="countryRenewableElectricity"
+            [legend]="legend"
+            isHorizontalZoomEnabled="false"
+            isVerticalZoomEnabled="false"
+            computedPlotAreaMarginMode="Series"
+            name="chart"
+            #chart
+          >
+          </igx-category-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

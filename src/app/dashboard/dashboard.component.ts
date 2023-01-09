@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { AuthState } from '../auth/state/auth.reducer';
 
 import * as authActions from '../auth/state/auth.actions';
+import * as spaceActions from './state/actions/spaces.actions';
+
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { userName } from '../auth/state/auth.selector';
@@ -30,6 +32,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.onInitHandler();
+    this.initState();
   }
 
   handleClickTheme(): void {
@@ -60,6 +63,10 @@ export class DashboardComponent implements OnInit {
       this.darkTheme = false;
       document.body.classList.remove('dark-theme');
     }
+  }
+
+  initState(): void {
+    this.store.dispatch(new spaceActions.LoadSpaces());
   }
 
   onInitHandler(): void {

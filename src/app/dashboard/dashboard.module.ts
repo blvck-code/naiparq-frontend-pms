@@ -20,6 +20,8 @@ import {
   IgxCategoryChartModule,
   IgxDataChartInteractivityModule,
 } from 'igniteui-angular-charts';
+import { dashboardReducer } from './state/dash.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {
     IgxLegendModule,
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule,
+    StoreModule.forFeature('dashboard', dashboardReducer),
   ],
 })
 export class DashboardModule {}

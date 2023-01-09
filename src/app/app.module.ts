@@ -41,7 +41,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
-      name: 'Naiparq',
+      name: 'Naiparq Parking Management System',
       maxAge: 25,
       logOnly: environment.production,
     }),

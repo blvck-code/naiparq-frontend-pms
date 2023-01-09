@@ -15,8 +15,9 @@ export const environment = {
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
   naiparqLogout: naiparqBaseURL + 'accounts/logout',
 
+  // Spaces
+  naiparqListSpaces: naiparqBaseURL + 'spaces/space',
 
-  // SPACES
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',
 
@@ -25,7 +26,6 @@ export const environment = {
   // Pricing Module URLS
 
   // Device Module URLS
-
 };
 
 /*

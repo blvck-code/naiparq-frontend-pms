@@ -15,6 +15,11 @@ import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {
+  IgxLegendModule,
+  IgxCategoryChartModule,
+  IgxDataChartInteractivityModule,
+} from 'igniteui-angular-charts';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     MotoristManagementComponent,
     NotificationsComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    ReactiveFormsModule,
+    IgxLegendModule,
+    IgxCategoryChartModule,
+    IgxDataChartInteractivityModule,
+  ],
 })
 export class DashboardModule {}

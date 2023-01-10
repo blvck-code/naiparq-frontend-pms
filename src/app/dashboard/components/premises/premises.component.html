@@ -1,36 +1,206 @@
 <div class="naiparq-space container naiparq-scrollbar">
-  <div class="naiparq- d-flex justify-content-between">
-    <p></p>
-    <div class="cash-table-btns d-flex">
-      <button
-        data-bs-toggle="modal"
-        data-bs-target="#addNumberPlate"
-        class="naiparq-btn naiparq-btn-primary me-2"
-      >
-        Add Space
-      </button>
-
-      <button class="filter-btn alt-btn">
-        <svg
-          width="14"
-          height="10"
-          viewBox="0 0 14 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+  <div class="naiparq-space-container p-2 justify-content-between">
+    <div class="naiparq-space-header d-flex justify-content-end">
+      <div class="cash-table-btns d-flex">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#addSpace"
+          class="naiparq-btn naiparq-btn-primary me-2"
         >
-          <path
-            d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
-          />
-        </svg>
-        Filters
-      </button>
+          Add Space
+        </button>
+
+        <button class="filter-btn alt-btn">
+          <svg
+            width="14"
+            height="10"
+            viewBox="0 0 14 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
+            />
+          </svg>
+          Filters
+        </button>
+      </div>
+    </div>
+
+    <div class="naiparq-space-wrap">
+      <!--      No spaces available -->
+      <div *ngIf="(spacesLoaded$ | async) && !(spaces$ | async)?.length">
+        <h4>No spaces found</h4>
+      </div>
+
+      <div class="grid grid-cols-5 md:grid-cols-6 gap-4 py-5 naiparq-scrollbar">
+        <div class="naiparq-space-item" *ngFor="let space of spaces$ | async">
+          <!--          Todo add image URL for the space -->
+          <img src="assets/images/naiparq-space.jpg" alt="" />
+          <h5 class="naiparq-space-title">
+            {{ space.title | truncate : [20] }}
+          </h5>
+        </div>
+      </div>
+
+      <!--  Loading Skeleton -->
+      <div
+        *ngIf="spacesLoading$ | async"
+        class="grid grid-cols-5 md:grid-cols-6 gap-4 py-5 naiparq-scrollbar"
+      >
+        <div class="naiparq-space-item" *ngFor="let item of numSeq(10)">
+          <ngx-skeleton-loader
+            [theme]="{
+              'height.px': 150,
+              'borderRadius.px': 10
+            }"
+            animation="progress"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{
+              'height.px': 25,
+              'borderRadius.px': 10
+            }"
+            animation="progress"
+          ></ngx-skeleton-loader>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="grid grid-cols-5 md:grid-cols-6 gap-4 py-5 naiparq-scrollbar">
-    <div class="naiparq-space-item" *ngFor="let item of numSeq(10)">
-      <img src="assets/images/naiparq-space.jpg" alt="" />
-      <h5 class="naiparq-space-title">Business Complex A</h5>
+<!-- Modal -->
+<div
+  class="modal fade add-plate-modal"
+  id="addSpace"
+  tabindex="-1"
+  aria-labelledby="addNumberPlate"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="d-flex gap-2 align-items-center">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="24" cy="24" r="24" fill="#FBCE33" fill-opacity="0.24" />
+            <path
+              d="M25.999 35.998V12.998C25.999 12.7328 25.8937 12.4785 25.7061 12.2909C25.5186 12.1034 25.2642 11.998 24.999 11.998H12.999C12.7338 11.998 12.4795 12.1034 12.2919 12.2909C12.1044 12.4785 11.999 12.7328 11.999 12.998V35.998"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M35.999 35.998V20.998C35.999 20.7328 35.8937 20.4785 35.7061 20.2909C35.5186 20.1034 35.2642 19.998 34.999 19.998H25.999"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.999 16.998H19.999"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.999 26.998H21.999"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.999 31.998H19.999"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M29.999 29.998H31.999"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M29.999 24.998H31.999"
+              stroke="#FBCE33"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <h5 class="modal-title" id="exampleModalLabel">Add Number Plate</h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form class="modal-body">
+        <!--        Space Name -->
+        <div class="naiparq-form-group">
+          <label for="nPlate">Name</label>
+          <input type="text" class="naiparq-form-input" />
+        </div>
+
+        <!--        Space Description -->
+        <div class="naiparq-form-group">
+          <label for="nPlate">Description</label>
+          <input type="text" class="naiparq-form-input" />
+        </div>
+
+        <!--        Space Number of floors -->
+        <div class="naiparq-form-group">
+          <label for="nPlate"> Number of floors </label>
+          <input type="text" class="naiparq-form-input" />
+        </div>
+
+        <!--        Space Floor Description -->
+        <div class="naiparq-form-group">
+          <label> Description of floors</label>
+          <textarea rows="4" class="naiparq-form-input"></textarea>
+          <span class="text-muted"> e.g B1, B2, M1, M2 </span>
+        </div>
+
+        <div class="naiparq-form-group">
+          <label>Upload Photos</label>
+          <div class="naiparq-image-input my-2"></div>
+        </div>
+
+        <div class="naiparq-form-group">
+          <button class="naiparq-btn naiparq-btn-primary" type="submit">
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

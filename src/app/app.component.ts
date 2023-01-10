@@ -24,13 +24,12 @@ export class AppComponent implements OnInit {
   constructor(private onlineStatusService: OnlineStatusService) {}
 
   ngOnInit() {
-    console.log(123);
-    this.onlineStatusService.status.subscribe({
-      next: (status: OnlineStatusType) => {
-        // Retrieve Online status Type
-        this.status = status;
-        console.log('Online status ', status);
-      },
-    });
+    // this.onlineStatusService.status.subscribe({
+    //   next: (status: OnlineStatusType) => {
+    //     // Retrieve Online status Type
+    //     this.status = status;
+    //     console.log('Online status ', status);
+    //   },
+    // });
   }
 }

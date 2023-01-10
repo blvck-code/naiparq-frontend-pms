@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  IgxLegendModule,
+  IgxCategoryChartModule,
+  IgxDataChartInteractivityModule,
+} from 'igniteui-angular-charts';
+
 import { PremisesComponent } from './components/premises/premises.component';
 import { LogsComponent } from './components/logs/logs.component';
 import { RevenuesComponent } from './components/revenues/revenues.component';
@@ -14,14 +20,17 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-  IgxLegendModule,
-  IgxCategoryChartModule,
-  IgxDataChartInteractivityModule,
-} from 'igniteui-angular-charts';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
+// NgRx
 import { dashboardReducer } from './state/dash.reducer';
+import { dashboard } from './state/dash.selectors';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { SpacesEffects } from './state/effects/spaces.effects';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +55,13 @@ import { StoreModule } from '@ngrx/store';
     IgxLegendModule,
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule,
-    StoreModule.forFeature('dashboard', dashboardReducer),
+    NgxSkeletonLoaderModule.forRoot({
+      animation: 'pulse',
+      loadingText: 'This item is actually loading...',
+    }),
+    StoreModule.forFeature(dashboard, dashboardReducer),
+    EffectsModule.forFeature([SpacesEffects]),
+    SharedModule,
   ],
 })
 export class DashboardModule {}

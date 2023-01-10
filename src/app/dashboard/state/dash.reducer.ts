@@ -1,6 +1,16 @@
-import { ActionReducerMap } from '@ngrx/store';
-import * as fromRoot from '../../app.state';
+import {
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+} from '@ngrx/store';
 
-export interface DashboardState {}
+import * as fromSpaceEnt from './entities/spaces.entities';
+import { spaceReducer } from './entities/spaces.entities';
 
-export const dashboardReducer: ActionReducerMap<DashboardState> = {};
+export interface DashboardState {
+  spaces: fromSpaceEnt.SpacesEntities;
+}
+
+export const dashboardReducer: ActionReducerMap<DashboardState> = {
+  spaces: fromSpaceEnt.spaceReducer,
+};

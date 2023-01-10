@@ -1,11 +1,13 @@
 <div class="naiparq-cash-payment-container naiparq-scrollbar">
-
   <div class="naiparq-cash-payment-title-bar d-flex justify-content-between">
     <p>December 09, 2022</p>
 
     <div class="cash-table-btns d-flex">
-
-      <button data-bs-toggle="modal" data-bs-target="#addNumberPlate" class="naiparq-btn naiparq-btn-primary me-2">
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#addNumberPlate"
+        class="naiparq-btn naiparq-btn-primary me-2"
+      >
         Add Number Plate
       </button>
 
@@ -23,52 +25,42 @@
         </svg>
         Filters
       </button>
-
     </div>
   </div>
 
   <div class="naiparq-cash-payment-table">
     <table class="table">
       <thead class="table-nav sticky-top">
-      <tr>
-        <th scope="col">
-          <span class="table-title"> Number Plate </span>
-        </th>
-        <th scope="col">
-          <span class="table-title"> Time In </span>
-        </th>
-        <!--          <th scope="col">-->
-        <!--            <span class="table-title"> Time Out </span>-->
-        <!--          </th>-->
-        <!--          <th scope="col">-->
-        <!--            <span class="table-title"> Amount Paid </span>-->
-        <!--          </th>-->
-      </tr>
+        <tr>
+          <th scope="col">
+            <span class="table-title"> Number Plate </span>
+          </th>
+          <th scope="col">
+            <span class="table-title"> Time In </span>
+          </th>
+        </tr>
       </thead>
 
       <tbody class="table-body">
-      <tr *ngFor="let driveIn of driveIns">
-        <td>
-          <div class="table-text">
-            <span>{{ driveIn.license_plate }}</span>
-          </div>
-        </td>
-        <td>
-          <div class="table-text">
-            <span>{{ driveIn.check_in_time | date : 'MMM d, y, h:mm a' }}</span>
-          </div>
-        </td>
-        <!--          <td>-->
-        <!--            &#45;&#45;-->
-        <!--          </td>-->
-        <!--          <td>-->
-        <!--            KES &#45;&#45;-->
-        <!--          </td>-->
-      </tr>
+        <tr *ngFor="let driveIn of driveIns$ | async">
+          <td>
+            <div class="table-text">
+              <span>{{ driveIn.license_plate }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="table-text">
+              <span>{{
+                driveIn.check_in_time | date : "MMM d, y, h:mm a"
+              }}</span>
+            </div>
+          </td>
+        </tr>
+        <div #bottomPageDriveIn></div>
       </tbody>
     </table>
   </div>
-
+  <app-inline-loader *ngIf="loadingMoreDriveIn"></app-inline-loader>
 </div>
 <div class="naiparq-cash-payment-table-footer">
   <p>Total: KES --</p>
@@ -84,9 +76,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          Add Number Plate
-        </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Number Plate</h5>
         <button
           type="button"
           class="btn-close naiparq-close-btn"
@@ -94,19 +84,35 @@
           aria-label="Close"
           #closeDriveIn
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-               stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>
-      <form [formGroup]="driveInForm" (ngSubmit)="onSubmit()" class="modal-body">
-
+      <form
+        [formGroup]="driveInForm"
+        (ngSubmit)="onSubmit()"
+        class="modal-body"
+      >
         <div class="naiparq-form-group">
-          <label for="nPlate">
-            Number Plate
-          </label>
-          <input formControlName="license_plate" type="text" id="nPlate" class="naiparq-form-input">
+          <label for="nPlate"> Number Plate </label>
+          <input
+            formControlName="license_plate"
+            type="text"
+            id="nPlate"
+            class="naiparq-form-input"
+          />
         </div>
 
         <div class="naiparq-form-group">
@@ -119,7 +125,6 @@
             <span class="btn-text">Submit</span>
           </button>
         </div>
-
       </form>
     </div>
   </div>

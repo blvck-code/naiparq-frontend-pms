@@ -82,6 +82,11 @@ p {
   letter-spacing: 1px;
 }
 
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
 // Form
 .naiparq-form-group {
   display: flex;
@@ -129,6 +134,14 @@ p {
       background: transparent;
       border: 1px solid #fff;
     }
+  }
+
+  .naiparq-image-input {
+    height: 150px;
+    width: 100%;
+    background: rgba(75, 193, 241, 0.07);
+    border: 1px dashed #b1adad;
+    border-radius: 10px;
   }
 
   p {

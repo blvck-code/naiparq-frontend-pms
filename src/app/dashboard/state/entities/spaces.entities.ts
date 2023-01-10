@@ -4,7 +4,7 @@ import { SpaceModel } from '../../models/spaces.model';
 // Actions
 import * as dashActions from '../actions/action.types';
 import { createSelector } from '@ngrx/store';
-import { spacesStateKey } from '../dash.reducer';
+import { spacesStateKey } from '../dash.selectors';
 
 export interface SpacesEntities extends EntityState<SpaceModel> {
   selectedSpaceId: string;
@@ -44,7 +44,17 @@ export const spaceReducer = (state = initialState, action: any) => {
 };
 
 // Selectors
-// export const getSpaces = createSelector(
-//   spacesStateKey,
-//   spacesAdapter.getSelectors().selectAll
-// );
+export const getSpaces = createSelector(
+  spacesStateKey,
+  spacesAdapter.getSelectors().selectAll
+);
+
+export const spacesLoading = createSelector(
+  spacesStateKey,
+  (state) => state.loading
+);
+
+export const spacesLoaded = createSelector(
+  spacesStateKey,
+  (state) => state.loaded
+);

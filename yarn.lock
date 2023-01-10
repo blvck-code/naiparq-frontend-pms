@@ -4493,6 +4493,14 @@
   dependencies:
     "tslib" "^2.3.0"
 
+"ngx-skeleton-loader@^6.0.0":
+  "integrity" "sha512-CVvJPKuMVGbtwG7MhLDPfbagNYNnpSCnisqPjrz1rg5BKSZGqPW8mkDtHt6tMT78xdzAzPjr51p7YNUoKJrRUw=="
+  "resolved" "https://registry.npmjs.org/ngx-skeleton-loader/-/ngx-skeleton-loader-6.0.0.tgz"
+  "version" "6.0.0"
+  dependencies:
+    "perf-marks" "^1.13.4"
+    "tslib" "^2.0.0"
+
 "nice-napi@^1.0.2":
   "integrity" "sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA=="
   "resolved" "https://registry.npmjs.org/nice-napi/-/nice-napi-1.0.2.tgz"
@@ -4898,6 +4906,13 @@
   "integrity" "sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw=="
   "resolved" "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz"
   "version" "4.0.0"
+
+"perf-marks@^1.13.4":
+  "integrity" "sha512-N0/bQcuTlETpgox/DsXS1voGjqaoamMoiyhncgeW3rSHy/qw8URVgmPRYfFDQns/+C6yFUHDbeSBGL7ixT6Y4A=="
+  "resolved" "https://registry.npmjs.org/perf-marks/-/perf-marks-1.14.2.tgz"
+  "version" "1.14.2"
+  dependencies:
+    "tslib" "^2.1.0"
 
 "picocolors@^1.0.0":
   "integrity" "sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ=="

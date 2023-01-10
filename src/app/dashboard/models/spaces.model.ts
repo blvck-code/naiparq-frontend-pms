@@ -16,7 +16,7 @@ export interface SpaceModel {
   address: string;
   type: string;
   features: string[];
-  space_images?: SpaceImages[];
+  space_images: SpaceImages[];
   opening_time: string;
   closing_time: string;
   contact_person?: any;

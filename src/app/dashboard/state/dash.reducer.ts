@@ -14,14 +14,3 @@ export interface DashboardState {
 export const dashboardReducer: ActionReducerMap<DashboardState> = {
   spaces: fromSpaceEnt.spaceReducer,
 };
-
-// Selectors
-export const dashboard = 'dashboard';
-
-export const dashboardStateKey =
-  createFeatureSelector<DashboardState>(dashboard);
-
-export const spacesStateKey = createSelector(
-  dashboardStateKey,
-  (state) => state.spaces
-);

@@ -22,12 +22,15 @@ import { MotoristManagementComponent } from './components/motorist-management/mo
 import { NotificationsComponent } from './components/notifications/notifications.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // NgRx
-import { dashboard, dashboardReducer } from './state/dash.reducer';
+import { dashboardReducer } from './state/dash.reducer';
+import { dashboard } from './state/dash.selectors';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SpacesEffects } from './state/effects/spaces.effects';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -52,8 +55,13 @@ import { SpacesEffects } from './state/effects/spaces.effects';
     IgxLegendModule,
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule,
+    NgxSkeletonLoaderModule.forRoot({
+      animation: 'pulse',
+      loadingText: 'This item is actually loading...',
+    }),
     StoreModule.forFeature(dashboard, dashboardReducer),
     EffectsModule.forFeature([SpacesEffects]),
+    SharedModule,
   ],
 })
 export class DashboardModule {}

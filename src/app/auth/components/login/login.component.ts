@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, Validators} from "@angular/forms";
-import {LoginModel} from "../../model/login.model";
-import {AuthService} from "../../services/auth.service";
-import {StorageService} from "../../../shared/services/storage.service";
-import {SharedService} from "../../../shared/services/shared.service";
-import {Router} from "@angular/router";
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { LoginModel } from '../../model/login.model';
+import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../../shared/services/storage.service';
+import { SharedService } from '../../../shared/services/shared.service';
+import { Router } from '@angular/router';
 
 // NgRx
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import * as authActions from '../../state/auth.actions';
-import {AuthState} from "../../state/auth.reducer";
-import {Observable} from "rxjs";
-import {authMessage, isInvalid, isLoggedInLoading} from "../../state/auth.selector";
+import { AuthState } from '../../state/auth.reducer';
+import { Observable } from 'rxjs';
+import {
+  authMessage,
+  isInvalid,
+  isLoggedInLoading,
+} from '../../state/auth.selector';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  showPass: boolean = false;
+  formInvalid: boolean = false;
+
   loginForm = this.formBuilder.group({
     phone: ['', [Validators.required]],
     password: ['', [Validators.required]],
@@ -33,19 +40,45 @@ export class LoginComponent implements OnInit {
     private store: Store<AuthState>,
     private sharedSrv: SharedService,
     private storageService: StorageService,
-    private formBuilder: UntypedFormBuilder,
-  ) { }
+    private formBuilder: UntypedFormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(new authActions.ResetInvalid());
+    this.handleError();
+  }
+
+  handleError(): void {
+    this.errMsg$.subscribe({
+      next: (message) => {
+        if (!message.length) {
+          return;
+        }
+
+        if (message !== 'Login Successful') {
+          this.formInvalid = true;
+        }
+      },
+    });
+  }
+
+  togglePass(toogle: string): void {
+    if (toogle === 'show') {
+      this.showPass = true;
+    } else {
+      this.showPass = false;
+    }
+  }
+
+  resetInput(): void {
+    this.formInvalid = false;
   }
 
   login(): void {
     const loginData: LoginModel = {
       phone_number: this.loginForm.value.phone,
-      password: this.loginForm.value.password
-    }
+      password: this.loginForm.value.password,
+    };
     this.store.dispatch(new authActions.LogIn(loginData));
   }
-
 }

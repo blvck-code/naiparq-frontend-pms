@@ -1,15 +1,19 @@
 .naiparq-dash {
-  height: 100vh;
-
   &-container {
     height: 100%;
     display: flex;
   }
 
   &-sidenav {
-    height: 100%;
+    height: 100vh;
     width: 262px;
     background: var(--bkg-two-color);
+    transition: all 0.2s ease-in-out;
+
+    &.hide {
+      width: 0;
+      display: none;
+    }
 
     &-content {
       display: flex;
@@ -133,7 +137,8 @@
 
 .naiparq-dash-main-content-container {
   height: 100vh;
-  width: calc(100vw - 250px);
+  width: 100%;
+  padding-inline: 20px;
 
   .dash-main-content {
     height: 100%;
@@ -142,9 +147,14 @@
 
     .dash-top-nav {
       display: flex;
+      float: left;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.125rem;
+
+      svg {
+        cursor: pointer;
+      }
 
       .dash-nav-title {
         margin-left: 10px;

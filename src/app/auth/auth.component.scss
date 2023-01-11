@@ -20,15 +20,33 @@
     .naiparq-logo {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-bottom: 30px;
+
+      img {
+        width: 75px;
+      }
+
+      h4 {
+        color: #fff;
+        font-size: 50px;
+        margin-left: 10px;
+        font-weight: 600;
+      }
     }
   }
 }
 
 @keyframes shake {
-  25%{ transform: translateX(4px);}
-  50%{ transform: translateX(-4px);}
-  75%{ transform: translateX(4px);}
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
 }
 
 .show-password {

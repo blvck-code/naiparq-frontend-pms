@@ -5,3 +5,189 @@
     color: #ff0000;
   }
 }
+
+.naiparq-auth-form {
+  border: 1px solid red;
+
+  &-password {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    height: 50px;
+    position: relative;
+
+    input {
+      width: 80%;
+      background: transparent;
+
+      &:focus {
+        background: transparent;
+      }
+    }
+
+    svg:nth-child(1) {
+      position: absolute;
+      left: 0;
+    }
+
+    svg:nth-child(2) {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.auth-container {
+  display: flex;
+  height: 100vh;
+}
+.login-content-section {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  background-color: #004445;
+}
+.login-content {
+  padding-top: 4.25rem;
+  color: #fff;
+
+  img {
+    margin-bottom: 4.25rem;
+  }
+
+  p {
+    margin-bottom: 2rem;
+
+    &.pay-login-title {
+      margin-bottom: 0.5rem;
+      font-size: 1.875rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.naiparq-login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    margin: 5px 0;
+
+    label {
+      margin-bottom: 0.5rem;
+      color: white;
+
+      &.form-check-label {
+        font-size: 0.875rem;
+      }
+    }
+
+    input {
+      height: 48px;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border: 1px solid #ffffff;
+      border-radius: 10px;
+      background-color: transparent;
+      color: #fff;
+      font-size: 1rem;
+
+      &.form-check-input {
+        height: 18px;
+        width: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &.is-invalid {
+      label {
+        color: #ff0000;
+      }
+      input {
+        color: #ff0000;
+        border: 1px solid #ff0000;
+      }
+
+      .pea-login-password {
+        svg {
+          color: #ff0000;
+        }
+      }
+    }
+
+    .pea-login-password,
+    .naiparq-login-email {
+      display: flex;
+      position: relative;
+      height: 48px;
+
+      input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        padding-left: 35px;
+      }
+      .input-icon {
+        position: absolute;
+        z-index: 3;
+        left: 8px;
+        top: 15px;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+      }
+      .toggle-password {
+        position: absolute;
+        z-index: 3;
+        right: 8px;
+        top: 15px;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .naiparq-btn {
+    width: 100%;
+    max-width: 450px;
+    margin-top: 25px;
+  }
+}
+.form-utils {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+
+  a {
+    margin-top: 3px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.login-error {
+  padding: 10px 0;
+
+  .login-error-msg {
+    font-size: 14px;
+    color: red;
+    justify-self: center;
+  }
+}

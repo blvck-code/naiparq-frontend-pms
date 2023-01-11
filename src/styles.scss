@@ -25,6 +25,42 @@ $font-family: "Sk-Modernist";
   font-weight: 700;
 }
 
+// Responsive mixins
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: $screen+"px") {
+    @content;
+  }
+}
+
 html {
   &::-webkit-scrollbar {
     width: 5px;
@@ -46,6 +82,9 @@ body {
   --text-primary: #252733;
   --text-secondary: #4bc1f1;
 
+  // SVG
+  --bkg-svg: rgba(227, 227, 227, 0.3);
+
   // Background colors
   --bkg-one-color: #fafafa;
   --bkg-two-color: #121212;
@@ -57,6 +96,9 @@ body.dark-theme {
   // Text Colors
   --text-primary: #ffffff;
   --text-secondary: #fbce33;
+
+  // SVG
+  --bkg-svg: rgba(255, 255, 255, 0.1);
 
   // Background colors
   --bkg-one-color: #171719;
@@ -242,6 +284,25 @@ img {
   svg {
     margin-right: 0.875rem;
     fill: var(--text-primary);
+  }
+}
+
+// SVG
+.naiparq-svg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background: var(--bkg-svg);
+  }
+
+  svg {
+    color: var(--text-primary);
   }
 }
 

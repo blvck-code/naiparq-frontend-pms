@@ -21,9 +21,16 @@ export class DashboardComponent implements OnInit {
   currentUrl: string = '';
   darkTheme: boolean = false;
   @ViewChild('toggleTheme') 'toggleTheme': ElementRef;
+  @ViewChild('sideNav') 'sideNav': ElementRef;
 
   userName$: Observable<string> = this.store.select(userName);
 
+  toggleNav(): void {
+    const nav = this.sideNav.nativeElement;
+
+    nav.classList.toggle('hide');
+    console.log('Side nav ==>>', this.sideNav.nativeElement);
+  }
   constructor(
     private router: Router,
     private store: Store<AuthState>,

@@ -15,7 +15,9 @@ export class DashService {
   getDriveIn(): Observable<DriveInResponseModel> {
     return this.http.get<DriveInResponseModel>(env.naiparqDriveIn);
   }
-
+  loadMoreDriveIn(nextPageURL: string): Observable<DriveInResponseModel> {
+    return this.http.get<DriveInResponseModel>(nextPageURL);
+  }
   createDriveIn(driveInContent: any): Observable<any> {
     return this.http.post(`${env.naiparqDriveIn}/`, driveInContent);
   }

@@ -10,3 +10,8 @@ export const spacesStateKey = createSelector(
   dashboardStateKey,
   (state) => state.spaces
 );
+
+export const driveInStateKey = createSelector(
+  dashboardStateKey,
+  (state) => state.driveIn
+);

@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { DashService } from '../../services/dash.service';
 import { SharedService } from '../../../shared/services/shared.service';
 
 // Actions
-import * as spaceActions from '../actions/spaces.actions';
 import * as dashActions from '../actions/action.types';
+import * as spaceActions from '../actions/spaces.actions';
+import * as driveInActions from '../actions/driveIn.actions';
+
 import { SpaceModelResponse } from '../../models/spaces.model';
+import { LoadMoreDriveIn } from '../actions/driveIn.actions';
+import { DriveInResponseModel } from '../../models/driveIn.model';
 
 @Injectable()
 export class SpacesEffects {
@@ -33,6 +37,45 @@ export class SpacesEffects {
             console.log('Getting spaces failed');
             return;
           })
+        )
+      )
+    )
+  );
+
+  // Load Drive Ins
+  loadDriveIn$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<driveInActions.LoadDriveIn>(
+        dashActions.DashActionTypes.LOAD_DRIVE_IN
+      ),
+      switchMap((action: driveInActions.LoadDriveIn) =>
+        this.dashSrv.getDriveIn().pipe(
+          map((driveIn) => new driveInActions.LoadDriveInSuccess(driveIn)),
+          // @ts-ignore
+          catchError((err) => {
+            // Todo notification of the error
+          })
+        )
+      )
+    )
+  );
+
+  // Load More Drive In
+  loadMoreDriveIn$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<driveInActions.LoadMoreDriveIn>(
+        dashActions.DashActionTypes.LOAD_MORE_DRIVE_IN
+      ),
+      map((action: driveInActions.LoadMoreDriveIn) => action.payload),
+      switchMap((nextPageURL) =>
+        this.dashSrv.loadMoreDriveIn(nextPageURL).pipe(
+          map(
+            (moreContent: DriveInResponseModel) =>
+              new driveInActions.LoadMoreDriveInSuccess(moreContent)
+          ),
+          catchError((err: any) =>
+            of(new driveInActions.LoadMoreDriveInFail(err))
+          )
         )
       )
     )

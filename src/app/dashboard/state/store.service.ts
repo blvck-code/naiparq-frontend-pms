@@ -7,6 +7,12 @@ import {
   spacesLoading,
 } from './entities/spaces.entities';
 import { SpaceModel } from '../models/spaces.model';
+import {
+  driveInLoaded,
+  driveInNext,
+  driveIns,
+} from './entities/driveIn.entities';
+import { DriveInModel } from '../models/driveIn.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +28,16 @@ export class StoreService {
   }
   spacesLoaded(): Observable<boolean> {
     return this.store.pipe(select(spacesLoaded));
+  }
+
+  // Drive In
+  driveInLoaded(): Observable<boolean> {
+    return this.store.pipe(select(driveInLoaded));
+  }
+  driveIn(): Observable<DriveInModel[]> {
+    return this.store.pipe(select(driveIns));
+  }
+  driveInNext(): Observable<string> {
+    return this.store.pipe(select(driveInNext));
   }
 }

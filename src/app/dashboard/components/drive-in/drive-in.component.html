@@ -41,6 +41,32 @@
         </tr>
       </thead>
 
+      <tbody *ngIf="!(driveInLoaded$ | async)" class="table-body">
+        <tr *ngFor="let item of numSeq(12)">
+          <td>
+            <div class="table-text">
+              <ngx-skeleton-loader
+                [theme]="{
+                  'width.px': 120,
+                  'borderRadius.px': 10
+                }"
+                animation="pulse"
+              ></ngx-skeleton-loader>
+            </div>
+          </td>
+          <td>
+            <div class="table-text">
+              <ngx-skeleton-loader
+                [theme]="{
+                  'width.px': 120,
+                  'borderRadius.px': 10
+                }"
+                animation="pulse"
+              ></ngx-skeleton-loader>
+            </div>
+          </td>
+        </tr>
+      </tbody>
       <tbody class="table-body">
         <tr *ngFor="let driveIn of driveIns$ | async">
           <td>
@@ -56,7 +82,7 @@
             </div>
           </td>
         </tr>
-        <div #bottomPageDriveIn></div>
+        <div id="bottomPageDriveIn"></div>
       </tbody>
     </table>
   </div>

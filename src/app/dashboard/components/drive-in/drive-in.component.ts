@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DashService } from '../../services/dash.service';
 import { DriveInModel } from '../../models/driveIn.model';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -21,9 +15,8 @@ import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
   templateUrl: './drive-in.component.html',
   styleUrls: ['./drive-in.component.scss'],
 })
-export class DriveInComponent implements OnInit, AfterViewInit {
+export class DriveInComponent implements OnInit {
   @ViewChild('closeDriveIn') 'closeDriveIn': ElementRef;
-  @ViewChild('bottomPageDriveIn') 'bottomPageDriveIn': ElementRef;
 
   driveIns$: Observable<DriveInModel[]> = this.storeSrv.driveIn();
   driveInLoaded$: Observable<boolean> = this.storeSrv.driveInLoaded();
@@ -43,6 +36,7 @@ export class DriveInComponent implements OnInit, AfterViewInit {
   constructor(
     private store: Store,
     private dashSrv: DashService,
+    private elementRef: ElementRef,
     private storeSrv: StoreService,
     private sharedSrv: SharedService,
     private formBuilder: UntypedFormBuilder
@@ -50,45 +44,48 @@ export class DriveInComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.onInitHandler();
+    this.observerInstance();
   }
 
-  handlePaginateDriveIn(): void {
+  observerInstance(): void {
     this.driveInLoaded$.subscribe({
       next: (loaded) => {
-        if (!loaded) {
-          return;
+        if (loaded) {
+          const target =
+            this.elementRef.nativeElement.querySelector('#bottomPageDriveIn');
+          console.log('target ==>>', target);
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                this.handlePaginateDriveIn();
+                this.loadingMoreDriveIn = true;
+              } else {
+                this.loadingMoreDriveIn = false;
+              }
+            });
+          });
+          observer.observe(target);
         }
-
-        this.loadNextPage$.subscribe({
-          next: (url) => {
-            // Only dispatch if URL not null
-            if (!url) {
-              return;
-            }
-
-            // Check if next pagination URL change
-            if (this.nextPaginationURL !== url) {
-              this.store.dispatch(new driveInActions.LoadMoreDriveIn(url));
-            }
-            // Dispatch load more
-
-            this.nextPaginationURL = url;
-          },
-        });
       },
     });
   }
 
-  ngAfterViewInit() {
-    this.createAndObserve(this.bottomPageDriveIn).subscribe({
-      next: (isVisible) => {
-        if (isVisible) {
-          // this.handlePaginateDriveIn();
-          this.loadingMoreDriveIn = !this.loadingMoreDriveIn;
-          console.log('Bottom page visible');
-        } else {
-          console.log('Not visible');
+  // Todo fetch one pagination at a time
+  handlePaginateDriveIn(): void {
+    this.loadNextPage$.subscribe({
+      next: (url) => {
+        // Only dispatch if URL not null
+        if (!url) {
+          return;
         }
+
+        // Check if next pagination URL change
+        if (this.nextPaginationURL !== url) {
+          this.store.dispatch(new driveInActions.LoadMoreDriveIn(url));
+        }
+        // Dispatch load more
+
+        this.nextPaginationURL = url;
       },
     });
   }

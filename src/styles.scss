@@ -302,8 +302,10 @@ img {
     background: var(--bkg-svg);
   }
 
-  svg {
+  svg path {
     color: var(--text-primary);
+    fill: var(--text-primary);
+    stroke: var(--text-primary);
   }
 }
 

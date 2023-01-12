@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { LoginResponseModel } from '../model/login.model';
 import { AuthState, initialState } from './auth.reducer';
 import { RegisterModel, RegisterResponseModel } from '../model/register.model';
+import { ProfileResponseModel } from '../model/profile.model';
 
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
@@ -146,6 +147,7 @@ export class LogOutFail implements ActionExecutable<AuthState> {
 }
 
 // Sign Up
+// Todo set up sign up with store
 export class SignUp implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.REGISTER;
   constructor(public payload: RegisterModel) {}
@@ -176,6 +178,52 @@ export class SignUpFail implements ActionExecutable<AuthState> {
     };
   }
 }
+
+// Load Profile
+export class LoadProfile implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_PROFILE;
+  constructor() {
+    console.log('Getting profileeee');
+  }
+
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+    };
+  }
+}
+export class LoadProfileSuccess implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_PROFILE_SUCCESS;
+  constructor(public payload: ProfileResponseModel) {
+    console.log('User profile ===>>', payload);
+  }
+
+  execute(state: AuthState): AuthState {
+    const userId = state.userInfo.user.id;
+    const userDetails = this.payload.results.find((item) => item.id === userId);
+    return {
+      ...state,
+      userInfo: {
+        ...state.userInfo,
+        // @ts-ignore
+        user: userDetails,
+      },
+    };
+  }
+}
+export class LoadProfileFail implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_PROFILE_FAIL;
+  constructor(public payload: any) {
+    console.log('Failed to get profile ==>>>', payload);
+  }
+
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+    };
+  }
+}
+
 export type AuthActions =
   // Log In
   | LogIn
@@ -190,7 +238,11 @@ export type AuthActions =
   //
   | SignUp
   | SignUpSuccess
-  | SignUpFail;
+  | SignUpFail
+  // Load profile
+  | LoadProfile
+  | LoadProfileSuccess
+  | LoadProfileFail;
 
 // export class SignUp implements ActionExecutable<AuthState> {
 //   readonly type = AuthActionsTypes.REGISTER;

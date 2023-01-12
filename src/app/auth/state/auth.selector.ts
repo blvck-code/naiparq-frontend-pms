@@ -30,7 +30,10 @@ export const userName = createSelector(
   (state) =>
     `${state.userInfo.user?.first_name.toUpperCase()}  ${state.userInfo.user?.last_name.toUpperCase()}`
 );
-
+export const userId = createSelector(
+  getAuthState,
+  (state) => state.userInfo.user.id
+);
 export const userInfo = createSelector(
   getAuthState,
   (state) => state.userInfo.user

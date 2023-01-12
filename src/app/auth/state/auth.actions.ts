@@ -1,7 +1,8 @@
-import {Action} from "@ngrx/store";
-import {LoginResponseModel} from "../model/login.model";
-import {AuthState, initialState} from "./auth.reducer";
-import {RegisterModel, RegisterResponseModel} from "../model/register.model";
+import { Action } from '@ngrx/store';
+import { LoginResponseModel } from '../model/login.model';
+import { AuthState, initialState } from './auth.reducer';
+import { RegisterModel, RegisterResponseModel } from '../model/register.model';
+import { ProfileResponseModel } from '../model/profile.model';
 
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
@@ -53,9 +54,9 @@ export class ResetInvalid implements ActionExecutable<AuthState> {
       loginStatus: {
         isLoading: false,
         isLoggedIn: false,
-        invalid: false
-      }
-    }
+        invalid: false,
+      },
+    };
   }
 }
 
@@ -70,9 +71,9 @@ export class LogIn implements ActionExecutable<AuthState> {
       loginStatus: {
         isLoading: true,
         isLoggedIn: false,
-        invalid: false
-      }
-    }
+        invalid: false,
+      },
+    };
   }
 }
 export class LogInSuccess implements ActionExecutable<AuthState> {
@@ -86,9 +87,9 @@ export class LogInSuccess implements ActionExecutable<AuthState> {
       loginStatus: {
         isLoading: false,
         isLoggedIn: true,
-        invalid: false
+        invalid: false,
       },
-    }
+    };
   }
 }
 export class LogInFail implements ActionExecutable<AuthState> {
@@ -99,80 +100,133 @@ export class LogInFail implements ActionExecutable<AuthState> {
     return {
       ...state,
       userInfo: {
-        user: null,
+        user: {
+          id: '',
+          first_name: '',
+          last_name: '',
+          email: '',
+          phone_number: '',
+        },
         token: null,
-        message: this.payload
+        message: this.payload,
       },
       loginStatus: {
         isLoading: false,
         isLoggedIn: false,
-        invalid: true
+        invalid: true,
       },
-    }
+    };
   }
 }
 
 // Log Out
-export class LogOut implements ActionExecutable<AuthState>{
+export class LogOut implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGOUT;
   constructor() {}
   execute(state: AuthState): AuthState {
     return {
-      ...state
-    }
+      ...state,
+    };
   }
 }
-export class LogOutSuccess implements ActionExecutable<AuthState>{
+export class LogOutSuccess implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGOUT_SUCCESS;
   constructor(public payload: { message: string }) {}
   execute(state: AuthState): AuthState {
-    return state = initialState;
+    return (state = initialState);
   }
 }
-export class LogOutFail implements ActionExecutable<AuthState>{
+export class LogOutFail implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGOUT_FAIL;
   constructor(public payload: string) {}
   execute(state: AuthState): AuthState {
     return {
-      ...state
-    }
+      ...state,
+    };
   }
 }
 
 // Sign Up
+// Todo set up sign up with store
 export class SignUp implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.REGISTER;
   constructor(public payload: RegisterModel) {}
 
-  execute(state: AuthState): AuthState{
+  execute(state: AuthState): AuthState {
     return {
-      ...state
-    }
+      ...state,
+    };
   }
 }
 export class SignUpSuccess implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.REGISTER_SUCCESS;
   constructor(public payload: RegisterResponseModel) {}
 
-  execute(state: AuthState): AuthState{
+  execute(state: AuthState): AuthState {
     return {
-      ...state
-    }
+      ...state,
+    };
   }
 }
 export class SignUpFail implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.REGISTER_FAIL;
   constructor(public payload: string) {}
 
-  execute(state: AuthState): AuthState{
+  execute(state: AuthState): AuthState {
     return {
-      ...state
-    }
+      ...state,
+    };
   }
 }
+
+// Load Profile
+export class LoadProfile implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_PROFILE;
+  constructor() {
+    console.log('Getting profileeee');
+  }
+
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+    };
+  }
+}
+export class LoadProfileSuccess implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_PROFILE_SUCCESS;
+  constructor(public payload: ProfileResponseModel) {
+    console.log('User profile ===>>', payload);
+  }
+
+  execute(state: AuthState): AuthState {
+    const userId = state.userInfo.user.id;
+    const userDetails = this.payload.results.find((item) => item.id === userId);
+    return {
+      ...state,
+      userInfo: {
+        ...state.userInfo,
+        // @ts-ignore
+        user: userDetails,
+      },
+    };
+  }
+}
+export class LoadProfileFail implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_PROFILE_FAIL;
+  constructor(public payload: any) {
+    console.log('Failed to get profile ==>>>', payload);
+  }
+
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+    };
+  }
+}
+
 export type AuthActions =
   // Log In
-    LogIn
+  | LogIn
   | LogInSuccess
   | LogInFail
   // Log Out
@@ -184,8 +238,11 @@ export type AuthActions =
   //
   | SignUp
   | SignUpSuccess
-  | SignUpFail;
-
+  | SignUpFail
+  // Load profile
+  | LoadProfile
+  | LoadProfileSuccess
+  | LoadProfileFail;
 
 // export class SignUp implements ActionExecutable<AuthState> {
 //   readonly type = AuthActionsTypes.REGISTER;

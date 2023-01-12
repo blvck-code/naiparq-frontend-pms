@@ -53,7 +53,6 @@ export class DriveInComponent implements OnInit {
         if (loaded) {
           const target =
             this.elementRef.nativeElement.querySelector('#bottomPageDriveIn');
-          console.log('target ==>>', target);
           const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {

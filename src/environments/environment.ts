@@ -14,6 +14,7 @@ export const environment = {
   naiparqLogin: naiparqBaseURL + 'accounts/login/',
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
   naiparqLogout: naiparqBaseURL + 'accounts/logout',
+  naiparqProfile: naiparqBaseURL + 'accounts/users/',
 
   // Spaces
   naiparqListSpaces: naiparqBaseURL + 'spaces/space',

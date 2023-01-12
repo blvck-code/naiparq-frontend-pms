@@ -10,9 +10,9 @@ import { StorageService } from '../shared/services/storage.service';
 
 // NgRx
 import { Store } from '@ngrx/store';
-import {TokenModel} from "../auth/model/user.model";
-import {AuthState} from "../auth/state/auth.reducer";
-import {userToken} from "../auth/state/auth.selector";
+import { TokenModel } from '../auth/model/user.model';
+import { AuthState } from '../auth/state/auth.reducer';
+import { userToken } from '../auth/state/auth.selector';
 // import { AppState } from '../../app.state';
 // import { getToken } from '../state/auth.selectors';
 // import { TokenModel } from '../models/userInfo.model';
@@ -52,7 +52,7 @@ export class AuthInterceptor implements HttpInterceptor {
       request.url.includes('/api/v1/accounts/login') ||
       request.url.includes('/api/v1/accounts/register') ||
       request.url.includes('/api/v1/accounts/password/reset/')
-    )
+    );
   }
 
   intercept(
@@ -87,6 +87,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private isExpired(expTime: string): boolean {
     let currentTimeInMilli = new Date().getTime();
     if (+expTime < currentTimeInMilli) {
+      // Todo send token generator
       console.warn('Token Expired!');
       return true;
     }
@@ -94,7 +95,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private getAccessToken(data: TokenModel | null): string {
-
     if (data && data.access) {
       return data.access;
     } else {

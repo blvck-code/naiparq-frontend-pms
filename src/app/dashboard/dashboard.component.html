@@ -1,6 +1,6 @@
 <div class="naiparq-dash">
   <div class="naiparq-dash-container">
-    <div class="naiparq-dash-sidenav">
+    <div #sideNav class="naiparq-dash-sidenav">
       <div class="naiparq-dash-sidenav-content">
         <div class="logo-nav">
           <div class="dash-branding">
@@ -329,8 +329,27 @@
 
     <div class="naiparq-dash-main-content-container">
       <div class="dash-main-content">
-        <div class="dash-top-nav">
-          <p class="dash-nav-title">{{ currentUrl }}</p>
+        <div class="dash-top-nav container-fluid">
+          <div class="d-flex gap-3 align-items-center">
+            <div class="naiparq-svg">
+              <svg
+                (click)="toggleNav()"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </div>
+            <p class="dash-nav-title">{{ currentUrl }}</p>
+          </div>
 
           <div class="top-nav-items">
             <div class="nav-search">
@@ -364,6 +383,7 @@
                 aria-expanded="false"
               >
                 <div class="img-name">
+                  <!--                  Todo updating profile pic -->
                   <img
                     src="assets/images/naiparq-user.svg"
                     alt="Naiparq User"

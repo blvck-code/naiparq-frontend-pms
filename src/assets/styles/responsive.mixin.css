@@ -1,0 +1,29 @@
+// Break points
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+$breakpoints: (
+  "phone": 576px,
+  "tablet": 600px,
+  "tablet-landscape": 960px,
+  "desktop": 1280px,
+  "big-desktop": 1920px,
+) !default;
+
+@mixin screen($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, `${breakpoint}` can not be found.';
+  }
+}

@@ -1,16 +1,16 @@
-import {TokenModel, UserModel} from "../model/user.model";
+import { TokenModel, UserModel } from '../model/user.model';
 import * as authActions from './auth.actions';
 
 export interface AuthState {
   userInfo: {
-    user: UserModel | null;
+    user: UserModel;
     message: string;
     token: TokenModel | null;
   };
   loginStatus: {
     isLoading: boolean;
     isLoggedIn: boolean;
-    invalid: boolean,
+    invalid: boolean;
   };
 }
 
@@ -45,5 +45,5 @@ export function authReducer(
   if (!action.execute) {
     return state;
   }
-  return action.execute(state)
+  return action.execute(state);
 }

@@ -503,6 +503,11 @@ form {
 }
 
 // Naiparq Table Styles
+.table {
+  .sticky-top {
+    z-index: 3 !important;
+  }
+}
 .table-wrap {
   height: calc(100% - 66px);
   margin-top: 25px;

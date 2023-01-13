@@ -45,54 +45,54 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
         expense: 38,
       })
     );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 19`,
-        income: 46,
-        expense: 31,
-      })
-    );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 20`,
-        income: 50,
-        expense: 19,
-      })
-    );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 21`,
-        income: 90,
-        expense: 52,
-      })
-    );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 22`,
-        income: 132,
-        expense: 50,
-      })
-    );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 23`,
-        income: 134,
-        expense: 34,
-      })
-    );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 24`,
-        income: 134,
-        expense: 34,
-      })
-    );
-    this.push(
-      new CountryRenewableElectricityItem({
-        year: `Apr 24`,
-        income: 96,
-        expense: 38,
-      })
-    );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 19`,
+    //     income: 46,
+    //     expense: 31,
+    //   })
+    // );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 20`,
+    //     income: 50,
+    //     expense: 19,
+    //   })
+    // );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 21`,
+    //     income: 90,
+    //     expense: 52,
+    //   })
+    // );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 22`,
+    //     income: 132,
+    //     expense: 50,
+    //   })
+    // );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 23`,
+    //     income: 134,
+    //     expense: 34,
+    //   })
+    // );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 24`,
+    //     income: 134,
+    //     expense: 34,
+    //   })
+    // );
+    // this.push(
+    //   new CountryRenewableElectricityItem({
+    //     year: `Apr 24`,
+    //     income: 96,
+    //     expense: 38,
+    //   })
+    // );
   }
 }

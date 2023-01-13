@@ -31,6 +31,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SpacesEffects } from './state/effects/spaces.effects';
 import { SharedModule } from '../shared/shared.module';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SharedModule } from '../shared/shared.module';
     DriveInComponent,
     MotoristManagementComponent,
     NotificationsComponent,
+    SideNavComponent,
   ],
   imports: [
     CommonModule,

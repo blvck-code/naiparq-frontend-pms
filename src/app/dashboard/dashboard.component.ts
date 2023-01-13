@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
 
   toggleNav(): void {
     const nav = this.sideNav.nativeElement;
+    console.log(nav);
     nav.classList.toggle('hide');
   }
   constructor(

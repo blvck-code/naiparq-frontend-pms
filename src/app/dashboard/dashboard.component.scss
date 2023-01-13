@@ -8,10 +8,12 @@
   }
 
   &-sidenav {
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 262px;
     background: var(--bkg-two-color);
     transition: all 0.2s ease-in-out;
+    overflow-y: scroll;
 
     &.hide {
       width: 0;

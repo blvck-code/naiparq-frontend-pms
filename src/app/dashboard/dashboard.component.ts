@@ -14,7 +14,7 @@ import { isLoggedIn, userInfo, userName } from '../auth/state/auth.selector';
 import { UserModel } from '../auth/model/user.model';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'naiparq-app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })

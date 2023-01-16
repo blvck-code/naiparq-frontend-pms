@@ -13,36 +13,36 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
     this.push(
       new CountryRenewableElectricityItem({
         year: `Apr 14`,
-        income: 21,
-        expense: 100,
+        income: 3000,
+        expense: 5000,
       })
     );
     this.push(
       new CountryRenewableElectricityItem({
         year: `Apr 15`,
-        income: 26,
-        expense: 24,
+        income: 7000,
+        expense: 6000,
       })
     );
     this.push(
       new CountryRenewableElectricityItem({
         year: `Apr 16`,
-        income: 29,
-        expense: 28,
+        income: 5800,
+        expense: 6200,
       })
     );
     this.push(
       new CountryRenewableElectricityItem({
         year: `Apr 17`,
-        income: 32,
-        expense: 26,
+        income: 4200,
+        expense: 5800,
       })
     );
     this.push(
       new CountryRenewableElectricityItem({
         year: `Apr 18`,
-        income: 47,
-        expense: 38,
+        income: 4700,
+        expense: 6500,
       })
     );
     // this.push(

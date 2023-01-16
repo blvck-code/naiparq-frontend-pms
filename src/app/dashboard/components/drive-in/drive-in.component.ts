@@ -57,9 +57,9 @@ export class DriveInComponent implements OnInit {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 this.handlePaginateDriveIn();
-                this.loadingMoreDriveIn = true;
+                // this.loadingMoreDriveIn = true;
               } else {
-                this.loadingMoreDriveIn = false;
+                // this.loadingMoreDriveIn = false;
               }
             });
           });

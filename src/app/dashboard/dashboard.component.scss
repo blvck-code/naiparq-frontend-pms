@@ -255,6 +255,38 @@
           a {
             color: var(--text-primary);
           }
+
+          .naiparq-theme-toggle {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 15px;
+
+            .naiparq-theme-btn {
+              height: 25px;
+              width: 20%;
+              border-radius: 12px;
+              background-color: #ccc;
+              position: relative;
+              padding: 3px;
+              cursor: pointer;
+
+              svg {
+                width: 20px;
+                position: absolute;
+
+                &.light-theme {
+                  left: 3px;
+                  right: auto;
+                }
+
+                &.dark-theme {
+                  right: 3px;
+                  left: auto;
+                }
+              }
+            }
+          }
         }
       }
     }

@@ -1,6 +1,6 @@
-<div class="naiparq-cash-payment-container table-wrap naiparq-scrollbar">
-  <div class="naiparq-cash-payment-title-bar d-flex justify-content-between">
-    <p>December 09, 2022</p>
+<div class="naiparq-table-wrap naiparq-scrollbar">
+  <div class="naiparq-table-title">
+    <p class="naiparq-table-date">December 09, 2022</p>
 
     <div class="cash-table-btns d-flex">
       <button
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="naiparq-cash-payment-table">
+  <div class="naiparq-table-content">
     <table class="table">
       <thead class="table-nav sticky-top">
         <tr>
@@ -48,7 +48,7 @@
       </thead>
 
       <tbody class="table-body">
-        <tr *ngFor="let num of numSeq(15)">
+        <tr *ngFor="let num of numSeq(15); let odd = odd; let even = even">
           <td>
             <div class="table-text">
               <span>Karish Center</span>
@@ -64,7 +64,12 @@
           <!--        Buttons -->
           <td>
             <div class="table-button">
-              <button class="naiparq-btn naiparq-btn-success">Online</button>
+              <button *ngIf="odd" class="naiparq-btn naiparq-btn-success">
+                Online
+              </button>
+              <button *ngIf="even" class="naiparq-btn naiparq-btn-danger">
+                Offline
+              </button>
             </div>
           </td>
 
@@ -105,6 +110,7 @@
         </tr>
       </tbody>
     </table>
+    <app-inline-loader></app-inline-loader>
   </div>
 </div>
 

@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AuthState } from '../../../auth/state/auth.reducer';
 
 @Component({
-  selector: 'app-side-nav',
+  selector: 'naiparq-app-drawer',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
 })

@@ -478,22 +478,38 @@ form {
     z-index: 3 !important;
   }
 }
-.table-wrap {
-  height: calc(100% - 66px);
-  margin-top: 25px;
+.naiparq-table-wrap {
+  height: 100%;
   overflow-y: hidden;
   background: var(--bkg-four-color);
   padding: 15px 45px;
   border-radius: 14px;
 
+  .naiparq-table-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .naiparq-table-date {
+      color: var(--text-primary);
+      font-weight: 400;
+      font-size: 21px;
+      margin-bottom: 0;
+    }
+  }
+
   .naiparq-table-content {
-    height: calc(100% - 100px);
+    height: calc(100% - 74px);
     overflow-y: scroll;
     margin-top: 30px;
 
+    &.table-payment {
+      height: calc(100% - 140px);
+      position: relative;
+    }
+
     thead {
       color: var(--text-secondary);
-      z-index: 10;
       background: var(--bkg-four-color);
     }
 
@@ -566,6 +582,7 @@ main {
   width: 100%;
   padding: 0rem;
   margin: 0rem;
+  overflow: hidden;
 }
 
 /* ============ container styles  ============ */

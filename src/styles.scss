@@ -489,13 +489,6 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .naiparq-table-date {
-      color: var(--text-primary);
-      font-weight: 400;
-      font-size: 21px;
-      margin-bottom: 0;
-    }
   }
 
   .naiparq-table-content {
@@ -529,6 +522,13 @@ form {
       }
     }
   }
+}
+
+.naiparq-table-date {
+  color: var(--text-primary);
+  font-weight: 400;
+  font-size: 21px;
+  margin-bottom: 0;
 }
 
 .naiparq-revenue-item {

@@ -1,32 +1,49 @@
 @import "responsive";
 
-.naiparq-revenue {
-  &-container {
-    .naiparq-revenue-header {
-      &-date {
-        padding: 15px 0;
-        h4 {
-          font-family: "Sk-Modernist", sans-serif;
-          font-size: 25px;
-          line-height: 30px;
-          color: var(--text-primary);
-        }
-      }
-      &-amounts {
-        border: 1px solid red;
+.naiparq-analytics {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  justify-self: flex-start;
+  align-self: flex-start;
+  height: 100%;
+}
 
-        @include respond(phone) {
-          flex-direction: column;
-        }
-      }
-    }
+.naiparq-analytics-wrap {
+  align-self: flex-start;
+  justify-self: flex-start;
+}
 
-    .naiparq-revenue-chart {
-      position: relative;
-      width: 100%;
-      height: 450px;
-      background: #fff;
-      border-radius: 20px;
+.naiparq-analytics-header {
+  margin-bottom: 30px;
+  border: 1px solid red;
+
+  &-date {
+    padding: 15px 0;
+    h4 {
+      font-family: "Sk-Modernist", sans-serif;
+      font-size: 25px;
+      line-height: 30px;
+      color: var(--text-primary);
     }
   }
+  &-amounts {
+    border: 1px solid red;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
+  }
+}
+
+.naiparq-analytics-chart {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: #fff;
+  border-radius: 20px;
+  margin-top: 60px;
+  border: 1px solid red;
 }

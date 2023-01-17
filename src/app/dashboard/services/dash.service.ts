@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DriveInResponseModel } from '../models/driveIn.model';
 import { SpaceModelResponse } from '../models/spaces.model';
+import { DriveOutResponseModel } from '../models/driveOut.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,11 @@ export class DashService {
   }
   createDriveIn(driveInContent: any): Observable<any> {
     return this.http.post(`${env.naiparqDriveIn}/`, driveInContent);
+  }
+
+  // Space Drive Out
+  loadDriveOut(): Observable<DriveOutResponseModel> {
+    return this.http.get<DriveOutResponseModel>(env.naiparqDriveOut);
   }
 
   // Spaces

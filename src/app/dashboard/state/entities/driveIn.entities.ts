@@ -32,6 +32,14 @@ export function driveInReducer(
         next: action.payload.next,
         driveIn: [...state.driveIn, ...action.payload.results],
       };
+    case dashActions.DashActionTypes.LOAD_DRIVE_OUT:
+      return {
+        ...state,
+      };
+    case dashActions.DashActionTypes.LOAD_DRIVE_OUT_SUCCESS:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

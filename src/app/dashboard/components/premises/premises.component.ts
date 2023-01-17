@@ -15,7 +15,9 @@ export class PremisesComponent implements OnInit {
   spacesLoading$: Observable<boolean> = this.storeSrv.spacesLoading();
   spacesLoaded$: Observable<boolean> = this.storeSrv.spacesLoaded();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('Premises');
+  }
 
   numSeq(n: number): Array<number> {
     return Array(n);

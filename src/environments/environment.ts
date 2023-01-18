@@ -22,6 +22,9 @@ export const environment = {
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',
 
+  // Drive Out Model URLS
+  naiparqDriveOut: naiparqBaseURL + 'spaces/drive/out',
+
   // Billing Module URLS
 
   // Pricing Module URLS

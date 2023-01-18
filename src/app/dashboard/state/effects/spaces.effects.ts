@@ -13,6 +13,7 @@ import * as driveInActions from '../actions/driveIn.actions';
 import { SpaceModelResponse } from '../../models/spaces.model';
 import { LoadMoreDriveIn } from '../actions/driveIn.actions';
 import { DriveInResponseModel } from '../../models/driveIn.model';
+import { DriveOutResponseModel } from '../../models/driveOut.model';
 
 @Injectable()
 export class SpacesEffects {
@@ -34,7 +35,7 @@ export class SpacesEffects {
           ),
           // @ts-ignore
           catchError((err: any) => {
-            console.log('Getting spaces failed');
+            console.log('Getting spaces failed ===>>', err);
             return;
           })
         )
@@ -76,6 +77,27 @@ export class SpacesEffects {
           catchError((err: any) =>
             of(new driveInActions.LoadMoreDriveInFail(err))
           )
+        )
+      )
+    )
+  );
+
+  // Drive out
+  loadDriveOut$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<driveInActions.LoadDriveOut>(
+        dashActions.DashActionTypes.LOAD_DRIVE_OUT
+      ),
+      switchMap((action: driveInActions.LoadDriveOut) =>
+        this.dashSrv.loadDriveOut().pipe(
+          map(
+            (driveOut: DriveOutResponseModel) =>
+              new driveInActions.LoadDriveOutSuccess(driveOut)
+          ),
+          //@ts-ignore
+          catchError((err) => {
+            console.log('Getting drive out failed ===>>>', err);
+          })
         )
       )
     )

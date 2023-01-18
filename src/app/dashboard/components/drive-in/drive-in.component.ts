@@ -92,6 +92,7 @@ export class DriveInComponent implements OnInit {
   onInitHandler(): void {
     this.handleDriveInList();
     this.store.dispatch(new driveInActions.LoadDriveIn());
+    this.store.dispatch(new driveInActions.LoadDriveOut());
   }
 
   handleDriveInList(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-drive-out',
@@ -6,11 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./drive-out.component.scss'],
 })
 export class DriveOutComponent implements OnInit {
-  stepOne: boolean = true;
-  stepTwo: boolean = true;
-  stepThree: boolean = true;
+  @ViewChild('radioInput') 'radioInput': ElementRef;
+  stepOne: boolean = false;
+  stepTwo: boolean = false;
+  stepThree: boolean = false;
+  stepFour: boolean = false;
+  stepFive: boolean = true;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleSubmitPlate(): void {
+    this.stepOne = false;
+    this.stepTwo = true;
+  }
+
+  handleCheckRadio(): void {
+    const input = this.radioInput.nativeElement;
+    input.click();
+    console.log(input);
+  }
 }

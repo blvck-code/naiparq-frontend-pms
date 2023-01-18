@@ -209,6 +209,13 @@ img {
     border-radius: 40px;
   }
 
+  &.naiparq-btn-white {
+    border: 1px solid #fff;
+    background: #fff;
+    border-radius: 40px;
+    color: #000;
+  }
+
   &:hover {
     opacity: 0.65;
   }
@@ -237,6 +244,16 @@ img {
       border-radius: 50%;
       animation: btn-loading-spinner 1s ease infinite;
     }
+  }
+}
+
+.naiparq-btn-group {
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 15px;
+
+  button {
+    width: 100%;
   }
 }
 

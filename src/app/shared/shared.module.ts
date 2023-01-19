@@ -2,22 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { InlineLoaderComponent } from './components/inline-loader/inline-loader.component';
-import { OnBoardOneComponent } from './components/drive-out/on-board-one/on-board-one.component';
-import { OnBoardTwoComponent } from './components/drive-out/on-board-two/on-board-two.component';
-import { OnBoardThreeComponent } from './components/drive-out/on-board-three/on-board-three.component';
 import { DriveOutComponent } from './components/drive-out/drive-out.component';
 import { RouterOutlet } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { BillingComponent } from './components/billing/billing.component';
 
 @NgModule({
   declarations: [
     TruncatePipe,
     InlineLoaderComponent,
-    OnBoardOneComponent,
-    OnBoardTwoComponent,
-    OnBoardThreeComponent,
     DriveOutComponent,
+    BillingComponent,
   ],
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
   exports: [TruncatePipe, InlineLoaderComponent],
 })
 export class SharedModule {}

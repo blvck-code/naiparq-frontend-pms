@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OnBoardOneComponent } from './on-board-one.component';
+import { BillingComponent } from './billing.component';
 
-describe('OnBoardOneComponent', () => {
-  let component: OnBoardOneComponent;
-  let fixture: ComponentFixture<OnBoardOneComponent>;
+describe('BillingComponent', () => {
+  let component: BillingComponent;
+  let fixture: ComponentFixture<BillingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OnBoardOneComponent ]
+      declarations: [ BillingComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OnBoardOneComponent);
+    fixture = TestBed.createComponent(BillingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

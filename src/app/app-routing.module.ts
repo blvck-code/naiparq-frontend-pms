@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DriveOutComponent } from './shared/components/drive-out/drive-out.component';
-import { OnBoardOneComponent } from './shared/components/drive-out/on-board-one/on-board-one.component';
-import { OnBoardTwoComponent } from './shared/components/drive-out/on-board-two/on-board-two.component';
-import { OnBoardThreeComponent } from './shared/components/drive-out/on-board-three/on-board-three.component';
+import { BillingComponent } from './shared/components/billing/billing.component';
 
 const routes: Routes = [
   {
@@ -21,22 +19,12 @@ const routes: Routes = [
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
-    path: 'checkout',
+    path: 'drive-out',
     component: DriveOutComponent,
-    children: [
-      {
-        path: '',
-        component: OnBoardOneComponent,
-      },
-      {
-        path: 'bill',
-        component: OnBoardTwoComponent,
-      },
-      {
-        path: 'confirm',
-        component: OnBoardThreeComponent,
-      },
-    ],
+  },
+  {
+    path: 'drive-out/:driveOutSlug',
+    component: BillingComponent,
   },
 ];
 

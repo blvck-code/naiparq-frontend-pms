@@ -5,8 +5,17 @@
       <h4 class="naiparq-logo-title">NaiParq</h4>
     </div>
     <div class="naiparq-checkout-content">
-      <div *ngIf="stepOne" class="naiparq-checkout-plate">
-        <form class="naiparq-checkout-form" action="">
+      <div
+        *ngIf="stepOne"
+        [class.active]="stepOne"
+        [class.hide]="!stepOne"
+        class="naiparq-checkout-plate"
+      >
+        <form
+          class="naiparq-checkout-form"
+          [formGroup]="numberPlateForm"
+          (ngSubmit)="handleSubmitPlate()"
+        >
           <div class="naiparq-checkout-form-group">
             <label>Enter Number Plate</label>
             <div class="naiparq-checkout-form-input">
@@ -32,214 +41,21 @@
                   stroke-linejoin="round"
                 />
               </svg>
-              <input type="text" placeholder="KAA 000A" />
+              <input
+                formControlName="license_plate"
+                type="text"
+                placeholder="KAA 000A"
+              />
             </div>
           </div>
           <button
-            (click)="handleSubmitPlate()"
+            [class.btn-loading]="submittingPlate"
+            type="submit"
             class="naiparq-btn naiparq-btn-primary"
           >
-            Next
+            <span class="btn-text">Next</span>
           </button>
         </form>
-      </div>
-      <div *ngIf="stepTwo" class="naiparq-checkout-loading">
-        <div
-          class="naiparq-checkout-loading-inidicator la-ball-clip-rotate la-2x"
-        >
-          <div></div>
-        </div>
-        <h4 class="naiparq-checkout-loading-text">
-          Please wait while parking price is retrieved.
-        </h4>
-      </div>
-      <div *ngIf="stepThree" class="naiparq-checkout-bill">
-        <div class="naiparq-checkout-bill__item amount">
-          <h5>Parking Duration</h5>
-          <h2>KSH 50.00</h2>
-          <p>Please pay when returning to your car to leave</p>
-          <div class="circle left"></div>
-          <div class="circle right"></div>
-        </div>
-        <!--          <p>Parking details</p>-->
-        <div class="naiparq-checkout-bill__item summary">
-          <div class="summary-item">
-            <h4>Parking Duration</h4>
-            <h4>01:19</h4>
-          </div>
-          <div class="summary-item">
-            <h4>Time of entry</h4>
-            <h4>7/07/2023</h4>
-          </div>
-          <div class="summary-item">
-            <h4>Ticket Number</h4>
-            <h4>21241252</h4>
-          </div>
-
-          <div class="circle left"></div>
-          <div class="circle right"></div>
-        </div>
-        <div class="naiparq-checkout-bill__item amount payment">
-          <h5>Payment Options</h5>
-
-          <form class="payment-options">
-            <div class="payment-item">
-              <label class="payment-item-label" for="html">
-                <img src="assets/images/payment-mpesa.png" alt="MPESA" />
-                <h4>MPESA</h4>
-              </label>
-              <div (click)="handleCheckRadio()" class="input">
-                <span></span>
-              </div>
-              <input
-                #radioInput
-                type="radio"
-                id="html"
-                name="fav_language"
-                value="HTML"
-              />
-            </div>
-            <div class="payment-item credit active">
-              <label class="payment-item-label" for="credit">
-                <img src="assets/images/payment-credit.png" alt="MPESA" />
-                <h4>Credit Card</h4>
-              </label>
-              <div (change)="handleCheckRadio()" class="input">
-                <span></span>
-              </div>
-              <input
-                #radioInput
-                type="radio"
-                id="credit"
-                name="fav_language"
-                value="HTML"
-              />
-            </div>
-          </form>
-
-          <div class="border-circles">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-        <!--          <p>Payment options</p>-->
-        <!--          <div class="naiparq-checkout-bill__item payment">-->
-        <!--            <h5>Payment Options</h5>-->
-        <!--            <div class="payment-item"></div>-->
-        <!--          </div>-->
-      </div>
-      <div *ngIf="stepFour" class="naiparq-checkout-phone">
-        <div class="payment-logo">
-          <img src="assets/images/mpesa-logo.png" alt="MPESA" />
-        </div>
-        <form class="naiparq-checkout-form" action="">
-          <div class="naiparq-checkout-form-group">
-            <label>Please enter your phone number</label>
-            <div class="naiparq-checkout-form-input">
-              <svg
-                width="21"
-                height="20"
-                viewBox="0 0 21 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_5816_4865)">
-                  <path
-                    d="M6.15568 3.33334V16.6667H14.489V3.33334H6.15568ZM5.32235 1.66667H15.3223C15.5434 1.66667 15.7553 1.75447 15.9116 1.91075C16.0679 2.06703 16.1557 2.27899 16.1557 2.50001V17.5C16.1557 17.721 16.0679 17.933 15.9116 18.0893C15.7553 18.2455 15.5434 18.3333 15.3223 18.3333H5.32235C5.10133 18.3333 4.88937 18.2455 4.73309 18.0893C4.57681 17.933 4.48901 17.721 4.48901 17.5V2.50001C4.48901 2.27899 4.57681 2.06703 4.73309 1.91075C4.88937 1.75447 5.10133 1.66667 5.32235 1.66667ZM10.3223 14.1667C10.5434 14.1667 10.7553 14.2545 10.9116 14.4107C11.0679 14.567 11.1557 14.779 11.1557 15C11.1557 15.221 11.0679 15.433 10.9116 15.5893C10.7553 15.7455 10.5434 15.8333 10.3223 15.8333C10.1013 15.8333 9.88937 15.7455 9.73309 15.5893C9.57681 15.433 9.48901 15.221 9.48901 15C9.48901 14.779 9.57681 14.567 9.73309 14.4107C9.88937 14.2545 10.1013 14.1667 10.3223 14.1667Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_5816_4865">
-                    <rect
-                      width="20"
-                      height="20"
-                      fill="white"
-                      transform="translate(0.322327)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-              <input type="text" placeholder="0701000000" />
-            </div>
-          </div>
-          <div class="naiparq-btn-group">
-            <button
-              (click)="handleSubmitPlate()"
-              class="naiparq-btn naiparq-btn-white"
-            >
-              Cancel
-            </button>
-            <button
-              (click)="handleSubmitPlate()"
-              class="naiparq-btn naiparq-btn-primary"
-            >
-              Continue
-            </button>
-          </div>
-        </form>
-      </div>
-      <div *ngIf="stepFive" class="naiparq-checkout-complete">
-        <div class="complete-header">
-          <div class="complete-svg">
-            <svg
-              width="118"
-              height="118"
-              viewBox="0 0 118 118"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M59 103.25C83.4386 103.25 103.25 83.4386 103.25 59C103.25 34.5614 83.4386 14.75 59 14.75C34.5614 14.75 14.75 34.5614 14.75 59C14.75 83.4386 34.5614 103.25 59 103.25Z"
-                fill="#FBCE33"
-              />
-              <path
-                d="M59 113.083C88.8694 113.083 113.083 88.8694 113.083 59C113.083 29.1306 88.8694 4.91666 59 4.91666C29.1306 4.91666 4.91663 29.1306 4.91663 59C4.91663 88.8694 29.1306 113.083 59 113.083Z"
-                fill="#FBCE33"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M79.2812 47.9375L52.2394 73.75L38.7188 60.8438"
-                stroke="white"
-                stroke-width="5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-          <h4>Thank You</h4>
-          <p>Your parking fee has been paid</p>
-          <div class="circle left"></div>
-          <div class="circle right"></div>
-        </div>
-        <div class="complete-summary">
-          <h4>Amount paid</h4>
-          <h4>KSH 50.00</h4>
-        </div>
-        <div class="border-circles">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
       </div>
     </div>
   </div>

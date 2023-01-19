@@ -1,10 +1,10 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const baseURL: string = 'http://staging.avl.local:444';
+const baseURL: string = 'https://naiparq.avl.local:444';
 const version: string = '/api/v2/';
 const naiparqBaseURL: string = baseURL + version;
-// const naiparqBaseURL = 'http://192.168.0.61:444/api/v1/';
+// const naiparqBaseURL = 'https://192.168.0.61:444z/api/v1/';
 const naiparqWsURL = '';
 
 export const environment = {
@@ -26,7 +26,7 @@ export const environment = {
   naiparqDriveOut: naiparqBaseURL + 'spaces/drive/out',
 
   // Billing Module URLS
-
+  naiparqBillingList: naiparqBaseURL + 'bill/billings',
   // Pricing Module URLS
 
   // Device Module URLS

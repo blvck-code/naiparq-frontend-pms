@@ -223,6 +223,7 @@ img {
   &.btn-loading {
     opacity: 0.65;
     cursor: not-allowed;
+
     .btn-text {
       visibility: hidden;
       opacity: 0;
@@ -250,7 +251,7 @@ img {
 .naiparq-btn-group {
   display: flex;
   justify-content: space-between;
-  grid-gap: 15px;
+  grid-gap: 10px;
 
   button {
     width: 100%;
@@ -426,7 +427,7 @@ form {
     width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--bkg-one-color);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
     background: var(--text-primary);
@@ -589,11 +590,11 @@ form {
 @keyframes slideRight {
   0% {
     opacity: 0;
-    transform: translateX(-50%);
+    transform: translateY(50%);
   }
   100% {
     opacity: 1;
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
 }
 

@@ -1,0 +1,113 @@
+@import "responsive";
+
+.naiparq-checkout {
+  background: #000;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+
+  &-wrap {
+    padding: 20px 5px;
+    width: 100%;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+  }
+}
+
+.naiparq-checkout-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  padding: 30px 0;
+  width: 100%;
+  max-width: 330px;
+
+  img {
+    width: 40px;
+    object-fit: cover;
+  }
+
+  .naiparq-logo-title {
+    color: #fff;
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 30px;
+  }
+}
+
+.naiparq-checkout-content {
+  display: flex;
+  flex: auto;
+  //justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  width: 100%;
+  justify-content: center;
+
+  .naiparq-checkout-plate {
+    padding: 15px 20px;
+    background: #161619;
+    border-radius: 20px;
+    height: 243px;
+    max-width: 330px;
+    width: 100%;
+    //animation: slideRight 500ms forwards;
+  }
+}
+
+.naiparq-checkout-form {
+  &-group {
+    padding: 10px 0;
+
+    label {
+      font-weight: 400;
+      font-size: 14px;
+      color: #fff;
+      margin: 15px 0;
+    }
+
+    .naiparq-checkout-form-input {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 48px;
+      border-radius: 10px;
+      width: 100%;
+      background: #28282b;
+
+      input {
+        height: 100%;
+        width: 100%;
+        border: none;
+        color: #fff;
+        border-radius: 10px;
+        background: transparent;
+        outline: none;
+
+        &:focus,
+        &:active {
+          border: none;
+          outline: none;
+        }
+      }
+
+      svg {
+        margin-inline: 8px;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    border-radius: 33px;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 10px 0;
+  }
+}

@@ -74,15 +74,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Todo Uncomment to fetch spaces
   initState(): void {
-    // this.store.dispatch(new spaceActions.LoadSpaces());
-    console.log('Getting profile');
     this.isLoggedIn$.subscribe({
       next: (isLoggedIn) => {
         if (!isLoggedIn) {
           return;
         }
+        this.store.dispatch(new spaceActions.LoadSpaces());
         this.store.dispatch(new authActions.LoadProfile());
       },
     });

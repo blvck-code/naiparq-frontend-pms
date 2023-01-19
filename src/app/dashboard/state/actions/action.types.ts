@@ -8,7 +8,14 @@ export enum DashActionTypes {
   LOAD_DRIVE_IN = 'driveIn/loadDriveIn',
   LOAD_DRIVE_IN_SUCCESS = 'driveIn/loadDriveInSuccess',
   LOAD_DRIVE_IN_FAIL = 'driveIn/loadDriveInFail',
+
+  // Pagination
   LOAD_MORE_DRIVE_IN = 'driveIn/loadMoreDriveIn',
   LOAD_MORE_DRIVE_IN_SUCCESS = 'driveIn/loadMoreDriveInSuccess',
   LOAD_MORE_DRIVE_IN_FAIL = 'driveIn/loadMoreDriveInFail',
+
+  // Drive Out
+  LOAD_DRIVE_OUT = 'driveOut/loadDriveOut',
+  LOAD_DRIVE_OUT_SUCCESS = 'driveOut/loadDriveOutSuccess',
+  LOAD_DRIVE_OUT_FAIL = 'driveOut/loadDriveOutFail',
 }

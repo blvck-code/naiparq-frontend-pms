@@ -27,6 +27,8 @@ export const environment = {
 
   // Billing Module URLS
   naiparqBillingList: naiparqBaseURL + 'bill/billings',
+  naiparqCheckout: naiparqBaseURL + 'bill/checkout',
+
   // Pricing Module URLS
 
   // Device Module URLS

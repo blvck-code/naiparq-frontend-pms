@@ -18,8 +18,8 @@
       <div *ngIf="currentStep === 'billing'" class="naiparq-checkout-bill">
         <div class="naiparq-checkout-bill__item amount">
           <h5>Parking Duration</h5>
-          <h2>KSH 50</h2>
-          <!--          <h2>KSH {{ driveOutDetails.total_amount }}</h2>-->
+          <!--          <h2>KSH 50</h2>-->
+          <h2>KSH {{ driveOutDetails.total_amount }}</h2>
           <p>Please pay when returning to your car to leave</p>
           <div class="circle left"></div>
           <div class="circle right"></div>
@@ -28,18 +28,18 @@
         <div class="naiparq-checkout-bill__item summary">
           <div class="summary-item">
             <h4>Parking Duration</h4>
-            <h4>01.19</h4>
-            <!--            <h4>{{ driveOutDetails.parking_duration }}</h4>-->
+            <!--            <h4>01.19</h4>-->
+            <h4>{{ driveOutDetails.parking_duration }}</h4>
           </div>
           <div class="summary-item">
             <h4>Time of entry</h4>
-            <h4>01/12/2023</h4>
-            <!--            <h4>{{ driveOutDetails.created_at | date : "short" }}</h4>-->
+            <!--            <h4>01/12/2023</h4>-->
+            <h4>{{ driveOutDetails.created_at | date : "short" }}</h4>
           </div>
           <div class="summary-item">
             <h4>Ticket Number</h4>
-            <h4>2023</h4>
-            <!--            <h4>{{ driveOutDetails.invoice_number | uppercase }}</h4>-->
+            <!--            <h4>2023</h4>-->
+            <h4>{{ driveOutDetails.invoice_number | uppercase }}</h4>
           </div>
 
           <div class="circle left"></div>
@@ -50,15 +50,15 @@
 
           <form class="payment-options">
             <div
-              (click)="handlePaymentMethod('mpesa')"
-              [class.active]="paymentMethod === 'mpesa'"
+              (click)="handlePaymentMethod('M-Pesa')"
+              [class.active]="paymentMethod === 'M-Pesa'"
               class="payment-item active"
             >
               <label class="payment-item-label" for="html">
                 <img src="assets/images/payment-mpesa.png" alt="MPESA" />
                 <h4>MPESA</h4>
               </label>
-              <div [class.active]="paymentMethod === 'mpesa'" class="input">
+              <div [class.active]="paymentMethod === 'M-Pesa'" class="input">
                 <span></span>
               </div>
               <input
@@ -107,11 +107,15 @@
           </div>
         </div>
       </div>
-      <div *ngIf="currentStep === 'mpesa'" class="naiparq-bill-payment">
+      <div *ngIf="currentStep === 'M-Pesa'" class="naiparq-bill-payment">
         <div class="payment-logo">
           <img src="assets/images/mpesa-logo.png" alt="MPESA" />
         </div>
-        <form class="naiparq-bill-form" action="">
+        <form
+          [formGroup]="payForm"
+          class="naiparq-bill-form"
+          (ngSubmit)="submitPayment()"
+        >
           <div class="naiparq-checkout-form-group">
             <label>Please enter your phone number</label>
             <div class="naiparq-checkout-form-input">
@@ -139,7 +143,11 @@
                   </clipPath>
                 </defs>
               </svg>
-              <input type="text" placeholder="0701000000" />
+              <input
+                formControlName="phone_number"
+                type="text"
+                placeholder="0701000000"
+              />
             </div>
           </div>
           <div class="naiparq-btn-group">
@@ -149,7 +157,12 @@
             >
               Cancel
             </button>
-            <button class="naiparq-btn naiparq-btn-white">Continue</button>
+            <button
+              [class.btn-loading]="submittingPayment"
+              class="naiparq-btn naiparq-btn-white"
+            >
+              <span class="btn-text">Continue</span>
+            </button>
           </div>
         </form>
       </div>

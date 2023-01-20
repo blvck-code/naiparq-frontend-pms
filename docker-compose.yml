@@ -1,11 +1,13 @@
-version: '3.8'
+version: '3'
 
 services:
-  naiparq_pms_frontend:
-    build: src
+  frontend_prod:
+    build: .
+    image: &pms_frontend_prod pms_frontend_prod
+    container_name: frontend_server_prod
     volumes:
-      - frontend_pms_volume:/var/www/html/:rw
+      - naiparq_web_portal:/var/www/html/
 
 volumes:
-  frontend_pms_volume:
+  naiparq_web_portal:
     external: true

@@ -26,6 +26,12 @@ $font-family: "Sk-Modernist";
   font-weight: 700;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  outline: 1px solid red !important;
+}
+
 html {
   &::-webkit-scrollbar {
     width: 5px;

@@ -46,4 +46,16 @@ export class DashService {
   getBillings(): Observable<BillingResponseModel> {
     return this.http.get<BillingResponseModel>(env.naiparqBillingList);
   }
+  paymentDriveOut(payload: {
+    payment_channel: string;
+    phone_number: string;
+    billId: string;
+  }): Observable<any> {
+    const content = {
+      payment_channel: payload.payment_channel,
+      phone_number: payload.phone_number,
+    };
+    console.log('Payload ==>>', content);
+    return this.http.put(env.naiparqCheckout + `/${payload.billId}/`, content);
+  }
 }

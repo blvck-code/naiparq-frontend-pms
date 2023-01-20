@@ -48,7 +48,7 @@ export class DriveOutComponent implements OnInit {
         this.submittingPlate = false;
         this.stepOne = false;
         this.stepTwo = true;
-        this.getDriveOutBill(response.id);
+        this.router.navigate([`drive-out/${response.id}`]);
       },
       error: (error: { message: string; status: number }) => {
         this.submittingPlate = false;
@@ -68,47 +68,5 @@ export class DriveOutComponent implements OnInit {
         console.log('Failed drive out ===>>>', error);
       },
     });
-  }
-
-  getDriveOutBill(driveOutId: string): void {
-    this.dashSrv.getBillings().subscribe({
-      next: (response) => {
-        console.log('Billing response ==>>', response);
-        const driveOut = response.results.find(
-          (driveOuts) => driveOuts.drive_out === driveOutId
-        );
-        console.log('Drive out details ==>>', driveOut);
-        if (driveOut) {
-          this.router.navigate([`checkout/${driveOut.drive_out}`]);
-        } else {
-          this.sharedSrv.showNotification('Billing error', 'error');
-        }
-      },
-      error: (err: any) => {
-        console.log('Get billing error ==>>', err);
-        this.stepTwo = false;
-        this.stepOne = true;
-      },
-    });
-  }
-
-  retrievedDriveOutDetails(driveOutId: string): any {
-    this.dashSrv.retrieveDriveOut(driveOutId).subscribe({
-      next: (response) => {
-        this.stepTwo = false;
-        this.stepThree = true;
-      },
-      error: (error: any) => {
-        console.log('Failed to retrieve details ===>>', error);
-        this.stepTwo = false;
-        this.stepOne = true;
-      },
-    });
-  }
-
-  handleCheckRadio(): void {
-    const input = this.radioInput.nativeElement;
-    input.click();
-    console.log(input);
   }
 }

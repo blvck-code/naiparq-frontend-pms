@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DashService } from '../../../dashboard/services/dash.service';
 import { SharedService } from '../../services/shared.service';
 import { BillingModel } from '../../../dashboard/models/billing.model';
@@ -25,6 +25,7 @@ export class BillingComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private dashSrv: DashService,
     private formBuilder: UntypedFormBuilder,
     private sharedSrv: SharedService
@@ -54,13 +55,15 @@ export class BillingComponent implements OnInit {
           this.driveOutDetails = driveOut;
           this.currentStep = 'billing';
         } else {
-          this.sharedSrv.showNotification('Billing error', 'error');
+          this.sharedSrv.showNotification('Error getting bill', 'error');
           this.loadingBills = false;
           this.currentStep = 'loading';
+          this.router.navigate(['/page-not-found']);
         }
       },
       error: (error: any) => {
         console.log('Get bill error ===>>', error);
+        this.sharedSrv.showNotification('Error getting bill', 'error');
       },
     });
   }
@@ -99,17 +102,19 @@ export class BillingComponent implements OnInit {
       }) => {
         this.submittingPayment = false;
         this.paymentStatus = 'processing';
-        if (this.paymentStatus === 'processing') {
-          this.sharedSrv.showNotification('Processing payment.', 'loading');
-          setInterval(() => {
-            this.getStatus();
-          }, 3000);
-        } else if (this.paymentStatus === 'completed') {
-          this.sharedSrv.showNotification('Payment received', 'success');
-          setTimeout(() => {
-            this.currentStep = 'complete';
-          }, 1000);
-        }
+        this.checkingStatus(this.driveOutDetails.id);
+        this.sharedSrv.showNotification('Processing payment.', 'loading');
+
+        // if (this.paymentStatus === 'processing') {
+        //   this.sharedSrv.showNotification('Processing payment.', 'loading');
+        //   console.log('Firing check status ==>>', this.paymentStatus);
+        //
+        // } else if (this.paymentStatus === 'completed') {
+        //   this.sharedSrv.showNotification('Payment received', 'success');
+        //   setTimeout(() => {
+        //     this.currentStep = 'complete';
+        //   }, 1000);
+        // }
       },
       error: (err) => {
         this.submittingPayment = false;
@@ -122,33 +127,65 @@ export class BillingComponent implements OnInit {
     });
   }
 
-  getStatus(): void {
+  checkingStatus(billId?: string) {
     if (this.paymentStatus === 'processing') {
-      this.dashSrv.getBillings().subscribe({
-        next: (response) => {
-          const driveOut = response.results.find(
-            (driveOuts) => driveOuts.drive_out === this.driveOutId
-          );
-          if (driveOut) {
-            console.log('Drive out details ==>>', driveOut);
-            this.paymentStatus = driveOut.status;
-          } else {
-            this.sharedSrv.showNotification('Billing error', 'error');
-            this.loadingBills = false;
-            this.currentStep = 'loading';
-          }
-        },
-        error: (error: any) => {
-          console.log('Get bill error ===>>', error);
-        },
-      });
+      console.log('Getting status ==>>', this.paymentStatus);
+      setInterval(() => {
+        console.log('Updated new status ===>>>', this.paymentStatus);
+      }, 4000);
     }
+
     setTimeout(() => {
       this.paymentStatus = 'completed';
-      this.sharedSrv.showNotification('Payment received', 'success');
-      setTimeout(() => {
-        this.currentStep = 'complete';
-      }, 1000);
-    }, 8000);
+      console.log('Updated new status to completed ====>>', this.paymentStatus);
+      this.sharedSrv.showNotification(
+        'Payments received successfully.',
+        'success'
+      );
+      this.currentStep = 'complete';
+    }, 30000);
+  }
+
+  getStatus(): void {
+    this.dashSrv.filterBill(this.driveOutDetails.id).subscribe({
+      next: (bill) => {
+        console.log('Logging ==>>', bill);
+        console.log('Checking status ==>>', this.paymentStatus);
+      },
+      error: (err) => {
+        console.log('Bill error ==>>', err);
+      },
+    });
+    setTimeout(() => {
+      this.paymentStatus = 'completed';
+      console.log('Updated status ==>>', this.paymentStatus);
+    }, 5000);
+    // if (this.paymentStatus === 'processing') {
+    //   this.dashSrv.getBillings().subscribe({
+    //     next: (response) => {
+    //       const driveOut = response.results.find(
+    //         (driveOuts) => driveOuts.drive_out === this.driveOutId
+    //       );
+    //       if (driveOut) {
+    //         console.log('Drive out details ==>>', driveOut);
+    //         this.paymentStatus = driveOut.status;
+    //       } else {
+    //         this.sharedSrv.showNotification('Billing error', 'error');
+    //         this.loadingBills = false;
+    //         this.currentStep = 'loading';
+    //       }
+    //     },
+    //     error: (error: any) => {
+    //       console.log('Get bill error ===>>', error);
+    //     },
+    //   });
+    // }
+    // setTimeout(() => {
+    //   this.paymentStatus = 'completed';
+    //   this.sharedSrv.showNotification('Payment received', 'success');
+    //   setTimeout(() => {
+    //     this.currentStep = 'complete';
+    //   }, 1000);
+    // }, 8000);
   }
 }

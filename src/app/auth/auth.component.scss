@@ -1,3 +1,5 @@
+@import "responsive";
+
 .naiparq-login {
   height: 100vh;
   width: 100%;
@@ -9,7 +11,7 @@
 
   .naiparq-login-wrap {
     width: 554px;
-    min-height: 559px;
+    max-height: 559px;
     background: #191919;
     border-radius: 10px;
     display: flex;
@@ -17,14 +19,27 @@
     justify-content: center;
     padding: 40px;
 
+    @include respond(tab-port) {
+      margin: 0 20px;
+      padding: 20px;
+    }
+
     .naiparq-logo {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 30px;
 
+      @include respond(tab-port) {
+        margin-bottom: 15px;
+      }
+
       img {
         width: 75px;
+
+        @include respond(tab-port) {
+          width: 50px;
+        }
       }
 
       h4 {
@@ -32,6 +47,10 @@
         font-size: 50px;
         margin-left: 10px;
         font-weight: 600;
+
+        @include respond(tab-port) {
+          font-size: 30px;
+        }
       }
     }
   }

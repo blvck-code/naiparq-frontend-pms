@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { DriveInResponseModel } from '../models/driveIn.model';
 import { SpaceModelResponse } from '../models/spaces.model';
 import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
-import { BillingResponseModel } from '../models/billing.model';
+import { BillingModel, BillingResponseModel } from '../models/billing.model';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +46,10 @@ export class DashService {
   getBillings(): Observable<BillingResponseModel> {
     return this.http.get<BillingResponseModel>(env.naiparqBillingList);
   }
+  filterBill(billId: string): Observable<BillingModel> {
+    return this.http.get<BillingModel>(`${env.naiparqBillingList}/${billId}`);
+  }
+
   paymentDriveOut(payload: {
     payment_channel: string;
     phone_number: string;

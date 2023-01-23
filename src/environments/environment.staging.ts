@@ -1,7 +1,7 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const baseURL: string = 'https://staging.naiparq.co.ke';
+const baseURL: string = 'https://staging.naiparq.co.ke:444';
 const version: string = '/api/v2/';
 const naiparqBaseURL: string = baseURL + version;
 // const naiparqBaseURL = 'https://192.168.0.61:444z/api/v1/';

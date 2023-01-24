@@ -3,6 +3,7 @@ import { LoginResponseModel } from '../model/login.model';
 import { AuthState, initialState } from './auth.reducer';
 import { RegisterModel, RegisterResponseModel } from '../model/register.model';
 import { ProfileResponseModel } from '../model/profile.model';
+import { TokenModel } from '../model/user.model';
 
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
@@ -224,6 +225,34 @@ export class LoadProfileFail implements ActionExecutable<AuthState> {
   }
 }
 
+// Refresh token
+export class RefreshToken implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.REFRESH_TOKEN;
+  constructor(public payload: { refresh: string }) {}
+
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+    };
+  }
+}
+export class RefreshTokenSuccess implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.REFRESH_TOKEN;
+  constructor(public payload: TokenModel) {}
+
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+      userInfo: {
+        ...state.userInfo,
+        // token: {
+        //   access: this.payload.access,
+        //   refresh: this.payload.refresh
+        // }
+      },
+    };
+  }
+}
 export type AuthActions =
   // Log In
   | LogIn

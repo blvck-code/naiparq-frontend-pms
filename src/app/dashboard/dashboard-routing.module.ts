@@ -18,6 +18,11 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 const dashRoutes: Routes = [
   {
     path: '',
+    redirectTo: 'premises',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: DashboardComponent,
     canActivate: [AuthGuard], // Todo Add auth guard here AuthGuard
     children: [

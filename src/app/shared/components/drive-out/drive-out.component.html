@@ -42,9 +42,10 @@
                 />
               </svg>
               <input
-                formControlName="license_plate"
                 type="text"
-                placeholder="KAA 000A"
+                placeholder="KAA000A"
+                (keyup)="handleNum($event)"
+                [value]="numberPlate.toLocaleUpperCase()"
               />
             </div>
           </div>

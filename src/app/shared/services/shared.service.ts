@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HotToastService} from "@ngneat/hot-toast";
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
-
-  constructor(
-    private toast: HotToastService
-  ) { }
+  constructor(private toast: HotToastService) {}
 
   showNotification(message: string, type?: string): void {
     if (type === 'success') {
@@ -18,11 +15,13 @@ export class SharedService {
     } else if (type === 'error') {
       this.toast.error(message);
     } else if (type === 'loading') {
-      this.toast.loading(message)
-    } else if(type === 'info') {
-      this.toast.info(message)
+      this.toast.loading(message, {
+        duration: 3000,
+      });
+    } else if (type === 'info') {
+      this.toast.info(message);
     } else {
-      this.toast.show(message)
+      this.toast.show(message);
     }
   }
 }

@@ -6,8 +6,8 @@ services:
     image: &pms_frontend_prod pms_frontend_prod
     container_name: frontend_server_prod
     volumes:
-      - naiparq_web_portal:/var/www/html/
+      - pms_web_portal:/var/www/html/
 
 volumes:
-  naiparq_web_portal:
+  pms_web_portal:
     external: true

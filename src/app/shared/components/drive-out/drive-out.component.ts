@@ -15,10 +15,7 @@ export class DriveOutComponent implements OnInit {
   @ViewChild('radioInput') 'radioInput': ElementRef;
   stepOne: boolean = true;
   stepTwo: boolean = false;
-  stepThree: boolean = false;
-  stepFour: boolean = false;
-  stepFive: boolean = false;
-  driveOutDetails!: BillingModel;
+  numberPlate: string = '';
 
   submittingPlate: boolean = false;
   numberPlateForm = this.formBuilder.group({
@@ -34,6 +31,13 @@ export class DriveOutComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  handleNum(event: any): void {
+    this.numberPlate = event.target.value.replace(/\s+/g, '');
+    this.numberPlateForm.patchValue({
+      license_plate: this.numberPlate.toUpperCase(),
+    });
+  }
+
   handleSubmitPlate(): void {
     if (!this.numberPlateForm.valid) {
       this.sharedSrv.showNotification(
@@ -48,7 +52,7 @@ export class DriveOutComponent implements OnInit {
         this.submittingPlate = false;
         this.stepOne = false;
         this.stepTwo = true;
-        this.router.navigate([`drive-out/${response.id}`]);
+        this.router.navigate([`checkout/${response.id}`]);
       },
       error: (error: { message: string; status: number }) => {
         this.submittingPlate = false;

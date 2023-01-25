@@ -105,6 +105,7 @@ export class BillingComponent implements OnInit {
       }) => {
         this.submittingPayment = false;
         this.paymentStatus = 'processing';
+        console.log('Status on submit ==>>', this.paymentStatus);
         this.checkingStatus(this.driveOutDetails.id);
         this.sharedSrv.showNotification('Processing payment.', 'loading');
       },
@@ -120,59 +121,104 @@ export class BillingComponent implements OnInit {
   }
 
   checkingStatus(billId: string) {
-    if (this.paymentStatus === 'processing') {
-      setInterval(() => {
-        if (this.paymentStatus === 'completed' && this.billPaid) {
-          clearInterval();
-          this.sharedSrv.showNotification(
-            'Payments received successfully.',
-            'success'
-          );
-          this.currentStep = 'complete';
-          return;
-        } else if (this.paymentStatus === 'failed') {
-          this.sharedSrv.showNotification(
-            'Failed to confirm your payment.',
-            'error'
-          );
-          clearInterval();
-          // Todo redirect to failed page
-          return;
-        }
-        if (this.paymentStatus !== 'processing') {
-          clearInterval();
-          return;
-        }
+    const interval = setInterval(() => {
+      if (this.paymentStatus === 'processing') {
+        console.log('Status processing ==>>', this.paymentStatus);
+        this.sharedSrv.showNotification('Processing payment.', 'loading');
+        // get new status
         this.dashSrv.filterBill(billId).subscribe({
           next: (response) => {
             this.billPaid = response.is_paid;
             this.paymentStatus = response.status;
             this.billAmount = response.total_amount;
-            console.log('Bill response ===>>>', response);
-            clearInterval();
             return;
           },
           error: (err) => {
             console.log('Could not get payment status ==>>', err);
             // todo redirect to error page
-            clearInterval();
+            this.sharedSrv.showNotification('Payments failed.', 'error');
+            clearInterval(interval);
             return;
           },
         });
-      }, 4000);
-    } else if (this.paymentStatus === 'failed') {
-      // Todo redirect to error response
-      this.sharedSrv.showNotification(
-        'Failed to confirm your payment.',
-        'error'
-      );
-    } else if (this.paymentStatus === 'completed' && this.billPaid) {
-      // Todo is completed
-      this.sharedSrv.showNotification(
-        'Payments received successfully.',
-        'success'
-      );
-      this.currentStep = 'complete';
-    }
+      } else if (this.paymentStatus === 'completed' && this.billPaid) {
+        // redirect
+        this.sharedSrv.showNotification(
+          'Payments received successfully.',
+          'success'
+        );
+        console.log('Status completed ==>>', this.paymentStatus);
+        this.currentStep = 'complete';
+        clearInterval(interval);
+        return;
+      } else if (this.paymentStatus === 'failed') {
+        // redirect to error message
+        console.log('Status failed ==>>', this.paymentStatus);
+        this.sharedSrv.showNotification('Payments failed.', 'error');
+        clearInterval(interval);
+        this.currentStep = 'failed';
+        return;
+      } else {
+        // unknown error
+        clearInterval(interval);
+        return;
+      }
+    }, 3000);
+
+    // if (this.paymentStatus === 'processing') {
+    //   setInterval(() => {
+    //     if (this.paymentStatus === 'completed' && this.billPaid) {
+    //       clearInterval();
+    //       this.sharedSrv.showNotification(
+    //         'Payments received successfully.',
+    //         'success'
+    //       );
+    //       this.currentStep = 'complete';
+    //       return;
+    //     } else if (this.paymentStatus === 'failed') {
+    //       this.sharedSrv.showNotification(
+    //         'Failed to confirm your payment.',
+    //         'error'
+    //       );
+    //       clearInterval();
+    //       // Todo redirect to failed page
+    //       // Todo bug when user enters wrong mpesa pin
+    //       return;
+    //     }
+    //     if (this.paymentStatus !== 'processing') {
+    //       clearInterval();
+    //       return;
+    //     }
+    //     this.dashSrv.filterBill(billId).subscribe({
+    //       next: (response) => {
+    //         this.billPaid = response.is_paid;
+    //         this.paymentStatus = response.status;
+    //         this.billAmount = response.total_amount;
+    //         console.log('Bill response ===>>>', response);
+    //         clearInterval();
+    //         return;
+    //       },
+    //       error: (err) => {
+    //         console.log('Could not get payment status ==>>', err);
+    //         // todo redirect to error page
+    //         clearInterval();
+    //         return;
+    //       },
+    //     });
+    //   }, 4000);
+    // } else if (this.paymentStatus === 'failed') {
+    //   // Todo redirect to error response
+    //   this.sharedSrv.showNotification(
+    //     'Failed to confirm your payment.',
+    //     'error'
+    //   );
+    // } else if (this.paymentStatus === 'completed' && this.billPaid) {
+    //   // Todo is completed
+    //   this.sharedSrv.showNotification(
+    //     'Payments received successfully.',
+    //     'success'
+    //   );
+    //   this.currentStep = 'complete';
+    // }
   }
 }

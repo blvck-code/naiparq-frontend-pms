@@ -1,4 +1,4 @@
-<div class="naiparq-space container naiparq-scrollbar">
+<div class="naiparq-space naiparq-scrollbar">
   <div class="naiparq-space-container p-2 justify-content-between">
     <div class="naiparq-space-header d-flex justify-content-end">
       <div class="cash-table-btns d-flex">
@@ -37,7 +37,7 @@
         <div class="naiparq-space-item" *ngFor="let space of spaces$ | async">
           <!--          Todo add image URL for the space -->
           <img src="assets/images/naiparq-space.jpg" alt="" />
-          <h5 class="naiparq-space-title">
+          <h5 class="naiparq-space-title text-[#fff]">
             {{ space.title | truncate : [20] }}
           </h5>
         </div>

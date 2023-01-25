@@ -5,7 +5,6 @@ import { InlineLoaderComponent } from './components/inline-loader/inline-loader.
 import { DriveOutComponent } from './components/drive-out/drive-out.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
 import { BillingComponent } from './components/billing/billing.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 

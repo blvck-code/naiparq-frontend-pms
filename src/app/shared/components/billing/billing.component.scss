@@ -343,6 +343,10 @@
     position: relative;
     padding: 15px 0;
 
+    &.failed {
+      border-bottom: none;
+    }
+
     .circle {
       position: absolute;
       bottom: -12px;

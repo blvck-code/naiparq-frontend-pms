@@ -1,0 +1,16 @@
+.naiparq-landing {
+  min-height: 150vh;
+  overflow-y: scroll;
+  background: linear-gradient(45deg, #fbce33, #fff, #4bc1f1);
+
+  &__header {
+    height: 100px;
+    background: #fff;
+  }
+
+  &__footer {
+    height: 530px;
+    bottom: 0;
+    background: #000;
+  }
+}

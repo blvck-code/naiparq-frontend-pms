@@ -41,7 +41,7 @@
         <div class="naiparq-space-item" *ngFor="let space of spaces$ | async">
           <!--          Todo add image URL for the space -->
           <img src="assets/images/naiparq-space.jpg" alt="" />
-          <h5 class="naiparq-space-title text-[#fff]">
+          <h5 class="naiparq-space-title">
             {{ space.title | truncate : [20] }}
           </h5>
         </div>
@@ -49,19 +49,20 @@
 
       <!--  Loading Skeleton -->
       <div
+        *ngIf="spacesLoading$ | async"
         class="grid mobile:grid-cols-1 sm:grid-cols-1 tabletLand:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 desktopLand:grid-cols-5 bigScreen:grid-cols-5 gap-4 py-2 naiparq-scrollbar"
       >
         <div class="naiparq-space-item" *ngFor="let item of numSeq(5)">
           <ngx-skeleton-loader
             [theme]="{
-              'height.px': 150,
+              'height.px': 200,
               'borderRadius.px': 10
             }"
             animation="progress"
           ></ngx-skeleton-loader>
           <ngx-skeleton-loader
             [theme]="{
-              'height.px': 215,
+              'height.px': 15,
               'borderRadius.px': 10
             }"
             animation="progress"

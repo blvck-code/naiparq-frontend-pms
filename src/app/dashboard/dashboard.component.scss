@@ -319,6 +319,7 @@
 .dash-content-outlet {
   height: calc(100vh - 96px); // 100vh minus height on navbar
   overflow: hidden;
+  overflow-y: scroll;
   float: left;
   width: 100%;
   padding: 20px 0;

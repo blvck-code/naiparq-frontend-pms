@@ -6,6 +6,7 @@ import { DriveInResponseModel } from '../models/driveIn.model';
 import { SpaceModelResponse } from '../models/spaces.model';
 import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
 import { BillingModel, BillingResponseModel } from '../models/billing.model';
+import { DevicesResponseModel } from '../models/devices.model';
 
 @Injectable({
   providedIn: 'root',
@@ -61,5 +62,10 @@ export class DashService {
     };
     console.log('Payload ==>>', content);
     return this.http.put(env.naiparqCheckout + `/${payload.billId}/`, content);
+  }
+
+  // Devices/Assets
+  loadDevices(): Observable<DevicesResponseModel> {
+    return this.http.get<DevicesResponseModel>(env.naiparqDevicesList);
   }
 }

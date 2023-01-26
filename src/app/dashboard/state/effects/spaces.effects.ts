@@ -9,11 +9,14 @@ import { SharedService } from '../../../shared/services/shared.service';
 import * as dashActions from '../actions/action.types';
 import * as spaceActions from '../actions/spaces.actions';
 import * as driveInActions from '../actions/driveIn.actions';
+import * as devicesActions from '../actions/assets.actions';
 
 import { SpaceModelResponse } from '../../models/spaces.model';
 import { LoadMoreDriveIn } from '../actions/driveIn.actions';
 import { DriveInResponseModel } from '../../models/driveIn.model';
 import { DriveOutResponseModel } from '../../models/driveOut.model';
+import { LoadDevicesSuccess } from '../actions/assets.actions';
+import { DevicesResponseModel } from '../../models/devices.model';
 
 @Injectable()
 export class SpacesEffects {
@@ -102,4 +105,25 @@ export class SpacesEffects {
       )
     )
   );
+
+  // Assets
+  loadDevices$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<devicesActions.LoadDevices>(
+        dashActions.DashActionTypes.LOAD_DEVICES
+      ),
+      switchMap((action: devicesActions.LoadDevices) =>
+        this.dashSrv.loadDevices().pipe(
+          map(
+            (devices: DevicesResponseModel) =>
+              new devicesActions.LoadDevicesSuccess(devices)
+          ),
+          //@ts-ignore
+          catchError((err) => {
+            console.log('Failed getting assets ==>>', err);
+          })
+        )
+      )
+    );
+  });
 }

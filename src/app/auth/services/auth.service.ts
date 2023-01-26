@@ -44,7 +44,8 @@ export class AuthService {
     );
   }
 
-  refreshToken(): Observable<any> {
+  refreshToken(refreshToken: string): Observable<any> {
+    console.log('Refresh topic ==>>', refreshToken);
     return this.http.post('', '');
   }
 

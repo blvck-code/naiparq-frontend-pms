@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { BehaviorSubject, filter, Observable, switchMap, take } from 'rxjs';
 import { StorageService } from '../shared/services/storage.service';
-
+import { environment as env } from '../../environments/environment';
 // NgRx
 import { Store } from '@ngrx/store';
 import { TokenModel } from '../auth/model/user.model';
@@ -49,7 +49,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
   validateURL(request: any): boolean {
     return (
-      request.url.includes('/api/v1/accounts/login') ||
+      request.url.includes(env.naiparqLogin) ||
+      request.url.includes(env.naiparqCheckout) ||
       request.url.includes('/api/v1/accounts/register') ||
       request.url.includes('/api/v1/accounts/password/reset/')
     );
@@ -86,9 +87,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private isExpired(expTime: string): boolean {
     let currentTimeInMilli = new Date().getTime();
+    console.warn('Token Expired! ===>>', currentTimeInMilli);
     if (+expTime < currentTimeInMilli) {
       // Todo send token generator
-      console.warn('Token Expired!');
+      console.warn('Token Expired! ===>>', currentTimeInMilli);
       return true;
     }
     return false;
@@ -127,9 +129,11 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   isRefreshTokenProgress(accessToken: string, expTime: string) {
+    console.log('test ===>>', expTime);
     if (this.isExpired(expTime)) {
       // Set the refreshTokenSubject to null so that subsequent API calls will wait until the new token has been retrieved
       this.refreshTokenSubject.next(null);
+      console.log('12221');
       //' Todo Add refresh token
       // this.store.dispatch(new authActions.RefreshToken(this.token.refresh))
       return false;

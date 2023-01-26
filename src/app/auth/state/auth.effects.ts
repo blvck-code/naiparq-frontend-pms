@@ -52,6 +52,23 @@ export class AuthEffects {
     );
   });
 
+  refreshToken$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<authActions.RefreshToken>(
+        authActions.AuthActionsTypes.REFRESH_TOKEN
+      ),
+      map((action: authActions.RefreshToken) => action.payload),
+      switchMap((refreshToken: string) => {
+        return this.authSrv.refreshToken(refreshToken).pipe(
+          map((token) => {
+            // set local storage with token
+            return new authActions.RefreshTokenSuccess(token);
+          })
+        );
+      })
+    );
+  });
+
   loginRedirect$: Observable<Action> = createEffect(
     () => {
       return this.actions$.pipe(
@@ -130,8 +147,4 @@ export class AuthEffects {
       })
     );
   });
-
-  // refreshToken$: Observable<Action> = createEffect(() => {
-  //   return this.actions$.pipe(ofType < authActions);
-  // });
 }

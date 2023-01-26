@@ -228,7 +228,9 @@ export class LoadProfileFail implements ActionExecutable<AuthState> {
 // Refresh token
 export class RefreshToken implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.REFRESH_TOKEN;
-  constructor(public payload: { refresh: string }) {}
+  constructor(public payload: any) {
+    console.log('Token ===>>', payload);
+  }
 
   execute(state: AuthState): AuthState {
     return {

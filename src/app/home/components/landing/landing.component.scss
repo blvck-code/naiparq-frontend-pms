@@ -1,17 +1,22 @@
-.naiparq-landing,
-.naiparq-how-it-works,
-.naiparq-motorist,
-.naiparq-operator {
-  height: 900px;
-  border: 1px solid red;
-  //background: linear-gradient(45deg, #fbce33, #fff, #4bc1f1);
-}
 .naiparq-home {
-  &__landing {
+  &__how-it-works,
+  &__motorist {
     height: 900px;
     border: 1px solid red;
     position: relative;
+  }
 
+  &__landing {
+    display: flex;
+    position: relative;
+
+    &-content {
+      .landing-intro {
+        h1 {
+          font-weight: 700;
+        }
+      }
+    }
     .bg-circle {
       &.blue {
         top: -120px;
@@ -37,9 +42,6 @@
     }
   }
 
-  &__home-it-works,
-  &__motorist,
-  &__operator,
   &__blog,
   &__apps {
     height: 900px;
@@ -48,30 +50,6 @@
 
   &__operator {
     position: relative;
-
-    .bg-circle {
-      border: 1px solid blue;
-      &.blue {
-        width: 895px;
-        height: 895px;
-        left: 0;
-        top: 50%;
-        background: #4bc1f1;
-        mix-blend-mode: normal;
-        filter: blur(200px);
-      }
-
-      &.yellow {
-        width: 590px;
-        height: 590px;
-        left: 1015px;
-        top: 2913px;
-
-        background: #fbce33;
-        mix-blend-mode: normal;
-        filter: blur(150px);
-      }
-    }
   }
 }
 

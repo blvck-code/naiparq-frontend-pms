@@ -52,7 +52,7 @@ export class DriveOutComponent implements OnInit {
         this.submittingPlate = false;
         this.stepOne = false;
         this.stepTwo = true;
-        this.router.navigate([`checkout/${response.id}`]);
+        this.router.navigate([`drive-out/${response.id}`]);
       },
       error: (error: { message: string; status: number }) => {
         this.submittingPlate = false;

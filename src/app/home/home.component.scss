@@ -1,17 +1,19 @@
 .naiparq-landing {
-  overflow-y: scroll;
-  height: 100%;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
+  height: auto;
 
   &__header {
     height: 100px;
     background: #fff;
+    border: 1px solid red;
     flex: 1;
   }
 
-  &__content {
-    flex: auto;
+  .naiparq-landing,
+  .naiparq-how-it-works {
+    height: 900px;
     border: 1px solid blue;
   }
 

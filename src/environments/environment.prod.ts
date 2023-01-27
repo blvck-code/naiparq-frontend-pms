@@ -32,6 +32,7 @@ export const environment = {
   // Pricing Module URLS
 
   // Device Module URLS
+  naiparqDevicesList: naiparqBaseURL + 'asset/device',
 };
 
 /*

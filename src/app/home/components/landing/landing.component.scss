@@ -1,14 +1,13 @@
 .naiparq-home {
-  &__how-it-works,
   &__motorist {
     height: 900px;
     border: 1px solid red;
     position: relative;
   }
 
-  &__landing {
-    display: flex;
-    position: relative;
+  &__landing,
+  &__how-it-works {
+    border: 1px solid red;
 
     &-content {
       .landing-intro {

@@ -1,20 +1,14 @@
-.naiparq-landing {
+.naiparq-home {
   overflow: scroll;
   display: flex;
   flex-direction: column;
-  height: auto;
+  background: #fef9e8;
 
   &__header {
     height: 100px;
     background: #fff;
     border: 1px solid red;
-    flex: 1;
-  }
-
-  .naiparq-landing,
-  .naiparq-how-it-works {
-    height: 900px;
-    border: 1px solid blue;
+    z-index: 2;
   }
 
   &__footer {

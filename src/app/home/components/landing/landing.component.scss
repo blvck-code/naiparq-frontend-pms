@@ -3,6 +3,78 @@
 .naiparq-motorist,
 .naiparq-operator {
   height: 900px;
-  //border: 1px solid red;
-  background: linear-gradient(45deg, #fbce33, #fff, #4bc1f1);
+  border: 1px solid red;
+  //background: linear-gradient(45deg, #fbce33, #fff, #4bc1f1);
+}
+.naiparq-home {
+  &__landing {
+    height: 900px;
+    border: 1px solid red;
+    position: relative;
+
+    .bg-circle {
+      &.blue {
+        top: -120px;
+        right: -120px;
+        height: 483px;
+        width: 483px;
+        background: #4bc1f1;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+
+      &.yellow {
+        position: absolute;
+        width: 895px;
+        height: 895px;
+        left: -635px;
+        top: 268px;
+
+        background: #fbce33;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+    }
+  }
+
+  &__home-it-works,
+  &__motorist,
+  &__operator,
+  &__blog,
+  &__apps {
+    height: 900px;
+    border: 1px solid red;
+  }
+
+  &__operator {
+    position: relative;
+
+    .bg-circle {
+      border: 1px solid blue;
+      &.blue {
+        width: 895px;
+        height: 895px;
+        left: 0;
+        top: 50%;
+        background: #4bc1f1;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+
+      &.yellow {
+        width: 590px;
+        height: 590px;
+        left: 1015px;
+        top: 2913px;
+
+        background: #fbce33;
+        mix-blend-mode: normal;
+        filter: blur(150px);
+      }
+    }
+  }
+}
+
+.bg-circle {
+  position: absolute;
 }

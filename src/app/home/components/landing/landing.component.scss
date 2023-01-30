@@ -1,5 +1,5 @@
 .naiparq-home {
-  &__motorist {
+  &__operator {
     height: 900px;
     border: 1px solid red;
     position: relative;
@@ -41,6 +41,34 @@
     }
   }
 
+  &__operator {
+    position: relative;
+
+    .bg-circle {
+      &.blue {
+        top: -298px;
+        left: -596px;
+        height: 895px;
+        width: 895px;
+        background: #4bc1f1;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+
+      &.yellow {
+        position: absolute;
+        width: 590px;
+        height: 590px;
+        right: -197px;
+        bottom: 0;
+
+        background: #fbce33;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+    }
+  }
+
   &__blog,
   &__apps {
     height: 900px;
@@ -54,4 +82,5 @@
 
 .bg-circle {
   position: absolute;
+  z-index: 0;
 }

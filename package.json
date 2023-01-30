@@ -27,6 +27,7 @@
     "@ngrx/store-devtools": "^14.3.2",
     "bootstrap": "^5.2.3",
     "dayjs": "^1.11.6",
+    "gsap": "^3.11.4",
     "http-server": "^14.1.1",
     "igniteui-angular-charts": "^15.0.0",
     "igniteui-angular-core": "^15.0.0",

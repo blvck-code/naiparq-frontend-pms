@@ -1,0 +1,85 @@
+$appBg: "~src/assets/images/app-bg.png";
+
+.naiparq-home {
+  &__operator {
+    position: relative;
+  }
+
+  &__landing,
+  &__how-it-works {
+    &-content {
+      .landing-intro {
+        h1 {
+          font-weight: 700;
+        }
+      }
+    }
+    .bg-circle {
+      &.blue {
+        top: -120px;
+        right: -120px;
+        height: 483px;
+        width: 483px;
+        background: #4bc1f1;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+
+      &.yellow {
+        position: absolute;
+        width: 895px;
+        height: 895px;
+        left: -635px;
+        top: 268px;
+
+        background: #fbce33;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+    }
+  }
+
+  &__operator {
+    position: relative;
+
+    .bg-circle {
+      &.blue {
+        top: -298px;
+        left: -596px;
+        height: 895px;
+        width: 895px;
+        background: #4bc1f1;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+
+      &.yellow {
+        position: absolute;
+        width: 590px;
+        height: 590px;
+        right: -197px;
+        bottom: -90px;
+
+        background: #fbce33;
+        mix-blend-mode: normal;
+        filter: blur(200px);
+      }
+    }
+  }
+
+  &__operator {
+    position: relative;
+  }
+}
+
+.bg-circle {
+  position: absolute;
+  z-index: 0;
+}
+
+.naiparq-home__apps {
+  height: 495px;
+  background-image: url(#{$appBg});
+  background-position: center;
+  background-size: cover;
+}

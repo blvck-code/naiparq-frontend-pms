@@ -1,13 +1,12 @@
+$appBg: "~src/assets/images/app-bg.png";
+
 .naiparq-home {
   &__operator {
-    border: 1px solid red;
     position: relative;
   }
 
   &__landing,
   &__how-it-works {
-    border: 1px solid red;
-
     &-content {
       .landing-intro {
         h1 {
@@ -59,19 +58,13 @@
         width: 590px;
         height: 590px;
         right: -197px;
-        bottom: -190px;
+        bottom: -90px;
 
         background: #fbce33;
         mix-blend-mode: normal;
         filter: blur(200px);
       }
     }
-  }
-
-  &__blog,
-  &__apps {
-    height: 900px;
-    border: 1px solid red;
   }
 
   &__operator {
@@ -82,4 +75,11 @@
 .bg-circle {
   position: absolute;
   z-index: 0;
+}
+
+.naiparq-home__apps {
+  height: 495px;
+  background-image: url(#{$appBg});
+  background-position: center;
+  background-size: cover;
 }

@@ -1,0 +1,42 @@
+.naiparq-about-intro {
+  position: relative;
+
+  .bg-circle {
+    &.blue {
+      top: -150px;
+      right: -100px;
+      height: 415px;
+      width: 415px;
+      background: #4bc1f1;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+
+    &.yellow {
+      position: absolute;
+      width: 895px;
+      height: 895px;
+      left: -635px;
+      top: 268px;
+
+      background: #fbce33;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+
+    &.blue-2 {
+      bottom: -200px;
+      right: -90px;
+      height: 415px;
+      width: 415px;
+      background: #4bc1f1;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+  }
+}
+
+.bg-circle {
+  position: absolute;
+  z-index: 0;
+}

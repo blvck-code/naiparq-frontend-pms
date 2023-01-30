@@ -1,6 +1,5 @@
 .naiparq-home {
   &__operator {
-    height: 900px;
     border: 1px solid red;
     position: relative;
   }
@@ -60,7 +59,7 @@
         width: 590px;
         height: 590px;
         right: -197px;
-        bottom: 0;
+        bottom: -190px;
 
         background: #fbce33;
         mix-blend-mode: normal;

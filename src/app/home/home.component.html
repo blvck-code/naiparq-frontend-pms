@@ -4,6 +4,7 @@
       class="naiparq-home__header-wrap flex flex-row items-center h-[100%] py-3 max-w-[1200px] mx-auto"
     >
       <a
+        #logo
         [routerLink]="['/']"
         class="naiparq-home__header-logo basis-1/4 flex items-center"
       >
@@ -13,8 +14,12 @@
           alt="NaiParq"
         />
       </a>
+
       <div class="naiparq-home__header-links flex basis-3/4">
-        <div class="nav-links flex justify-evenly basis-2/3 items-center">
+        <div
+          #menuSecond
+          class="nav-links flex justify-evenly basis-2/3 items-center"
+        >
           <a
             class="no-underline text-[16px] text-[#000] hover:text-[#000]"
             [routerLink]="['/']"
@@ -31,7 +36,10 @@
             >Contact Us</a
           >
         </div>
-        <div class="auth-links flex justify-end items-center basis-1/3 gap-3">
+        <div
+          #menu
+          class="auth-links flex justify-end items-center basis-1/3 gap-3"
+        >
           <a
             class="no-underline text-[16px] font-[700] text-[#000] hover:text-[#000]"
             [routerLink]="['/auth']"

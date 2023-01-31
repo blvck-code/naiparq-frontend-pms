@@ -12,7 +12,7 @@ export const environment = {
   production: false,
 
   // Accounts Module URLS
-  naiparqLogin: naiparqBaseURL + 'accounts/login/',
+  naiparqLogin: naiparqBaseURL + 'accounts/log',
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
   naiparqLogout: naiparqBaseURL + 'accounts/logout',
   naiparqProfile: naiparqBaseURL + 'accounts/users/',

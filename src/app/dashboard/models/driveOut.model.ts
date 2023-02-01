@@ -11,4 +11,5 @@ export interface DriveOutModel {
   check_out_time: string;
   drive_in: string;
   created_at: string;
+  message?: string;
 }

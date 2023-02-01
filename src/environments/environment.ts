@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 // const baseURL: string = 'https://naiparq.avl.local:444';
-const baseURL: string = 'https://staging.naiparq.co.ke:444';
+const baseURL: string = 'http://192.168.0.124:8000';
 const version: string = '/api/v2/';
 const naiparqBaseURL: string = baseURL + version;
 // const naiparqBaseURL = 'https://192.168.0.61:444z/api/v1/';
@@ -12,7 +12,7 @@ export const environment = {
   production: false,
 
   // Accounts Module URLS
-  naiparqLogin: naiparqBaseURL + 'accounts/log',
+  naiparqLogin: naiparqBaseURL + 'accounts/login/',
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
   naiparqLogout: naiparqBaseURL + 'accounts/logout',
   naiparqProfile: naiparqBaseURL + 'accounts/users/',

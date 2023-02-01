@@ -13,7 +13,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 export class BillingComponent implements OnInit {
   billId: string = '';
   loadingBills: boolean = true;
-  driveOutDetails!: BillingModel;
+  billDetails!: BillingModel;
   paymentMethod: string = '';
   currentStep: string = 'loading';
   submittingPayment: boolean = false;
@@ -49,7 +49,7 @@ export class BillingComponent implements OnInit {
     this.dashSrv.filterBill(this.billId).subscribe({
       next: (content) => {
         this.loadingBills = false;
-        this.driveOutDetails = content.results[0];
+        this.billDetails = content.results[0];
         this.currentStep = 'billing';
         console.log('Bill content ===>>', content);
       },
@@ -62,31 +62,31 @@ export class BillingComponent implements OnInit {
     });
   }
 
-  getBillsDetails(): void {
-    this.dashSrv.getBillings().subscribe({
-      next: (response) => {
-        console.log('Bills ==>> ', response);
-        const driveOut = response.results.find(
-          (driveOuts) => driveOuts.drive_out === this.billId
-        );
-        console.log('Drive out details ==>>', driveOut);
-        if (driveOut) {
-          this.loadingBills = false;
-          this.driveOutDetails = driveOut;
-          this.currentStep = 'billing';
-        } else {
-          this.sharedSrv.showNotification('Error getting bill', 'error');
-          this.loadingBills = false;
-          this.currentStep = 'loading';
-          // this.router.navigate(['/page-not-found']);
-        }
-      },
-      error: (error: any) => {
-        console.log('Get bill error ===>>', error);
-        this.sharedSrv.showNotification('Error getting bill', 'error');
-      },
-    });
-  }
+  // getBillsDetails(): void {
+  //   this.dashSrv.getBillings().subscribe({
+  //     next: (response) => {
+  //       console.log('Bills ==>> ', response);
+  //       const driveOut = response.results.find(
+  //         (driveOuts) => driveOuts.drive_out === this.billId
+  //       );
+  //       console.log('Drive out details ==>>', driveOut);
+  //       if (driveOut) {
+  //         this.loadingBills = false;
+  //         this.driveOutDetails = driveOut;
+  //         this.currentStep = 'billing';
+  //       } else {
+  //         this.sharedSrv.showNotification('Error getting bill', 'error');
+  //         this.loadingBills = false;
+  //         this.currentStep = 'loading';
+  //         // this.router.navigate(['/page-not-found']);
+  //       }
+  //     },
+  //     error: (error: any) => {
+  //       console.log('Get bill error ===>>', error);
+  //       this.sharedSrv.showNotification('Error getting bill', 'error');
+  //     },
+  //   });
+  // }
 
   handlePaymentMethod(payOption: any): void {
     this.paymentMethod = payOption;
@@ -111,7 +111,7 @@ export class BillingComponent implements OnInit {
 
     const payload = {
       ...this.payForm.value,
-      billId: this.driveOutDetails.id,
+      billId: this.billDetails.id,
     };
 
     this.dashSrv.paymentDriveOut(payload).subscribe({
@@ -123,7 +123,8 @@ export class BillingComponent implements OnInit {
         this.submittingPayment = false;
         this.paymentStatus = 'processing';
         console.log('Status on submit ==>>', this.paymentStatus);
-        this.checkingStatus(this.driveOutDetails.id);
+        console.log('Bill content ==>>', this.billDetails);
+        this.checkingStatus(this.billId);
         this.sharedSrv.showNotification('Processing payment.', 'loading');
       },
       error: (err) => {

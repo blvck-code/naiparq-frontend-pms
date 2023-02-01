@@ -19,10 +19,16 @@ export class HomeComponent implements OnInit {
   @ViewChild('menu', { static: true })
   'menu': ElementRef<HTMLDivElement>;
 
+  currentYear: any;
   constructor() {}
+
+  getDate(): void {
+    this.currentYear = new Date().getFullYear();
+  }
 
   ngOnInit(): void {
     // this.initAnimation();
+    this.getDate();
   }
 
   initAnimation(): void {

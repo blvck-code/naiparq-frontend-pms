@@ -47,8 +47,10 @@ export class DashService {
   getBillings(): Observable<BillingResponseModel> {
     return this.http.get<BillingResponseModel>(env.naiparqBillingList);
   }
-  filterBill(billId: string): Observable<BillingModel> {
-    return this.http.get<BillingModel>(`${env.naiparqBillingList}/${billId}`);
+  filterBill(billId: string): Observable<BillingResponseModel> {
+    return this.http.get<BillingResponseModel>(
+      `${env.naiparqBillingList}/?drive_out=${billId}`
+    );
   }
 
   paymentDriveOut(payload: {

@@ -4,7 +4,7 @@ import { SharedService } from '../../services/shared.service';
 import { DashService } from '../../../dashboard/services/dash.service';
 import { DriveOutModel } from '../../../dashboard/models/driveOut.model';
 import { BillingModel } from '../../../dashboard/models/billing.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-drive-out',
@@ -20,14 +20,27 @@ export class DriveOutComponent implements OnInit {
   submittingPlate: boolean = false;
   numberPlateForm = this.formBuilder.group({
     license_plate: ['', [Validators.required]],
+    space: [''],
   });
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private sharedSrv: SharedService,
     private dashSrv: DashService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.routerDetails();
+  }
+
+  routerDetails(): void {
+    const params = this.route.snapshot.queryParams;
+    const spaceId = params['id'];
+
+    this.numberPlateForm.patchValue({
+      space: spaceId,
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -47,12 +60,18 @@ export class DriveOutComponent implements OnInit {
       return;
     }
     this.submittingPlate = true;
+    console.log('Form data ==>>', this.numberPlateForm.value);
     this.dashSrv.createDriveOut(this.numberPlateForm.value).subscribe({
-      next: (response) => {
+      next: (response: DriveOutModel) => {
         this.submittingPlate = false;
         this.stepOne = false;
         this.stepTwo = true;
-        this.router.navigate([`drive-out/${response.id}`]);
+
+        if (response.message) {
+          this.sharedSrv.showNotification(response.message, 'success');
+        }
+        console.log('Drive out response ===>>', response);
+        this.router.navigate([`bill/${response.id}`]);
       },
       error: (error: { message: string; status: number }) => {
         this.submittingPlate = false;

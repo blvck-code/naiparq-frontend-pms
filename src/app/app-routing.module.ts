@@ -19,11 +19,11 @@ const routes: Routes = [
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
-    path: 'drive-out',
+    path: 'checkout',
     component: DriveOutComponent,
   },
   {
-    path: 'drive-out/:driveOutSlug',
+    path: 'bill/:billId',
     component: BillingComponent,
   },
   {

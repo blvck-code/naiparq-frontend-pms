@@ -1,5 +1,7 @@
 import { DriveOutModel } from '../../models/driveOut.model';
 import * as dashActions from '../actions/action.types';
+import { createSelector } from '@ngrx/store';
+import { driveOutStateKey } from '../dash.selectors';
 
 export interface DriveOutState {
   next: string;
@@ -33,3 +35,13 @@ export function driveOutReducer(
       return state;
   }
 }
+
+// Selectors
+export const driveOutLoaded = createSelector(
+  driveOutStateKey,
+  (state) => state.loaded
+);
+export const driveOuts = createSelector(
+  driveOutStateKey,
+  (state) => state.driveOut
+);

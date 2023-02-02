@@ -13,6 +13,8 @@ import {
   driveIns,
 } from './entities/driveIn.entities';
 import { DriveInModel } from '../models/driveIn.model';
+import { driveOutLoaded, driveOuts } from './entities/driveOut.entities';
+import { DriveOutModel } from '../models/driveOut.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +41,14 @@ export class StoreService {
   }
   driveInNext(): Observable<string> {
     return this.store.pipe(select(driveInNext));
+  }
+
+  // Drive Out
+  driveOutLoaded(): Observable<boolean> {
+    return this.store.pipe(select(driveOutLoaded));
+  }
+
+  driveOut(): Observable<DriveOutModel[]> {
+    return this.store.pipe(select(driveOuts));
   }
 }

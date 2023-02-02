@@ -16,6 +16,11 @@ export const driveInStateKey = createSelector(
   (state) => state.driveIn
 );
 
+export const driveOutStateKey = createSelector(
+  dashboardStateKey,
+  (state) => state.driveOut
+);
+
 export const devicesStateKey = createSelector(
   dashboardStateKey,
   (state) => state.devices

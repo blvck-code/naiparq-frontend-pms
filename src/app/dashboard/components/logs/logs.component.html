@@ -1,54 +1,180 @@
-<div class="naiparq-table-wrap naiparq-scrollbar">
-  <div class="naiparq-table-content">
-    <table class="table">
-      <thead class="table-nav sticky-top">
-        <tr>
-          <th scope="col">
-            <span class="table-title">Device Name</span>
-          </th>
-          <th scope="col">
-            <span class="table-title">Type</span>
-          </th>
-          <th scope="col">
-            <span class="table-title">Destination</span>
-          </th>
-          <th scope="col">
-            <span class="table-title">Time In</span>
-          </th>
-          <th scope="col">
-            <span class="table-title">Time Out</span>
-          </th>
-        </tr>
-      </thead>
+<div class="naiparq-drivein">
+  <div class="naiparq-table-wrap naiparq-scrollbar">
+    <div class="naiparq-table-title">
+      <p class="naiparq-table-date">December 09, 2022</p>
 
-      <tbody class="table-body">
-        <tr *ngFor="let num of numSeq(15)">
-          <td>
-            <div class="table-text">
-              <span>Karish Center</span>
-            </div>
-          </td>
+      <div class="cash-table-btns d-flex">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#addNumberPlate"
+          class="naiparq-btn naiparq-btn-primary me-2"
+        >
+          Add Number Plate
+        </button>
 
-          <td>
-            <div class="table-text">
-              <span>Barrier</span>
-            </div>
-          </td>
+        <button class="filter-btn alt-btn">
+          <svg
+            width="14"
+            height="10"
+            viewBox="0 0 14 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
+            />
+          </svg>
+          Filters
+        </button>
+      </div>
+    </div>
 
-          <!--        Buttons -->
-          <td>
-            <p>Business Complex A</p>
-          </td>
+    <div class="naiparq-table-content">
+      <table class="table">
+        <thead class="table-nav sticky-top">
+          <tr>
+            <th scope="col">
+              <span class="table-title"> Number Plate </span>
+            </th>
+            <th scope="col">
+              <span class="table-title"> Space name </span>
+            </th>
+            <th scope="col">
+              <span class="table-title"> Time In </span>
+            </th>
+            <th scope="col">
+              <span class="table-title"> Time Out </span>
+            </th>
+          </tr>
+        </thead>
 
-          <!--        Actions -->
-          <td>
-            <p>11:00PM</p>
-          </td>
-          <td>
-            <p>11:00PM</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <tbody *ngIf="!(driveOutLoaded$ | async)" class="table-body">
+          <tr *ngFor="let item of numSeq(12)">
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody class="table-body">
+          <tr *ngFor="let driveIn of driveOuts$ | async">
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn.drive_in_details.license_plate }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn?.metadata?.space_name }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{
+                  driveIn.drive_in_details.check_in_time
+                    | date : "MMM d, y, h:mm a"
+                }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{
+                  driveIn.check_out_time | date : "MMM d, y, h:mm a"
+                }}</span>
+              </div>
+            </td>
+          </tr>
+          <div id="bottomPageDriveIn"></div>
+        </tbody>
+      </table>
+      <!--      <app-inline-loader *ngIf="loadingMoreDriveIn"></app-inline-loader>-->
+    </div>
   </div>
+  <!--  <div class="naiparq-cash-payment">-->
+  <!--    <p>Total: KES 10, 000</p>-->
+  <!--  </div>-->
 </div>
+
+<!-- Modal -->
+<!--<div-->
+<!--  class="modal fade add-plate-modal"-->
+<!--  id="addNumberPlate"-->
+<!--  tabindex="-1"-->
+<!--  aria-labelledby="addNumberPlate"-->
+<!--  aria-hidden="true"-->
+<!--&gt;-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Add Number Plate</h5>-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="btn-close naiparq-close-btn"-->
+<!--          data-bs-dismiss="modal"-->
+<!--          aria-label="Close"-->
+<!--          #closeDriveIn-->
+<!--        >-->
+<!--          <svg-->
+<!--            xmlns="http://www.w3.org/2000/svg"-->
+<!--            fill="none"-->
+<!--            viewBox="0 0 24 24"-->
+<!--            stroke-width="1.5"-->
+<!--            stroke="currentColor"-->
+<!--            class="w-6 h-6"-->
+<!--          >-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              d="M6 18L18 6M6 6l12 12"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <form-->
+<!--        [formGroup]="driveInForm"-->
+<!--        (ngSubmit)="onSubmit()"-->
+<!--        class="modal-body"-->
+<!--      >-->
+<!--        <div class="naiparq-form-group">-->
+<!--          <label for="nPlate"> Number Plate </label>-->
+<!--          <input-->
+<!--            formControlName="license_plate"-->
+<!--            type="text"-->
+<!--            id="nPlate"-->
+<!--            class="naiparq-form-input"-->
+<!--          />-->
+<!--        </div>-->
+
+<!--        <div class="naiparq-form-group">-->
+<!--          <button-->
+<!--            [class.btn-loading]="isSubmitting"-->
+<!--            class="naiparq-btn naiparq-btn-primary"-->
+<!--            type="submit"-->
+<!--            [disabled]="isSubmitting"-->
+<!--          >-->
+<!--            <span class="btn-text">Submit</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

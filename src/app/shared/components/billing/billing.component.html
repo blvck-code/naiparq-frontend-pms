@@ -77,26 +77,26 @@
                 value="HTML"
               />
             </div>
-            <div
-              (click)="handlePaymentMethod('credit')"
-              [class.active]="paymentMethod === 'credit'"
-              class="payment-item credit active"
-            >
-              <label class="payment-item-label" for="credit">
-                <img src="assets/images/payment-credit.png" alt="MPESA" />
-                <h4>Credit Card</h4>
-              </label>
-              <div [class.active]="paymentMethod === 'credit'" class="input">
-                <span></span>
-              </div>
-              <input
-                #radioInput
-                type="radio"
-                id="credit"
-                name="fav_language"
-                value="HTML"
-              />
-            </div>
+            <!--            <div-->
+            <!--              (click)="handlePaymentMethod('credit')"-->
+            <!--              [class.active]="paymentMethod === 'credit'"-->
+            <!--              class="payment-item credit active"-->
+            <!--            >-->
+            <!--              <label class="payment-item-label" for="credit">-->
+            <!--                <img src="assets/images/payment-credit.png" alt="MPESA" />-->
+            <!--                <h4>Credit Card</h4>-->
+            <!--              </label>-->
+            <!--              <div [class.active]="paymentMethod === 'credit'" class="input">-->
+            <!--                <span></span>-->
+            <!--              </div>-->
+            <!--              <input-->
+            <!--                #radioInput-->
+            <!--                type="radio"-->
+            <!--                id="credit"-->
+            <!--                name="fav_language"-->
+            <!--                value="HTML"-->
+            <!--              />-->
+            <!--            </div>-->
           </form>
 
           <div class="border-circles">
@@ -209,7 +209,7 @@
         </div>
         <div class="complete-summary">
           <h4>Amount paid</h4>
-          <h4>KSH {{ billAmount }}</h4>
+          <h4>KSH {{ billDetails.total_amount }}</h4>
         </div>
         <div class="border-circles">
           <div></div>

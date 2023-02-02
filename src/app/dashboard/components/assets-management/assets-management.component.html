@@ -42,6 +42,12 @@
             <span class="table-title">Type</span>
           </th>
           <th scope="col">
+            <span class="table-title">Serial number</span>
+          </th>
+          <th scope="col">
+            <span class="table-title">Purpose</span>
+          </th>
+          <th scope="col">
             <span class="table-title">Status</span>
           </th>
           <th scope="col">
@@ -91,10 +97,39 @@
             </div>
           </td>
 
-          <!--        Buttons -->
           <td>
-            <div class="table-button">
-              <button class="naiparq-btn naiparq-btn-default">Status</button>
+            <div class="table-text">
+              <ngx-skeleton-loader
+                [theme]="{
+                  'width.px': 120,
+                  'borderRadius.px': 10
+                }"
+                animation="pulse"
+              ></ngx-skeleton-loader>
+            </div>
+          </td>
+
+          <td>
+            <div class="table-text">
+              <ngx-skeleton-loader
+                [theme]="{
+                  'width.px': 120,
+                  'borderRadius.px': 10
+                }"
+                animation="pulse"
+              ></ngx-skeleton-loader>
+            </div>
+          </td>
+
+          <td>
+            <div class="table-text">
+              <ngx-skeleton-loader
+                [theme]="{
+                  'width.px': 120,
+                  'borderRadius.px': 10
+                }"
+                animation="pulse"
+              ></ngx-skeleton-loader>
             </div>
           </td>
 
@@ -153,7 +188,19 @@
 
           <td>
             <div class="table-text">
-              <span>{{ device.asset_type }}</span>
+              <span>{{ device.asset_type | titlecase }}</span>
+            </div>
+          </td>
+
+          <td>
+            <div class="table-text">
+              <span>{{ device.serial_number }}</span>
+            </div>
+          </td>
+
+          <td>
+            <div class="table-text">
+              <span>{{ device.purpose | titlecase }}</span>
             </div>
           </td>
 

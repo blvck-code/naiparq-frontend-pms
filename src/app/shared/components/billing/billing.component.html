@@ -17,7 +17,7 @@
       </div>
       <div *ngIf="currentStep === 'billing'" class="naiparq-checkout-bill">
         <div class="naiparq-checkout-bill__item amount">
-          <h5>Parking Duration</h5>
+          <h5>Parking Fee</h5>
           <!--          <h2>KSH 50</h2>-->
           <h2>KSH {{ billDetails.total_amount }}</h2>
           <p>Please pay when returning to your car to leave</p>
@@ -27,14 +27,22 @@
         <!--          <p>Parking details</p>-->
         <div class="naiparq-checkout-bill__item summary">
           <div class="summary-item">
-            <h4>Parking Duration</h4>
-            <!--            <h4>01.19</h4>-->
-            <h4>{{ billDetails.parking_duration }}</h4>
-          </div>
-          <div class="summary-item">
             <h4>Time of entry</h4>
             <!--            <h4>01/12/2023</h4>-->
-            <h4>{{ billDetails.created_at | date : "short" }}</h4>
+            <h4>{{ billDetails.check_in_time | date : "short" }}</h4>
+          </div>
+          <div class="summary-item">
+            <h4>Time of exit</h4>
+            <!--            <h4>01/12/2023</h4>-->
+            <h4>{{ billDetails.check_out_time | date : "short" }}</h4>
+          </div>
+          <div class="summary-item">
+            <h4>Parking Duration</h4>
+            <!--            <h4>01.19</h4>-->
+            <h4>
+              {{ parkingDuration().hours }} Hrs
+              {{ parkingDuration().minutes }} mins
+            </h4>
           </div>
           <div class="summary-item">
             <h4>Ticket Number</h4>

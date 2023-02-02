@@ -13,7 +13,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 export class BillingComponent implements OnInit {
   billId: string = '';
   loadingBills: boolean = true;
-  billDetails!: BillingModel;
+  billDetails!: any;
   paymentMethod: string = '';
   currentStep: string = 'loading';
   submittingPayment: boolean = false;
@@ -51,6 +51,7 @@ export class BillingComponent implements OnInit {
         this.loadingBills = false;
         this.billDetails = content.results[0];
         this.currentStep = 'billing';
+        this.parkingDuration();
         console.log('Bill content ===>>', content);
       },
       error: (err) => {
@@ -60,6 +61,17 @@ export class BillingComponent implements OnInit {
         this.router.navigate(['/page-not-found']);
       },
     });
+  }
+
+  parkingDuration(): any {
+    const duration = this.billDetails.parking_duration;
+    let wholeHours = Math.floor(+duration);
+    let minutes = Math.round((+duration % 1) * 60);
+
+    return {
+      hours: wholeHours,
+      minutes: minutes,
+    };
   }
 
   // getBillsDetails(): void {

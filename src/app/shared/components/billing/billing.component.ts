@@ -13,7 +13,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 export class BillingComponent implements OnInit {
   billId: string = '';
   loadingBills: boolean = true;
-  billDetails!: any;
+  billDetails!: BillingModel;
   paymentMethod: string = '';
   currentStep: string = 'loading';
   submittingPayment: boolean = false;
@@ -49,10 +49,17 @@ export class BillingComponent implements OnInit {
     this.dashSrv.filterBill(this.billId).subscribe({
       next: (content) => {
         this.loadingBills = false;
+
+        if (
+          content.results[0].is_paid &&
+          content.results[0].status === 'completed'
+        ) {
+          this.currentStep = 'complete';
+          return;
+        }
         this.billDetails = content.results[0];
         this.currentStep = 'billing';
         this.parkingDuration();
-        console.log('Bill content ===>>', content);
       },
       error: (err) => {
         this.sharedSrv.showNotification('Error getting bill', 'error');

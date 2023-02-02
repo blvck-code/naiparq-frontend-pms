@@ -14,6 +14,14 @@ export interface BillingModel {
   status: string;
   is_paid: boolean;
   drive_out: string;
-  payment_channels_available: string;
+  check_out_time: string;
+  check_in_time: string;
+  payment_channels_available: PaymentChannelsModel[];
   created_at: string;
+}
+
+export interface PaymentChannelsModel {
+  id: string;
+  channel: string;
+  is_active: boolean;
 }

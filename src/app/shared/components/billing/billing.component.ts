@@ -49,6 +49,7 @@ export class BillingComponent implements OnInit {
     this.dashSrv.filterBill(this.billId).subscribe({
       next: (content) => {
         this.loadingBills = false;
+        this.billDetails = content.results[0];
 
         if (
           content.results[0].is_paid &&

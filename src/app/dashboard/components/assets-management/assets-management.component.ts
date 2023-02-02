@@ -20,19 +20,77 @@ export class AssetsManagementComponent implements OnInit {
     private sharedSrv: SharedService,
     private fb: UntypedFormBuilder
   ) {}
+  selectedAssetType: any;
+
+  assetTypes: { key: string; value: string }[] = [
+    {
+      key: 'cctv',
+      value: 'CCTV',
+    },
+    {
+      key: 'boom_barrier',
+      value: 'Boom-barrier',
+    },
+    {
+      key: 'geomagnetic',
+      value: 'Geomagnetic',
+    },
+    {
+      key: 'ultrasonic',
+      value: 'Ultrasonic',
+    },
+  ];
+
+  assetStatus: { key: string; value: string }[] = [
+    {
+      key: 'idle',
+      value: 'Idle',
+    },
+    {
+      key: 'online',
+      value: 'Online',
+    },
+    {
+      key: 'offline',
+      value: 'Offline',
+    },
+    {
+      key: 'active',
+      value: 'Active',
+    },
+    {
+      key: 'inactive',
+      value: 'Inactive',
+    },
+  ];
+
   @ViewChild('devicePhoto', { static: true }) 'devicePhoto': ElementRef;
   devices$: Observable<DevicesModel[]> = this.store.select(devices);
   devicesLoaded$: Observable<boolean> = this.store.select(devicesLoaded);
 
-  deviceImg: string = '';
-  imgTypes = ['jpg', 'png', 'jpeg'];
-
-  addDeviceForm = this.fb.group({
-    name: ['', [Validators.required]],
+  assetForm = this.fb.group({
+    name: ['', Validators.required],
+    asset_type: ['', Validators.required],
+    model: ['', Validators.required],
+    id_address: ['', Validators.required],
+    mac_address: ['', Validators.required],
+    serial_number: ['', Validators.required],
+    purpose: ['', Validators.required],
   });
 
   ngOnInit(): void {
     this.getDevices();
+  }
+
+  selectAssetType(type: { key: string; value: string }): void {
+    this.selectedAssetType = type;
+    this.assetForm.patchValue({
+      asset_type: type.key,
+    });
+  }
+
+  onSubmit(): void {
+    console.log('Form values ===>>', this.assetForm.value);
   }
 
   getDevices(): void {
@@ -40,54 +98,5 @@ export class AssetsManagementComponent implements OnInit {
   }
   numSeq(n: number): Array<number> {
     return Array(n);
-  }
-
-  uploadProfilePic(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      const formData = new FormData();
-
-      const fileName = event.target.files[0].name;
-      const fileExt = fileName.split('.').pop();
-      const fileSize = event.target.files[0].size / 1024 / 1024; // Size in mb
-
-      // Validate file type
-      if (!this.imgTypes.includes(fileExt)) {
-        this.sharedSrv.showNotification(
-          'This file type is not supported.',
-          'warning'
-        );
-        return;
-      }
-
-      // Validate file size
-      if (fileSize > 5) {
-        this.sharedSrv.showNotification(
-          'Image size must be under 5MiB!',
-          'warning'
-        );
-        return;
-      }
-
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => {
-        // called once readAsDataURL is completed
-        // @ts-ignore
-        this.deviceImg = event.target.result;
-      };
-      formData.append('image', event);
-
-      // this.useInfoFormData.append('profile_photo', event.target.files[0]);
-    } else {
-      this.sharedSrv.showNotification(
-        'Could not upload your profile photo, please try again.',
-        'warning'
-      );
-    }
-  }
-
-  clickEditIcon(): void {
-    this.devicePhoto.nativeElement.click();
   }
 }

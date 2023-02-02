@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('menu', { static: true })
   'menu': ElementRef<HTMLDivElement>;
+  @ViewChild('navBar', { static: true }) 'navBar': ElementRef<HTMLDivElement>;
 
   currentYear: any;
   constructor() {}

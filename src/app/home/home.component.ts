@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('navBar', { static: true }) 'navBar': ElementRef<HTMLDivElement>;
 
   currentYear: any;
+  isNavbarVisible: boolean = true;
+  prevScrollPos = window.pageYOffset;
   constructor() {}
 
   getDate(): void {
@@ -30,6 +32,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this.initAnimation();
     this.getDate();
+    this.onWindowScroll()
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): any {
+    const currentScrollPos = window.pageYOffset;
+
+    if (this.prevScrollPos > currentScrollPos) {
+      this.isNavbarVisible = true
+    } else {
+      this.isNavbarVisible = false
+    }
+    console.log('Visible ===>>', this.isNavbarVisible)
+    this.prevScrollPos = currentScrollPos
   }
 
   initAnimation(): void {

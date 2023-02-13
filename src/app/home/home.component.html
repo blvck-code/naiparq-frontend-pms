@@ -1,5 +1,6 @@
-<div class="naiparq-home naiparq-scrollbar flex flex-col">
-  <header #navBar class="naiparq-home__header py-2">
+<div class="naiparq-home flex flex-col">
+  <header ngxHideOnScroll [propertyUsedToHide]="'transform'" [valueWhenHidden]="'translateY(-100%)'"
+          [valueWhenShown]="'translateY(100%)'" #navBar class="naiparq-home__header py-2">
     <div
       class="naiparq-home__header-wrap flex flex-row items-center h-[100%] py-3 max-w-[1200px] mx-auto"
     >

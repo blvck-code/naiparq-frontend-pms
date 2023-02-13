@@ -438,13 +438,14 @@
         <h2 class="border-b pb-5 text-center font-[700] text-[30px]">
           Register
         </h2>
-        <form class="py-3" action="">
+        <form class="py-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="flex flex-col gap-1 py-2.5">
             <label class="text-[16px] text-[#11142D]" for="oEmail">Email</label>
             <input
               class="bg-[#F5F8FA] py-2.5 px-3 outline-0 rounded-lg"
               type="text"
               id="oEmail"
+              formControlName="email"
             />
           </div>
           <div class="flex flex-col gap-1 py-2.5">
@@ -453,6 +454,7 @@
               class="bg-[#F5F8FA] py-2.5 px-3 outline-0 rounded-lg"
               type="text"
               id="oPhone"
+              formControlName="phone"
             />
           </div>
           <div class="flex flex-col gap-1 py-2.5">
@@ -463,17 +465,31 @@
               class="bg-[#F5F8FA] py-2.5 px-3 outline-0 rounded-lg"
               type="text"
               id="oLocation"
+              formControlName="location"
             />
           </div>
           <!--          Todo Unfinished sect -->
-          <div class="flex flex-row justify-between gap-1 mt-2.5 mb-4">
-            <label class="text-[16px] text-[#11142D] font-[700]" for="oEmail"
+          <div class="flex flex-row items-center gap-1 mt-2.5 mb-4">
+            <label class="text-[16px] basis-4/5 text-[#11142D] font-[700]" for="oEmail"
               >Add Slots</label
             >
-            <div>1</div>
+            <div class="flex flex-row justify-between items-center basis-1/5">
+              <button (click)="decreaseSlots()" style="border: 1px solid black" class="rounded-full p-1">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.89389 10.6824H18.1433" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <span>{{ numOfSlots }}</span>
+              <button (click)="increaseSlots()" style="border: 1px solid black" class="rounded-full p-1">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.59656 10.6824H17.8459" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10.7213 3.55774V17.8071" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
           <div class="flex flex-col gap-1 py-2.5">
-            <button class="py-2 rounded-[90px] bg-[#000] w-[100%]">
+            <button type="submit" class="py-2 rounded-[90px] hover:bg[#000]/[0.5] bg-[#000] transition-all w-[100%]">
               <span class="text-[16px] font-[700] text-[#fff]"
                 >Register Now</span
               >

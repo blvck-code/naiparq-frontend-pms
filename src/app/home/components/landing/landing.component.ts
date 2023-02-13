@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {UntypedFormBuilder, Validators} from "@angular/forms";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,18 @@ export class LandingComponent implements OnInit {
   @ViewChild('introImg', { static: true })
   'introImg': ElementRef<HTMLDivElement>;
 
-  constructor() {}
+  numOfSlots: number = 1;
+
+
+  registerForm = this.fb.group({
+    email: ['', Validators.required],
+    phone: ['', Validators.required],
+    location: ['', Validators.required],
+    slots: ['']
+  })
+  constructor(
+    private fb: UntypedFormBuilder
+  ) {}
 
   ngOnInit(): void {
     // this.initAnimation();
@@ -85,4 +97,18 @@ export class LandingComponent implements OnInit {
       yPercent: -100,
     });
   }
+
+  increaseSlots(): void {
+    this.numOfSlots += 1;
+  }
+
+  decreaseSlots(): void {
+    if (this.numOfSlots === 1) return;
+    this.numOfSlots -= 1;
+  }
+
+  onSubmit(): void {
+    console.log('Form data ==>>', this.registerForm.value)
+  }
+
 }

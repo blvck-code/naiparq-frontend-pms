@@ -4,6 +4,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { HomeComponent } from './home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import {BlogListComponent} from "./components/blog/blog-list/blog-list.component";
+import {BlogCreateComponent} from "./components/blog/blog-create/blog-create.component";
 
 const homeRoutes: Routes = [
   {
@@ -22,6 +24,19 @@ const homeRoutes: Routes = [
         path: 'contact-us',
         component: ContactComponent,
       },
+      {
+        path: 'blog',
+        redirectTo: 'blog/list',
+        pathMatch: 'full'
+      },
+      {
+        path: 'blog/list',
+        component: BlogListComponent
+      },
+      {
+        path: 'blog/create',
+        component: BlogCreateComponent
+      }
     ],
   },
 ];

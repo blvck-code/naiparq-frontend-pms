@@ -1,0 +1,24 @@
+.circle {
+  position: absolute;
+
+  &-yellow {
+    left: -635px;
+    top: 145px;
+    width: 895px;
+    height: 895px;
+    background: #FBCE33;
+    mix-blend-mode: normal;
+    filter: blur(200px);
+  }
+
+  &-blue {
+    width: 483px;
+    height: 483px;
+    left: 75%;
+    top: -20px;
+
+    background: #4BC1F1;
+    mix-blend-mode: normal;
+    filter: blur(200px);
+  }
+}

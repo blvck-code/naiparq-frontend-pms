@@ -6,6 +6,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { RouterModule } from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgxHideOnScrollModule} from "ngx-hide-on-scroll";
+import { BlogListComponent } from './components/blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,14 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     ContactComponent,
     AboutComponent,
+    BlogListComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, RouterModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    NgxHideOnScrollModule
+  ],
 })
 export class HomeModule {}

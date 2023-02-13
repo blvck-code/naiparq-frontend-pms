@@ -37,6 +37,7 @@
     "igniteui-angular-core": "^15.0.0",
     "ngrx-store-localstorage": "^14.0.0",
     "ngx-cookie-service": "^15.0.0",
+    "ngx-hide-on-scroll": "^0.2.1",
     "ngx-online-status": "^2.0.0",
     "ngx-skeleton-loader": "^6.0.0",
     "rxjs": "~7.5.0",

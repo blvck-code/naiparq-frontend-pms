@@ -1,0 +1,23 @@
+<div class="naiparq-blog">
+<!--  title-->
+  <div class="naiparq-blog__title text-center py-20 relative overflow-hidden">
+    <h2 class="text-[60px] font-[700] leading-[85px] relative z-10">Blog</h2>
+    <div class="circle z-0 circle-yellow"></div>
+    <div class="circle z-0 circle-blue"></div>
+  </div>
+<!--  blogs-->
+  <div class="naiparq-blog__content max-w-[1200px] px-3 mx-auto grid tablet:grid-cols-1 tabletLand:grid-cols-2 laptop:grid-cols-3 py-10 gap-x-3 gap-y-5">
+<!--     Blog Item -->
+    <div *ngFor="let blog of numSeq(10)" class="naiparq-blog__content-item rounded-lg bg-[#fff]">
+      <div class="flex flex-col px-3 py-2">
+        <h1 class="text-[25px] py-2 hover:underline m-0 leading-[26px] font-[700]">Blog title goes here</h1>
+        <p class="text-base leading-[26px] font-[400]">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, commodi corporis eaque in laboriosam qui unde vero! Pariatur, recusandae, sunt.
+        </p>
+      </div>
+<!--      Image-->
+      <img class="rounded-b" src="assets/images/naiparq-space.jpg" alt="Naiparq Blog Title">
+    </div>
+
+  </div>
+</div>

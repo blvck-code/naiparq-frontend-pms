@@ -8,7 +8,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxHideOnScrollModule} from "ngx-hide-on-scroll";
-import { BlogListComponent } from './components/blog-list/blog-list.component';
+import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
+import { BlogCreateComponent } from './components/blog/blog-create/blog-create.component';
+import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
+import {ShowdownModule} from "ngx-showdown";
 
 @NgModule({
   declarations: [
@@ -17,13 +20,17 @@ import { BlogListComponent } from './components/blog-list/blog-list.component';
     ContactComponent,
     AboutComponent,
     BlogListComponent,
+    BlogCreateComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    NgxHideOnScrollModule
+    NgxHideOnScrollModule,
+    CKEditorModule,
+    ShowdownModule.forRoot({emoji: true, noHeaderId: true, flavor: 'github'}),
+    FormsModule,
   ],
 })
 export class HomeModule {}

@@ -6,12 +6,15 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { RouterModule } from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgxHideOnScrollModule} from "ngx-hide-on-scroll";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
 import { BlogCreateComponent } from './components/blog/blog-create/blog-create.component';
-import {CKEditorModule} from "@ckeditor/ckeditor5-angular";
-import {ShowdownModule} from "ngx-showdown";
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ShowdownModule } from 'ngx-showdown';
+import { StoreModule } from '@ngrx/store';
+import { homeReducer } from './state/home.reducer';
+import { homeStateKey } from './state/home.selectors';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import {ShowdownModule} from "ngx-showdown";
     ReactiveFormsModule,
     NgxHideOnScrollModule,
     CKEditorModule,
-    ShowdownModule.forRoot({emoji: true, noHeaderId: true, flavor: 'github'}),
+    StoreModule.forFeature(homeStateKey, homeReducer),
+    ShowdownModule.forRoot({ emoji: true, noHeaderId: true, flavor: 'github' }),
     FormsModule,
   ],
 })

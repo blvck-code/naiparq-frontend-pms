@@ -1,33 +1,118 @@
 <div class="naiparq-blog-create min-h-[100vh]">
   <div class="content flex flex-col py-10 max-w-[900px] px-3 mx-auto">
-
-    <div class="naiparq-blog-create__preview pb-5 bg-[#fff] px-3 py-4 rounded-lg">
-      <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]" *ngIf="!blogForm.get('title')?.value">Preview Blog</h2>
-      <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]" *ngIf="blogForm.get('title')?.value">
-        {{ blogForm.get('title')?.value }}
+    <div class="flex justify-end items-center py-2 mb-2 gap-2">
+      <button
+        (click)="onSubmit()"
+        class="bg-[#fff] border border-black font-[700] text-[13px] py-2 px-4 rounded-[20px]"
+      >
+        Publish
+      </button>
+      <button
+        (click)="togglePreview()"
+        class="border font-[700] bg-[#000] text-[#fff] text-[13px] py-2 px-4 rounded-[20px]"
+      >
+        {{ preview ? "Close" : "Preview" }}
+      </button>
+    </div>
+    <div
+      [class.hidden]="!preview"
+      class="naiparq-blog-create__preview pb-5 bg-[#fff] px-3 py-4 rounded-lg"
+    >
+      <h2
+        class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]"
+        *ngIf="!blogForm.get('title')?.value"
+      >
+        Preview Blog
       </h2>
-      <div class="naiparq-blog-create__preview-img py-2">
-<!--        <img class="rounded-lg object-cover" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/blog-examples.jpg" alt="">-->
+      <h2
+        class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]"
+        *ngIf="blogForm.get('title')?.value"
+      >
+        {{ blogForm.get("title")?.value }}
+      </h2>
+      <div
+        *ngIf="coverImage"
+        class="naiparq-blog-create__preview-img h-[350px] overflow-hidden py-2"
+      >
+        <img
+          class="rounded-lg object-cover h-[100%]"
+          [src]="coverImage"
+          alt=""
+        />
+        <!--        <img class="rounded-lg object-cover" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/blog-examples.jpg" alt="">-->
       </div>
       <showdown class="blog-content" [value]="blogContent" showdown emoji>
-
       </showdown>
     </div>
-    <div class="naiparq-blog-create__editor my-4">
-      <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]" >Create Blog</h2>
-<!--      <editor></editor>-->
-      <form [formGroup]="blogForm" class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2">
+    <div [class.hidden]="preview" class="naiparq-blog-create__editor">
+      <!--      <h2 class="text-[30px] m-0 leading-[120%] font-[700] text-[#2F1C6A]">-->
+      <!--        Create Blog-->
+      <!--      </h2>-->
+      <!--      <editor></editor>-->
+
+      <form [formGroup]="blogForm" class="flex flex-col gap-1.5">
+        <div class="flex flex-col py-2 gap-1.5">
           <label class="text-base" for="bTitle">Blog title</label>
-          <input formControlName="title" class="py-2 px-3 rounded-lg w-[75%]" type="text" id="bTitle">
+          <input
+            formControlName="title"
+            class="py-1 px-3 rounded-lg w-[75%]"
+            type="text"
+            id="bTitle"
+          />
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col py-2 gap-1.5">
           <label class="text-base" for="bTitle">Cover Image</label>
-          <div class="img-box w-[100%] h-[150px] rounded-lg border-dashed border-2 bg-sky-100 border-sky-400"></div>
+          <div
+            (click)="clickCoverImg()"
+            class="img-box flex justify-center items-center w-[100%] h-[100px] rounded-lg border-dashed border-2 bg-sky-100 border-sky-400"
+          >
+            <p *ngIf="!coverImageName" class="font-[700] text-base">
+              Drag & Drop or <span class="text-sky-500">Browse</span>
+            </p>
+            <p
+              *ngIf="coverImageName"
+              class="font-[700] text-base flex items-center gap-2"
+            >
+              {{ coverImageName }}
+              <svg
+                (click)="resetCoverImg()"
+                class="cursor-pointer"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.6875 11.6813L16.3219 15L19.6875 18.3188C19.7812 18.4064 19.8559 18.5124 19.9069 18.6302C19.958 18.7479 19.9843 18.8748 19.9843 19.0031C19.9843 19.1314 19.958 19.2584 19.9069 19.3761C19.8559 19.4938 19.7812 19.5998 19.6875 19.6875C19.5999 19.7744 19.496 19.8431 19.3818 19.8898C19.2676 19.9364 19.1453 19.9601 19.0219 19.9594C18.776 19.9583 18.5403 19.8607 18.3657 19.6875L15 16.3219L11.6813 19.6875C11.5067 19.8607 11.271 19.9583 11.025 19.9594C10.9016 19.9601 10.7793 19.9364 10.6651 19.8898C10.5509 19.8431 10.447 19.7744 10.3594 19.6875C10.1848 19.5119 10.0868 19.2742 10.0868 19.0266C10.0868 18.7789 10.1848 18.5413 10.3594 18.3656L13.6782 15L10.3594 11.6813C10.2058 11.5019 10.1256 11.2712 10.1347 11.0353C10.1438 10.7993 10.2416 10.5755 10.4086 10.4085C10.5755 10.2416 10.7993 10.1438 11.0353 10.1347C11.2712 10.1255 11.5019 10.2058 11.6813 10.3594L15 13.6781L18.3188 10.3594C18.4056 10.2695 18.5092 10.1976 18.6238 10.1478C18.7384 10.098 18.8617 10.0712 18.9866 10.069C19.1115 10.0669 19.2356 10.0893 19.3519 10.1351C19.4681 10.1809 19.5742 10.2491 19.6641 10.3359C19.754 10.4227 19.8259 10.5264 19.8757 10.641C19.9255 10.7555 19.9523 10.8788 19.9544 11.0037C19.9566 11.1287 19.9342 11.2528 19.8884 11.369C19.8426 11.4853 19.7743 11.5914 19.6875 11.6813V11.6813ZM24.2813 24.2813C22.4457 26.1167 20.107 27.3666 17.561 27.8729C15.0151 28.3792 12.3761 28.1192 9.97795 27.1258C7.57975 26.1324 5.52998 24.4501 4.08784 22.2917C2.64571 20.1334 1.87598 17.5958 1.87598 15C1.87598 12.4042 2.64571 9.86665 4.08784 7.70828C5.52998 5.54992 7.57975 3.86765 9.97795 2.87422C12.3761 1.88078 15.0151 1.62078 17.561 2.1271C20.107 2.63342 22.4457 3.88333 24.2813 5.71876C25.5002 6.93754 26.4671 8.38449 27.1268 9.97698C27.7864 11.5695 28.126 13.2763 28.126 15C28.126 16.7237 27.7864 18.4305 27.1268 20.023C26.4671 21.6155 25.5002 23.0625 24.2813 24.2813V24.2813ZM22.9594 7.04063C21.3845 5.4712 19.3799 4.40362 17.1987 3.9727C15.0175 3.54178 12.7575 3.76684 10.7041 4.61948C8.65067 5.47211 6.89597 6.91407 5.66153 8.76328C4.42709 10.6125 3.76828 12.786 3.76828 15.0094C3.76828 17.2328 4.42709 19.4063 5.66153 21.2555C6.89597 23.1047 8.65067 24.5466 10.7041 25.3993C12.7575 26.2519 15.0175 26.477 17.1987 26.0461C19.3799 25.6151 21.3845 24.5476 22.9594 22.9781C24.0082 21.933 24.8404 20.691 25.4082 19.3236C25.976 17.9561 26.2683 16.49 26.2683 15.0094C26.2683 13.5287 25.976 12.0626 25.4082 10.6952C24.8404 9.32771 24.0082 8.08579 22.9594 7.04063V7.04063Z"
+                  fill="#004445"
+                />
+              </svg>
+            </p>
+            <input
+              #coverImgInput
+              (change)="inputCoverImg($event)"
+              accept="image/*"
+              type="file"
+              class="hidden"
+            />
+          </div>
         </div>
+        <ckeditor
+          [(ngModel)]="blogContent"
+          [ngModelOptions]="{ standalone: true }"
+          #editor
+          [editor]="Editor"
+          (ready)="onReady($event)"
+          data=""
+        ></ckeditor>
+        <button
+          (click)="onSubmit()"
+          class="px-5 max-w-[200px] my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
+        >
+          Submit
+        </button>
       </form>
-      <ckeditor [(ngModel)]="blogContent" #editor [editor]="Editor" (ready)="onReady($event)" data=""></ckeditor>
-      <button (click)="onSubmit()" class="px-5 my-2 py-2 border-0 bg-[#000] rounded text-[#fff] ">Submit</button>
     </div>
   </div>
 </div>

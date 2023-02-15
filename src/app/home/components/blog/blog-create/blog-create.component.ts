@@ -22,6 +22,8 @@ export class BlogCreateComponent implements OnInit {
   blogFormData = new FormData();
   blogContent: any;
 
+  submitting: boolean = false;
+
   preview: boolean = false;
 
   coverImage: string = '';
@@ -85,6 +87,7 @@ export class BlogCreateComponent implements OnInit {
   resetCoverImg(): void {}
 
   onSubmit(): void {
+    this.submitting = true;
     this.blogFormData.append('title', this.blogForm.get('title')?.value);
     this.blogFormData.append('content', this.blogContent);
 
@@ -93,10 +96,12 @@ export class BlogCreateComponent implements OnInit {
         console.log('Create blog response ==>>', response);
         // Todo 1: add article to store
         // Todo 2: redirect to blog detail page
+        this.submitting = false;
         this.sharedSrv.showNotification('Blog created successfully', 'success');
       },
       error: (err) => {
         console.log('Failed create blog ==>>', err);
+        this.submitting = false;
         this.sharedSrv.showNotification('Failed to create blog.', 'error');
       },
     });

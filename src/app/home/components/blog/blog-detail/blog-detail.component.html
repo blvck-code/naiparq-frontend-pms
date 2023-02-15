@@ -1,0 +1,24 @@
+<div class="naiparq-blog-detail max-w-[900px] mx-auto py-5 px-2">
+  <div class="naiparq-blog-detail__head pb-5 bg-[#fff] px-3 py-4 rounded-lg">
+    <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]">
+      {{ blogDetails$?.title }}
+    </h2>
+    <div
+      class="naiparq-blog-create__preview-img py-3 h-[350px] overflow-hidden py-2"
+    >
+      <img
+        class="rounded-lg object-cover h-[100%]"
+        [src]="blogDetails$?.cover_image"
+        alt=""
+      />
+      <!--        <img class="rounded-lg object-cover" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/blog-examples.jpg" alt="">-->
+    </div>
+    <showdown
+      class="blog-content"
+      [value]="blogDetails$?.content"
+      showdown
+      emoji
+    >
+    </showdown>
+  </div>
+</div>

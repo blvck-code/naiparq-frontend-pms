@@ -3,15 +3,18 @@
     <div class="flex justify-end items-center py-2 mb-2 gap-2">
       <button
         (click)="onSubmit()"
-        class="bg-[#fff] border border-black font-[700] text-[13px] py-2 px-4 rounded-[20px]"
+        [class.btn-loading]="submitting"
+        class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
       >
-        Publish
+        <span class="btn-text text-[#fff] font-[700]">Publish</span>
       </button>
       <button
         (click)="togglePreview()"
-        class="border font-[700] bg-[#000] text-[#fff] text-[13px] py-2 px-4 rounded-[20px]"
+        class="px-5 max-w-[200px] border naiparq-btn my-2 py-2 border-0 bg-[#fff] rounded text-[#000]"
       >
-        {{ preview ? "Close" : "Preview" }}
+        <span class="btn-text text-[#000] font-base font-[700]">{{
+          preview ? "Close" : "Preview"
+        }}</span>
       </button>
     </div>
     <div
@@ -108,9 +111,10 @@
         ></ckeditor>
         <button
           (click)="onSubmit()"
-          class="px-5 max-w-[200px] my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
+          [class.btn-loading]="submitting"
+          class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
         >
-          Submit
+          <span class="btn-text text-[#fff] font-[700]">Submit</span>
         </button>
       </form>
     </div>

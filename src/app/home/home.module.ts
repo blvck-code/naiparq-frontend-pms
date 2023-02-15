@@ -14,7 +14,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ShowdownModule } from 'ngx-showdown';
 import { StoreModule } from '@ngrx/store';
 import { homeReducer } from './state/home.reducer';
-import { homeStateKey } from './state/home.selectors';
+import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from './state/home.effects';
+import { SharedModule } from '../shared/shared.module';
+import { BlogDetailComponent } from './components/blog/blog-detail/blog-detail.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { BlogComponent } from './components/blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,8 @@ import { homeStateKey } from './state/home.selectors';
     AboutComponent,
     BlogListComponent,
     BlogCreateComponent,
+    BlogDetailComponent,
+    BlogComponent,
   ],
   imports: [
     CommonModule,
@@ -32,9 +39,16 @@ import { homeStateKey } from './state/home.selectors';
     ReactiveFormsModule,
     NgxHideOnScrollModule,
     CKEditorModule,
-    StoreModule.forFeature(homeStateKey, homeReducer),
+    StoreModule.forFeature('home', homeReducer),
+    EffectsModule.forFeature([HomeEffects]),
     ShowdownModule.forRoot({ emoji: true, noHeaderId: true, flavor: 'github' }),
     FormsModule,
+    SharedModule,
+    NgxSkeletonLoaderModule.forRoot({
+      theme: {
+        width: '100%',
+      },
+    }),
   ],
 })
 export class HomeModule {}

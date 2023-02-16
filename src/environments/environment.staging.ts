@@ -32,6 +32,11 @@ export const environment = {
   // Pricing Module URLS
 
   // Device Module URLS
+  naiparqDevicesList: naiparqBaseURL + 'asset/device',
+
+  // Naiparq Blog
+  naiparqCreateBlog: naiparqBaseURL + 'blog/article/',
+  naiparqBlogList: naiparqBaseURL + 'blog/article',
 };
 
 /*

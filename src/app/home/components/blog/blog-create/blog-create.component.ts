@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { HomeService } from '../../../services/home.service';
 import { SharedService } from '../../../../shared/services/shared.service';
+import { BlogModel } from '../../../model/blog.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-blog-create',
   templateUrl: './blog-create.component.html',
@@ -48,7 +50,8 @@ export class BlogCreateComponent implements OnInit {
     private http: HttpClient,
     private fb: UntypedFormBuilder,
     private homeSrv: HomeService,
-    private sharedSrv: SharedService
+    private sharedSrv: SharedService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -92,12 +95,13 @@ export class BlogCreateComponent implements OnInit {
     this.blogFormData.append('content', this.blogContent);
 
     this.homeSrv.createArticle(this.blogFormData).subscribe({
-      next: (response) => {
+      next: (response: BlogModel) => {
         console.log('Create blog response ==>>', response);
         // Todo 1: add article to store
         // Todo 2: redirect to blog detail page
         this.submitting = false;
         this.sharedSrv.showNotification('Blog created successfully', 'success');
+        this.router.navigate([`blog/${response.id}`]);
       },
       error: (err) => {
         console.log('Failed create blog ==>>', err);

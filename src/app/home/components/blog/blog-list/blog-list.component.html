@@ -5,8 +5,25 @@
     <div class="circle z-0 circle-yellow"></div>
     <div class="circle z-0 circle-blue"></div>
   </div>
+
+  <!--  Loading Indicator -->
+  <div
+    *ngIf="blogLoading$ | async"
+    class="blog-loading max-w-[1200px] min-h-[70vh] px-3 mx-auto grid tablet:grid-cols-1 tabletLand:grid-cols-2 laptop:grid-cols-3 py-10 gap-x-3 gap-y-5"
+  >
+    <div *ngFor="let loader of numSeq(6)">
+      <h2 class="img-loading w-[75%] rounded h-[35px]"></h2>
+      <p class="img-loading w-[85%] my-1.5 rounded h-[25px]"></p>
+      <p class="img-loading w-[65%] my-1.5 rounded h-[25px]"></p>
+      <p class="img-loading m-0 w-[25%] rounded h-[20px]"></p>
+      <div
+        class="img-loading bg-[#000]/[0.06] rounded-lg h-[200px] my-2 w-[100%]"
+      ></div>
+    </div>
+  </div>
   <!--  blogs-->
   <div
+    *ngIf="(blogLoaded$ | async) && (blogList$ | async)"
     class="naiparq-blog__content max-w-[1200px] px-3 mx-auto grid tablet:grid-cols-1 tabletLand:grid-cols-2 laptop:grid-cols-3 py-10 gap-x-3 gap-y-5"
   >
     <!--     Blog Item -->
@@ -28,7 +45,6 @@
           showdown
           emoji
         >
-          #h1 ##h2 ##p
         </showdown>
         <div class="absolute bottom-[10px]">
           <p class="my-0 text-[15px] text-[#000]/[0.5]">
@@ -43,19 +59,5 @@
         alt="Naiparq Blog Title"
       />
     </a>
-
-    <!--    Blog Loading -->
-    <!--    <div-->
-    <!--      class="max-w-[1200px] px-3 mx-auto grid tablet:grid-cols-1 tabletLand:grid-cols-2 laptop:grid-cols-3 py-10 gap-x-3 gap-y-5"-->
-    <!--    >-->
-    <!--      <ngx-skeleton-loader-->
-    <!--        [theme]="{-->
-    <!--          'width.px': '180px',-->
-    <!--          'height.px': '180px',-->
-    <!--          'borderRadius.px': 10-->
-    <!--        }"-->
-    <!--        animation="pulse"-->
-    <!--      ></ngx-skeleton-loader>-->
-    <!--    </div>-->
   </div>
 </div>

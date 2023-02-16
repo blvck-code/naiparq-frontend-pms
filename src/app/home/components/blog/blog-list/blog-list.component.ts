@@ -15,8 +15,8 @@ import { blogList, blogLoaded, blogLoading } from '../../../state/home.reducer';
 })
 export class BlogListComponent implements OnInit {
   blogList$: Observable<BlogModel[]> = this.store.select(blogList);
-  blogLoading: Observable<boolean> = this.store.select(blogLoading);
-  blogLoaded: Observable<boolean> = this.store.select(blogLoaded);
+  blogLoading$: Observable<boolean> = this.store.select(blogLoading);
+  blogLoaded$: Observable<boolean> = this.store.select(blogLoaded);
 
   constructor(private store: Store<AppState>) {}
 

@@ -11,7 +11,7 @@ COPY package.json /home/naiparqPMSFrontend/package.json
 COPY . /home/naiparqPMSFrontend
 
 #Install npm
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@latest
 RUN npm install --force
 
 # Build

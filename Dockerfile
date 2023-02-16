@@ -1,4 +1,4 @@
-FROM node:14.20.0 as build
+FROM node:19.6.0 as build
 
 # Create html and workdir
 RUN mkdir -p /var/www/html/
@@ -18,5 +18,5 @@ RUN npm install --force
 RUN npm run build
 
 # Copy files to html dir
-FROM node:14.20.0
+FROM node:19.6.0
 COPY --from=build /home/naiparqPMSFrontend/dist/naiparq-frontend-pms/ /var/www/html/

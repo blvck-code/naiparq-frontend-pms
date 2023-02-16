@@ -12,7 +12,7 @@ COPY . /home/naiparqPMSFrontend
 
 #Install npm
 RUN npm install -g @angular/cli
-RUN npm install
+RUN npm install --force
 
 # Build
 RUN npm run build

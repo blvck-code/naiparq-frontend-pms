@@ -1,0 +1,69 @@
+<div class="naiparq-blog-detail max-w-[900px] mx-auto py-5 px-2">
+  <!--  Blog content -->
+  <div
+    *ngIf="blogDetails$"
+    class="naiparq-blog-detail__head pb-5 bg-[#fff] px-3 py-4 rounded-lg"
+  >
+    <div class="flex flex-col">
+      <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]">
+        {{ blogDetails$?.title }}
+      </h2>
+      <p class="m-0 text-[#000]/[0.5] font-[700]">
+        {{ blogDetails$?.created_at | date : "MMM d, y" }}
+      </p>
+    </div>
+    <div
+      class="naiparq-blog-create__preview-img py-3 h-[350px] overflow-hidden py-2"
+    >
+      <img
+        *ngIf="blogDetails$"
+        class="rounded-lg object-cover h-[100%]"
+        [src]="blogDetails$?.cover_image"
+        alt=""
+      />
+      <div
+        *ngIf="!blogDetails$"
+        class="img-loading bg-[#000]/[0.06] rounded-lg h-[100%] w-[100%]"
+      ></div>
+    </div>
+    <showdown
+      class="blog-content"
+      [value]="blogDetails$?.content"
+      showdown
+      emoji
+    >
+    </showdown>
+  </div>
+  <!--  Loading Indicator-->
+  <div
+    *ngIf="!blogDetails$"
+    class="naiparq-blog-detail__head pb-5 bg-[#fff] px-3 py-4 rounded-lg"
+  >
+    <div class="flex flex-col">
+      <h2 class="img-loading w-[75%] rounded h-[35px]"></h2>
+      <p class="img-loading m-0 w-[25%] rounded h-[25px]"></p>
+    </div>
+    <div
+      class="naiparq-blog-create__preview-img py-3 h-[350px] overflow-hidden py-2"
+    >
+      <img
+        *ngIf="blogDetails$"
+        class="rounded-lg object-cover h-[100%]"
+        [src]="blogDetails$?.cover_image"
+        alt=""
+      />
+    </div>
+    <!--    Texts -->
+    <div>
+      <h2 class="img-loading w-[65%] rounded h-[35px]"></h2>
+      <p class="img-loading w-[85%] my-1.5 rounded h-[25px]"></p>
+      <p class="img-loading w-[75%] my-1.5 rounded h-[25px]"></p>
+      <p class="img-loading w-[80%] my-1.5 rounded h-[25px]"></p>
+      <br />
+      <h2 class="img-loading w-[55%] rounded h-[35px]"></h2>
+      <p class="img-loading w-[90%] my-1.5 rounded h-[25px]"></p>
+      <p class="img-loading w-[50%] my-1.5 rounded h-[25px]"></p>
+      <p class="img-loading w-[25%] my-1.5 rounded h-[25px]"></p>
+    </div>
+  </div>
+</div>

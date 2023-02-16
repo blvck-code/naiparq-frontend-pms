@@ -4,8 +4,10 @@ import { LandingComponent } from './components/landing/landing.component';
 import { HomeComponent } from './home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import {BlogListComponent} from "./components/blog/blog-list/blog-list.component";
-import {BlogCreateComponent} from "./components/blog/blog-create/blog-create.component";
+import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
+import { BlogCreateComponent } from './components/blog/blog-create/blog-create.component';
+import { BlogDetailComponent } from './components/blog/blog-detail/blog-detail.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 const homeRoutes: Routes = [
   {
@@ -26,17 +28,22 @@ const homeRoutes: Routes = [
       },
       {
         path: 'blog',
-        redirectTo: 'blog/list',
-        pathMatch: 'full'
+        component: BlogComponent,
+        children: [
+          {
+            path: '',
+            component: BlogListComponent,
+          },
+          {
+            path: 'create',
+            component: BlogCreateComponent,
+          },
+          {
+            path: ':slug',
+            component: BlogDetailComponent,
+          },
+        ],
       },
-      {
-        path: 'blog/list',
-        component: BlogListComponent
-      },
-      {
-        path: 'blog/create',
-        component: BlogCreateComponent
-      }
     ],
   },
 ];

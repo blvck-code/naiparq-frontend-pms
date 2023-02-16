@@ -6,7 +6,7 @@
     top: 145px;
     width: 895px;
     height: 895px;
-    background: #FBCE33;
+    background: #fbce33;
     mix-blend-mode: normal;
     filter: blur(200px);
   }
@@ -17,8 +17,15 @@
     left: 75%;
     top: -20px;
 
-    background: #4BC1F1;
+    background: #4bc1f1;
     mix-blend-mode: normal;
     filter: blur(200px);
+  }
+}
+
+showdown {
+  p {
+    font-size: 18px;
+    font-weight: 600;
   }
 }

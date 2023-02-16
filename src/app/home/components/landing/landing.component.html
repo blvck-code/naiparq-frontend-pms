@@ -1,20 +1,29 @@
-<section #intro class="naiparq-home__landing flex relative">
+<section class="naiparq-home__landing flex relative px-3">
   <div class="bg-circle blue z-0"></div>
   <div class="bg-circle yellow z-0"></div>
   <div
-    class="naiparq-home__landing-content max-w-[1200px] z-10 py-5 mx-auto grid grid-cols-2 justify-content-center"
+    class="naiparq-home_landing-content max-w-[1200px] z-10 py-4 mx-auto flex laptop:flex-row tabletLand:flex-col tabletLand:gap-y-3 mobile:flex-col mobile:gap-y-3 sm:flex-col sm:gap-y-3 justify-content-center"
   >
-    <div class="landing-intro pr-2 pr-3 flex flex-col justify-center">
-      <h1 #introTitle class="text-[80px] leading-[85px]">
-        Locate <br />
+    <div
+      class="landing-intro border pr-2 pr-3 basis-1/2 flex flex-col mobile:flex-col laptop:text-left sm:text-center justify-center"
+    >
+      <h1
+        class="laptop:text-[80px] font-[700] laptop:leading-[85px] sm:text-[30px] sm:leading-[35px]"
+      >
+        Locate <br class="sm:hidden" />
         Book & ParQ
       </h1>
-      <p #introText class="py-3 text-[22px] leading-[32px]">
+      <p
+        class="py-3 laptop:text-[22px] laptop:leading-[32px] tabletLand:text-[18px] tabletLand:leading-[28px] mobile:text-[18px] mobile:leading-[28px] sm:text-[16px] sm:leading-[20px]"
+      >
         Naiparq works to activate thousands of underutilised parking spaces
         within Nairobi and other urban areas by not only making them visible to
-        motorists, but also enabling them to book spaces in advance
+        motorists, but also enabling them to book spaces in advance.
       </p>
-      <div #introBtns class="landing-apps flex items-center gap-2">
+      <div
+        #introBtns
+        class="landing-apps flex laptop:flex-row tabletLand:flex-col sm:flex-col mobile:flex-col items-center gap-2"
+      >
         <a href="">
           <svg
             width="202"
@@ -114,10 +123,10 @@
         </a>
       </div>
     </div>
-    <div class="landing-img">
+    <div class="landing-img basis-1/2 border">
       <img
         #introImg
-        class="max-w-[577px] max-h-[703px] w-[100%] mx-auto object-cover"
+        class="max-w-[577px] max-h-[703px] laptop:w-[100%] tabletLand:w-[75%] mobile:w-[75%] sm:w-[75%] mx-auto object-cover"
         src="assets/images/naiparq-intro-mobile.png"
         alt="Naiparq Mobile"
       />
@@ -125,34 +134,44 @@
   </div>
 </section>
 
-<section class="naiparq-home__how-it-works p-10">
-  <div class="HIT-content max-w-[1200px] mx-auto relative z-10">
+<section
+  class="naiparq-home__how-it-works border laptop:p-10 tabletLand:p-5 mobile:p-4 sm:p-4"
+>
+  <div class="HIT-content max-w-[1200px] border mx-auto relative z-10">
     <!--    Intro-->
     <div
       class="HIT-content__top flex flex-col max-w-[670px] px-2 mx-auto items-center text-center"
     >
-      <h1 class="py-3 text-[50px] leading-[58px] font-[700]">How It Works</h1>
-      <p class="text-[24px] leading-[31px] font-[400]">
+      <h1
+        class="py-3 laptop:text-[50px] laptop:leading-[58px] tabletLand:text-[30px] tabletLand:leading-[35px] mobile:text-[30px] mobile:leading-[35px] font-[700]"
+      >
+        How It Works
+      </h1>
+      <p
+        class="laptop:text-[24px] laptop:leading-[31px] tabletLand:text-[20px] tabletLand:leading-[28px] mobile:text-[20px] mobile:leading-[28px] sm:text-[20px] sm:leading-[28px] font-[400]"
+      >
         Parking Operators will list their parking spaces on the Naiparq
         platform, which is accessible via web or mobile app, and they will
         immediately benefit from.
       </p>
     </div>
     <!--    Icons-->
-    <div class="HIT-content__steps grid gap-2 grid-cols-4 py-20">
+    <div
+      class="HIT-content__steps grid border gap-x-2 laptop:grid-cols-4 tabletLand:grid-cols-2 mobile:grid-cols-2 sm:grid-cols-1 laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3"
+    >
       <div
-        class="HIT-step-item flex flex-col justify-between items-center text-center"
+        class="HIT-step-item border flex flex-col justify-between items-center text-center"
       >
         <div class="HIT-item__icon min-h-[200px]">
           <img src="assets/images/icons/payment-icon.png" alt="Payment Icon" />
         </div>
         <p class="max-w-[270px] text-[20px] font-[400] leading-[27px]">
-          Assured Parking through the booking function
+          Assured Parking through the booking function.
         </p>
       </div>
 
       <div
-        class="HIT-step-item flex flex-col justify-between items-center text-center"
+        class="HIT-step-item border flex flex-col justify-between items-center text-center"
       >
         <div class="HIT-item__icon min-h-[200px]">
           <img src="assets/images/icons/parking-icon.png" alt="Payment Icon" />
@@ -163,7 +182,7 @@
       </div>
 
       <div
-        class="HIT-step-item flex flex-col justify-between items-center text-center"
+        class="HIT-step-item border flex flex-col justify-between items-center text-center"
       >
         <div class="HIT-item__icon min-h-[200px]">
           <img src="assets/images/icons/order-icon.png" alt="Payment Icon" />
@@ -175,7 +194,7 @@
       </div>
 
       <div
-        class="HIT-step-item flex flex-col justify-between items-center text-center"
+        class="HIT-step-item border flex flex-col justify-between items-center text-center"
       >
         <div class="HIT-item__icon min-h-[200px]">
           <img src="assets/images/icons/wallet-icon.png" alt="Payment Icon" />
@@ -188,13 +207,17 @@
   </div>
 </section>
 
-<section class="naiparq-home__motorist p-10">
-  <div class="content max-w-[1200px] mx-auto relative z-10">
-    <h1 class="py-3 text-[50px] leading-[58px] font-[700] text-center">
+<section class="naiparq-home_border_motorist px-3">
+  <div class="content max-w-[1200px] border p-10 mx-auto relative z-10">
+    <h1
+      class="py-3 laptop:text-[50px] mobile:text-[30px] leading-[58px] font-[700] text-center"
+    >
       For Motorists
     </h1>
 
-    <div class="flex flex-row gap-3 pt-3 items-center justify-center">
+    <div
+      class="flex laptop:flex-row tabletLand:flex-col mobile:flex-col sm:flex-col gap-3 pt-3 items-center justify-center"
+    >
       <div class="flex flex-col gap-3">
         <div
           class="h-[206px] w-[400px] flex flex-col px-4 items-start justify-center bg-white rounded-lg"
@@ -379,7 +402,9 @@
     <h1 class="text-[50px] leading-[58px] font-[700] text-center">
       Which areas in Nairobi do you wish to get a guaranteed parking space?
     </h1>
-    <div class="grid grid-cols-2 gap-3 py-5">
+    <div
+      class="grid laptop:grid-cols-2 tabletLand:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 gap-3 py-5"
+    >
       <div class="flex flex-col justify-center">
         <h2 class="text-[50px] font-[700] leading-[55px]">
           Parking Space <br />
@@ -470,26 +495,69 @@
           </div>
           <!--          Todo Unfinished sect -->
           <div class="flex flex-row items-center gap-1 mt-2.5 mb-4">
-            <label class="text-[16px] basis-4/5 text-[#11142D] font-[700]" for="oEmail"
+            <label
+              class="text-[16px] basis-4/5 text-[#11142D] font-[700]"
+              for="oEmail"
               >Add Slots</label
             >
             <div class="flex flex-row justify-between items-center basis-1/5">
-              <button (click)="decreaseSlots()" style="border: 1px solid black" class="rounded-full p-1">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3.89389 10.6824H18.1433" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <button
+                (click)="decreaseSlots()"
+                style="border: 1px solid black"
+                class="rounded-full p-1"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 22 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3.89389 10.6824H18.1433"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </button>
               <span>{{ numOfSlots }}</span>
-              <button (click)="increaseSlots()" style="border: 1px solid black" class="rounded-full p-1">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3.59656 10.6824H17.8459" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M10.7213 3.55774V17.8071" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <button
+                (click)="increaseSlots()"
+                style="border: 1px solid black"
+                class="rounded-full p-1"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 22 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3.59656 10.6824H17.8459"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.7213 3.55774V17.8071"
+                    stroke="black"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </button>
             </div>
           </div>
           <div class="flex flex-col gap-1 py-2.5">
-            <button type="submit" class="py-2 rounded-[90px] hover:bg[#000]/[0.5] bg-[#000] transition-all w-[100%]">
+            <button
+              type="submit"
+              class="py-2 rounded-[90px] hover:bg[#000]/[0.5] bg-[#000] transition-all w-[100%]"
+            >
               <span class="text-[16px] font-[700] text-[#fff]"
                 >Register Now</span
               >
@@ -512,7 +580,9 @@
         View All
       </a>
     </div>
-    <div class="grid grid-cols-3 gap-3 pt-10 pb-20">
+    <div
+      class="grid laptop:grid-cols-3 tabletLand:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 gap-3 pt-10 pb-20"
+    >
       <div class="h-[402px] bg-[#fff] rounded-lg"></div>
       <div class="h-[402px] bg-[#fff] rounded-lg"></div>
       <div class="h-[402px] bg-[#fff] rounded-lg"></div>
@@ -522,7 +592,7 @@
 
 <section class="naiparq-home__apps">
   <div
-    class="content max-w-[1200px] h-[100%] mx-auto relative z-10 grid grid-cols-2 gap-3"
+    class="content max-w-[1200px] h-[100%] mx-auto relative z-10 grid laptop:grid-cols-2 tabletLand:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 gap-3"
   >
     <div class="naiparq-apps relative">
       <img

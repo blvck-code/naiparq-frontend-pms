@@ -1,4 +1,10 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -20,6 +26,7 @@ export class HomeComponent implements OnInit {
   'menu': ElementRef<HTMLDivElement>;
   @ViewChild('navBar', { static: true }) 'navBar': ElementRef<HTMLDivElement>;
 
+  showMenu: boolean = false;
   currentYear: any;
   isNavbarVisible: boolean = true;
   prevScrollPos = window.pageYOffset;
@@ -32,7 +39,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this.initAnimation();
     this.getDate();
-    this.onWindowScroll()
+    this.onWindowScroll();
+  }
+
+  toggleSideNav(): void {
+    this.showMenu = !this.showMenu;
+  }
+
+  closeMenu(event?: any): void {
+    if (event.target.classList.contains('backdrop')) {
+      this.showMenu = false;
+      return;
+    }
+    this.showMenu = false;
+    return;
   }
 
   @HostListener('window:scroll', [])
@@ -40,12 +60,12 @@ export class HomeComponent implements OnInit {
     const currentScrollPos = window.pageYOffset;
 
     if (this.prevScrollPos > currentScrollPos) {
-      this.isNavbarVisible = true
+      this.isNavbarVisible = true;
     } else {
-      this.isNavbarVisible = false
+      this.isNavbarVisible = false;
     }
-    console.log('Visible ===>>', this.isNavbarVisible)
-    this.prevScrollPos = currentScrollPos
+    console.log('Visible ===>>', this.isNavbarVisible);
+    this.prevScrollPos = currentScrollPos;
   }
 
   initAnimation(): void {

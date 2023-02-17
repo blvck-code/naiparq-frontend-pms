@@ -5,10 +5,10 @@
     [valueWhenHidden]="'translateY(-100%)'"
     [valueWhenShown]="'translateY(100%)'"
     #navBar
-    class="naiparq-home__header py-2"
+    class="naiparq-home__header border py-2"
   >
     <div
-      class="naiparq-home__header-wrap flex flex-row items-center h-[100%] py-3 max-w-[1200px] mx-auto"
+      class="naiparq-home__header-wrap relative border flex flex-row items-center h-[100%] p-3 max-w-[1200px] mx-auto"
     >
       <a
         #logo
@@ -22,7 +22,9 @@
         />
       </a>
 
-      <div class="naiparq-home__header-links flex basis-3/4">
+      <div
+        class="naiparq-home__header-links laptop:flex tabletLand:hidden mobile:hidden sm:hidden basis-3/4"
+      >
         <div
           #menuSecond
           class="nav-links flex justify-evenly basis-2/3 items-center"
@@ -57,6 +59,75 @@
             [routerLink]="['/auth/register']"
             >Sign Up</a
           >
+        </div>
+      </div>
+
+      <div
+        (click)="toggleSideNav()"
+        class="side cursor-pointer-btn laptop:hidden basis-3/4 flex justify-end"
+      >
+        <svg
+          width="30"
+          height="21"
+          viewBox="0 0 30 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="30" height="3" fill="black" />
+          <rect y="9" width="30" height="3" fill="black" />
+          <rect y="18" width="30" height="3" fill="black" />
+        </svg>
+      </div>
+      <div
+        [class.hidden]="!showMenu"
+        class="laptop:hidden tabletLand:fixed ease-in-out duration-300 mobile:fixed sm:fixed z-50 top-0 bottom-0 right-0 left-0"
+      >
+        <div
+          (click)="closeMenu($event)"
+          class="backdrop relative bg-[#000]/[.5] w-[100%] h-[100%]"
+        >
+          <div class="menu absolute right-0 w-[75vw] h-[100%] bg-[#fff] p-3">
+            <div class="w-[100%] flex justify-end">
+              <svg
+                (click)="closeMenu()"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-10 h-10 text-[20px]"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+            <ul class="p-0 h-[100%] flex flex-col gap-3">
+              <li>
+                <a
+                  class="text-[#000] no-underline font-[700] text-[18px]"
+                  href=""
+                  >How it works</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-[#000] no-underline font-[700] text-[18px]"
+                  href=""
+                  >How it works</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-[#000] no-underline font-[700] text-[18px]"
+                  href=""
+                  >How it works</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

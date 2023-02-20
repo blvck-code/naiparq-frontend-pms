@@ -13,7 +13,7 @@
       </p>
     </div>
     <div
-      class="naiparq-blog-create__preview-img py-3 h-[350px] overflow-hidden py-2"
+      class="naiparq-blog-create__preview-img py-3 laptop:h-[350px] tabletLand:h-[250px] mobile:h-[250px] sm:h-[200px] overflow-hidden py-2"
     >
       <img
         *ngIf="blogDetails$"
@@ -44,15 +44,8 @@
       <p class="img-loading m-0 w-[25%] rounded h-[25px]"></p>
     </div>
     <div
-      class="naiparq-blog-create__preview-img py-3 h-[350px] overflow-hidden py-2"
-    >
-      <img
-        *ngIf="blogDetails$"
-        class="rounded-lg object-cover h-[100%]"
-        [src]="blogDetails$?.cover_image"
-        alt=""
-      />
-    </div>
+      class="naiparq-blog-create__preview-img my-2 py-3 rounded-lg img-loading laptop:h-[350px] tabletLand:h-[250px] mobile:h-[250px] sm:h-[200px] overflow-hidden"
+    ></div>
     <!--    Texts -->
     <div>
       <h2 class="img-loading w-[65%] rounded h-[35px]"></h2>

@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor5 } from '@ckeditor/ckeditor5-angular';
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
-import Image from '@ckeditor/ckeditor5-image/src/image';
 import { UploadAdapter } from './UploadAdapter';
 import { HttpClient } from '@angular/common/http';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -10,9 +8,13 @@ import { HomeService } from '../../../services/home.service';
 import { SharedService } from '../../../../shared/services/shared.service';
 import { BlogModel } from '../../../model/blog.model';
 import { Router } from '@angular/router';
+import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
+
+// NgRx
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
-import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
+import * as homeActions from '../../../state/home.actions';
+
 @Component({
   selector: 'app-blog-create',
   templateUrl: './blog-create.component.html',
@@ -67,26 +69,29 @@ export class BlogCreateComponent implements OnInit {
     this.store.select(isLoggedIn).subscribe({
       next: (status) => {
         console.log('Log in status ====>>', status);
-        if (status) {
-          this.store.select(userInfo).subscribe({
-            next: (resp) => {
-              if (resp.user_type !== 'blogger') {
-                // redirect to home page
-                this.sharedSrv.showNotification(
-                  'You are not allowed to access this page.',
-                  'error'
-                );
-                this.router.navigate(['/']);
-              }
-            },
-          });
+
+        if (!status) {
+          this.sharedSrv.showNotification(
+            'You are not allowed to access this page.',
+            'error'
+          );
+          this.router.navigate(['/']);
+          return;
         }
-        // redirect to home
-        this.sharedSrv.showNotification(
-          'You are not allowed to access this page.',
-          'error'
-        );
-        this.router.navigate(['/']);
+
+        this.store.select(userInfo).subscribe({
+          next: (resp) => {
+            if (resp.user_type !== 'blogger') {
+              // redirect to home page
+              this.sharedSrv.showNotification(
+                'You are not allowed to access this page.',
+                'error'
+              );
+              this.router.navigate(['/']);
+              return;
+            }
+          },
+        });
       },
     });
   }
@@ -136,7 +141,10 @@ export class BlogCreateComponent implements OnInit {
         // Todo 2: redirect to blog detail page
         this.submitting = false;
         this.sharedSrv.showNotification('Blog created successfully', 'success');
-        this.router.navigate([`blog/${response.id}`]);
+        this.store.dispatch(new homeActions.CreateBlogSuccess(response));
+        setTimeout(() => {
+          this.router.navigate([`blog/${response.id}`]);
+        }, 2000);
       },
       error: (err) => {
         console.log('Failed create blog ==>>', err);

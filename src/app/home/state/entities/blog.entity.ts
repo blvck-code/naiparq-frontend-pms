@@ -26,6 +26,11 @@ export const initialState = blogAdapter.getInitialState(defaultBlog);
 
 export const blogReducer = (state = initialState, action: any): BlogEntity => {
   switch (action.type) {
+    // New Blog
+    case homeActions.HomeActionsTypes.CREATE_BLOG_SUCCESS:
+      return blogAdapter.addOne(action.payload, {
+        ...state,
+      });
     // Fetch Blogs
     case homeActions.HomeActionsTypes.FETCH_BLOGS:
       return {

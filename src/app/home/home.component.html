@@ -5,10 +5,10 @@
     [valueWhenHidden]="'translateY(-100%)'"
     [valueWhenShown]="'translateY(100%)'"
     #navBar
-    class="naiparq-home__header border py-2"
+    class="naiparq-home__header py-2"
   >
     <div
-      class="naiparq-home__header-wrap relative border flex flex-row items-center h-[100%] p-3 max-w-[1200px] mx-auto"
+      class="naiparq-home__header-wrap relative flex flex-row items-center h-[100%] p-3 max-w-[1200px] mx-auto"
     >
       <a
         #logo
@@ -108,22 +108,22 @@
               <li>
                 <a
                   class="text-[#000] no-underline font-[700] text-[18px]"
-                  href=""
+                  [routerLink]="['/']"
                   >How it works</a
                 >
               </li>
               <li>
                 <a
                   class="text-[#000] no-underline font-[700] text-[18px]"
-                  href=""
-                  >How it works</a
+                  [routerLink]="['/about-us']"
+                  >About Us</a
                 >
               </li>
               <li>
                 <a
                   class="text-[#000] no-underline font-[700] text-[18px]"
-                  href=""
-                  >How it works</a
+                  [routerLink]="['/contact-us']"
+                  >Contact Us</a
                 >
               </li>
             </ul>
@@ -133,11 +133,19 @@
     </div>
   </header>
   <router-outlet></router-outlet>
-  <footer class="naiparq-home__footer py-10 text-[#fff]">
+  <footer
+    class="naiparq-home__footer laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3 px-3 text-[#fff]"
+  >
     <div class="content max-w-[1200px] mx-auto">
-      <div class="footer-content flex pt-4 pb-5 flex-row border-b">
-        <div class="basis-3/4 grid grid-cols-2">
-          <div class="pr-2 flex flex-col items-start gap-3">
+      <div
+        class="footer-content flex gap-y-3 laptop:pt-4 laptop:pb-5 tabletLand:p-0 mobile:p-0 sm:p-0 laptop:flex-row tabletLand:flex-col mobile:flex-col sm:flex-col border-b"
+      >
+        <div
+          class="basis-3/4 flex laptop:flex-row tabletLand:flex-col mobile:flex-col sm:flex-col"
+        >
+          <div
+            class="laptop:pr-2 tabletLand:pr-0 mobile:pr-0 sm:pr-0 basis-1/2 flex flex-col items-start gap-3"
+          >
             <!--            logo-->
             <img
               class="w-[202px] h-[50px]"
@@ -213,7 +221,9 @@
               </a>
             </div>
           </div>
-          <div class="pl-5 flex flex-col gap-2">
+          <div
+            class="laptop:pl-5 tabletLand:pl-0 mobile:pl-0 sm:pl-0 basis-1/2 flex flex-col gap-2"
+          >
             <p class="text-base leading-[28px]">Powered By</p>
             <img
               class="w-[260px] h-35px]"
@@ -222,7 +232,7 @@
             />
           </div>
         </div>
-        <div class="basis-1/4">
+        <div class="basis-1/4 tabletLand:pr-0 mobile:pr-0 sm:pr-0">
           <ul class="flex flex-col h-[100%] justify-evenly">
             <li>
               <a

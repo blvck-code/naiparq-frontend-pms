@@ -1,3 +1,5 @@
+@import "responsive";
+
 .naiparq-home {
   overflow: hidden;
   background: #fef9e8;
@@ -10,5 +12,116 @@
   &__footer {
     bottom: 0;
     background: #000;
+  }
+}
+
+.user-profile-dropdown {
+  border-radius: 100px;
+
+  .nav-user-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 210px;
+    padding: 6px;
+    border-radius: 100px;
+    background-color: var(--bkg-three-color);
+    cursor: pointer;
+
+    @include respond(phone) {
+      min-width: auto;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .img-name {
+      display: flex;
+      align-items: center;
+      padding-right: 10px;
+
+      @include respond(phone) {
+        padding-right: 0;
+      }
+
+      img {
+        height: 36px;
+        width: 36px;
+        margin-right: 0.75rem;
+        border-radius: 50%;
+        object-fit: cover;
+        @include respond(phone) {
+          margin-right: 0;
+          width: 45px;
+          height: 45px;
+        }
+      }
+      p {
+        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+
+        @include respond(phone) {
+          display: none;
+        }
+      }
+    }
+
+    svg {
+      margin-right: 1rem;
+      fill: var(--text-primary) !important;
+      @include respond(phone) {
+        display: none;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    @include respond(phone) {
+      display: none;
+    }
+
+    background-color: var(--bkg-three-color);
+    border: 1px solid var(--text-primary);
+
+    &.show {
+      width: 100%;
+    }
+
+    a {
+      color: var(--text-primary);
+    }
+
+    .naiparq-theme-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 15px;
+
+      .naiparq-theme-btn {
+        height: 25px;
+        width: 20%;
+        border-radius: 12px;
+        background-color: #ccc;
+        position: relative;
+        padding: 3px;
+        cursor: pointer;
+
+        svg {
+          width: 20px;
+          position: absolute;
+
+          &.light-theme {
+            left: 3px;
+            right: auto;
+          }
+
+          &.dark-theme {
+            right: 3px;
+            left: auto;
+          }
+        }
+      }
+    }
   }
 }

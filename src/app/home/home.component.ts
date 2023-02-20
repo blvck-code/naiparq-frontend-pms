@@ -7,6 +7,11 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import { Observable } from 'rxjs';
+import { isLoggedIn, userName } from '../auth/state/auth.selector';
+import * as authActions from '../auth/state/auth.actions';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +35,11 @@ export class HomeComponent implements OnInit {
   currentYear: any;
   isNavbarVisible: boolean = true;
   prevScrollPos = window.pageYOffset;
-  constructor() {}
+
+  isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
+  userName$: Observable<string> = this.store.select(userName);
+
+  constructor(private store: Store<AppState>) {}
 
   getDate(): void {
     this.currentYear = new Date().getFullYear();
@@ -53,6 +62,10 @@ export class HomeComponent implements OnInit {
     }
     this.showMenu = false;
     return;
+  }
+
+  logOut(): void {
+    this.store.dispatch(new authActions.LogOut());
   }
 
   @HostListener('window:scroll', [])

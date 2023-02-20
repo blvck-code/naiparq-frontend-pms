@@ -12,6 +12,9 @@ import { AppState } from '../app.state';
 import { Observable } from 'rxjs';
 import { isLoggedIn, userName } from '../auth/state/auth.selector';
 import * as authActions from '../auth/state/auth.actions';
+import { blogList, blogLoaded, blogLoading } from './state/home.reducer';
+import * as homeActions from './state/home.actions';
+import { BlogModel } from './model/blog.model';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +42,8 @@ export class HomeComponent implements OnInit {
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
   userName$: Observable<string> = this.store.select(userName);
 
+  blogLoaded$: Observable<boolean> = this.store.select(blogLoaded);
+
   constructor(private store: Store<AppState>) {}
 
   getDate(): void {
@@ -49,8 +54,17 @@ export class HomeComponent implements OnInit {
     // this.initAnimation();
     this.getDate();
     this.onWindowScroll();
+    this.getArticles();
   }
 
+  getArticles(): void {
+    this.blogLoaded$.subscribe({
+      next: (status) => {
+        if (status) return;
+        this.store.dispatch(new homeActions.FetchBlog());
+      },
+    });
+  }
   toggleSideNav(): void {
     this.showMenu = !this.showMenu;
   }

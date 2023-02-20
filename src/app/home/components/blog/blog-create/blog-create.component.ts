@@ -10,6 +10,9 @@ import { HomeService } from '../../../services/home.service';
 import { SharedService } from '../../../../shared/services/shared.service';
 import { BlogModel } from '../../../model/blog.model';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../app.state';
+import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
 @Component({
   selector: 'app-blog-create',
   templateUrl: './blog-create.component.html',
@@ -51,10 +54,42 @@ export class BlogCreateComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private homeSrv: HomeService,
     private sharedSrv: SharedService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkUser();
+  }
+
+  checkUser(): void {
+    // Check if user is logged in
+    this.store.select(isLoggedIn).subscribe({
+      next: (status) => {
+        console.log('Log in status ====>>', status);
+        if (status) {
+          this.store.select(userInfo).subscribe({
+            next: (resp) => {
+              if (resp.user_type !== 'blogger') {
+                // redirect to home page
+                this.sharedSrv.showNotification(
+                  'You are not allowed to access this page.',
+                  'error'
+                );
+                this.router.navigate(['/']);
+              }
+            },
+          });
+        }
+        // redirect to home
+        this.sharedSrv.showNotification(
+          'You are not allowed to access this page.',
+          'error'
+        );
+        this.router.navigate(['/']);
+      },
+    });
+  }
 
   clickCoverImg(): void {
     this.coverImgInput.nativeElement.click();

@@ -4,12 +4,12 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VerifyComponent } from './components/verify/verify.component';
-import {ResetComponent} from "./components/reset/reset.component";
-import {ConfirmResetComponent} from "./components/confirm-reset/confirm-reset.component";
+import { ResetComponent } from './components/reset/reset.component';
+import { ConfirmResetComponent } from './components/confirm-reset/confirm-reset.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthComponent,
     children: [
       {
@@ -22,11 +22,11 @@ const routes: Routes = [
       },
       {
         path: 'password_reset',
-        component: ResetComponent
+        component: ResetComponent,
       },
       {
         path: 'confirm_reset',
-        component: ConfirmResetComponent
+        component: ConfirmResetComponent,
       },
       {
         path: 'verify',

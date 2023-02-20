@@ -18,13 +18,13 @@ export class CreateBlog implements Action {
   readonly type = HomeActionsTypes.CREATE_BLOG;
 }
 export class CreateBlogSuccess implements Action {
-  readonly type = HomeActionsTypes.CREATE_BLOG;
+  readonly type = HomeActionsTypes.CREATE_BLOG_SUCCESS;
   constructor(public payload: BlogModel) {
     console.log('Create blog success ===>>', payload);
   }
 }
 export class CreateBlogFail implements Action {
-  readonly type = HomeActionsTypes.CREATE_BLOG;
+  readonly type = HomeActionsTypes.CREATE_BLOG_FAIL;
   constructor(public payload: any) {
     console.log('Create blog failed ==>>', payload);
   }

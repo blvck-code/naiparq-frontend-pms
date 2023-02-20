@@ -7,6 +7,14 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import { Observable } from 'rxjs';
+import { isLoggedIn, userName } from '../auth/state/auth.selector';
+import * as authActions from '../auth/state/auth.actions';
+import { blogList, blogLoaded, blogLoading } from './state/home.reducer';
+import * as homeActions from './state/home.actions';
+import { BlogModel } from './model/blog.model';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +38,13 @@ export class HomeComponent implements OnInit {
   currentYear: any;
   isNavbarVisible: boolean = true;
   prevScrollPos = window.pageYOffset;
-  constructor() {}
+
+  isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
+  userName$: Observable<string> = this.store.select(userName);
+
+  blogLoaded$: Observable<boolean> = this.store.select(blogLoaded);
+
+  constructor(private store: Store<AppState>) {}
 
   getDate(): void {
     this.currentYear = new Date().getFullYear();
@@ -40,8 +54,17 @@ export class HomeComponent implements OnInit {
     // this.initAnimation();
     this.getDate();
     this.onWindowScroll();
+    this.getArticles();
   }
 
+  getArticles(): void {
+    this.blogLoaded$.subscribe({
+      next: (status) => {
+        if (status) return;
+        this.store.dispatch(new homeActions.FetchBlog());
+      },
+    });
+  }
   toggleSideNav(): void {
     this.showMenu = !this.showMenu;
   }
@@ -53,6 +76,10 @@ export class HomeComponent implements OnInit {
     }
     this.showMenu = false;
     return;
+  }
+
+  logOut(): void {
+    this.store.dispatch(new authActions.LogOut());
   }
 
   @HostListener('window:scroll', [])

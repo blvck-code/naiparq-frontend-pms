@@ -1,7 +1,18 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {UntypedFormBuilder, Validators} from "@angular/forms";
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { Observable, take } from 'rxjs';
+import { BlogModel } from '../../model/blog.model';
+import { blogList, blogLoading } from '../../state/home.reducer';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,20 +35,29 @@ export class LandingComponent implements OnInit {
 
   numOfSlots: number = 1;
 
+  blogList$: Observable<BlogModel[]> = this.store.select(blogList);
+  blogLoading$: Observable<boolean> = this.store.select(blogLoading);
+  articles: BlogModel[] = [];
 
   registerForm = this.fb.group({
     email: ['', Validators.required],
     phone: ['', Validators.required],
     location: ['', Validators.required],
-    slots: ['']
-  })
-  constructor(
-    private fb: UntypedFormBuilder
-  ) {}
+    slots: [''],
+  });
+  constructor(private fb: UntypedFormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     // this.initAnimation();
     this.initScrollAnimation();
+  }
+
+  showArticles(): void {
+    this.blogList$.subscribe({
+      next: (resp) => {
+        this.articles = resp;
+      },
+    });
   }
 
   initAnimation(): void {
@@ -108,7 +128,6 @@ export class LandingComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Form data ==>>', this.registerForm.value)
+    console.log('Form data ==>>', this.registerForm.value);
   }
-
 }

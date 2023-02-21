@@ -8,6 +8,7 @@ import { BlogListComponent } from './components/blog/blog-list/blog-list.compone
 import { BlogCreateComponent } from './components/blog/blog-create/blog-create.component';
 import { BlogDetailComponent } from './components/blog/blog-detail/blog-detail.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { BloggerGuard } from '../auth/services/blogger.guard';
 
 const homeRoutes: Routes = [
   {
@@ -37,6 +38,7 @@ const homeRoutes: Routes = [
           {
             path: 'create',
             component: BlogCreateComponent,
+            canActivate: [BloggerGuard],
           },
           {
             path: ':slug',

@@ -60,40 +60,40 @@ export class BlogCreateComponent implements OnInit {
     private store: Store<AppState>
   ) {}
 
-  ngOnInit(): void {
-    this.checkUser();
-  }
+  ngOnInit(): void {}
 
   checkUser(): void {
-    // Check if user is logged in
-    this.store.select(isLoggedIn).subscribe({
-      next: (status) => {
-        console.log('Log in status ====>>', status);
+    const url = this.router.url;
+    console.log('Current url ==>>', url);
+    if (url !== '/blog/create') {
+      return;
+    } else {
+      // Check if user is logged in
+      this.store.select(isLoggedIn).subscribe({
+        next: (status) => {
+          console.log('Log in status ====>>', status);
 
-        if (!status) {
-          this.sharedSrv.showNotification(
-            'You are not allowed to access this page.',
-            'error'
-          );
-          this.router.navigate(['/']);
-          return;
-        }
+          if (!status) {
+            this.router.navigate(['/']);
+            return;
+          }
 
-        this.store.select(userInfo).subscribe({
-          next: (resp) => {
-            if (resp.user_type !== 'blogger') {
-              // redirect to home page
-              this.sharedSrv.showNotification(
-                'You are not allowed to access this page.',
-                'error'
-              );
-              this.router.navigate(['/']);
-              return;
-            }
-          },
-        });
-      },
-    });
+          this.store.select(userInfo).subscribe({
+            next: (resp) => {
+              if (resp.user_type !== 'blogger') {
+                // redirect to home page
+                this.sharedSrv.showNotification(
+                  'You are not allowed to access this page.',
+                  'error'
+                );
+                this.router.navigate(['/']);
+                return;
+              }
+            },
+          });
+        },
+      });
+    }
   }
 
   clickCoverImg(): void {

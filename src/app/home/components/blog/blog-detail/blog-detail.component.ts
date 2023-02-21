@@ -55,16 +55,20 @@ export class BlogDetailComponent implements OnInit {
         superUser = userDetails.is_superuser;
       },
     });
-
     if (userType === 'blogger' || superUser) {
       return true;
     }
-
     return false;
   }
 
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  selectedBlog(blogId: string): any {
+    this.store.dispatch(new homeActions.SelectedBlog(blogId));
+    const editURL = `/blog/create/${blogId}`;
+    return this.router.navigate([editURL]);
   }
 
   deleteBlog(blogSlug: string, blogId: string): void {

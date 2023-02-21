@@ -12,7 +12,11 @@ export enum HomeActionsTypes {
   CREATE_BLOG_SUCCESS = 'blog/createBlogSuccess',
   CREATE_BLOG_FAIL = 'blog/createBlogFail',
 
+  // Delete Blog
   DELETE_BLOG = 'blog/deleteBlog',
+
+  // Selected Blog
+  SELECTED_BLOG = 'blog/selectedBlog',
 }
 
 // Create blog
@@ -35,6 +39,12 @@ export class CreateBlogFail implements Action {
 // Delete Blog
 export class DeleteBlog implements Action {
   readonly type = HomeActionsTypes.DELETE_BLOG;
+  constructor(public payload: string) {}
+}
+
+// Selected Blog
+export class SelectedBlog implements Action {
+  readonly type = HomeActionsTypes.SELECTED_BLOG;
   constructor(public payload: string) {}
 }
 

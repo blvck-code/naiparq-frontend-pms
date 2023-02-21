@@ -41,6 +41,11 @@ const homeRoutes: Routes = [
             canActivate: [BloggerGuard],
           },
           {
+            path: 'create/:id',
+            component: BlogCreateComponent,
+            canActivate: [BloggerGuard],
+          },
+          {
             path: ':slug',
             component: BlogDetailComponent,
           },

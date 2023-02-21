@@ -14,6 +14,7 @@ import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
 import * as homeActions from '../../../state/home.actions';
+import { selectedBlog, selectedBlogId } from '../../../state/home.reducer';
 
 @Component({
   selector: 'app-blog-create',
@@ -60,40 +61,35 @@ export class BlogCreateComponent implements OnInit {
     private store: Store<AppState>
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.editMode();
+  }
 
-  checkUser(): void {
-    const url = this.router.url;
-    console.log('Current url ==>>', url);
-    if (url !== '/blog/create') {
-      return;
-    } else {
-      // Check if user is logged in
-      this.store.select(isLoggedIn).subscribe({
-        next: (status) => {
-          console.log('Log in status ====>>', status);
+  editMode(): void {
+    this.store.select(selectedBlogId).subscribe({
+      next: (blogId: string) => {
+        if (!blogId) {
+          return;
+        }
+        console.log('Selected blog id ==>>', blogId);
+        // find blog from store
+        this.store.select(selectedBlog(blogId)).subscribe({
+          next: (blogItem) => {
+            this.patchFormValues(blogItem);
+          },
+        });
+        // patch form values
+      },
+    });
+  }
 
-          if (!status) {
-            this.router.navigate(['/']);
-            return;
-          }
-
-          this.store.select(userInfo).subscribe({
-            next: (resp) => {
-              if (resp.user_type !== 'blogger') {
-                // redirect to home page
-                this.sharedSrv.showNotification(
-                  'You are not allowed to access this page.',
-                  'error'
-                );
-                this.router.navigate(['/']);
-                return;
-              }
-            },
-          });
-        },
-      });
-    }
+  patchFormValues(blog: any): void {
+    this.blogForm.patchValue({
+      title: blog.title,
+    });
+    this.coverImage = blog.cover_img;
+    this.blogContent = blog.content;
+    console.log('Blog to edit ==>>', blog);
   }
 
   clickCoverImg(): void {
@@ -130,6 +126,8 @@ export class BlogCreateComponent implements OnInit {
   resetCoverImg(): void {}
 
   onSubmit(): void {
+    // Check if in edit blog mode or create new blog mode
+
     this.submitting = true;
     this.blogFormData.append('title', this.blogForm.get('title')?.value);
     this.blogFormData.append('content', this.blogContent);

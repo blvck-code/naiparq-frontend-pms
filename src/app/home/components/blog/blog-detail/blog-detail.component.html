@@ -9,6 +9,7 @@
       class="flex justify-end items-center py-2 mb-2 gap-2"
     >
       <button
+        (click)="selectedBlog(blogDetails$?.id)"
         class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
       >
         <span class="btn-text text-[#fff] font-[700]">Edit</span>

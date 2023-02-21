@@ -15,6 +15,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
 import * as homeActions from '../../../state/home.actions';
 import { selectedBlog, selectedBlogId } from '../../../state/home.reducer';
+import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
   selector: 'app-blog-create',
@@ -26,7 +27,7 @@ export class BlogCreateComponent implements OnInit {
   @ViewChild('editor', { static: true }) 'editor': ElementRef;
   @ViewChild('coverImgInput', { static: true }) 'coverImgInput': ElementRef;
   // @ts-ignore
-  public Editor: CKEditor5.EditorConstructor = ClassicEditor;
+  public Editor: CKEditor5.EditorConstructor = DecoupledEditor;
   blogFormData = new FormData();
   blogContent: any;
 
@@ -37,14 +38,23 @@ export class BlogCreateComponent implements OnInit {
   coverImage: string = '';
   coverImageName: string = '';
 
-  public onReady(eventData: any) {
-    eventData.plugins.get('FileRepository').createUploadAdapter = (
-      loader: any
-    ) => {
-      console.log('Loader ==>>', loader);
-      return new UploadAdapter(loader, '', this.http);
-    };
+  public onReady(editor: any) {
+    editor.ui
+      .getEditableElement()
+      .parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+      );
   }
+
+  // public onReady(eventData: any) {
+  //   eventData.plugins.get('FileRepository').createUploadAdapter = (
+  //     loader: any
+  //   ) => {
+  //     console.log('Loader ==>>', loader);
+  //     return new UploadAdapter(loader, '', this.http);
+  //   };
+  // }
 
   blogForm = this.fb.group({
     title: ['', Validators.required],

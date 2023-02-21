@@ -14,7 +14,9 @@
     background: #000;
   }
 }
-
+.nav--hidden {
+  display: none !important;
+}
 .user-profile-dropdown {
   border-radius: 100px;
 

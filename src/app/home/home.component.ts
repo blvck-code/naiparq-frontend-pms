@@ -1,20 +1,27 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
+  Inject,
   OnInit,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { Observable } from 'rxjs';
+import { fromEvent, Observable, Subject, takeUntil } from 'rxjs';
 import { isLoggedIn, userName } from '../auth/state/auth.selector';
 import * as authActions from '../auth/state/auth.actions';
 import { blogList, blogLoaded, blogLoading } from './state/home.reducer';
 import * as homeActions from './state/home.actions';
 import { BlogModel } from './model/blog.model';
+import { HomeService } from './services/home.service';
+// @ts-ignore
+import { WINDOW } from './services/home.service';
+import { DOCUMENT } from '@angular/common';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,22 +29,15 @@ gsap.registerPlugin(ScrollTrigger);
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('logo', { static: true })
-  'logo': ElementRef<HTMLDivElement>;
-
-  @ViewChild('menuSecond', { static: true })
-  'menuSecond': ElementRef<HTMLDivElement>;
-
-  @ViewChild('menu', { static: true })
-  'menu': ElementRef<HTMLDivElement>;
-  @ViewChild('navBar', { static: true }) 'navBar': ElementRef<HTMLDivElement>;
-
   showMenu: boolean = false;
   currentYear: any;
-  isNavbarVisible: boolean = true;
-  prevScrollPos = window.pageYOffset;
+  isNavbarVisible = true;
+  lastScrollTop = 0;
+
+  @ViewChild('home', { static: true }) 'home': ElementRef;
 
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
   userName$: Observable<string> = this.store.select(userName);
@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this.initAnimation();
     this.getDate();
-    this.onWindowScroll();
     this.getArticles();
+    this.toggleSideNav();
   }
 
   getArticles(): void {
@@ -65,8 +65,16 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
   toggleSideNav(): void {
-    this.showMenu = !this.showMenu;
+    let lastScrollTop = 0;
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    console.log(window.onscroll);
+    console.log(document.body.onscroll);
+
+    this.home?.nativeElement.addEventListener('click', (event: any) => {
+      console.log(122222);
+    });
   }
 
   closeMenu(event?: any): void {
@@ -80,46 +88,5 @@ export class HomeComponent implements OnInit {
 
   logOut(): void {
     this.store.dispatch(new authActions.LogOut());
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll(): any {
-    const currentScrollPos = window.pageYOffset;
-
-    if (this.prevScrollPos > currentScrollPos) {
-      this.isNavbarVisible = true;
-    } else {
-      this.isNavbarVisible = false;
-    }
-    console.log('Visible ===>>', this.isNavbarVisible);
-    this.prevScrollPos = currentScrollPos;
-  }
-
-  initAnimation(): void {
-    // Logo
-    gsap.from(this.logo.nativeElement, {
-      duration: 0.7,
-      opacity: 0,
-      y: -30,
-      delay: 1.5,
-    });
-
-    // Other links
-    gsap.from(this.menuSecond.nativeElement.childNodes, {
-      duration: 0.5,
-      opacity: 0,
-      y: -20,
-      stagger: 0.2,
-      delay: 1.8,
-    });
-
-    // Auth Links
-    gsap.from(this.menu.nativeElement.childNodes, {
-      duration: 0.5,
-      opacity: 0,
-      y: -20,
-      stagger: 0.2,
-      delay: 2,
-    });
   }
 }

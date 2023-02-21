@@ -44,6 +44,11 @@ export const blogReducer = (state = initialState, action: any): BlogEntity => {
         loaded: true,
         loading: false,
       });
+    // Delete Blog
+    case homeActions.HomeActionsTypes.DELETE_BLOG:
+      return blogAdapter.removeOne(action.payload, {
+        ...state,
+      });
     default:
       return state;
   }

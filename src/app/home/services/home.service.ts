@@ -18,4 +18,11 @@ export class HomeService {
   createArticle(blogContent: any): Observable<any> {
     return this.http.post<Observable<any>>(env.naiparqCreateBlog, blogContent);
   }
+
+  deleteBlog(
+    blogSlug: string
+  ): Observable<{ message: string; status: number }> {
+    const deleteURL: string = `${env.naiparqBlogList}/${blogSlug}/`;
+    return this.http.delete<{ message: string; status: number }>(deleteURL);
+  }
 }

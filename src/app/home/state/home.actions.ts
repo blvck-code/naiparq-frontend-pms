@@ -11,6 +11,8 @@ export enum HomeActionsTypes {
   CREATE_BLOG = 'blog/createBlog',
   CREATE_BLOG_SUCCESS = 'blog/createBlogSuccess',
   CREATE_BLOG_FAIL = 'blog/createBlogFail',
+
+  DELETE_BLOG = 'blog/deleteBlog',
 }
 
 // Create blog
@@ -28,6 +30,12 @@ export class CreateBlogFail implements Action {
   constructor(public payload: any) {
     console.log('Create blog failed ==>>', payload);
   }
+}
+
+// Delete Blog
+export class DeleteBlog implements Action {
+  readonly type = HomeActionsTypes.DELETE_BLOG;
+  constructor(public payload: string) {}
 }
 
 // Blog list

@@ -4,6 +4,23 @@
     *ngIf="blogDetails$"
     class="naiparq-blog-detail__head pb-5 bg-[#fff] px-3 py-4 rounded-lg"
   >
+    <div
+      *ngIf="editRights()"
+      class="flex justify-end items-center py-2 mb-2 gap-2"
+    >
+      <button
+        class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
+      >
+        <span class="btn-text text-[#fff] font-[700]">Edit</span>
+      </button>
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#deleteBlog"
+        class="px-5 max-w-[200px] border naiparq-btn my-2 py-2 border-0 bg-[#ff0000] rounded text-[#000]"
+      >
+        <span class="btn-text text-[#fff] font-base font-[700]">Delete</span>
+      </button>
+    </div>
     <div class="flex flex-col">
       <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]">
         {{ blogDetails$?.title }}
@@ -57,6 +74,71 @@
       <p class="img-loading w-[90%] my-1.5 rounded h-[25px]"></p>
       <p class="img-loading w-[50%] my-1.5 rounded h-[25px]"></p>
       <p class="img-loading w-[25%] my-1.5 rounded h-[25px]"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade add-plate-modal"
+  id="deleteBlog"
+  tabindex="-1"
+  aria-labelledby="deleteBlog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="d-flex gap-2 align-items-center">
+          <h5 class="modal-title" id="exampleModalLabel">Delete blog</h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDeleteBlog
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>
+          Are you sure you want to delete
+          <strong>{{ blogDetails$?.title }}</strong> blog ?
+        </h5>
+      </div>
+      <div class="modal-footer flex flex-row items-center justify-between">
+        <button
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          class="naiparq-btn naiparq-btn-primary"
+          type="submit"
+        >
+          Cancel
+        </button>
+        <button
+          (click)="deleteBlog(blogDetails$?.slug, blogDetails$?.id)"
+          [class.btn-loading]="deletingBlog"
+          class="naiparq-btn naiparq-btn-primary btn-loading"
+          type="submit"
+        >
+          <span class="btn-text">Confirm delete</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

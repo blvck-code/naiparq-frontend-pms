@@ -530,10 +530,20 @@ form {
           line-height: 17px;
         }
 
+        .pricing-modal {
+        }
+
         .naiparq-form-input {
           border: 1px solid #b1adad;
           color: var(--text-primary);
         }
+      }
+      p {
+        font-family: "Sk-Modernist", sans-serif;
+        color: var(--text-primary);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
       }
     }
   }

@@ -9,7 +9,7 @@
       class="flex justify-end items-center py-2 mb-2 gap-2"
     >
       <button
-        (click)="selectedBlog(blogDetails$?.id)"
+        (click)="selectedBlog()"
         class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"
       >
         <span class="btn-text text-[#fff] font-[700]">Edit</span>
@@ -24,29 +24,29 @@
     </div>
     <div class="flex flex-col">
       <h2 class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]">
-        {{ blogDetails$?.title }}
+        {{ (blogDetails$ | async)?.title }}
       </h2>
       <p class="m-0 text-[#000]/[0.5] font-[700]">
-        {{ blogDetails$?.created_at | date : "MMM d, y" }}
+        {{ (blogDetails$ | async)?.created_at | date : "MMM d, y" }}
       </p>
     </div>
     <div
       class="naiparq-blog-create__preview-img py-3 laptop:h-[350px] tabletLand:h-[250px] mobile:h-[250px] sm:h-[200px] overflow-hidden py-2"
     >
       <img
-        *ngIf="blogDetails$"
+        *ngIf="blogDetails$ | async"
         class="rounded-lg object-cover h-[100%]"
-        [src]="blogDetails$?.cover_image"
+        [src]="(blogDetails$ | async)?.cover_image"
         alt=""
       />
       <div
-        *ngIf="!blogDetails$"
+        *ngIf="!(blogDetails$ | async)"
         class="img-loading bg-[#000]/[0.06] rounded-lg h-[100%] w-[100%]"
       ></div>
     </div>
     <showdown
       class="blog-content"
-      [value]="blogDetails$?.content"
+      [value]="(blogDetails$ | async)?.content"
       showdown
       emoji
     >
@@ -54,7 +54,7 @@
   </div>
   <!--  Loading Indicator-->
   <div
-    *ngIf="!blogDetails$"
+    *ngIf="!(blogDetails$ | async)"
     class="naiparq-blog-detail__head pb-5 bg-[#fff] px-3 py-4 rounded-lg"
   >
     <div class="flex flex-col">
@@ -119,7 +119,7 @@
       <div class="modal-body">
         <h5>
           Are you sure you want to delete
-          <strong>{{ blogDetails$?.title }}</strong> blog ?
+          <strong>{{ (blogDetails$ | async)?.title }}</strong> blog ?
         </h5>
       </div>
       <div class="modal-footer flex flex-row items-center justify-between">
@@ -132,7 +132,7 @@
           Cancel
         </button>
         <button
-          (click)="deleteBlog(blogDetails$?.slug, blogDetails$?.id)"
+          (click)="deleteBlog()"
           [class.btn-loading]="deletingBlog"
           class="naiparq-btn naiparq-btn-primary btn-loading"
           type="submit"

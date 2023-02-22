@@ -9,6 +9,8 @@ import { SharedService } from '../../../../shared/services/shared.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
 import * as homeActions from '../../../state/home.actions';
+import { Observable } from 'rxjs';
+import { BlogModel } from '../../../model/blog.model';
 
 @Component({
   selector: 'app-blog-detail',
@@ -17,7 +19,7 @@ import * as homeActions from '../../../state/home.actions';
 })
 export class BlogDetailComponent implements OnInit {
   blogSlug: string = '';
-  blogDetails$: any;
+  blogDetails$!: Observable<any>;
   deletingBlog: boolean = false;
   @ViewChild('closeDeleteBlog') 'closeDeleteBlog': ElementRef;
 
@@ -35,11 +37,12 @@ export class BlogDetailComponent implements OnInit {
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
       this.blogSlug = slug;
-      this.store.select(selectedBlog(slug)).subscribe({
-        next: (resp) => {
-          this.blogDetails$ = resp;
-        },
-      });
+      this.blogDetails$ = this.store.select(selectedBlog(slug));
+      // this.store.select(selectedBlog(slug)).subscribe({
+      //   next: (resp) => {
+      //     this.blogDetails$ = resp;
+      //   },
+      // });
     }
   }
 
@@ -65,13 +68,35 @@ export class BlogDetailComponent implements OnInit {
     return Array(n);
   }
 
-  selectedBlog(blogId: string): any {
+  selectedBlog(): any {
+    let blogId: string = '';
+
+    this.blogDetails$.subscribe({
+      next: (blog) => {
+        if (blog) {
+          blogId = blog?.id;
+        }
+      },
+    });
+
     this.store.dispatch(new homeActions.SelectedBlog(blogId));
     const editURL = `/blog/create/${blogId}`;
     return this.router.navigate([editURL]);
   }
 
-  deleteBlog(blogSlug: string, blogId: string): void {
+  deleteBlog(): void {
+    let blogSlug: string = '';
+    let blogId: string = '';
+
+    this.blogDetails$.subscribe({
+      next: (blog) => {
+        if (blog) {
+          blogSlug = blog.slug;
+          blogId = blog.id;
+        }
+      },
+    });
+
     this.deletingBlog = true;
     console.log('Blog id ==>>', blogSlug);
     this.homeSrv.deleteBlog(blogSlug).subscribe({

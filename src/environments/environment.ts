@@ -31,6 +31,7 @@ export const environment = {
   naiparqCheckout: naiparqBaseURL + 'bill/checkout',
 
   // Pricing Module URLS
+  naiparqCreatePricing: naiparqBaseURL + 'spaces/spacepricing/',
 
   // Device Module URLS
   naiparqDevicesList: naiparqBaseURL + 'asset/device',

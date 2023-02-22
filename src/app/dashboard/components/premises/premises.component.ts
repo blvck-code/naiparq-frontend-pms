@@ -5,6 +5,9 @@ import { SpaceModel } from '../../models/spaces.model';
 import * as spaceActions from '../../state/actions/spaces.actions';
 import { Store } from '@ngrx/store';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { SharedService } from '../../../shared/services/shared.service';
+import { DashService } from '../../services/dash.service';
+import { PricingModel } from '../../models/pricing';
 
 @Component({
   selector: 'app-premises',
@@ -27,6 +30,8 @@ export class PremisesComponent implements OnInit {
   constructor(
     private storeSrv: StoreService,
     private store: Store,
+    private sharedSrv: SharedService,
+    private dashSrv: DashService,
     private fb: UntypedFormBuilder
   ) {}
 
@@ -36,6 +41,10 @@ export class PremisesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPremises();
+  }
+
+  timeIntervals(): { value: number; key: string }[] {
+    return this.dashSrv.timeIntervals;
   }
 
   numSeq(n: number): Array<number> {
@@ -62,12 +71,39 @@ export class PremisesComponent implements OnInit {
     };
   }
 
-  onSubmitPricing(): void {
+  nextStep(): void {
     this.steps = {
       pricing: false,
       previewPrice: true,
       spaceDetails: false,
     };
+  }
+
+  onSubmitPricing(): void {
+    if (this.pricingForm.invalid) {
+      this.sharedSrv.showNotification(
+        'Please fill the form to continue.',
+        'info'
+      );
+      return;
+    }
+    this.dashSrv.createPricing(this.pricingForm.value).subscribe({
+      next: (response: PricingModel) => {
+        this.sharedSrv.showNotification(
+          'Created space pricing success',
+          'success'
+        );
+        this.pricingForm.reset();
+        console.log('Created space item success ==>>', response);
+      },
+      error: (err) => {
+        this.sharedSrv.showNotification(
+          'Failed to create space pricing!',
+          'error'
+        );
+        console.log('Failed creating space ==>>', err);
+      },
+    });
     console.log('Form values ===>>', this.pricingForm.value);
   }
 }

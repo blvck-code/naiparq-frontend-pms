@@ -170,6 +170,7 @@
           </svg>
         </button>
       </div>
+      <!--      Add pricing form -->
       <form
         *ngIf="steps.pricing"
         [formGroup]="pricingForm"
@@ -186,18 +187,30 @@
           <!--            form -->
           <div class="pricing-modal">
             <div class="grid grid-cols-3 gap-2">
-              <input
-                type="text"
-                class="h-[48px] mb-[16px] border border-[#000] rounded px-2 py-0"
-                placeholder="0 mins"
+              <select
+                class="form-select h-[48px]"
+                aria-label="Default select example"
                 formControlName="min_time"
-              />
-              <input
-                type="text"
-                class="h-[48px] mb-[16px] border border-[#000] rounded px-2 py-0"
-                placeholder="30 mins"
+              >
+                <option
+                  *ngFor="let time of timeIntervals()"
+                  value="{{ time.value }}"
+                >
+                  {{ time.key }}
+                </option>
+              </select>
+              <select
+                class="form-select h-[48px]"
+                aria-label="Default select example"
                 formControlName="max_time"
-              />
+              >
+                <option
+                  *ngFor="let time of timeIntervals().slice(1)"
+                  value="{{ time.value }}"
+                >
+                  {{ time.key }}
+                </option>
+              </select>
               <input
                 type="text"
                 class="h-[48px] mb-[16px] border border-[#000] rounded px-2 py-0"
@@ -215,7 +228,7 @@
         </div>
 
         <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
-          <button class="naiparq-btn naiparq-btn-primary" type="submit">
+          <button (click)="nextStep()" class="naiparq-btn naiparq-btn-primary">
             <span class="btn-text">Next</span>
           </button>
           <button class="naiparq-btn naiparq-btn-primary" type="submit">
@@ -223,6 +236,7 @@
           </button>
         </div>
       </form>
+      <!--      Preview space pricing details-->
       <div class="modal-body" *ngIf="steps.previewPrice">
         <!--                Rates -->
         <div class="rate-container pt-2 pb-3">
@@ -377,6 +391,7 @@
           </button>
         </div>
       </div>
+      <!--      // Add space form-->
       <form *ngIf="steps.spaceDetails" class="modal-body">
         <!--        Space Name -->
         <div class="naiparq-form-group">

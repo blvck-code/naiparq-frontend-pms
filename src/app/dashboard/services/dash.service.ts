@@ -7,12 +7,55 @@ import { SpaceModelResponse } from '../models/spaces.model';
 import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
 import { BillingModel, BillingResponseModel } from '../models/billing.model';
 import { DevicesResponseModel } from '../models/devices.model';
+import { PricingModel } from '../models/pricing';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashService {
   constructor(private http: HttpClient) {}
+  timeIntervals = [
+    {
+      key: '0 mins',
+      value: 0,
+    },
+    {
+      key: '30 mins',
+      value: 0.5,
+    },
+    {
+      key: '1 hr',
+      value: 1,
+    },
+    {
+      key: '1hr 30 mins',
+      value: 1.5,
+    },
+    {
+      key: '2hr',
+      value: 2,
+    },
+    {
+      key: '2hr 30 mins',
+      value: 2.5,
+    },
+    {
+      key: '3hr',
+      value: 3,
+    },
+    {
+      key: '3hr 30 mins',
+      value: 3.5,
+    },
+    {
+      key: '4hr',
+      value: 4,
+    },
+    {
+      key: '4hr 30 mins',
+      value: 4.5,
+    },
+  ];
 
   // Space Drive In
   getDriveIn(): Observable<DriveInResponseModel> {
@@ -69,5 +112,14 @@ export class DashService {
   // Devices/Assets
   loadDevices(): Observable<DevicesResponseModel> {
     return this.http.get<DevicesResponseModel>(env.naiparqDevicesList);
+  }
+
+  // Create pricing schedules
+  createPricing(content: {
+    min_time: string;
+    max_time: string;
+    price: string;
+  }): Observable<PricingModel> {
+    return this.http.post<PricingModel>(env.naiparqCreatePricing, content);
   }
 }

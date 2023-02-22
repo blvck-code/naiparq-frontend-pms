@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { BlogResponseModel } from '../model/blog.model';
 
 @Injectable({
@@ -9,6 +9,12 @@ import { BlogResponseModel } from '../model/blog.model';
 })
 export class HomeService {
   constructor(private http: HttpClient) {}
+  scrollY = new BehaviorSubject(0);
+  scrollY$ = this.scrollY.asObservable();
+
+  updateScrollY(value: number): void {
+    this.scrollY.next(value);
+  }
 
   // Blog
   fetchBlogs(): Observable<BlogResponseModel> {
@@ -17,5 +23,12 @@ export class HomeService {
 
   createArticle(blogContent: any): Observable<any> {
     return this.http.post<Observable<any>>(env.naiparqCreateBlog, blogContent);
+  }
+
+  deleteBlog(
+    blogSlug: string
+  ): Observable<{ message: string; status: number }> {
+    const deleteURL: string = `${env.naiparqBlogList}/${blogSlug}/`;
+    return this.http.delete<{ message: string; status: number }>(deleteURL);
   }
 }

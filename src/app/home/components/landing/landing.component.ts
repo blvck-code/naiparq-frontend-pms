@@ -49,7 +49,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {
     // this.initAnimation();
-    this.initScrollAnimation();
+    // this.initScrollAnimation();
   }
 
   showArticles(): void {

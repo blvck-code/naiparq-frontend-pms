@@ -177,6 +177,12 @@ img {
   }
 }
 
+// Editor
+ckeditor .ck-content {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
 // Showdown
 showdown {
   p {

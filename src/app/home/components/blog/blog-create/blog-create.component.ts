@@ -14,6 +14,8 @@ import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
 import * as homeActions from '../../../state/home.actions';
+import { selectedBlog, selectedBlogId } from '../../../state/home.reducer';
+import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
   selector: 'app-blog-create',
@@ -25,7 +27,7 @@ export class BlogCreateComponent implements OnInit {
   @ViewChild('editor', { static: true }) 'editor': ElementRef;
   @ViewChild('coverImgInput', { static: true }) 'coverImgInput': ElementRef;
   // @ts-ignore
-  public Editor: CKEditor5.EditorConstructor = ClassicEditor;
+  public Editor: CKEditor5.EditorConstructor = DecoupledEditor;
   blogFormData = new FormData();
   blogContent: any;
 
@@ -36,14 +38,23 @@ export class BlogCreateComponent implements OnInit {
   coverImage: string = '';
   coverImageName: string = '';
 
-  public onReady(eventData: any) {
-    eventData.plugins.get('FileRepository').createUploadAdapter = (
-      loader: any
-    ) => {
-      console.log('Loader ==>>', loader);
-      return new UploadAdapter(loader, '', this.http);
-    };
+  public onReady(editor: any) {
+    editor.ui
+      .getEditableElement()
+      .parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+      );
   }
+
+  // public onReady(eventData: any) {
+  //   eventData.plugins.get('FileRepository').createUploadAdapter = (
+  //     loader: any
+  //   ) => {
+  //     console.log('Loader ==>>', loader);
+  //     return new UploadAdapter(loader, '', this.http);
+  //   };
+  // }
 
   blogForm = this.fb.group({
     title: ['', Validators.required],
@@ -61,39 +72,34 @@ export class BlogCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.checkUser();
+    this.editMode();
   }
 
-  checkUser(): void {
-    // Check if user is logged in
-    this.store.select(isLoggedIn).subscribe({
-      next: (status) => {
-        console.log('Log in status ====>>', status);
-
-        if (!status) {
-          this.sharedSrv.showNotification(
-            'You are not allowed to access this page.',
-            'error'
-          );
-          this.router.navigate(['/']);
+  editMode(): void {
+    this.store.select(selectedBlogId).subscribe({
+      next: (blogId: string) => {
+        if (!blogId) {
           return;
         }
-
-        this.store.select(userInfo).subscribe({
-          next: (resp) => {
-            if (resp.user_type !== 'blogger') {
-              // redirect to home page
-              this.sharedSrv.showNotification(
-                'You are not allowed to access this page.',
-                'error'
-              );
-              this.router.navigate(['/']);
-              return;
-            }
+        console.log('Selected blog id ==>>', blogId);
+        // find blog from store
+        this.store.select(selectedBlog(blogId)).subscribe({
+          next: (blogItem) => {
+            this.patchFormValues(blogItem);
           },
         });
+        // patch form values
       },
     });
+  }
+
+  patchFormValues(blog: any): void {
+    this.blogForm.patchValue({
+      title: blog.title,
+    });
+    this.coverImage = blog.cover_img;
+    this.blogContent = blog.content;
+    console.log('Blog to edit ==>>', blog);
   }
 
   clickCoverImg(): void {
@@ -130,6 +136,8 @@ export class BlogCreateComponent implements OnInit {
   resetCoverImg(): void {}
 
   onSubmit(): void {
+    // Check if in edit blog mode or create new blog mode
+
     this.submitting = true;
     this.blogFormData.append('title', this.blogForm.get('title')?.value);
     this.blogFormData.append('content', this.blogContent);

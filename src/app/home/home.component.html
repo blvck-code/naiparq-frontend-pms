@@ -1,11 +1,7 @@
-<div class="naiparq-home flex flex-col">
+<div class="naiparq-home flex flex-col" #home>
   <header
-    ngxHideOnScroll
-    [propertyUsedToHide]="'transform'"
-    [valueWhenHidden]="'translateY(-100%)'"
-    [valueWhenShown]="'translateY(100%)'"
     #navBar
-    class="naiparq-home__header py-2"
+    class="naiparq-home__header shadow-lg z-50 fixed top-0 left-0 right-0 py-2"
   >
     <div
       class="naiparq-home__header-wrap relative flex flex-row items-center h-[100%] p-3 max-w-[1200px] mx-auto"
@@ -166,7 +162,9 @@
       </div>
     </div>
   </header>
-  <router-outlet></router-outlet>
+  <div class="mt-[96px]">
+    <router-outlet></router-outlet>
+  </div>
   <footer
     class="naiparq-home__footer laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3 px-3 text-[#fff]"
   >

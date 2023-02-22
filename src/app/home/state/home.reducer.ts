@@ -40,3 +40,7 @@ export const blogEntities = createSelector(
 
 export const selectedBlog = (slug: string) =>
   createSelector(blogEntities, (blogList) => blogList[slug]);
+export const selectedBlogId = createSelector(
+  blogStateKey,
+  (state) => state.selectedBlogId
+);

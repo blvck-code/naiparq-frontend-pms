@@ -56,6 +56,44 @@ export class DashService {
       value: 4.5,
     },
   ];
+  spaceFeatures = [
+    {
+      key: '24 Hour Surveillance',
+      value: '24hr_surveillance',
+    },
+    {
+      key: 'On Street',
+      value: 'on_street',
+    },
+    {
+      key: 'Off Street',
+      value: 'off_street',
+    },
+    {
+      key: 'CCTV',
+      value: 'cctv',
+    },
+    {
+      key: 'Disabled',
+      value: 'disabled',
+    },
+    {
+      key: 'Driveway',
+      value: 'driveway',
+    },
+    {
+      key: 'Gate',
+      value: 'gate',
+    },
+    {
+      key: 'Field',
+      value: 'field',
+    },
+    {
+      key: 'Yard',
+      value: 'yard',
+    },
+  ];
 
   // Space Drive In
   getDriveIn(): Observable<DriveInResponseModel> {

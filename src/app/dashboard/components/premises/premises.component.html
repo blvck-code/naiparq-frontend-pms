@@ -146,6 +146,9 @@
           <h5 *ngIf="steps.pricing" class="modal-title">Pricing Rates</h5>
           <h5 *ngIf="steps.previewPrice" class="modal-title">Preview Rates</h5>
           <h5 *ngIf="steps.spaceDetails" class="modal-title">Add Space</h5>
+          <h5 *ngIf="steps.completeSpace" class="modal-title">
+            Complete Space
+          </h5>
         </div>
         <button
           type="button"
@@ -228,11 +231,11 @@
         </div>
 
         <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
-          <button (click)="nextStep()" class="naiparq-btn naiparq-btn-primary">
-            <span class="btn-text">Next</span>
-          </button>
           <button class="naiparq-btn naiparq-btn-primary" type="submit">
             <span class="btn-text">Save</span>
+          </button>
+          <button (click)="nextStep()" class="naiparq-btn naiparq-btn-primary">
+            <span class="btn-text">Next Step</span>
           </button>
         </div>
       </form>
@@ -241,118 +244,25 @@
         <!--                Rates -->
         <div class="rate-container pt-2 pb-3">
           <!--          Rate Item -->
-          <div class="rate-item py-1 flex items-center justify-between">
+          <div
+            *ngFor="let rateItem of spacePrices"
+            class="rate-item py-1 flex items-center justify-between"
+          >
             <div class="flex flex-auto items-center justify-between">
               <p
                 class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
               >
-                0-2hr
+                {{ handleDisplayRateValues(rateItem.min_time) }}-{{
+                  handleDisplayRateValues(rateItem.max_time)
+                }}
               </p>
               <p
                 class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
               >
-                KES 100
+                KES {{ rateItem.price }}
               </p>
             </div>
-            <button class="px-2">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.875 2.5H13.125C13.2908 2.5 13.4497 2.43415 13.5669 2.31694C13.6842 2.19973 13.75 2.04076 13.75 1.875C13.75 1.70924 13.6842 1.55027 13.5669 1.43306C13.4497 1.31585 13.2908 1.25 13.125 1.25H6.875C6.70924 1.25 6.55027 1.31585 6.43306 1.43306C6.31585 1.55027 6.25 1.70924 6.25 1.875C6.25 2.04076 6.31585 2.19973 6.43306 2.31694C6.55027 2.43415 6.70924 2.5 6.875 2.5Z"
-                  fill="#4BC1F1"
-                />
-                <path
-                  d="M16.875 3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75033 16.5814 3.88213 16.8992 4.11648 17.1335C4.35083 17.3679 4.66858 17.4997 5 17.5H15C15.3314 17.4997 15.6492 17.3679 15.8835 17.1335C16.1179 16.8992 16.2497 16.5814 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125Z"
-                  fill="#4BC1F1"
-                />
-              </svg>
-            </button>
-          </div>
-          <!--          Rate Item -->
-          <div class="rate-item py-1 flex items-center justify-between">
-            <div class="flex flex-auto items-center justify-between">
-              <p
-                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
-              >
-                0-2hr
-              </p>
-              <p
-                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
-              >
-                KES 100
-              </p>
-            </div>
-            <button class="px-2">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.875 2.5H13.125C13.2908 2.5 13.4497 2.43415 13.5669 2.31694C13.6842 2.19973 13.75 2.04076 13.75 1.875C13.75 1.70924 13.6842 1.55027 13.5669 1.43306C13.4497 1.31585 13.2908 1.25 13.125 1.25H6.875C6.70924 1.25 6.55027 1.31585 6.43306 1.43306C6.31585 1.55027 6.25 1.70924 6.25 1.875C6.25 2.04076 6.31585 2.19973 6.43306 2.31694C6.55027 2.43415 6.70924 2.5 6.875 2.5Z"
-                  fill="#4BC1F1"
-                />
-                <path
-                  d="M16.875 3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75033 16.5814 3.88213 16.8992 4.11648 17.1335C4.35083 17.3679 4.66858 17.4997 5 17.5H15C15.3314 17.4997 15.6492 17.3679 15.8835 17.1335C16.1179 16.8992 16.2497 16.5814 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125Z"
-                  fill="#4BC1F1"
-                />
-              </svg>
-            </button>
-          </div>
-          <!--          Rate Item -->
-          <div class="rate-item py-1 flex items-center justify-between">
-            <div class="flex flex-auto items-center justify-between">
-              <p
-                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
-              >
-                0-2hr
-              </p>
-              <p
-                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
-              >
-                KES 100
-              </p>
-            </div>
-            <button class="px-2">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.875 2.5H13.125C13.2908 2.5 13.4497 2.43415 13.5669 2.31694C13.6842 2.19973 13.75 2.04076 13.75 1.875C13.75 1.70924 13.6842 1.55027 13.5669 1.43306C13.4497 1.31585 13.2908 1.25 13.125 1.25H6.875C6.70924 1.25 6.55027 1.31585 6.43306 1.43306C6.31585 1.55027 6.25 1.70924 6.25 1.875C6.25 2.04076 6.31585 2.19973 6.43306 2.31694C6.55027 2.43415 6.70924 2.5 6.875 2.5Z"
-                  fill="#4BC1F1"
-                />
-                <path
-                  d="M16.875 3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75033 16.5814 3.88213 16.8992 4.11648 17.1335C4.35083 17.3679 4.66858 17.4997 5 17.5H15C15.3314 17.4997 15.6492 17.3679 15.8835 17.1335C16.1179 16.8992 16.2497 16.5814 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125Z"
-                  fill="#4BC1F1"
-                />
-              </svg>
-            </button>
-          </div>
-          <!--          Rate Item -->
-          <div class="rate-item py-1 flex items-center justify-between">
-            <div class="flex flex-auto items-center justify-between">
-              <p
-                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
-              >
-                0-2hr
-              </p>
-              <p
-                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
-              >
-                KES 100
-              </p>
-            </div>
+            <!--            Todo add options to delete pricing -->
             <button class="px-2">
               <svg
                 width="20"
@@ -376,7 +286,7 @@
         <!--        Preview buttons -->
         <div class="grid grid-cols-2 items-center gap-2 pt-2 w-[100%]">
           <button
-            (click)="goBack()"
+            (click)="goBack('pricing')"
             class="naiparq-btn naiparq-btn-primary"
             type="submit"
           >
@@ -387,45 +297,143 @@
             class="naiparq-btn naiparq-btn-primary"
             type="submit"
           >
-            <span class="btn-text">Save</span>
+            <span class="btn-text">Next Step</span>
           </button>
         </div>
       </div>
       <!--      // Add space form-->
-      <form *ngIf="steps.spaceDetails" class="modal-body">
+      <form
+        *ngIf="steps.spaceDetails"
+        [formGroup]="spaceForm"
+        class="modal-body"
+      >
         <!--        Space Name -->
         <div class="naiparq-form-group">
-          <label for="nPlate">Name</label>
-          <input type="text" class="naiparq-form-input" />
+          <label>Name</label>
+          <input
+            formControlName="title"
+            type="text"
+            class="naiparq-form-input"
+          />
         </div>
 
         <!--        Space Description -->
         <div class="naiparq-form-group">
-          <label for="nPlate">Description</label>
-          <input type="text" class="naiparq-form-input" />
+          <label>Description</label>
+          <textarea
+            formControlName="description"
+            rows="4"
+            class="naiparq-form-input"
+          ></textarea>
         </div>
 
+        <!--        Space Search Map -->
+        <div class="naiparq-form-group">
+          <label for="nPlate">Search location</label>
+          <input type="text" class="naiparq-form-input" />
+          <div class="naiparq-image-input mt-1 mb-2">Map box</div>
+        </div>
+
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button
+            (click)="goBack('previewPrice')"
+            class="naiparq-btn naiparq-btn-primary"
+          >
+            <span class="btn-text">Back</span>
+          </button>
+          <button
+            class="naiparq-btn naiparq-btn-primary"
+            (click)="onSubmitSpaceDetails()"
+          >
+            <span class="btn-text">Next Step</span>
+          </button>
+        </div>
+      </form>
+
+      <form
+        *ngIf="steps.completeSpace"
+        [formGroup]="spaceForm"
+        class="modal-body"
+      >
+        <!--        Space Image -->
+        <div class="naiparq-form-group">
+          <label>Upload Photos</label>
+          <div class="naiparq-image-input my-2"></div>
+        </div>
         <!--        Space Number of floors -->
         <div class="naiparq-form-group">
           <label for="nPlate"> Number of floors </label>
           <input type="text" class="naiparq-form-input" />
         </div>
-
-        <!--        Space Floor Description -->
-        <div class="naiparq-form-group">
-          <label> Description of floors</label>
-          <textarea rows="4" class="naiparq-form-input"></textarea>
-          <span class="text-muted"> e.g B1, B2, M1, M2 </span>
+        <!--        Opening and Closing time -->
+        <div class="grid grid-cols-2 gap-2">
+          <div class="naiparq-form-group">
+            <label>Opening time</label>
+            <input
+              formControlName="opening_time"
+              type="text"
+              class="naiparq-form-input"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label>Closing time</label>
+            <input
+              formControlName="closing_time"
+              type="text"
+              class="naiparq-form-input"
+            />
+          </div>
         </div>
 
-        <div class="naiparq-form-group">
-          <label>Upload Photos</label>
-          <div class="naiparq-image-input my-2"></div>
+        <!--  Features -->
+        <div class="grid grid-cols-2 gap-2 pb-2">
+          <div>
+            <div
+              *ngFor="let feature of spaceFeatures().slice(0, 5)"
+              class="form-check"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ feature.value }}"
+                id="{{ feature.value }}"
+                (change)="handleFeatures(feature.value)"
+              />
+              <label class="form-check-label" for="{{ feature.value }}">
+                {{ feature.key }}
+              </label>
+            </div>
+          </div>
+          <div>
+            <div
+              *ngFor="let feature of spaceFeatures().slice(5, 10)"
+              class="form-check"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ feature.value }}"
+                id="{{ feature.value }}"
+              />
+              <label class="form-check-label" for="{{ feature.value }}">
+                {{ feature.key }}
+              </label>
+            </div>
+          </div>
         </div>
 
-        <div class="naiparq-form-group">
-          <button class="naiparq-btn naiparq-btn-primary" type="submit">
-            <span class="btn-text">Submit</span>
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button
+            (click)="goBack('spaceDetails')"
+            class="naiparq-btn naiparq-btn-primary"
+          >
+            <span class="btn-text">Back</span>
+          </button>
+          <button
+            class="naiparq-btn naiparq-btn-primary"
+            (click)="onSubmitSpaceDetails()"
+          >
+            <span class="btn-text">Complete</span>
           </button>
         </div>
       </form>
@@ -433,138 +441,32 @@
   </div>
 </div>
 
-<!--// Add space modal-->
-<div
-  class="modal fade add-plate-modal"
-  id="addSpace"
-  tabindex="-1"
-  aria-labelledby="addNumberPlate"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex gap-2 align-items-center">
-          <svg
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="24" cy="24" r="24" fill="#FBCE33" fill-opacity="0.24" />
-            <path
-              d="M25.999 35.998V12.998C25.999 12.7328 25.8937 12.4785 25.7061 12.2909C25.5186 12.1034 25.2642 11.998 24.999 11.998H12.999C12.7338 11.998 12.4795 12.1034 12.2919 12.2909C12.1044 12.4785 11.999 12.7328 11.999 12.998V35.998"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M35.999 35.998V20.998C35.999 20.7328 35.8937 20.4785 35.7061 20.2909C35.5186 20.1034 35.2642 19.998 34.999 19.998H25.999"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15.999 16.998H19.999"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M17.999 26.998H21.999"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M15.999 31.998H19.999"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M29.999 29.998H31.999"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M29.999 24.998H31.999"
-              stroke="#FBCE33"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <h5 class="modal-title" id="exampleModalLabel">Add Space</h5>
-        </div>
-        <button
-          type="button"
-          class="btn-close naiparq-close-btn"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-          #closeDriveIn
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
-      <form class="modal-body">
-        <!--        Space Name -->
-        <div class="naiparq-form-group">
-          <label for="nPlate">Name</label>
-          <input type="text" class="naiparq-form-input" />
-        </div>
+<!--<div class="naiparq-form-group relative">-->
+<!--  <label>Upload Photos</label>-->
+<!--  <div-->
+<!--    class="map-container absolute top-0 bottom-0 left-0 right-0 h-[300px] w-[100%]"-->
+<!--  >-->
+<!--    <div-->
+<!--      class="add-space-canvas relative"-->
+<!--      style="overflow: hidden; height: 100%"-->
+<!--    >-->
+<!--      <div-->
+<!--        class="main-tracking-map"-->
+<!--        style="height: 100%; z-index: 3 !important"-->
+<!--        id="naiparq-map"-->
+<!--      ></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;        Space Number of floors &ndash;&gt;-->
+<!--<div class="naiparq-form-group">-->
+<!--  <label for="nPlate"> Number of floors </label>-->
+<!--  <input type="text" class="naiparq-form-input" />-->
+<!--</div>-->
 
-        <!--        Space Description -->
-        <div class="naiparq-form-group">
-          <label for="nPlate">Description</label>
-          <input type="text" class="naiparq-form-input" />
-        </div>
-
-        <!--        Space Number of floors -->
-        <div class="naiparq-form-group">
-          <label for="nPlate"> Number of floors </label>
-          <input type="text" class="naiparq-form-input" />
-        </div>
-
-        <!--        Space Floor Description -->
-        <div class="naiparq-form-group">
-          <label> Description of floors</label>
-          <textarea rows="4" class="naiparq-form-input"></textarea>
-          <span class="text-muted"> e.g B1, B2, M1, M2 </span>
-        </div>
-
-        <div class="naiparq-form-group">
-          <label>Upload Photos</label>
-          <div class="naiparq-image-input my-2"></div>
-        </div>
-
-        <div class="naiparq-form-group">
-          <button class="naiparq-btn naiparq-btn-primary" type="submit">
-            <span class="btn-text">Submit</span>
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash;        Space Floor Description &ndash;&gt;-->
+<!--<div class="naiparq-form-group">-->
+<!--  <label> Description of floors</label>-->
+<!--  <textarea rows="4" class="naiparq-form-input"></textarea>-->
+<!--  <span class="text-muted"> e.g B1, B2, M1, M2 </span>-->
+<!--</div>-->

@@ -12,5 +12,5 @@ export interface PricingModel {
   min_time: string;
   max_time: string;
   price: number;
-  owner_detail: UserModel;
+  owner_detail?: UserModel;
 }

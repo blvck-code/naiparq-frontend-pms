@@ -7,7 +7,8 @@ import { SpaceModelResponse } from '../models/spaces.model';
 import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
 import { BillingModel, BillingResponseModel } from '../models/billing.model';
 import { DevicesResponseModel } from '../models/devices.model';
-import { PricingModel } from '../models/pricing';
+import { PricingModel } from '../models/pricing.model';
+import { PriceScheduleModel } from '../models/priceSchedule.model';
 
 @Injectable({
   providedIn: 'root',
@@ -120,6 +121,10 @@ export class DashService {
   }
 
   // Spaces
+  createSpace(spacePayload: any): Observable<any> {
+    return this.http.post(env.naiparqCreateSpace, spacePayload);
+  }
+
   loadSpaces(): Observable<SpaceModelResponse> {
     return this.http.get<SpaceModelResponse>(env.naiparqListSpaces);
   }
@@ -159,5 +164,15 @@ export class DashService {
     price: string;
   }): Observable<PricingModel> {
     return this.http.post<PricingModel>(env.naiparqCreatePricing, content);
+  }
+
+  createPriceSchedule(content: {
+    label: string;
+    spacePriceGroup: string[];
+  }): Observable<PriceScheduleModel> {
+    return this.http.post<PriceScheduleModel>(
+      env.naiparqCreatePriceSchedule,
+      content
+    );
   }
 }

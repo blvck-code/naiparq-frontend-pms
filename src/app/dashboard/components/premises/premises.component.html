@@ -155,7 +155,7 @@
           class="btn-close naiparq-close-btn"
           data-bs-dismiss="modal"
           aria-label="Close"
-          #closeDriveIn
+          #closeAddSpace
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +234,10 @@
           <button class="naiparq-btn naiparq-btn-primary" type="submit">
             <span class="btn-text">Save</span>
           </button>
-          <button (click)="nextStep()" class="naiparq-btn naiparq-btn-primary">
+          <button
+            (click)="nextStep('previewPrice')"
+            class="naiparq-btn naiparq-btn-primary"
+          >
             <span class="btn-text">Next Step</span>
           </button>
         </div>
@@ -293,7 +296,7 @@
             <span class="btn-text">Back</span>
           </button>
           <button
-            (click)="confirmPriceSchedule()"
+            (click)="nextStep('spaceDetails')"
             class="naiparq-btn naiparq-btn-primary"
             type="submit"
           >
@@ -305,6 +308,7 @@
       <form
         *ngIf="steps.spaceDetails"
         [formGroup]="spaceForm"
+        (ngSubmit)="onSubmitSpace()"
         class="modal-body"
       >
         <!--        Space Name -->
@@ -341,18 +345,17 @@
           >
             <span class="btn-text">Back</span>
           </button>
-          <button
-            class="naiparq-btn naiparq-btn-primary"
-            (click)="onSubmitSpaceDetails()"
-          >
+          <button type="submit" class="naiparq-btn naiparq-btn-primary">
             <span class="btn-text">Next Step</span>
           </button>
         </div>
       </form>
 
+      <!--      Complete Add Space Form -->
       <form
         *ngIf="steps.completeSpace"
-        [formGroup]="spaceForm"
+        [formGroup]="completeSpaceForm"
+        (ngSubmit)="onCompleteSpace()"
         class="modal-body"
       >
         <!--        Space Image -->
@@ -360,11 +363,7 @@
           <label>Upload Photos</label>
           <div class="naiparq-image-input my-2"></div>
         </div>
-        <!--        Space Number of floors -->
-        <div class="naiparq-form-group">
-          <label for="nPlate"> Number of floors </label>
-          <input type="text" class="naiparq-form-input" />
-        </div>
+
         <!--        Opening and Closing time -->
         <div class="grid grid-cols-2 gap-2">
           <div class="naiparq-form-group">
@@ -429,10 +428,7 @@
           >
             <span class="btn-text">Back</span>
           </button>
-          <button
-            class="naiparq-btn naiparq-btn-primary"
-            (click)="onSubmitSpaceDetails()"
-          >
+          <button type="submit" class="naiparq-btn naiparq-btn-primary">
             <span class="btn-text">Complete</span>
           </button>
         </div>
@@ -440,6 +436,12 @@
     </div>
   </div>
 </div>
+
+<!--        Space Number of floors -->
+<!--<div class="naiparq-form-group">-->
+<!--  <label for="nPlate"> Number of floors </label>-->
+<!--  <input type="text" class="naiparq-form-input" />-->
+<!--</div>-->
 
 <!--<div class="naiparq-form-group relative">-->
 <!--  <label>Upload Photos</label>-->

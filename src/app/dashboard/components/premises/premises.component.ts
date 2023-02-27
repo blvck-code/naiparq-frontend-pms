@@ -45,10 +45,10 @@ export class PremisesComponent implements OnInit, AfterViewInit {
   });
 
   steps = {
-    pricing: true,
+    pricing: false,
     previewPrice: false,
     spaceDetails: false,
-    completeSpace: false,
+    completeSpace: true,
     organization: false,
   };
 
@@ -350,39 +350,34 @@ export class PremisesComponent implements OnInit, AfterViewInit {
       space_price_schedule: this.priceScheduleId,
     };
 
-    this.dashSrv.createSpace(spacePayload).subscribe({
-      next: (response) => {
-        this.sharedSrv.showNotification(
-          `${spacePayload.title} Space created successfully.`,
-          'success'
-        );
+    console.log('payload ===>>', spacePayload);
 
-        // Space id need to create space gallery
-        this.handleSpaceImages(response.id);
-        // Space id needed to create space organization
-        this.spaceOrgForm.patchValue({
-          space: response.id,
-        });
-
-        // Next step
-        this.nextStep('organization');
-      },
-      error: (error) => {
-        console.log('Create space error ==>>', error);
-      },
-    });
+    // this.dashSrv.createSpace(spacePayload).subscribe({
+    //   next: (response) => {
+    //     this.sharedSrv.showNotification(
+    //       `${spacePayload.title} Space created successfully.`,
+    //       'success'
+    //     );
+    //
+    //     // Space id need to create space gallery
+    //     this.handleSpaceImages(response.id);
+    //     // Space id needed to create space organization
+    //     this.spaceOrgForm.patchValue({
+    //       space: response.id,
+    //     });
+    //
+    //     // Next step
+    //     this.nextStep('organization');
+    //   },
+    //   error: (error) => {
+    //     console.log('Create space error ==>>', error);
+    //   },
+    // });
 
     // Todo submit features, is_patner, opening and closing, space price schedule
     // Close modal on success response
     // this.closeAddSpace.nativeElement.click();
     // Reset steps
-    this.steps = {
-      pricing: true,
-      previewPrice: false,
-      spaceDetails: false,
-      completeSpace: false,
-      organization: false,
-    };
   }
 
   submitSpaceOrg(close: boolean): void {

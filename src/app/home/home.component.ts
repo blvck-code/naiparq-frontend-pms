@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { fromEvent, Observable, Subject, takeUntil } from 'rxjs';
-import { isLoggedIn, userName } from '../auth/state/auth.selector';
+import { blogger, isLoggedIn, userName } from '../auth/state/auth.selector';
 import * as authActions from '../auth/state/auth.actions';
 import { blogList, blogLoaded, blogLoading } from './state/home.reducer';
 import * as homeActions from './state/home.actions';
@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('home', { static: true }) 'home': ElementRef;
 
+  blogger$: Observable<boolean> = this.store.select(blogger);
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
   userName$: Observable<string> = this.store.select(userName);
 

@@ -140,7 +140,11 @@
                   />
                 </div>
               </li>
-              <li class="divide-y"></li>
+              <li *ngIf="blogger$ | async">
+                <a [routerLink]="['/blog/create']" class="dropdown-item"
+                  >Create blog</a
+                >
+              </li>
               <li>
                 <a class="dropdown-item" [routerLink]="['/dashboard/settings']"
                   >Settings</a

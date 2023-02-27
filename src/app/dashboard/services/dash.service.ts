@@ -9,6 +9,7 @@ import { BillingModel, BillingResponseModel } from '../models/billing.model';
 import { DevicesResponseModel } from '../models/devices.model';
 import { PricingModel } from '../models/pricing.model';
 import { PriceScheduleModel } from '../models/priceSchedule.model';
+import { OrganisationModel } from '../models/organisation.model';
 
 @Injectable({
   providedIn: 'root',
@@ -124,9 +125,11 @@ export class DashService {
   createSpace(spacePayload: any): Observable<any> {
     return this.http.post(env.naiparqCreateSpace, spacePayload);
   }
-
   loadSpaces(): Observable<SpaceModelResponse> {
     return this.http.get<SpaceModelResponse>(env.naiparqListSpaces);
+  }
+  createSpaceGallery(content: any): Observable<{ space: string }> {
+    return this.http.post<{ space: string }>(env.naiparqGallery, content);
   }
 
   // Billings and Payments
@@ -165,7 +168,6 @@ export class DashService {
   }): Observable<PricingModel> {
     return this.http.post<PricingModel>(env.naiparqCreatePricing, content);
   }
-
   createPriceSchedule(content: {
     label: string;
     spacePriceGroup: string[];
@@ -174,5 +176,14 @@ export class DashService {
       env.naiparqCreatePriceSchedule,
       content
     );
+  }
+
+  // Create organization
+  creatOrganization(content: {
+    name: string;
+    space: string;
+    floor: number;
+  }): Observable<OrganisationModel> {
+    return this.http.post<OrganisationModel>(env.naiparqCreateOrg, content);
   }
 }

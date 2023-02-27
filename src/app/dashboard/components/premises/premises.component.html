@@ -40,7 +40,16 @@
       >
         <div class="naiparq-space-item" *ngFor="let space of spaces$ | async">
           <!--          Todo add image URL for the space -->
-          <img src="assets/images/naiparq-space.jpg" alt="" />
+          <img
+            class="h-[200px] object-cover"
+            [src]="
+              space.space_images.length
+                ? space.space_images[0].image
+                : 'assets/images/naiparq-space.jpg'
+            "
+            alt=""
+          />
+
           <h5 class="naiparq-space-title">
             {{ space.title | truncate : [20] }}
           </h5>
@@ -149,6 +158,9 @@
           <h5 *ngIf="steps.completeSpace" class="modal-title">
             Complete Space
           </h5>
+          <h5 *ngIf="steps.organization" class="modal-title">
+            Add space organizations
+          </h5>
         </div>
         <button
           type="button"
@@ -173,6 +185,7 @@
           </svg>
         </button>
       </div>
+
       <!--      Add pricing form -->
       <form
         *ngIf="steps.pricing"
@@ -190,6 +203,7 @@
           <!--            form -->
           <div class="pricing-modal">
             <div class="grid grid-cols-3 gap-2">
+              <!--              Min Time -->
               <select
                 class="form-select h-[48px]"
                 aria-label="Default select example"
@@ -202,6 +216,7 @@
                   {{ time.key }}
                 </option>
               </select>
+              <!--              Max Time -->
               <select
                 class="form-select h-[48px]"
                 aria-label="Default select example"
@@ -232,16 +247,18 @@
 
         <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
           <button class="naiparq-btn naiparq-btn-primary" type="submit">
-            <span class="btn-text">Save</span>
+            <span class="btn-text">Save and add another</span>
           </button>
           <button
-            (click)="nextStep('previewPrice')"
+            (click)="handlePreviewStep()"
             class="naiparq-btn naiparq-btn-primary"
+            type="button"
           >
-            <span class="btn-text">Next Step</span>
+            <span class="btn-text">Next</span>
           </button>
         </div>
       </form>
+
       <!--      Preview space pricing details-->
       <div class="modal-body" *ngIf="steps.previewPrice">
         <!--                Rates -->
@@ -300,10 +317,11 @@
             class="naiparq-btn naiparq-btn-primary"
             type="submit"
           >
-            <span class="btn-text">Next Step</span>
+            <span class="btn-text">Next</span>
           </button>
         </div>
       </div>
+
       <!--      // Add space form-->
       <form
         *ngIf="steps.spaceDetails"
@@ -332,10 +350,14 @@
         </div>
 
         <!--        Space Search Map -->
-        <div class="naiparq-form-group">
+        <div class="naiparq-form-group relative">
           <label for="nPlate">Search location</label>
           <input type="text" class="naiparq-form-input" />
-          <div class="naiparq-image-input mt-1 mb-2">Map box</div>
+          <div class="naiparq-image-input map-container mt-1 mb-2">
+            <div #mapContainer class="map-frame">
+              <div id="map-container"></div>
+            </div>
+          </div>
         </div>
 
         <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
@@ -346,7 +368,7 @@
             <span class="btn-text">Back</span>
           </button>
           <button type="submit" class="naiparq-btn naiparq-btn-primary">
-            <span class="btn-text">Next Step</span>
+            <span class="btn-text">Next</span>
           </button>
         </div>
       </form>
@@ -361,7 +383,31 @@
         <!--        Space Image -->
         <div class="naiparq-form-group">
           <label>Upload Photos</label>
-          <div class="naiparq-image-input my-2"></div>
+          <div
+            (click)="clickSpacePhotos()"
+            class="naiparq-image-input border-sky-500 cursor-pointer my-2"
+          >
+            <div *ngIf="!spaceImageURL">
+              <span>Add Space Photos</span>
+              <input
+                (change)="handleSpacePhotos($event)"
+                #spacePhotos
+                type="file"
+                class="hidden"
+              />
+            </div>
+            <div
+              (click)="clickSpacePhotos()"
+              class="naiparq-image-input border-sky-500"
+              *ngIf="spaceImageURL"
+            >
+              <img
+                class="h-[150px] object-cover"
+                [src]="spaceImageURL"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
 
         <!--        Opening and Closing time -->
@@ -414,7 +460,10 @@
                 value="{{ feature.value }}"
                 id="{{ feature.value }}"
               />
-              <label class="form-check-label" for="{{ feature.value }}">
+              <label
+                class="text-[14px] leading-[17px] font-[400]"
+                for="{{ feature.value }}"
+              >
                 {{ feature.key }}
               </label>
             </div>
@@ -429,46 +478,51 @@
             <span class="btn-text">Back</span>
           </button>
           <button type="submit" class="naiparq-btn naiparq-btn-primary">
-            <span class="btn-text">Complete</span>
+            <span class="btn-text">Next</span>
+          </button>
+        </div>
+      </form>
+
+      <!--    Space organizations -->
+      <form
+        [formGroup]="spaceOrgForm"
+        class="modal-body py-1 px-3"
+        *ngIf="steps.organization"
+      >
+        <div class="flex justify-between">
+          <p class="text-[14px] leading-[17px] font-[400]">Organization name</p>
+          <p class="text-[14px] leading-[17px] font-[400]">Number of floors</p>
+        </div>
+        <div class="flex justify-between gap-2 py-2">
+          <input
+            type="text"
+            class="h-[48px] border border-[#000] rounded px-2 py-0"
+            formControlName="name"
+          />
+          <input
+            type="text"
+            class="h-[48px] border border-[#000] rounded px-2 py-0"
+            formControlName="floor"
+          />
+        </div>
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button
+            (click)="submitSpaceOrg(false)"
+            class="naiparq-btn naiparq-btn-primary"
+            [class.btn-loading]="submittingOrgOne"
+          >
+            <span class="btn-text">Save and add another</span>
+          </button>
+          <button
+            (click)="submitSpaceOrg(true)"
+            type="submit"
+            class="naiparq-btn naiparq-btn-primary"
+            [class.btn-loading]="submittingOrgTwo"
+          >
+            <span class="btn-text">Save</span>
           </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-<!--        Space Number of floors -->
-<!--<div class="naiparq-form-group">-->
-<!--  <label for="nPlate"> Number of floors </label>-->
-<!--  <input type="text" class="naiparq-form-input" />-->
-<!--</div>-->
-
-<!--<div class="naiparq-form-group relative">-->
-<!--  <label>Upload Photos</label>-->
-<!--  <div-->
-<!--    class="map-container absolute top-0 bottom-0 left-0 right-0 h-[300px] w-[100%]"-->
-<!--  >-->
-<!--    <div-->
-<!--      class="add-space-canvas relative"-->
-<!--      style="overflow: hidden; height: 100%"-->
-<!--    >-->
-<!--      <div-->
-<!--        class="main-tracking-map"-->
-<!--        style="height: 100%; z-index: 3 !important"-->
-<!--        id="naiparq-map"-->
-<!--      ></div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;        Space Number of floors &ndash;&gt;-->
-<!--<div class="naiparq-form-group">-->
-<!--  <label for="nPlate"> Number of floors </label>-->
-<!--  <input type="text" class="naiparq-form-input" />-->
-<!--</div>-->
-
-<!--&lt;!&ndash;        Space Floor Description &ndash;&gt;-->
-<!--<div class="naiparq-form-group">-->
-<!--  <label> Description of floors</label>-->
-<!--  <textarea rows="4" class="naiparq-form-input"></textarea>-->
-<!--  <span class="text-muted"> e.g B1, B2, M1, M2 </span>-->
-<!--</div>-->

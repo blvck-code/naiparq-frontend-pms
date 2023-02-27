@@ -2,13 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
-  Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
-import { interval, Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { StoreService } from '../../state/store.service';
 import { SpaceModel } from '../../models/spaces.model';
 import * as spaceActions from '../../state/actions/spaces.actions';
@@ -20,7 +17,7 @@ import { PricingModel } from '../../models/pricing.model';
 
 // Map
 import * as L from 'leaflet';
-import { FeatureGroup, icon, latLng, map, marker, tileLayer } from 'leaflet';
+import { latLng } from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -28,13 +25,23 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './premises.component.html',
   styleUrls: ['./premises.component.scss'],
 })
-export class PremisesComponent implements OnInit {
+export class PremisesComponent implements OnInit, AfterViewInit {
   @ViewChild('closeAddSpace', { static: true }) 'closeAddSpace': ElementRef;
+  @ViewChild('spacePhotos') 'spacePhotos': ElementRef;
+
+  // Submitting indicators
+  submittingOrgOne: boolean = false;
+  submittingOrgTwo: boolean = false;
 
   pricingForm = this.fb.group({
     min_time: ['', Validators.required],
     max_time: ['', Validators.required],
     price: ['', Validators.required],
+  });
+  spaceOrgForm = this.fb.group({
+    space: ['', Validators.required],
+    name: ['', Validators.required],
+    floor: ['', Validators.required],
   });
 
   steps = {
@@ -42,7 +49,15 @@ export class PremisesComponent implements OnInit {
     previewPrice: false,
     spaceDetails: false,
     completeSpace: false,
+    organization: false,
   };
+
+  createdSpaceId: string = '';
+
+  // Space Images
+  imgTypes = ['jpg', 'png', 'jpeg'];
+  spaceFormData = new FormData();
+  spaceImageURL: string = '';
 
   // Space Pricing
   spacePrices: PricingModel[] = [];
@@ -50,6 +65,10 @@ export class PremisesComponent implements OnInit {
   // Pricing Schedule
   priceSchedule: string[] = [];
   priceScheduleId: string = '';
+  selectedMaxTime: { key: string; value: number } = {
+    key: '',
+    value: 0,
+  };
 
   // Spaces
   spaces$: Observable<SpaceModel[]> = this.storeSrv.getSpaces();
@@ -63,12 +82,19 @@ export class PremisesComponent implements OnInit {
     location: [''],
   });
 
+  // Space organizations
+  spaceOrg: number = 1;
+
   completeSpaceForm = this.fb.group({
     opening_time: ['', Validators.required],
     closing_time: ['', Validators.required],
     features: [],
   });
   spaceFeaturesArray: string[] = [];
+
+  // Map
+  private map: any;
+  private mainCanvasMap: any;
 
   constructor(
     private storeSrv: StoreService,
@@ -85,6 +111,57 @@ export class PremisesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPremises();
+  }
+
+  ngAfterViewInit(): void {
+    // this.initMap();
+  }
+
+  clickSpacePhotos(): void {
+    this.spacePhotos.nativeElement.click();
+  }
+
+  handleSpacePhotos(event: any): void {
+    console.log('Image ==>>', event.target.files);
+    if (!event.target.files) {
+      this.sharedSrv.showNotification('Please select image files.', 'info');
+    } else {
+      const reader = new FileReader();
+      const formData = new FormData();
+
+      const fileName = event.target.files[0].name;
+      const fileExt = fileName.split('.').pop();
+      const fileSize = event.target.files[0].size / 1024 / 1024; // Size in mb
+
+      // Validate file type
+      if (!this.imgTypes.includes(fileExt)) {
+        this.sharedSrv.showNotification(
+          'This file type is not supported.',
+          'warning'
+        );
+        return;
+      }
+
+      // Validate file size
+      if (fileSize > 5) {
+        this.sharedSrv.showNotification(
+          'Image size must be under 5MiB!',
+          'warning'
+        );
+        return;
+      }
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => {
+        // called once readAsDataURL is completed
+        // @ts-ignore
+        this.spaceImageURL = event.target.result;
+      };
+      formData.append('image', event);
+
+      this.spaceFormData.append('image', event.target.files[0]);
+    }
   }
 
   handleDisplayRateValues(rateValue: string): string {
@@ -139,18 +216,10 @@ export class PremisesComponent implements OnInit {
       previewPrice: false,
       spaceDetails: false,
       completeSpace: false,
+      organization: false,
     };
     // @ts-ignore
     this.steps[step] = true;
-  }
-
-  confirmPriceSchedule(): void {
-    this.steps = {
-      pricing: false,
-      previewPrice: false,
-      spaceDetails: true,
-      completeSpace: false,
-    };
   }
 
   nextStep(step: string): void {
@@ -159,9 +228,41 @@ export class PremisesComponent implements OnInit {
       previewPrice: false,
       spaceDetails: false,
       completeSpace: false,
+      organization: false,
     };
+
     // @ts-ignore
     this.steps[step] = true;
+  }
+
+  handlePreviewStep(): void {
+    console.log('Space time ==>>', this.spacePrices.length);
+    if (!this.spacePrices.length) {
+      this.sharedSrv.showNotification(
+        'Please fill the form to continue.',
+        'info'
+      );
+      return;
+    }
+    this.nextStep('previewPrice');
+  }
+
+  handleFeatures(feature: string): void {
+    // If in array, remove else add
+    if (this.spaceFeaturesArray.includes(feature)) {
+      const newArray = this.spaceFeaturesArray.filter(
+        (item) => item !== feature
+      );
+      this.spaceFeaturesArray = newArray;
+      this.spaceForm.patchValue({
+        features: this.spaceFeaturesArray,
+      });
+    } else {
+      this.spaceFeaturesArray = [...this.spaceFeaturesArray, feature];
+      this.spaceForm.patchValue({
+        features: this.spaceFeaturesArray,
+      });
+    }
   }
 
   onSubmitPricing(): void {
@@ -194,27 +295,6 @@ export class PremisesComponent implements OnInit {
         console.log('Failed creating space ==>>', err);
       },
     });
-    console.log('Form values ===>>', this.pricingForm.value);
-  }
-
-  handleFeatures(feature: string): void {
-    // If in array, remove else add
-    if (this.spaceFeaturesArray.includes(feature)) {
-      const newArray = this.spaceFeaturesArray.filter(
-        (item) => item !== feature
-      );
-      this.spaceFeaturesArray = newArray;
-      this.spaceForm.patchValue({
-        features: this.spaceFeaturesArray,
-      });
-    } else {
-      this.spaceFeaturesArray = [...this.spaceFeaturesArray, feature];
-      this.spaceForm.patchValue({
-        features: this.spaceFeaturesArray,
-      });
-    }
-
-    console.log('Form content ==>>', this.spaceForm.value);
   }
 
   onSubmitSpace(): void {
@@ -233,10 +313,7 @@ export class PremisesComponent implements OnInit {
       spacePriceGroup: this.priceSchedule,
     };
 
-    console.log('Price schedules ==>>', priceSchedule);
-
     // Create price schedule here using the space title
-    // Todo Uncomment
     this.dashSrv.createPriceSchedule(priceSchedule).subscribe({
       next: (response) => {
         // Todo price schedule id required when creating the space
@@ -279,10 +356,16 @@ export class PremisesComponent implements OnInit {
           `${spacePayload.title} Space created successfully.`,
           'success'
         );
-        // Todo use created space id to create space images
-        // Todo use created space id to create space organization
 
-        console.log('Create space success response ==>>', response);
+        // Space id need to create space gallery
+        this.handleSpaceImages(response.id);
+        // Space id needed to create space organization
+        this.spaceOrgForm.patchValue({
+          space: response.id,
+        });
+
+        // Next step
+        this.nextStep('organization');
       },
       error: (error) => {
         console.log('Create space error ==>>', error);
@@ -290,8 +373,6 @@ export class PremisesComponent implements OnInit {
     });
 
     // Todo submit features, is_patner, opening and closing, space price schedule
-
-    console.log('Create space payload ==>>', spacePayload);
     // Close modal on success response
     // this.closeAddSpace.nativeElement.click();
     // Reset steps
@@ -300,6 +381,44 @@ export class PremisesComponent implements OnInit {
       previewPrice: false,
       spaceDetails: false,
       completeSpace: false,
+      organization: false,
     };
+  }
+
+  submitSpaceOrg(close: boolean): void {
+    const orgName = this.spaceOrgForm.get('name')?.value;
+
+    this.dashSrv.creatOrganization(this.spaceOrgForm.value).subscribe({
+      next: (response) => {
+        console.log('Create space success ==>>', response);
+        this.sharedSrv.showNotification(
+          `${orgName} created successfully.`,
+          'success'
+        );
+
+        // Close modal if only save
+        if (close) {
+          this.closeAddSpace.nativeElement.click();
+        }
+      },
+      error: (err) => {
+        console.log('Create space failed ==>> ', err);
+      },
+    });
+
+    console.log('Form organ data ==>>', this.spaceOrgForm.value);
+  }
+
+  handleSpaceImages(spaceId: string) {
+    this.spaceFormData.append('space', spaceId);
+
+    this.dashSrv.createSpaceGallery(this.spaceFormData).subscribe({
+      next: (response) => {
+        console.log('Space id ==>>', response);
+      },
+      error: (err) => {
+        console.log('Create space images failed ==>>', err);
+      },
+    });
   }
 }

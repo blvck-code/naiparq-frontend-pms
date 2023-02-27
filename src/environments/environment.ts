@@ -21,6 +21,9 @@ export const environment = {
   naiparqListSpaces: naiparqBaseURL + 'spaces/space',
   naiparqCreateSpace: naiparqBaseURL + 'spaces/space/',
 
+  // Space Images
+  naiparqGallery: naiparqBaseURL + 'spaces/gallery/',
+
   // Organization
   naiparqCreateOrg: naiparqBaseURL + 'guest/org/',
 

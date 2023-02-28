@@ -9,6 +9,7 @@ import * as driveInActions from '../../state/actions/driveIn.actions';
 import { Store } from '@ngrx/store';
 import { StoreService } from '../../state/store.service';
 import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
+import { SpaceModel } from '../../models/spaces.model';
 
 @Component({
   selector: 'drive-in-payment',
@@ -21,6 +22,8 @@ export class DriveInComponent implements OnInit {
   driveIns$: Observable<DriveInModel[]> = this.storeSrv.driveIn();
   driveInLoaded$: Observable<boolean> = this.storeSrv.driveInLoaded();
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
+
+  spaces$: Observable<SpaceModel[]> = this.storeSrv.getSpaces();
 
   driveInForm = this.formBuilder.group({
     // Todo change this

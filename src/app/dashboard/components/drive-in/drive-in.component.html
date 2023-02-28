@@ -11,6 +11,13 @@
         >
           Add Number Plate
         </button>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#addWhiteList"
+          class="naiparq-btn naiparq-btn-primary me-2"
+        >
+          Add To Whitelist
+        </button>
 
         <button class="filter-btn alt-btn">
           <svg
@@ -142,6 +149,125 @@
             id="nPlate"
             class="naiparq-form-input"
           />
+        </div>
+
+        <div class="naiparq-form-group">
+          <button
+            [class.btn-loading]="isSubmitting"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade add-plate-modal"
+  id="addWhiteList"
+  tabindex="-1"
+  aria-labelledby="addNumberPlate"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add To White List</h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form
+        [formGroup]="driveInForm"
+        (ngSubmit)="onSubmit()"
+        class="modal-body"
+      >
+        <div class="flex items-center py-2 gap-3">
+          <div class="naiparq-form-group">
+            <label for="nPlate">Space Name</label>
+            <select class="form-select my-1">
+              <option
+                *ngFor="let space of spaces$ | async"
+                value="{{ space.id }}"
+              >
+                {{ space.title }}
+              </option>
+            </select>
+          </div>
+          <div class="naiparq-form-group">
+            <label for="nPlate">Organization</label>
+            <select class="form-select my-1">
+              <option
+                *ngFor="let space of spaces$ | async"
+                value="{{ space.id }}"
+              >
+                {{ space.title }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="flex items-center w-[100%] gap-2">
+          <div class="flex flex-col">
+            <label for="nPlate">Start Date</label>
+            <input
+              formControlName="license_plate"
+              type="date"
+              id="nPlate"
+              class="px-2 py-3 rounded border w-[100%]"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label for="nPlate">End Date</label>
+            <input
+              formControlName="license_plate"
+              type="date"
+              id="nPlate"
+              class="px-2 py-3 rounded border w-[100%]"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="naiparq-form-group">
+            <label for="nPlate">License Date</label>
+            <input
+              formControlName="license_plate"
+              type="text"
+              id="nPlate"
+              class="naiparq-form-input"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label for="nPlate">Status</label>
+            <input
+              formControlName="license_plate"
+              type="checkbox"
+              id="nPlate"
+              class="naiparq-form-input"
+            />
+          </div>
         </div>
 
         <div class="naiparq-form-group">

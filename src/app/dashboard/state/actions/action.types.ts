@@ -4,6 +4,11 @@ export enum DashActionTypes {
   LOAD_SPACES_SUCCESS = 'spaces/loadSpacesSuccess',
   LOAD_SPACES_FAIL = 'spaces/loadSpacesFail',
 
+  // Organization
+  LOAD_ORGANIZATION = 'organization/loadOrganization',
+  LOAD_ORGANIZATION_SUCCESS = 'organization/loadOrganizationSuccess',
+  LOAD_ORGANIZATION_FAIL = 'organization/loadOrganizationFail',
+
   // Drive In
   LOAD_DRIVE_IN = 'driveIn/loadDriveIn',
   LOAD_DRIVE_IN_SUCCESS = 'driveIn/loadDriveInSuccess',

@@ -52,8 +52,6 @@ export class PremisesComponent implements OnInit, AfterViewInit {
     organization: false,
   };
 
-  createdSpaceId: string = '';
-
   // Space Images
   imgTypes = ['jpg', 'png', 'jpeg'];
   spaceFormData = new FormData();

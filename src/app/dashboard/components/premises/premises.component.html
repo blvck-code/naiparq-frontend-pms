@@ -6,7 +6,7 @@
       <div class="cash-table-btns d-flex">
         <button
           data-bs-toggle="modal"
-          data-bs-target="#addSpace"
+          data-bs-target="#pricingModal"
           class="naiparq-btn naiparq-btn-primary me-2"
         >
           Add Space
@@ -40,7 +40,16 @@
       >
         <div class="naiparq-space-item" *ngFor="let space of spaces$ | async">
           <!--          Todo add image URL for the space -->
-          <img src="assets/images/naiparq-space.jpg" alt="" />
+          <img
+            class="h-[200px] object-cover"
+            [src]="
+              space.space_images.length
+                ? space.space_images[0].image
+                : 'assets/images/naiparq-space.jpg'
+            "
+            alt=""
+          />
+
           <h5 class="naiparq-space-title">
             {{ space.title | truncate : [20] }}
           </h5>
@@ -75,8 +84,8 @@
 
 <!-- Modal -->
 <div
-  class="modal fade add-plate-modal"
-  id="addSpace"
+  class="modal fade add-pricing-modal"
+  id="pricingModal"
   tabindex="-1"
   aria-labelledby="addNumberPlate"
   aria-hidden="true"
@@ -143,14 +152,22 @@
               stroke-linejoin="round"
             />
           </svg>
-          <h5 class="modal-title" id="exampleModalLabel">Add Space</h5>
+          <h5 *ngIf="steps.pricing" class="modal-title">Pricing Rates</h5>
+          <h5 *ngIf="steps.previewPrice" class="modal-title">Preview Rates</h5>
+          <h5 *ngIf="steps.spaceDetails" class="modal-title">Add Space</h5>
+          <h5 *ngIf="steps.completeSpace" class="modal-title">
+            Complete Space
+          </h5>
+          <h5 *ngIf="steps.organization" class="modal-title">
+            Add space organizations
+          </h5>
         </div>
         <button
           type="button"
           class="btn-close naiparq-close-btn"
           data-bs-dismiss="modal"
           aria-label="Close"
-          #closeDriveIn
+          #closeAddSpace
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -168,40 +185,341 @@
           </svg>
         </button>
       </div>
-      <form class="modal-body">
+
+      <!--      Add pricing form -->
+      <form
+        *ngIf="steps.pricing"
+        [formGroup]="pricingForm"
+        (ngSubmit)="onSubmitPricing()"
+        class="modal-body"
+      >
         <!--        Space Name -->
-        <div class="naiparq-form-group">
-          <label for="nPlate">Name</label>
-          <input type="text" class="naiparq-form-input" />
+        <div class="flex flex-col justify-start">
+          <!--          duration / charges -->
+          <div class="flex justify-between items-center">
+            <p class="text-[14px] leading-[17px] font-[400]">Time Duration</p>
+            <p class="text-[14px] leading-[17px] font-[400]">Charges</p>
+          </div>
+          <!--            form -->
+          <div class="pricing-modal">
+            <div class="grid grid-cols-3 gap-2">
+              <!--              Min Time -->
+              <select
+                class="form-select h-[48px]"
+                aria-label="Default select example"
+                formControlName="min_time"
+              >
+                <option
+                  *ngFor="let time of timeIntervals()"
+                  value="{{ time.value }}"
+                >
+                  {{ time.key }}
+                </option>
+              </select>
+              <!--              Max Time -->
+              <select
+                class="form-select h-[48px]"
+                aria-label="Default select example"
+                formControlName="max_time"
+              >
+                <option
+                  *ngFor="let time of timeIntervals().slice(1)"
+                  value="{{ time.value }}"
+                >
+                  {{ time.key }}
+                </option>
+              </select>
+              <input
+                type="text"
+                class="h-[48px] mb-[16px] border border-[#000] rounded px-2 py-0"
+                placeholder="100 ksh"
+                formControlName="price"
+              />
+            </div>
+          </div>
+          <!--          min / max -->
+          <div class="grid grid-cols-3 gap-2">
+            <p class="text-[14px] leading-[17px] font-[400]">Time Duration</p>
+            <p class="text-[14px] leading-[17px] font-[400]">Charges</p>
+            <p class="text-[14px] leading-[17px] font-[400]"></p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button class="naiparq-btn naiparq-btn-primary" type="submit">
+            <span class="btn-text">Save and add another</span>
+          </button>
+          <button
+            (click)="handlePreviewStep()"
+            class="naiparq-btn naiparq-btn-primary"
+            type="button"
+          >
+            <span class="btn-text">Next</span>
+          </button>
+        </div>
+      </form>
+
+      <!--      Preview space pricing details-->
+      <div class="modal-body" *ngIf="steps.previewPrice">
+        <!--                Rates -->
+        <div class="rate-container pt-2 pb-3">
+          <!--          Rate Item -->
+          <div
+            *ngFor="let rateItem of spacePrices"
+            class="rate-item py-1 flex items-center justify-between"
+          >
+            <div class="flex flex-auto items-center justify-between">
+              <p
+                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
+              >
+                {{ handleDisplayRateValues(rateItem.min_time) }}-{{
+                  handleDisplayRateValues(rateItem.max_time)
+                }}
+              </p>
+              <p
+                class="my-1 text-[14px] text-[#192342] leading-[17px] font-[400]"
+              >
+                KES {{ rateItem.price }}
+              </p>
+            </div>
+            <!--            Todo add options to delete pricing -->
+            <button class="px-2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.875 2.5H13.125C13.2908 2.5 13.4497 2.43415 13.5669 2.31694C13.6842 2.19973 13.75 2.04076 13.75 1.875C13.75 1.70924 13.6842 1.55027 13.5669 1.43306C13.4497 1.31585 13.2908 1.25 13.125 1.25H6.875C6.70924 1.25 6.55027 1.31585 6.43306 1.43306C6.31585 1.55027 6.25 1.70924 6.25 1.875C6.25 2.04076 6.31585 2.19973 6.43306 2.31694C6.55027 2.43415 6.70924 2.5 6.875 2.5Z"
+                  fill="#4BC1F1"
+                />
+                <path
+                  d="M16.875 3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75033 16.5814 3.88213 16.8992 4.11648 17.1335C4.35083 17.3679 4.66858 17.4997 5 17.5H15C15.3314 17.4997 15.6492 17.3679 15.8835 17.1335C16.1179 16.8992 16.2497 16.5814 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125Z"
+                  fill="#4BC1F1"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!--        Preview buttons -->
+        <div class="grid grid-cols-2 items-center gap-2 pt-2 w-[100%]">
+          <button
+            (click)="goBack('pricing')"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+          >
+            <span class="btn-text">Back</span>
+          </button>
+          <button
+            (click)="nextStep('spaceDetails')"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+          >
+            <span class="btn-text">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!--      // Add space form-->
+      <form
+        *ngIf="steps.spaceDetails"
+        [formGroup]="spaceForm"
+        (ngSubmit)="onSubmitSpace()"
+        class="modal-body"
+      >
+        <!--        Space Name -->
+        <div class="flex flex-col py-1.5 justify-start">
+          <label>Name</label>
+          <input
+            formControlName="title"
+            type="text"
+            class="py-2 px-3 border rounded"
+          />
         </div>
 
         <!--        Space Description -->
-        <div class="naiparq-form-group">
-          <label for="nPlate">Description</label>
-          <input type="text" class="naiparq-form-input" />
+        <div class="flex flex-col py-1.5 justify-start">
+          <label>Description</label>
+          <textarea
+            formControlName="description"
+            rows="4"
+            class="py-2 px-3 border rounded"
+          ></textarea>
         </div>
 
-        <!--        Space Number of floors -->
-        <div class="naiparq-form-group">
-          <label for="nPlate"> Number of floors </label>
-          <input type="text" class="naiparq-form-input" />
+        <!--        Space Search Map -->
+        <div class="flex flex-col relative justify-start relative">
+          <label for="nPlate">Search location</label>
+          <input type="text" class="py-2 px-3 border rounded" />
+          <div class="h-[150px] w-[100%] rounded mt-1 mb-2">
+            <div #mapContainer class="map-frame">
+              <div id="map-container"></div>
+            </div>
+          </div>
         </div>
 
-        <!--        Space Floor Description -->
-        <div class="naiparq-form-group">
-          <label> Description of floors</label>
-          <textarea rows="4" class="naiparq-form-input"></textarea>
-          <span class="text-muted"> e.g B1, B2, M1, M2 </span>
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button
+            (click)="goBack('previewPrice')"
+            class="naiparq-btn naiparq-btn-primary"
+          >
+            <span class="btn-text">Back</span>
+          </button>
+          <button type="submit" class="naiparq-btn naiparq-btn-primary">
+            <span class="btn-text">Next</span>
+          </button>
         </div>
+      </form>
 
-        <div class="naiparq-form-group">
+      <!--      Complete Add Space Form -->
+      <form
+        *ngIf="steps.completeSpace"
+        [formGroup]="completeSpaceForm"
+        (ngSubmit)="onCompleteSpace()"
+        class="modal-body"
+      >
+        <!--        Space Image -->
+        <div class="flex flex-col justify-start">
           <label>Upload Photos</label>
-          <div class="naiparq-image-input my-2"></div>
+          <div
+            (click)="clickSpacePhotos()"
+            class="h-[150px] w-[100%] flex items-center justify-center rounded border-sky-500 bg-sky-100 cursor-pointer my-2"
+          >
+            <div *ngIf="!spaceImageURL">
+              <span class="underline text-sky-500 font-[700]"
+                >Add Space Photos</span
+              >
+              <input
+                (change)="handleSpacePhotos($event)"
+                #spacePhotos
+                type="file"
+                class="hidden"
+              />
+            </div>
+            <div
+              (click)="clickSpacePhotos()"
+              class="naiparq-image-input border-sky-500"
+              *ngIf="spaceImageURL"
+            >
+              <img
+                class="h-[150px] object-cover"
+                [src]="spaceImageURL"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
 
-        <div class="naiparq-form-group">
-          <button class="naiparq-btn naiparq-btn-primary" type="submit">
-            <span class="btn-text">Submit</span>
+        <!--        Opening and Closing time -->
+        <div class="grid grid-cols-2 py-2 gap-2">
+          <div class="flex flex-col justify-start">
+            <label>Opening time</label>
+            <input
+              formControlName="opening_time"
+              type="time"
+              class="px-3 py-2 my-1 rounded border"
+            />
+          </div>
+          <div class="flex flex-col justify-start">
+            <label>Closing time</label>
+            <input
+              formControlName="closing_time"
+              type="time"
+              class="px-3 py-2 my-1 rounded border"
+            />
+          </div>
+        </div>
+
+        <!--  Features -->
+        <div class="grid grid-cols-2 gap-2 pb-2">
+          <div>
+            <div
+              *ngFor="let feature of spaceFeatures().slice(0, 5)"
+              class="form-check"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ feature.value }}"
+                id="{{ feature.value }}"
+                (change)="handleFeatures(feature.value)"
+              />
+              <label class="form-check-label" for="{{ feature.value }}">
+                {{ feature.key }}
+              </label>
+            </div>
+          </div>
+          <div>
+            <div
+              *ngFor="let feature of spaceFeatures().slice(5, 10)"
+              class="form-check"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ feature.value }}"
+                id="{{ feature.value }}"
+                (change)="handleFeatures(feature.value)"
+              />
+              <label class="form-check-label" for="{{ feature.value }}">
+                {{ feature.key }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button
+            (click)="goBack('spaceDetails')"
+            class="naiparq-btn naiparq-btn-primary"
+          >
+            <span class="btn-text">Back</span>
+          </button>
+          <button type="submit" class="naiparq-btn naiparq-btn-primary">
+            <span class="btn-text">Next</span>
+          </button>
+        </div>
+      </form>
+
+      <!--    Space organizations -->
+      <form
+        [formGroup]="spaceOrgForm"
+        class="modal-body py-1 px-3"
+        *ngIf="steps.organization"
+      >
+        <div class="flex justify-between">
+          <p class="text-[14px] leading-[17px] font-[400]">Organization name</p>
+          <p class="text-[14px] leading-[17px] font-[400]">Number of floors</p>
+        </div>
+        <div class="flex justify-between gap-2 py-2">
+          <input
+            type="text"
+            class="h-[48px] border border-[#000] rounded px-2 py-0"
+            formControlName="name"
+          />
+          <input
+            type="text"
+            class="h-[48px] border border-[#000] rounded px-2 py-0"
+            formControlName="floor"
+          />
+        </div>
+        <div class="grid grid-cols-2 items-center gap-2 mt-1 w-[100%]">
+          <button
+            (click)="submitSpaceOrg(false)"
+            class="naiparq-btn naiparq-btn-primary"
+            [class.btn-loading]="submittingOrgOne"
+          >
+            <span class="btn-text">Save and add another</span>
+          </button>
+          <button
+            (click)="submitSpaceOrg(true)"
+            type="submit"
+            class="naiparq-btn naiparq-btn-primary"
+            [class.btn-loading]="submittingOrgTwo"
+          >
+            <span class="btn-text">Save</span>
           </button>
         </div>
       </form>

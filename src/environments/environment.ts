@@ -19,6 +19,13 @@ export const environment = {
 
   // Spaces
   naiparqListSpaces: naiparqBaseURL + 'spaces/space',
+  naiparqCreateSpace: naiparqBaseURL + 'spaces/space/',
+
+  // Space Images
+  naiparqGallery: naiparqBaseURL + 'spaces/gallery/',
+
+  // Organization
+  naiparqCreateOrg: naiparqBaseURL + 'guest/org/',
 
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',
@@ -31,6 +38,8 @@ export const environment = {
   naiparqCheckout: naiparqBaseURL + 'bill/checkout',
 
   // Pricing Module URLS
+  naiparqCreatePricing: naiparqBaseURL + 'spaces/spacepricing/',
+  naiparqCreatePriceSchedule: naiparqBaseURL + 'spaces/priceschedule/',
 
   // Device Module URLS
   naiparqDevicesList: naiparqBaseURL + 'asset/device',

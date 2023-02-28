@@ -86,6 +86,21 @@
             </div>
 
             <ul class="dropdown-menu">
+              <li *ngIf="blogger$ | async">
+                <a [routerLink]="['/blog/create']" class="dropdown-item"
+                  >Create blog</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/dashboard']" class="dropdown-item"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/dashboard/account']" class="dropdown-item"
+                  >Account</a
+                >
+              </li>
               <li><a (click)="logOut()" class="dropdown-item">Logout</a></li>
             </ul>
           </div>

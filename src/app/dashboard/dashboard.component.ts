@@ -10,7 +10,12 @@ import * as spaceActions from './state/actions/spaces.actions';
 
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { isLoggedIn, userInfo, userName } from '../auth/state/auth.selector';
+import {
+  blogger,
+  isLoggedIn,
+  userInfo,
+  userName,
+} from '../auth/state/auth.selector';
 import { UserModel } from '../auth/model/user.model';
 
 @Component({
@@ -27,6 +32,7 @@ export class DashboardComponent implements OnInit {
   userName$: Observable<string> = this.store.select(userName);
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
   userInfo$: Observable<UserModel> = this.store.select(userInfo);
+  blogger$: Observable<boolean> = this.store.select(blogger);
 
   toggleNav(): void {
     const nav = this.sideNav.nativeElement;

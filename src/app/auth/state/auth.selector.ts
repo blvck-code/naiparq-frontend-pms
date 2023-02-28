@@ -38,3 +38,8 @@ export const userInfo = createSelector(
   getAuthState,
   (state) => state.userInfo.user
 );
+
+export const blogger = createSelector(
+  getAuthState,
+  (state) => state.userInfo.user.user_type === 'blogger'
+);

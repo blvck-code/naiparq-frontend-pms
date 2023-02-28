@@ -194,7 +194,7 @@
         class="modal-body"
       >
         <!--        Space Name -->
-        <div class="naiparq-form-group">
+        <div class="flex flex-col justify-start">
           <!--          duration / charges -->
           <div class="flex justify-between items-center">
             <p class="text-[14px] leading-[17px] font-[400]">Time Duration</p>
@@ -330,30 +330,30 @@
         class="modal-body"
       >
         <!--        Space Name -->
-        <div class="naiparq-form-group">
+        <div class="flex flex-col py-1.5 justify-start">
           <label>Name</label>
           <input
             formControlName="title"
             type="text"
-            class="naiparq-form-input"
+            class="py-2 px-3 border rounded"
           />
         </div>
 
         <!--        Space Description -->
-        <div class="naiparq-form-group">
+        <div class="flex flex-col py-1.5 justify-start">
           <label>Description</label>
           <textarea
             formControlName="description"
             rows="4"
-            class="naiparq-form-input"
+            class="py-2 px-3 border rounded"
           ></textarea>
         </div>
 
         <!--        Space Search Map -->
-        <div class="naiparq-form-group relative">
+        <div class="flex flex-col relative justify-start relative">
           <label for="nPlate">Search location</label>
-          <input type="text" class="naiparq-form-input" />
-          <div class="naiparq-image-input map-container mt-1 mb-2">
+          <input type="text" class="py-2 px-3 border rounded" />
+          <div class="h-[150px] w-[100%] rounded mt-1 mb-2">
             <div #mapContainer class="map-frame">
               <div id="map-container"></div>
             </div>
@@ -381,14 +381,16 @@
         class="modal-body"
       >
         <!--        Space Image -->
-        <div class="naiparq-form-group">
+        <div class="flex flex-col justify-start">
           <label>Upload Photos</label>
           <div
             (click)="clickSpacePhotos()"
-            class="naiparq-image-input border-sky-500 cursor-pointer my-2"
+            class="h-[150px] w-[100%] flex items-center justify-center rounded border-sky-500 bg-sky-100 cursor-pointer my-2"
           >
             <div *ngIf="!spaceImageURL">
-              <span>Add Space Photos</span>
+              <span class="underline text-sky-500 font-[700]"
+                >Add Space Photos</span
+              >
               <input
                 (change)="handleSpacePhotos($event)"
                 #spacePhotos
@@ -411,21 +413,21 @@
         </div>
 
         <!--        Opening and Closing time -->
-        <div class="grid grid-cols-2 gap-2">
-          <div class="naiparq-form-group">
+        <div class="grid grid-cols-2 py-2 gap-2">
+          <div class="flex flex-col justify-start">
             <label>Opening time</label>
             <input
               formControlName="opening_time"
               type="time"
-              class="naiparq-form-input"
+              class="px-3 py-2 my-1 rounded border"
             />
           </div>
-          <div class="naiparq-form-group">
+          <div class="flex flex-col justify-start">
             <label>Closing time</label>
             <input
               formControlName="closing_time"
               type="time"
-              class="naiparq-form-input"
+              class="px-3 py-2 my-1 rounded border"
             />
           </div>
         </div>
@@ -459,11 +461,9 @@
                 type="checkbox"
                 value="{{ feature.value }}"
                 id="{{ feature.value }}"
+                (change)="handleFeatures(feature.value)"
               />
-              <label
-                class="text-[14px] leading-[17px] font-[400]"
-                for="{{ feature.value }}"
-              >
+              <label class="form-check-label" for="{{ feature.value }}">
                 {{ feature.key }}
               </label>
             </div>

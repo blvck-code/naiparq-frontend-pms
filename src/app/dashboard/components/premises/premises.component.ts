@@ -45,10 +45,10 @@ export class PremisesComponent implements OnInit, AfterViewInit {
   });
 
   steps = {
-    pricing: false,
+    pricing: true,
     previewPrice: false,
     spaceDetails: false,
-    completeSpace: true,
+    completeSpace: false,
     organization: false,
   };
 
@@ -352,27 +352,27 @@ export class PremisesComponent implements OnInit, AfterViewInit {
 
     console.log('payload ===>>', spacePayload);
 
-    // this.dashSrv.createSpace(spacePayload).subscribe({
-    //   next: (response) => {
-    //     this.sharedSrv.showNotification(
-    //       `${spacePayload.title} Space created successfully.`,
-    //       'success'
-    //     );
-    //
-    //     // Space id need to create space gallery
-    //     this.handleSpaceImages(response.id);
-    //     // Space id needed to create space organization
-    //     this.spaceOrgForm.patchValue({
-    //       space: response.id,
-    //     });
-    //
-    //     // Next step
-    //     this.nextStep('organization');
-    //   },
-    //   error: (error) => {
-    //     console.log('Create space error ==>>', error);
-    //   },
-    // });
+    this.dashSrv.createSpace(spacePayload).subscribe({
+      next: (response) => {
+        this.sharedSrv.showNotification(
+          `${spacePayload.title} Space created successfully.`,
+          'success'
+        );
+
+        // Space id need to create space gallery
+        this.handleSpaceImages(response.id);
+        // Space id needed to create space organization
+        this.spaceOrgForm.patchValue({
+          space: response.id,
+        });
+
+        // Next step
+        this.nextStep('organization');
+      },
+      error: (error) => {
+        console.log('Create space error ==>>', error);
+      },
+    });
 
     // Todo submit features, is_patner, opening and closing, space price schedule
     // Close modal on success response
@@ -395,6 +395,7 @@ export class PremisesComponent implements OnInit, AfterViewInit {
         if (close) {
           this.closeAddSpace.nativeElement.click();
         }
+        this.spaceOrgForm.reset();
       },
       error: (err) => {
         console.log('Create space failed ==>> ', err);

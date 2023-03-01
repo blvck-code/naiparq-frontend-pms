@@ -41,6 +41,16 @@
   }
 }
 
+.modal-space-dialog {
+  position: fixed;
+  margin: auto;
+  width: 418px;
+  height: 100%;
+  right: 10px;
+  top: 0;
+  z-index: 1100;
+}
+
 .map-container {
   position: absolute;
   top: 0;

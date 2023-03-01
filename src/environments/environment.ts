@@ -11,6 +11,11 @@ const naiparqWsURL = '';
 export const environment = {
   production: false,
 
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoiYmx2Y2tkZXgiLCJhIjoiY2xlcGk4aXB0MDRkeDQxb2VwamJpbnd3NyJ9.-IlY_PVl-BYsWx-coGTk-g',
+  },
+
   // Accounts Module URLS
   naiparqLogin: naiparqBaseURL + 'accounts/login/',
   naiparqRegister: naiparqBaseURL + 'accounts/register/',

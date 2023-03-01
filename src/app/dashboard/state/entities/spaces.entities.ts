@@ -49,6 +49,11 @@ export const getSpaces = createSelector(
   spacesAdapter.getSelectors().selectAll
 );
 
+export const spaceEntities = createSelector(
+  spacesStateKey,
+  spacesAdapter.getSelectors().selectEntities
+);
+
 export const spacesLoading = createSelector(
   spacesStateKey,
   (state) => state.loading
@@ -58,3 +63,6 @@ export const spacesLoaded = createSelector(
   spacesStateKey,
   (state) => state.loaded
 );
+
+export const selectSpaceEntity = (id: string) =>
+  createSelector(spaceEntities, (entities) => entities[id]);

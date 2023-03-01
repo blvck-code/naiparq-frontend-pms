@@ -35,10 +35,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/leaflet/dist/leaflet.css"
-            ],
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/assets/styles"

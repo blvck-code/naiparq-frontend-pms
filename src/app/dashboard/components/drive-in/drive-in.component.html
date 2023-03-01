@@ -201,14 +201,18 @@
         </button>
       </div>
       <form
-        [formGroup]="driveInForm"
-        (ngSubmit)="onSubmit()"
+        [formGroup]="whiteListForm"
+        (ngSubmit)="onSubmitWhiteList()"
         class="modal-body"
       >
-        <div class="flex items-center py-2 gap-3">
+        <div class="grid grid-cols-2 py-1 gap-3">
           <div class="naiparq-form-group">
             <label for="nPlate">Space Name</label>
-            <select class="form-select my-1">
+            <select
+              class="form-select my-1.5"
+              formControlName="space"
+              (change)="handleSelectedSpace($event)"
+            >
               <option
                 *ngFor="let space of spaces$ | async"
                 value="{{ space.id }}"
@@ -218,55 +222,57 @@
             </select>
           </div>
           <div class="naiparq-form-group">
-            <label for="nPlate">Organization</label>
-            <select class="form-select my-1">
+            <label for="nPlate">Organisation</label>
+            <select
+              formControlName="organisation"
+              class="form-select my-1.5 w-[100%]"
+            >
               <option
-                *ngFor="let space of spaces$ | async"
-                value="{{ space.id }}"
+                *ngFor="let org of organizations | async"
+                value="{{ org.id }}"
               >
-                {{ space.title }}
+                {{ org.name }}
               </option>
             </select>
           </div>
         </div>
-        <div class="flex items-center w-[100%] gap-2">
+        <div class="grid grid-cols-2 py-1 gap-3">
           <div class="flex flex-col">
-            <label for="nPlate">Start Date</label>
+            <label>Start Date</label>
             <input
-              formControlName="license_plate"
-              type="date"
-              id="nPlate"
-              class="px-2 py-3 rounded border w-[100%]"
+              formControlName="start_date"
+              type="datetime-local"
+              name="start-date"
+              class="p-2 my-1.5 rounded border"
             />
           </div>
-          <div class="naiparq-form-group">
-            <label for="nPlate">End Date</label>
+          <div class="flex flex-col">
+            <label>End Date</label>
             <input
-              formControlName="license_plate"
-              type="date"
-              id="nPlate"
-              class="px-2 py-3 rounded border w-[100%]"
+              formControlName="end_date"
+              type="datetime-local"
+              name="end-date"
+              class="p-2 my-1.5 rounded border"
             />
           </div>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="grid grid-cols-2 py-1 gap-3">
           <div class="naiparq-form-group">
-            <label for="nPlate">License Date</label>
+            <label>License Date</label>
             <input
               formControlName="license_plate"
               type="text"
-              id="nPlate"
-              class="naiparq-form-input"
+              class="px-2 py-1.5 my-1.5 rounded border"
+              (keyup)="handleNum($event)"
+              [value]="numberPlate.toLocaleUpperCase()"
             />
           </div>
           <div class="naiparq-form-group">
-            <label for="nPlate">Status</label>
-            <input
-              formControlName="license_plate"
-              type="checkbox"
-              id="nPlate"
-              class="naiparq-form-input"
-            />
+            <label>Status</label>
+            <select class="form-select my-1.5" formControlName="status">
+              <option value="active">Active</option>
+              <option value="expired">Expired</option>
+            </select>
           </div>
         </div>
 

@@ -6,10 +6,16 @@ import { SharedService } from '../../../shared/services/shared.service';
 
 // NgRx
 import * as driveInActions from '../../state/actions/driveIn.actions';
+import * as spaceActions from '../../state/actions/spaces.actions';
 import { Store } from '@ngrx/store';
 import { StoreService } from '../../state/store.service';
 import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
 import { SpaceModel } from '../../models/spaces.model';
+import { OrganisationModel } from '../../models/organisation.model';
+import {
+  organizationsList,
+  selectedSpaceOrgs,
+} from '../../state/entities/organizations.entities';
 
 @Component({
   selector: 'drive-in-payment',
@@ -24,17 +30,28 @@ export class DriveInComponent implements OnInit {
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
 
   spaces$: Observable<SpaceModel[]> = this.storeSrv.getSpaces();
+  organizations: Observable<OrganisationModel[]> =
+    this.store.select(selectedSpaceOrgs);
 
   driveInForm = this.formBuilder.group({
     // Todo change this
     space: ['a386fe43-eb73-4875-808c-72143279c136'],
     license_plate: ['', Validators.required],
   });
+  whiteListForm = this.formBuilder.group({
+    space: ['', Validators.required],
+    organisation: ['', Validators.required],
+    start_date: ['', Validators.required],
+    end_date: ['', Validators.required],
+    license_plate: ['', Validators.required],
+    status: [''],
+  });
 
   nextPaginationURL: string = '';
 
   isSubmitting: boolean = false;
   loadingMoreDriveIn: boolean = false;
+  numberPlate: string = '';
 
   constructor(
     private store: Store,
@@ -96,11 +113,23 @@ export class DriveInComponent implements OnInit {
     this.handleDriveInList();
     this.store.dispatch(new driveInActions.LoadDriveIn());
     this.store.dispatch(new driveInActions.LoadDriveOut());
+    this.store.dispatch(new spaceActions.LoadOrganizations());
   }
 
   handleDriveInList(): void {
     this.dashSrv.getDriveIn().subscribe({
       next: (resp) => {},
+    });
+  }
+
+  handleSelectedSpace(event: any): void {
+    this.store.dispatch(new spaceActions.SelectedSpaceId(event.target.value));
+  }
+
+  handleNum(event: any): void {
+    this.numberPlate = event.target.value.replace(/\s+/g, '');
+    this.whiteListForm.patchValue({
+      license_plate: this.numberPlate.toUpperCase(),
     });
   }
 
@@ -125,6 +154,60 @@ export class DriveInComponent implements OnInit {
         this.closeDriveIn.nativeElement.click();
       },
     });
+  }
+
+  onSubmitWhiteList(): void {
+    const checkIn = this.whiteListForm.get('start_date')?.value;
+    const checkOut = this.whiteListForm.get('end_date')?.value;
+    const today = new Date();
+
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+
+    const todayDate = `${yyyy}-${mm}-${dd}`;
+
+    if (this.whiteListForm.invalid) {
+      this.sharedSrv.showNotification(
+        'Please fill in the whole form.',
+        'warning'
+      );
+      return;
+    }
+    // Todo check if end date smaller than start date
+    if (checkIn > checkOut) {
+      this.sharedSrv.showNotification(
+        'Please end date cannot be smaller than start date',
+        'warning'
+      );
+      return;
+    }
+    // Todo check if start date smaller than today
+    console.log('Check in date ==>>', checkIn);
+    console.log('Today in date ==>>', todayDate);
+    // if (todayDate < checkIn) {
+    //   this.sharedSrv.showNotification(
+    //     'Please start date cannot be less than today',
+    //     'warning'
+    //   );
+    //   return;
+    // }
+
+    this.dashSrv.createWhiteList(this.whiteListForm.value).subscribe({
+      next: (resp) => {
+        this.sharedSrv.showNotification(
+          `${this.numberPlate.toUpperCase()} added to white list successfully.`,
+          'success'
+        );
+        console.log('Response ==>>', resp);
+        this.whiteListForm.reset();
+      },
+      error: (err) => {
+        console.log('Create whitelist failed ==>>', err);
+      },
+    });
+
+    console.log('Form data ==>>', this.whiteListForm.value);
   }
 
   createAndObserve(element: ElementRef): Observable<boolean> {

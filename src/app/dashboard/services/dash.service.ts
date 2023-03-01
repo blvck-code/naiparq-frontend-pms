@@ -192,4 +192,9 @@ export class DashService {
   fetchOrganizations(): Observable<OrganisationResponseModel> {
     return this.http.get<OrganisationResponseModel>(env.naiparqOrgList);
   }
+
+  // Create white list
+  createWhiteList(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateWhiteList, content);
+  }
 }

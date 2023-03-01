@@ -22,3 +22,8 @@ export class LoadOrganizationsSuccess implements Action {
   readonly type = DashActionTypes.LOAD_ORGANIZATION_SUCCESS;
   constructor(public payload: OrganisationResponseModel) {}
 }
+
+export class SelectedSpaceId implements Action {
+  readonly type = DashActionTypes.SELECTED_SPACE_ID;
+  constructor(public payload: string) {}
+}

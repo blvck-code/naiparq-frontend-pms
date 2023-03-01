@@ -8,6 +8,7 @@ export enum DashActionTypes {
   LOAD_ORGANIZATION = 'organization/loadOrganization',
   LOAD_ORGANIZATION_SUCCESS = 'organization/loadOrganizationSuccess',
   LOAD_ORGANIZATION_FAIL = 'organization/loadOrganizationFail',
+  SELECTED_SPACE_ID = 'organization/selectedSpaceId',
 
   // Drive In
   LOAD_DRIVE_IN = 'driveIn/loadDriveIn',

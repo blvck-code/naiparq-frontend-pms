@@ -46,6 +46,28 @@ export class SpacesEffects {
     )
   );
 
+  // Load Organizations
+  loadOrganizations$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<spaceActions.LoadOrganizations>(
+        dashActions.DashActionTypes.LOAD_ORGANIZATION
+      ),
+      switchMap((action: spaceActions.LoadOrganizations) =>
+        this.dashSrv.fetchOrganizations().pipe(
+          map(
+            (organizations) =>
+              new spaceActions.LoadOrganizationsSuccess(organizations)
+          ),
+          // @ts-ignore
+          catchError((err: any) => {
+            console.log('Getting spaces failed ===>>', err);
+            return;
+          })
+        )
+      )
+    )
+  );
+
   // Load Drive Ins
   loadDriveIn$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(

@@ -26,6 +26,10 @@ export const environment = {
 
   // Organization
   naiparqCreateOrg: naiparqBaseURL + 'guest/org/',
+  naiparqOrgList: naiparqBaseURL + 'guest/org',
+
+  // Whitelist
+  naiparqCreateWhiteList: naiparqBaseURL + 'guest/guest/',
 
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',

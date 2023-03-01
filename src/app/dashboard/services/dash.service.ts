@@ -9,7 +9,10 @@ import { BillingModel, BillingResponseModel } from '../models/billing.model';
 import { DevicesResponseModel } from '../models/devices.model';
 import { PricingModel } from '../models/pricing.model';
 import { PriceScheduleModel } from '../models/priceSchedule.model';
-import { OrganisationModel } from '../models/organisation.model';
+import {
+  OrganisationModel,
+  OrganisationResponseModel,
+} from '../models/organisation.model';
 
 @Injectable({
   providedIn: 'root',
@@ -185,5 +188,13 @@ export class DashService {
     floor: number;
   }): Observable<OrganisationModel> {
     return this.http.post<OrganisationModel>(env.naiparqCreateOrg, content);
+  }
+  fetchOrganizations(): Observable<OrganisationResponseModel> {
+    return this.http.get<OrganisationResponseModel>(env.naiparqOrgList);
+  }
+
+  // Create white list
+  createWhiteList(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateWhiteList, content);
   }
 }

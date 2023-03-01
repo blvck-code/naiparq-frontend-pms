@@ -11,6 +11,13 @@
         >
           Add Number Plate
         </button>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#addWhiteList"
+          class="naiparq-btn naiparq-btn-primary me-2"
+        >
+          Add To Whitelist
+        </button>
 
         <button class="filter-btn alt-btn">
           <svg
@@ -142,6 +149,131 @@
             id="nPlate"
             class="naiparq-form-input"
           />
+        </div>
+
+        <div class="naiparq-form-group">
+          <button
+            [class.btn-loading]="isSubmitting"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade add-plate-modal"
+  id="addWhiteList"
+  tabindex="-1"
+  aria-labelledby="addNumberPlate"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add To White List</h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form
+        [formGroup]="whiteListForm"
+        (ngSubmit)="onSubmitWhiteList()"
+        class="modal-body"
+      >
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div class="naiparq-form-group">
+            <label for="nPlate">Space Name</label>
+            <select
+              class="form-select my-1.5"
+              formControlName="space"
+              (change)="handleSelectedSpace($event)"
+            >
+              <option
+                *ngFor="let space of spaces$ | async"
+                value="{{ space.id }}"
+              >
+                {{ space.title }}
+              </option>
+            </select>
+          </div>
+          <div class="naiparq-form-group">
+            <label for="nPlate">Organisation</label>
+            <select
+              formControlName="organisation"
+              class="form-select my-1.5 w-[100%]"
+            >
+              <option
+                *ngFor="let org of organizations | async"
+                value="{{ org.id }}"
+              >
+                {{ org.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div class="flex flex-col">
+            <label>Start Date</label>
+            <input
+              formControlName="start_date"
+              type="datetime-local"
+              name="start-date"
+              class="p-2 my-1.5 rounded border"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label>End Date</label>
+            <input
+              formControlName="end_date"
+              type="datetime-local"
+              name="end-date"
+              class="p-2 my-1.5 rounded border"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div class="naiparq-form-group">
+            <label>License Date</label>
+            <input
+              formControlName="license_plate"
+              type="text"
+              class="px-2 py-1.5 my-1.5 rounded border"
+              (keyup)="handleNum($event)"
+              [value]="numberPlate.toLocaleUpperCase()"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label>Status</label>
+            <select class="form-select my-1.5" formControlName="status">
+              <option value="active">Active</option>
+              <option value="expired">Expired</option>
+            </select>
+          </div>
         </div>
 
         <div class="naiparq-form-group">

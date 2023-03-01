@@ -25,3 +25,8 @@ export const devicesStateKey = createSelector(
   dashboardStateKey,
   (state) => state.devices
 );
+
+export const orgStateKey = createSelector(
+  dashboardStateKey,
+  (state) => state.organizations
+);

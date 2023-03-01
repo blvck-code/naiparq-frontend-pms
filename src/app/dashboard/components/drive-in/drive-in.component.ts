@@ -183,8 +183,6 @@ export class DriveInComponent implements OnInit {
       return;
     }
     // Todo check if start date smaller than today
-    console.log('Check in date ==>>', checkIn);
-    console.log('Today in date ==>>', todayDate);
     // if (todayDate < checkIn) {
     //   this.sharedSrv.showNotification(
     //     'Please start date cannot be less than today',
@@ -199,7 +197,6 @@ export class DriveInComponent implements OnInit {
           `${this.numberPlate.toUpperCase()} added to white list successfully.`,
           'success'
         );
-        console.log('Response ==>>', resp);
         this.whiteListForm.reset();
       },
       error: (err) => {

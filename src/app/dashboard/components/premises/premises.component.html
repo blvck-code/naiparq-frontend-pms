@@ -541,7 +541,9 @@
   tabindex="-1"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-space-dialog flex justify-end">
+  <div
+    class="modal-dialog modal-space-dialog modal-dialog-scrollable flex justify-end"
+  >
     <div class="modal-content p-0">
       <div class="modal-header border">
         <div class="d-flex gap-2 align-items-center">
@@ -584,14 +586,14 @@
             {{ (activeSpaceDetail$ | async)?.description }}
           </p>
         </div>
-        <div class="py-2">
+        <div>
           <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
             Address
           </h4>
           <p
             class="text-[14px] m-0 py-2 text-[#192342] leading-[20px] font-[400]"
           >
-            KASARANI, NAIROBI
+            {{ (activeSpaceDetail$ | async)?.address }}
           </p>
         </div>
         <div class="py-2">
@@ -622,9 +624,9 @@
           <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
             Parking Features
           </h4>
-          <div class="grid grid-cols-4 gap-3 py-2">
+          <div class="grid grid-cols-2 gap-3 py-2">
             <div
-              *ngFor="let feature of numSeq(8)"
+              *ngFor="let feature of (activeSpaceDetail$ | async)?.features"
               class="flex flex-row items-center gap-2"
             >
               <svg
@@ -653,7 +655,9 @@
                   fill="#4BC1F1"
                 />
               </svg>
-              <p class="font-[400] m-0 font-base leading-[19px]">CCTV</p>
+              <p class="font-[400] m-0 font-base leading-[19px]">
+                {{ feature }}
+              </p>
             </div>
           </div>
         </div>
@@ -664,7 +668,7 @@
           <p
             class="text-[14px] m-0 py-2 text-[#192342] leading-[20px] font-[400]"
           >
-            Shopping Mall
+            {{ (activeSpaceDetail$ | async)?.type }}
           </p>
         </div>
         <div class="py-2 grid grid-cols-2">
@@ -675,7 +679,7 @@
             <p
               class="text-[14px] m-0 py-2 text-[#192342] leading-[20px] font-[400]"
             >
-              07:00
+              {{ (activeSpaceDetail$ | async)?.opening_time }}
             </p>
           </div>
           <div>
@@ -685,20 +689,28 @@
             <p
               class="text-[14px] m-0 py-2 text-[#192342] leading-[20px] font-[400]"
             >
-              20:00
+              {{ (activeSpaceDetail$ | async)?.closing_time }}
             </p>
           </div>
         </div>
 
-        <div class="py-2">
+        <div class="py-1 w-[70%]">
           <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
             Price schedule
           </h4>
-          <p
-            class="text-[14px] m-0 py-2 text-[#192342] leading-[20px] font-[400]"
+          <div
+            *ngFor="
+              let priceSchedule of (activeSpaceDetail$ | async)?.price_schedule
+            "
+            class="grid grid-cols-2 items-center gap-2"
           >
-            KASARANI, NAIROBI
-          </p>
+            <p class="font-[800] m-0 font-base leading-[19px]">
+              {{ priceSchedule.price }}
+            </p>
+            <p class="font-[400] m-0 font-base leading-[19px]">
+              {{ priceSchedule.schedule }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -119,6 +119,7 @@ export class PremisesComponent implements OnInit {
   selectedSpace(spaceId: string): void {
     this.activeSpaceDetail$ = this.store.select(selectSpaceEntity(spaceId));
     this.store.dispatch(new spaceActions.SelectedSpaceId(spaceId));
+
     setTimeout(() => {
       this.createMapContent();
     }, 1500);
@@ -210,13 +211,11 @@ export class PremisesComponent implements OnInit {
 
   createMapContent(): void {
     if (!this.mapLoaded) {
-      this.map = L.map('map').setView([-1.27963, 36.87105], 13);
+      this.map = L.map('map').setView([-1.27963, 36.87105], 12);
 
       L.tileLayer(
         'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
         {
-          attribution:
-            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery ©️ <a href="https://www.mapbox.com/">Mapbox</a>',
           maxZoom: 19,
           id: 'mapbox/streets-v11',
           tileSize: 512,
@@ -226,19 +225,29 @@ export class PremisesComponent implements OnInit {
       ).addTo(this.map);
 
       this.icon = L.icon({
-        iconUrl: 'assets/img/marker-icon.jpg',
+        iconUrl: 'assets/images/map-marker.png',
         popupAnchor: [13, 0],
       });
+
+      this.mapLoaded = true;
     }
 
     //// Delay marker showing so that farms are populated
     setTimeout(() => {
-      this.populateMap();
+      this.activeSpaceDetail$.subscribe({
+        next: (resp) => {
+          this.populateMap(
+            resp?.location.coordinates[0],
+            resp?.location.coordinates[1]
+          );
+        },
+      });
     }, 500);
   }
 
-  populateMap(): void {
-    L.marker([-1.2803241821803713, 36.87900051886436]).addTo(this.map);
+  populateMap(lat: number | undefined, lng: number | undefined): void {
+    // @ts-ignore
+    L.marker([lat, lng]).addTo(this.map);
   }
 
   numSeq(n: number): Array<number> {

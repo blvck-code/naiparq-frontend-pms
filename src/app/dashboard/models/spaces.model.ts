@@ -11,7 +11,7 @@ export interface SpaceModel {
   description: string;
   location: {
     type: string;
-    coordinated: number[];
+    coordinates: number[];
   };
   address: string;
   type: string;
@@ -36,6 +36,13 @@ export interface SpaceModel {
     user_type: any;
   };
   create_at: string;
+  price_schedule: PriceScheduleModel[];
+}
+
+export interface PriceScheduleModel {
+  price_schedule_id: string;
+  price: number;
+  schedule: string;
 }
 
 export interface SpaceImages {

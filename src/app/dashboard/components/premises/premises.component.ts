@@ -14,18 +14,21 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../../shared/services/shared.service';
 import { DashService } from '../../services/dash.service';
 import { PricingModel } from '../../models/pricing.model';
-
+import { environment as env } from '../../../../environments/environment';
 // Map
 import * as L from 'leaflet';
 import { latLng } from 'leaflet';
 import { HttpClient } from '@angular/common/http';
+import { selectSpaceEntity } from '../../state/entities/spaces.entities';
+import { OrganisationModel } from '../../models/organisation.model';
+import { selectedSpaceOrgs } from '../../state/entities/organizations.entities';
 
 @Component({
   selector: 'app-premises',
   templateUrl: './premises.component.html',
   styleUrls: ['./premises.component.scss'],
 })
-export class PremisesComponent implements OnInit, AfterViewInit {
+export class PremisesComponent implements OnInit {
   @ViewChild('closeAddSpace', { static: true }) 'closeAddSpace': ElementRef;
   @ViewChild('spacePhotos') 'spacePhotos': ElementRef;
 
@@ -80,8 +83,9 @@ export class PremisesComponent implements OnInit, AfterViewInit {
     location: [''],
   });
 
-  // Space organizations
-  spaceOrg: number = 1;
+  activeSpaceDetail$!: Observable<SpaceModel | undefined>;
+  organizations$: Observable<OrganisationModel[]> =
+    this.store.select(selectedSpaceOrgs);
 
   completeSpaceForm = this.fb.group({
     opening_time: ['', Validators.required],
@@ -92,7 +96,8 @@ export class PremisesComponent implements OnInit, AfterViewInit {
 
   // Map
   private map: any;
-  private mainCanvasMap: any;
+  icon: any;
+  mapLoaded: boolean = false;
 
   constructor(
     private storeSrv: StoreService,
@@ -111,8 +116,13 @@ export class PremisesComponent implements OnInit, AfterViewInit {
     this.getPremises();
   }
 
-  ngAfterViewInit(): void {
-    // this.initMap();
+  selectedSpace(spaceId: string): void {
+    this.activeSpaceDetail$ = this.store.select(selectSpaceEntity(spaceId));
+    this.store.dispatch(new spaceActions.SelectedSpaceId(spaceId));
+
+    setTimeout(() => {
+      this.createMapContent();
+    }, 1500);
   }
 
   clickSpacePhotos(): void {
@@ -120,7 +130,6 @@ export class PremisesComponent implements OnInit, AfterViewInit {
   }
 
   handleSpacePhotos(event: any): void {
-    console.log('Image ==>>', event.target.files);
     if (!event.target.files) {
       this.sharedSrv.showNotification('Please select image files.', 'info');
     } else {
@@ -200,12 +209,54 @@ export class PremisesComponent implements OnInit, AfterViewInit {
     return this.dashSrv.timeIntervals;
   }
 
+  createMapContent(): void {
+    if (!this.mapLoaded) {
+      this.map = L.map('map').setView([-1.27963, 36.87105], 12);
+
+      L.tileLayer(
+        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+        {
+          maxZoom: 19,
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: env.mapbox.accessToken,
+        }
+      ).addTo(this.map);
+
+      this.icon = L.icon({
+        iconUrl: 'assets/images/map-marker.png',
+        popupAnchor: [13, 0],
+      });
+
+      this.mapLoaded = true;
+    }
+
+    //// Delay marker showing so that farms are populated
+    setTimeout(() => {
+      this.activeSpaceDetail$.subscribe({
+        next: (resp) => {
+          this.populateMap(
+            resp?.location.coordinates[0],
+            resp?.location.coordinates[1]
+          );
+        },
+      });
+    }, 500);
+  }
+
+  populateMap(lat: number | undefined, lng: number | undefined): void {
+    // @ts-ignore
+    L.marker([lat, lng]).addTo(this.map);
+  }
+
   numSeq(n: number): Array<number> {
     return Array(n);
   }
 
   getPremises(): void {
     this.store.dispatch(new spaceActions.LoadSpaces());
+    this.store.dispatch(new spaceActions.LoadOrganizations());
   }
 
   goBack(step: any): void {

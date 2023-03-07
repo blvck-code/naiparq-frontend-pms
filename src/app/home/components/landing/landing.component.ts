@@ -13,6 +13,7 @@ import { BlogModel } from '../../model/blog.model';
 import { blogList, blogLoading } from '../../state/home.reducer';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.state';
+import { SharedService } from '../../../shared/services/shared.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,7 +46,11 @@ export class LandingComponent implements OnInit {
     location: ['', Validators.required],
     slots: [''],
   });
-  constructor(private fb: UntypedFormBuilder, private store: Store<AppState>) {}
+  constructor(
+    private fb: UntypedFormBuilder,
+    private sharedSrv: SharedService,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
     // this.initAnimation();
@@ -128,6 +133,10 @@ export class LandingComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.sharedSrv.showNotification(
+      'Your details were received successfully, we will reach out to you',
+      'success'
+    );
     console.log('Form data ==>>', this.registerForm.value);
   }
 }

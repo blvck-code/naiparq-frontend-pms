@@ -1273,3 +1273,55 @@ table {
     background: rgba(0, 0, 0, 0.05);
   }
 }
+
+@layer components {
+  .page-title {
+    @apply laptop:text-[60px]
+      laptop:leading-[85px]
+      laptop:py-10
+
+      tabletLand:text-[40px]
+      tabletLand:leading-[45px]
+      tabletLand:py-5
+
+      tablet:text-[40px]
+      tablet:leading-[45px]
+      tablet:py-5
+
+      mobile:text-[35px]
+      mobile:leading-[40px]
+      mobile:py-5
+
+      sm:text-[30px]
+      sm:leading-[35px]
+      sm:py-3
+
+      text-center
+      font-bold;
+  }
+
+  .page-title-two {
+    @apply laptop:text-[50px]
+    laptop:leading-[65px]
+    laptop:py-10
+
+    tabletLand:text-[40px]
+    tabletLand:leading-[45px]
+    tabletLand:py-5
+
+    tablet:text-[40px]
+    tablet:leading-[45px]
+    tablet:py-5
+
+    mobile:text-[35px]
+    mobile:leading-[40px]
+    mobile:py-5
+
+    sm:text-[30px]
+    sm:leading-[35px]
+    sm:py-3
+
+    text-center
+    font-bold;
+  }
+}

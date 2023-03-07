@@ -180,10 +180,54 @@ img {
 ckeditor .ck-content {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
+
+  // Headings
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  ul,
+  ol {
+    padding: 20px;
+  }
 }
 
 // Showdown
 showdown {
+  // Headings
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  ul,
+  ol {
+    padding: 20px;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
   p {
     font-size: 18px;
     line-height: 140%;
@@ -197,6 +241,20 @@ showdown {
       text-decoration: underline;
       color: #000;
     }
+  }
+
+  // classes
+  .text-tiny {
+    font-size: 0.7em;
+  }
+  .text-small {
+    font-size: 0.85em;
+  }
+  .text-big {
+    font-size: 1.4em;
+  }
+  .text-huge {
+    font-size: 1.8em;
   }
 }
 

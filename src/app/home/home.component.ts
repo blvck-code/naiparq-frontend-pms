@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef,
   HostListener,
-  Inject,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -12,16 +12,19 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
-import { fromEvent, Observable, Subject, takeUntil } from 'rxjs';
+import {
+  fromEvent,
+  Observable,
+  BehaviorSubject,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { blogger, isLoggedIn, userName } from '../auth/state/auth.selector';
 import * as authActions from '../auth/state/auth.actions';
-import { blogList, blogLoaded, blogLoading } from './state/home.reducer';
+import { blogLoaded } from './state/home.reducer';
 import * as homeActions from './state/home.actions';
-import { BlogModel } from './model/blog.model';
-import { HomeService } from './services/home.service';
 // @ts-ignore
 import { WINDOW } from './services/home.service';
-import { DOCUMENT } from '@angular/common';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,11 +34,9 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   showMenu: boolean = false;
   currentYear: any;
-  isNavbarVisible = true;
-  lastScrollTop = 0;
 
   @ViewChild('home', { static: true }) 'home': ElementRef;
 
@@ -45,8 +46,23 @@ export class HomeComponent implements OnInit {
 
   blogLoaded$: Observable<boolean> = this.store.select(blogLoaded);
 
-  constructor(private store: Store<AppState>) {}
+  destroy = new Subject();
+  destroy$ = this.destroy.asObservable();
 
+  constructor(private store: Store<AppState>, private renderer2: Renderer2) {
+    fromEvent(window, 'scroll')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((e: Event) => console.log(this.getYPosition(e)));
+  }
+
+  getYPosition(e: any): number {
+    return (e.target as Element).scrollTop;
+  }
+
+  ngOnDestroy(): void {
+    // @ts-ignore
+    this.destroy.next();
+  }
   getDate(): void {
     this.currentYear = new Date().getFullYear();
   }
@@ -56,6 +72,18 @@ export class HomeComponent implements OnInit {
     this.getDate();
     this.getArticles();
     this.toggleSideNav();
+  }
+  @HostListener('window:scroll', ['$event'])
+  handleNavShadow(event: any): void {
+    console.log('Height ==>>', event);
+    window.onscroll = () => {
+      console.log('scrolling');
+      if (window.scrollY > 22) {
+        console.log('Show shadow');
+      } else {
+        console.log('Hide shadow');
+      }
+    };
   }
 
   getArticles(): void {
@@ -68,11 +96,6 @@ export class HomeComponent implements OnInit {
   }
 
   toggleSideNav(): void {
-    let lastScrollTop = 0;
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    console.log(window.onscroll);
-    console.log(document.body.onscroll);
-
     this.home?.nativeElement.addEventListener('click', (event: any) => {
       console.log(122222);
     });

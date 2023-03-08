@@ -45,11 +45,48 @@
             <th scope="col">
               <span class="table-title"> Time Out </span>
             </th>
+            <th scope="col">
+              <span class="table-title"> Action </span>
+            </th>
           </tr>
         </thead>
 
+        <!--        Loading Indicator -->
         <tbody *ngIf="!(driveOutLoaded$ | async)" class="table-body">
           <tr *ngFor="let item of numSeq(12)">
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
             <td>
               <div class="table-text">
                 <ngx-skeleton-loader
@@ -75,6 +112,7 @@
           </tr>
         </tbody>
 
+        <!--        Content Loaded -->
         <tbody class="table-body">
           <tr *ngFor="let driveIn of driveOuts$ | async">
             <td>
@@ -102,6 +140,16 @@
                 }}</span>
               </div>
             </td>
+            <td>
+              <button
+                (click)="selectedLog(driveIn)"
+                data-bs-toggle="modal"
+                data-bs-target="#previewLog"
+                class="naiparq-btn naiparq-btn-primary px-3"
+              >
+                View
+              </button>
+            </td>
           </tr>
           <div id="bottomPageDriveIn"></div>
         </tbody>
@@ -115,66 +163,115 @@
 </div>
 
 <!-- Modal -->
-<!--<div-->
-<!--  class="modal fade add-plate-modal"-->
-<!--  id="addNumberPlate"-->
-<!--  tabindex="-1"-->
-<!--  aria-labelledby="addNumberPlate"-->
-<!--  aria-hidden="true"-->
-<!--&gt;-->
-<!--  <div class="modal-dialog modal-dialog-centered">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel">Add Number Plate</h5>-->
-<!--        <button-->
-<!--          type="button"-->
-<!--          class="btn-close naiparq-close-btn"-->
-<!--          data-bs-dismiss="modal"-->
-<!--          aria-label="Close"-->
-<!--          #closeDriveIn-->
-<!--        >-->
-<!--          <svg-->
-<!--            xmlns="http://www.w3.org/2000/svg"-->
-<!--            fill="none"-->
-<!--            viewBox="0 0 24 24"-->
-<!--            stroke-width="1.5"-->
-<!--            stroke="currentColor"-->
-<!--            class="w-6 h-6"-->
-<!--          >-->
-<!--            <path-->
-<!--              stroke-linecap="round"-->
-<!--              stroke-linejoin="round"-->
-<!--              d="M6 18L18 6M6 6l12 12"-->
-<!--            />-->
-<!--          </svg>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <form-->
-<!--        [formGroup]="driveInForm"-->
-<!--        (ngSubmit)="onSubmit()"-->
-<!--        class="modal-body"-->
-<!--      >-->
-<!--        <div class="naiparq-form-group">-->
-<!--          <label for="nPlate"> Number Plate </label>-->
-<!--          <input-->
-<!--            formControlName="license_plate"-->
-<!--            type="text"-->
-<!--            id="nPlate"-->
-<!--            class="naiparq-form-input"-->
-<!--          />-->
-<!--        </div>-->
-
-<!--        <div class="naiparq-form-group">-->
-<!--          <button-->
-<!--            [class.btn-loading]="isSubmitting"-->
-<!--            class="naiparq-btn naiparq-btn-primary"-->
-<!--            type="submit"-->
-<!--            [disabled]="isSubmitting"-->
-<!--          >-->
-<!--            <span class="btn-text">Submit</span>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div
+  class="modal fade add-plate-modal"
+  id="previewLog"
+  tabindex="-1"
+  aria-labelledby="previewLog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold text-lg leading-6">Number Plate</h5>
+            <h5 class="font-normal text-lg leading-6">
+              {{ selectedDriveOut?.drive_in_details?.license_plate }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold text-lg leading-6">Space Name</h5>
+            <h5 class="font-normal text-lg leading-6">
+              {{ selectedDriveOut?.drive_in_details?.space_details?.title }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold text-lg leading-6">Time In</h5>
+            <h5 class="font-normal text-lg leading-6">
+              {{
+                selectedDriveOut?.drive_in_details?.check_in_time
+                  | date : "EEEE, dd MMM, YYYY, h:mm a"
+              }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold text-lg leading-6">Time Out</h5>
+            <h5 class="font-normal text-lg leading-6">
+              {{
+                selectedDriveOut?.check_out_time
+                  | date : "EEEE, dd MMM, YYYY, h:mm a"
+              }}
+            </h5>
+          </div>
+        </div>
+        <div
+          class="rounded-lg relative overflow-hidden h-[205px] bg-sky-100 mt-2"
+        >
+          <button
+            class="absolute left-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
+          >
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 29C18.5712 29 21.0846 28.2376 23.2224 26.8091C25.3602 25.3806 27.0265 23.3503 28.0104 20.9749C28.9944 18.5994 29.2518 15.9856 28.7502 13.4638C28.2486 10.9421 27.0105 8.62569 25.1924 6.80761C23.3743 4.98953 21.0579 3.7514 18.5362 3.24979C16.0144 2.74818 13.4006 3.00563 11.0251 3.98957C8.64967 4.97351 6.61935 6.63975 5.19089 8.77759C3.76243 10.9154 3 13.4288 3 16C3.00398 19.4466 4.3749 22.7509 6.81201 25.188C9.24912 27.6251 12.5534 28.996 16 29ZM11.8311 15.2568L16.8311 10.7568C16.9286 10.6689 17.0426 10.6011 17.1664 10.5572C17.2902 10.5133 17.4214 10.4943 17.5526 10.5011C17.6838 10.508 17.8123 10.5406 17.9308 10.5972C18.0494 10.6537 18.1556 10.7331 18.2435 10.8307C18.3314 10.9283 18.3992 11.0423 18.443 11.1662C18.4868 11.29 18.5058 11.4212 18.4989 11.5524C18.4919 11.6836 18.4592 11.8121 18.4026 11.9306C18.346 12.0491 18.2666 12.1553 18.1689 12.2432L13.9951 16L18.1689 19.7568C18.3659 19.9343 18.4843 20.1827 18.4982 20.4474C18.512 20.7122 18.4202 20.9716 18.2428 21.1686C18.0654 21.3657 17.8171 21.4842 17.5524 21.4982C17.2876 21.5121 17.0282 21.4204 16.831 21.2432L11.8311 16.7432C11.7269 16.6494 11.6435 16.5348 11.5865 16.4068C11.5295 16.2788 11.5 16.1402 11.5 16C11.5 15.8598 11.5295 15.7212 11.5865 15.5932C11.6435 15.4652 11.7269 15.3506 11.8311 15.2568Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <button
+            class="absolute right-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
+          >
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 3C13.4288 3 10.9154 3.76244 8.77759 5.1909C6.63975 6.61935 4.97351 8.64968 3.98957 11.0251C3.00563 13.4006 2.74819 16.0144 3.2498 18.5362C3.75141 21.0579 4.98953 23.3743 6.80762 25.1924C8.6257 27.0105 10.9421 28.2486 13.4638 28.7502C15.9856 29.2518 18.5995 28.9944 20.9749 28.0104C23.3503 27.0265 25.3807 25.3603 26.8091 23.2224C28.2376 21.0846 29 18.5712 29 16C28.996 12.5534 27.6251 9.24912 25.188 6.81201C22.7509 4.3749 19.4466 3.00398 16 3ZM20.169 16.7432L15.169 21.2432C15.0714 21.3311 14.9574 21.3989 14.8336 21.4428C14.7098 21.4867 14.5786 21.5057 14.4474 21.4989C14.3162 21.492 14.1877 21.4594 14.0692 21.4028C13.9506 21.3463 13.8444 21.2669 13.7565 21.1693C13.6686 21.0716 13.6008 20.9577 13.557 20.8338C13.5132 20.71 13.4942 20.5788 13.5011 20.4476C13.5081 20.3164 13.5408 20.1879 13.5974 20.0694C13.654 19.9509 13.7334 19.8447 13.8311 19.7568L18.0049 16L13.8311 12.2432C13.6341 12.0657 13.5157 11.8173 13.5018 11.5526C13.488 11.2878 13.5798 11.0284 13.7572 10.8314C13.9346 10.6343 14.1829 10.5158 14.4476 10.5018C14.7124 10.4879 14.9718 10.5796 15.169 10.7568L20.169 15.2568C20.2731 15.3506 20.3565 15.4652 20.4135 15.5932C20.4705 15.7212 20.5 15.8598 20.5 16C20.5 16.1402 20.4705 16.2788 20.4135 16.4068C20.3565 16.5348 20.2731 16.6494 20.169 16.7432Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <img
+            src="assets/images/naiparq-space.jpg"
+            class="h-[100%] object-cover"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

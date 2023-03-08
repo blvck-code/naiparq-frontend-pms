@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DriveInModel } from '../../models/driveIn.model';
 import { StoreService } from '../../state/store.service';
 import { Store } from '@ngrx/store';
 import * as driveInActions from '../../state/actions/driveIn.actions';
@@ -16,6 +15,8 @@ export class LogsComponent implements OnInit {
   driveOutLoaded$: Observable<boolean> = this.storeSrv.driveOutLoaded();
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
 
+  selectedDriveOut!: DriveOutModel;
+
   constructor(private storeSrv: StoreService, private store: Store) {}
 
   ngOnInit(): void {
@@ -24,5 +25,10 @@ export class LogsComponent implements OnInit {
   }
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  selectedLog(driveOut: DriveOutModel): void {
+    this.selectedDriveOut = driveOut;
+    console.log('Selected drive out ==>', driveOut);
   }
 }

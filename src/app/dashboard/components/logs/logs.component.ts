@@ -29,6 +29,5 @@ export class LogsComponent implements OnInit {
 
   selectedLog(driveOut: DriveOutModel): void {
     this.selectedDriveOut = driveOut;
-    console.log('Selected drive out ==>', driveOut);
   }
 }

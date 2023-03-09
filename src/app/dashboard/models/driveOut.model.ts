@@ -17,6 +17,12 @@ export interface DriveOutModel {
     space: string;
     entry_screenshot: string;
     create_at: string;
+    space_details: {
+      address: string;
+      id: string;
+      title: string;
+      type: string;
+    };
   };
   metadata?: {
     message: string;

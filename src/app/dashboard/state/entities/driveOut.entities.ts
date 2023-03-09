@@ -6,12 +6,14 @@ import { driveOutStateKey } from '../dash.selectors';
 export interface DriveOutState {
   next: string;
   loaded: boolean;
+  selectedId: string;
   driveOut: DriveOutModel[];
 }
 
 const initialState: DriveOutState = {
   next: '',
   loaded: false,
+  selectedId: '',
   driveOut: [],
 };
 

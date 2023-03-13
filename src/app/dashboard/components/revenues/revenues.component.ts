@@ -61,6 +61,11 @@ export class RevenuesComponent implements OnInit {
     this.onInitHandler();
   }
 
+  handleChangeIncome(event: any): void {
+    const days = event.target.value;
+    this.store.dispatch(new billingActions.LoadBillings({ days }));
+  }
+
   onInitHandler(): void {
     this.store.dispatch(new billingActions.LoadBillings({ days: 30 }));
   }

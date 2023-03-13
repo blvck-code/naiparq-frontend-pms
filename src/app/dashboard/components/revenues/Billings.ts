@@ -18,7 +18,6 @@ export class Billings extends Array<BillingItem> {
     billings.subscribe({
       next: (bills: BillingModel[]) => {
         bills.map((bill) => {
-          console.log('Single bill item ===>>>', bill);
           this.push(
             new BillingItem({
               year: new Date(bill.check_in_time).toLocaleDateString('en-us', {

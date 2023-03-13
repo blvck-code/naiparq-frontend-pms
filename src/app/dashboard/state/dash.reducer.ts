@@ -9,12 +9,14 @@ import * as fromDriveIn from './entities/driveIn.entities';
 import * as fromDriveOut from './entities/driveOut.entities';
 import * as fromDevices from './entities/devices.entities';
 import * as fromOrg from './entities/organizations.entities';
+import * as fromBilling from './entities/bill.entities';
 
 export interface DashboardState {
   spaces: fromSpaceEnt.SpacesEntities;
   organizations: fromOrg.OrganizationsState;
   driveIn: fromDriveIn.DriveInState;
   driveOut: fromDriveOut.DriveOutState;
+  billing: fromBilling.BillingEntities;
   devices: fromDevices.DevicesState;
 }
 
@@ -23,5 +25,6 @@ export const dashboardReducer: ActionReducerMap<DashboardState> = {
   organizations: fromOrg.organizationReducer,
   driveIn: fromDriveIn.driveInReducer,
   driveOut: fromDriveOut.driveOutReducer,
+  billing: fromBilling.billingReducer,
   devices: fromDevices.driveOutReducer,
 };

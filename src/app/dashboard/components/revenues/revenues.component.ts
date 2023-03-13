@@ -14,6 +14,11 @@ import {
   IgxCategoryChartComponent,
 } from 'igniteui-angular-charts';
 
+//NgRx
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
+import * as billingActions from '../../state/actions/billing.actions';
+
 @Component({
   selector: 'app-revenues',
   templateUrl: './revenues.component.html',
@@ -21,7 +26,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RevenuesComponent implements OnInit {
-  constructor(private _detector: ChangeDetectorRef) {}
+  constructor(
+    private _detector: ChangeDetectorRef,
+    private store: Store<AppState>
+  ) {}
 
   @ViewChild('legend', { static: true })
   private legend!: IgxLegendComponent;
@@ -37,5 +45,11 @@ export class RevenuesComponent implements OnInit {
     return this._countryRenewableElectricity;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onInitHandler();
+  }
+
+  onInitHandler(): void {
+    this.store.dispatch(new billingActions.LoadBillings());
+  }
 }

@@ -10,6 +10,7 @@ import * as dashActions from '../actions/action.types';
 import * as spaceActions from '../actions/spaces.actions';
 import * as driveInActions from '../actions/driveIn.actions';
 import * as devicesActions from '../actions/assets.actions';
+import * as billingActions from '../actions/billing.actions';
 
 import { SpaceModelResponse } from '../../models/spaces.model';
 import { LoadMoreDriveIn } from '../actions/driveIn.actions';
@@ -17,6 +18,7 @@ import { DriveInResponseModel } from '../../models/driveIn.model';
 import { DriveOutResponseModel } from '../../models/driveOut.model';
 import { LoadDevicesSuccess } from '../actions/assets.actions';
 import { DevicesResponseModel } from '../../models/devices.model';
+import { BillingResponseModel } from '../../models/billing.model';
 
 @Injectable()
 export class SpacesEffects {
@@ -122,6 +124,27 @@ export class SpacesEffects {
           //@ts-ignore
           catchError((err) => {
             console.log('Getting drive out failed ===>>>', err);
+          })
+        )
+      )
+    )
+  );
+
+  // Billings
+  loadBillings$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<billingActions.LoadBillings>(
+        dashActions.DashActionTypes.LOAD_BILLINGS
+      ),
+      switchMap((action: billingActions.LoadBillings) =>
+        this.dashSrv.fetchBillings().pipe(
+          map(
+            (billings: BillingResponseModel) =>
+              new billingActions.LoadBillingsSuccess(billings)
+          ),
+          //@ts-ignore
+          catchError((err) => {
+            console.log('Get billings failed ==>>', err);
           })
         )
       )

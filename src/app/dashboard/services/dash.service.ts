@@ -135,16 +135,6 @@ export class DashService {
     return this.http.post<{ space: string }>(env.naiparqGallery, content);
   }
 
-  // Billings and Payments
-  getBillings(): Observable<BillingResponseModel> {
-    return this.http.get<BillingResponseModel>(env.naiparqBillingList);
-  }
-  filterBill(billId: string): Observable<BillingResponseModel> {
-    return this.http.get<BillingResponseModel>(
-      `${env.naiparqBillingList}/?drive_out=${billId}`
-    );
-  }
-
   paymentDriveOut(payload: {
     payment_channel: string;
     phone_number: string;
@@ -196,5 +186,21 @@ export class DashService {
   // Create white list
   createWhiteList(content: any): Observable<any> {
     return this.http.post(env.naiparqCreateWhiteList, content);
+  }
+
+  // Billings and Payments
+  filterBill(billId: string): Observable<BillingResponseModel> {
+    return this.http.get<BillingResponseModel>(
+      `${env.naiparqBillingList}/?drive_out=${billId}`
+    );
+  }
+
+  fetchBillings(payload: { days: number }): Observable<BillingResponseModel> {
+    if (payload.days === 100) {
+      return this.http.get<BillingResponseModel>(env.naiparqBillingList);
+    }
+    return this.http.get<BillingResponseModel>(
+      `${env.naiparqBillingList}/?last_days=${payload.days}`
+    );
   }
 }

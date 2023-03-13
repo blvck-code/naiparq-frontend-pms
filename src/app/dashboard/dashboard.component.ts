@@ -17,6 +17,7 @@ import {
   userName,
 } from '../auth/state/auth.selector';
 import { UserModel } from '../auth/model/user.model';
+import * as billingActions from './state/actions/billing.actions';
 
 @Component({
   selector: 'naiparq-app-dashboard',
@@ -87,6 +88,7 @@ export class DashboardComponent implements OnInit {
         }
         this.store.dispatch(new spaceActions.LoadSpaces());
         this.store.dispatch(new authActions.LoadProfile());
+        this.store.dispatch(new billingActions.LoadBillings({ days: 30 }));
       },
     });
   }

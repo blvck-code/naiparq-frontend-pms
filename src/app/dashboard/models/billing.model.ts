@@ -1,3 +1,5 @@
+import * as assert from 'assert';
+
 export interface BillingResponseModel {
   count?: number;
   next?: string;
@@ -18,6 +20,28 @@ export interface BillingModel {
   check_in_time: string;
   payment_channels_available: PaymentChannelsModel[];
   created_at: string;
+  drive_out_details: {
+    id: string;
+    exit_screenshot: string;
+    check_out_time: string;
+    drive_in: string;
+    drive_in_details: {
+      id: string;
+      license_plate: string;
+      check_in_time: string;
+      space: string;
+      space_details: {
+        id: string;
+        title: string;
+        address: string;
+      };
+      entry_screenshot: string;
+      status: string;
+      created_at: string;
+    };
+    metadata: {};
+    created_at: string;
+  };
 }
 
 export interface PaymentChannelsModel {

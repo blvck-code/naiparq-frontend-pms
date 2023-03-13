@@ -30,3 +30,8 @@ export const orgStateKey = createSelector(
   dashboardStateKey,
   (state) => state.organizations
 );
+
+export const billingStateKey = createSelector(
+  dashboardStateKey,
+  (state: DashboardState) => state.billing
+);

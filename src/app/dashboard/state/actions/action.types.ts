@@ -10,6 +10,11 @@ export enum DashActionTypes {
   LOAD_ORGANIZATION_FAIL = 'organization/loadOrganizationFail',
   SELECTED_SPACE_ID = 'organization/selectedSpaceId',
 
+  // Billing
+  LOAD_BILLINGS = 'billings/loadBillings',
+  LOAD_BILLINGS_SUCCESS = 'billings/loadBillingsSuccess',
+  LOAD_BILLINGS_FAIL = 'billings/loadBillingsFail',
+
   // Drive In
   LOAD_DRIVE_IN = 'driveIn/loadDriveIn',
   LOAD_DRIVE_IN_SUCCESS = 'driveIn/loadDriveInSuccess',

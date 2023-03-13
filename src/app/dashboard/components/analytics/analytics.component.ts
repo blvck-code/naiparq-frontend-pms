@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CountryRenewableElectricityItem } from '../../services/ChartData';
-import { CountryRenewableElectricity } from '../revenues/CountryRenewableElectricity';
+import { Billings } from '../revenues/Billings';
 import {
   IgxCategoryChartComponent,
   IgxLegendComponent,
@@ -27,12 +27,13 @@ export class AnalyticsComponent implements OnInit {
   constructor(private _detector: ChangeDetectorRef) {}
 
   //@ts-ignore
-  private _countryRenewableElectricity: CountryRenewableElectricity = null;
-  public get countryRenewableElectricity(): CountryRenewableElectricity {
-    if (this._countryRenewableElectricity == null) {
-      this._countryRenewableElectricity = new CountryRenewableElectricity();
+  private _billings: Billings = null;
+  public get billings(): Billings {
+    if (this._billings == null) {
+      // @ts-ignore
+      this._billings = new Billings();
     }
-    return this._countryRenewableElectricity;
+    return this._billings;
   }
 
   ngOnInit(): void {}

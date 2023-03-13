@@ -1,6 +1,8 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { BillingModel } from '../../models/billing.model';
 import * as dashActions from '../actions/action.types';
+import { createSelector } from '@ngrx/store';
+import { billingStateKey } from '../dash.selectors';
 
 export interface BillingEntities extends EntityState<BillingModel> {
   selectedBilling: string;
@@ -42,3 +44,17 @@ export const billingReducer = (state = initialState, action: any) => {
       return state;
   }
 };
+
+// Selectors
+export const getBillings = createSelector(
+  billingStateKey,
+  billingAdapter.getSelectors().selectAll
+);
+export const billingsLoading = createSelector(
+  billingStateKey,
+  (state) => state.loading
+);
+export const billingsLoaded = createSelector(
+  billingStateKey,
+  (state) => state.loaded
+);

@@ -5,10 +5,7 @@ import {
   ChangeDetectorRef,
   OnInit,
 } from '@angular/core';
-import {
-  CountryRenewableElectricityItem,
-  CountryRenewableElectricity,
-} from './CountryRenewableElectricity';
+import { Billings } from './Billings';
 import {
   IgxLegendComponent,
   IgxCategoryChartComponent,
@@ -18,6 +15,13 @@ import {
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.state';
 import * as billingActions from '../../state/actions/billing.actions';
+import {
+  billingsLoaded,
+  billingsLoading,
+  getBillings,
+} from '../../state/entities/bill.entities';
+import { Observable } from 'rxjs';
+import { BillingModel } from '../../models/billing.model';
 
 @Component({
   selector: 'app-revenues',
@@ -37,19 +41,27 @@ export class RevenuesComponent implements OnInit {
   private chart!: IgxCategoryChartComponent;
 
   //@ts-ignore
-  private _countryRenewableElectricity: CountryRenewableElectricity = null;
-  public get countryRenewableElectricity(): CountryRenewableElectricity {
-    if (this._countryRenewableElectricity == null) {
-      this._countryRenewableElectricity = new CountryRenewableElectricity();
-    }
-    return this._countryRenewableElectricity;
+  private _billings: Billings = null;
+  public get billings(): Billings {
+    this.billingsLoaded$.subscribe({
+      next: (status) => {
+        if (!status) {
+          this._billings = new Billings(this.billings$);
+        }
+      },
+    });
+    return this._billings;
   }
+
+  billings$: Observable<BillingModel[]> = this.store.select(getBillings);
+  billingsLoaded$: Observable<boolean> = this.store.select(billingsLoaded);
+  billingsLoading: Observable<boolean> = this.store.select(billingsLoading);
 
   ngOnInit(): void {
     this.onInitHandler();
   }
 
   onInitHandler(): void {
-    this.store.dispatch(new billingActions.LoadBillings());
+    this.store.dispatch(new billingActions.LoadBillings({ days: 30 }));
   }
 }

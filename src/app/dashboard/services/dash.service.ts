@@ -195,7 +195,10 @@ export class DashService {
     );
   }
 
-  fetchBillings(): Observable<BillingResponseModel> {
+  fetchBillings(payload: { days: number }): Observable<BillingResponseModel> {
+    // return this.http.get<BillingResponseModel>(
+    //   `${env.naiparqBillingList}/?last_days=${payload.days}`
+    // );
     return this.http.get<BillingResponseModel>(env.naiparqBillingList);
   }
 }

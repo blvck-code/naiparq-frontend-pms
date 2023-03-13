@@ -136,8 +136,9 @@ export class SpacesEffects {
       ofType<billingActions.LoadBillings>(
         dashActions.DashActionTypes.LOAD_BILLINGS
       ),
-      switchMap((action: billingActions.LoadBillings) =>
-        this.dashSrv.fetchBillings().pipe(
+      map((action: billingActions.LoadBillings) => action.payload),
+      switchMap((payload) =>
+        this.dashSrv.fetchBillings(payload).pipe(
           map(
             (billings: BillingResponseModel) =>
               new billingActions.LoadBillingsSuccess(billings)

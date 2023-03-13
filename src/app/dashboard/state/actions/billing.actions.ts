@@ -4,6 +4,7 @@ import { BillingResponseModel } from '../../models/billing.model';
 
 export class LoadBillings implements Action {
   readonly type = DashActionTypes.LOAD_BILLINGS;
+  constructor(public payload: { days: number }) {}
 }
 
 export class LoadBillingsSuccess implements Action {

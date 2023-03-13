@@ -10,6 +10,11 @@ const naiparqWsURL = '';
 export const environment = {
   production: true,
 
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoiYmx2Y2tkZXgiLCJhIjoiY2xlcGk4aXB0MDRkeDQxb2VwamJpbnd3NyJ9.-IlY_PVl-BYsWx-coGTk-g',
+  },
+
   // Accounts Module URLS
   naiparqLogin: naiparqBaseURL + 'accounts/login/',
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
@@ -18,6 +23,17 @@ export const environment = {
 
   // Spaces
   naiparqListSpaces: naiparqBaseURL + 'spaces/space',
+  naiparqCreateSpace: naiparqBaseURL + 'spaces/space/',
+
+  // Space Images
+  naiparqGallery: naiparqBaseURL + 'spaces/gallery/',
+
+  // Organization
+  naiparqCreateOrg: naiparqBaseURL + 'guest/org/',
+  naiparqOrgList: naiparqBaseURL + 'guest/org',
+
+  // Whitelist
+  naiparqCreateWhiteList: naiparqBaseURL + 'guest/guest/',
 
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',
@@ -30,6 +46,8 @@ export const environment = {
   naiparqCheckout: naiparqBaseURL + 'bill/checkout',
 
   // Pricing Module URLS
+  naiparqCreatePricing: naiparqBaseURL + 'spaces/spacepricing/',
+  naiparqCreatePriceSchedule: naiparqBaseURL + 'spaces/priceschedule/',
 
   // Device Module URLS
   naiparqDevicesList: naiparqBaseURL + 'asset/device',

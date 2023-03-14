@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
 import { BillingModel } from '../../models/billing.model';
 
 @Component({
-  selector: 'app-revenues',
+  selector: 'naiparq-revenues',
   templateUrl: './revenues.component.html',
   styleUrls: ['./revenues.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,1 +1,313 @@
-<p>user-management works!</p>
+<div class="naiparq-user-management">
+  <div class="naiparq-table-wrap naiparq-scrollbar">
+    <div class="naiparq-table-title">
+      <p class="naiparq-table-date">All Users</p>
+
+      <div class="cash-table-btns d-flex">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#addNumberPlate"
+          class="naiparq-btn naiparq-btn-primary me-2"
+        >
+          Create a new user
+        </button>
+
+        <button class="filter-btn alt-btn">
+          <svg
+            width="14"
+            height="10"
+            viewBox="0 0 14 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
+            />
+          </svg>
+          Filters
+        </button>
+      </div>
+    </div>
+
+    <div class="naiparq-table-content">
+      <table class="table">
+        <thead class="table-nav sticky-top">
+          <tr>
+            <th scope="col">
+              <span class="table-title">User name</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Roles</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Space name</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Last login</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Contact</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Action</span>
+            </th>
+          </tr>
+        </thead>
+
+        <!--        <tbody *ngIf="!(driveInLoaded$ | async)" class="table-body">-->
+        <!--        <tr *ngFor="let item of numSeq(12)">-->
+        <!--          <td>-->
+        <!--            <div class="table-text">-->
+        <!--              <ngx-skeleton-loader-->
+        <!--                [theme]="{-->
+        <!--                    'width.px': 120,-->
+        <!--                    'borderRadius.px': 10-->
+        <!--                  }"-->
+        <!--                animation="pulse"-->
+        <!--              ></ngx-skeleton-loader>-->
+        <!--            </div>-->
+        <!--          </td>-->
+        <!--          <td>-->
+        <!--            <div class="table-text">-->
+        <!--              <ngx-skeleton-loader-->
+        <!--                [theme]="{-->
+        <!--                    'width.px': 120,-->
+        <!--                    'borderRadius.px': 10-->
+        <!--                  }"-->
+        <!--                animation="pulse"-->
+        <!--              ></ngx-skeleton-loader>-->
+        <!--            </div>-->
+        <!--          </td>-->
+        <!--        </tr>-->
+        <!--        </tbody>-->
+
+        <tbody class="table-body">
+          <tr *ngFor="let driveIn of numSeq(20)">
+            <td>
+              <div class="table-text">
+                <span>Mzee Waziri</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>Blogger</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>Complex Building</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>07/11/2022</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>0700 000 000</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span> Blogger </span>
+              </div>
+            </td>
+          </tr>
+          <div id="bottomPageDriveIn"></div>
+        </tbody>
+      </table>
+      <app-inline-loader></app-inline-loader>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<!--<div-->
+<!--  class="modal fade add-plate-modal"-->
+<!--  id="addNumberPlate"-->
+<!--  tabindex="-1"-->
+<!--  aria-labelledby="addNumberPlate"-->
+<!--  aria-hidden="true"-->
+<!--&gt;-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Add Number Plate</h5>-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="btn-close naiparq-close-btn"-->
+<!--          data-bs-dismiss="modal"-->
+<!--          aria-label="Close"-->
+<!--          #closeDriveIn-->
+<!--        >-->
+<!--          <svg-->
+<!--            xmlns="http://www.w3.org/2000/svg"-->
+<!--            fill="none"-->
+<!--            viewBox="0 0 24 24"-->
+<!--            stroke-width="1.5"-->
+<!--            stroke="currentColor"-->
+<!--            class="w-6 h-6"-->
+<!--          >-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              d="M6 18L18 6M6 6l12 12"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <form-->
+<!--        [formGroup]="driveInForm"-->
+<!--        (ngSubmit)="onSubmit()"-->
+<!--        class="modal-body"-->
+<!--      >-->
+<!--        <div class="naiparq-form-group">-->
+<!--          <label for="nPlate"> Number Plate </label>-->
+<!--          <input-->
+<!--            formControlName="license_plate"-->
+<!--            type="text"-->
+<!--            id="nPlate"-->
+<!--            class="naiparq-form-input"-->
+<!--          />-->
+<!--        </div>-->
+
+<!--        <div class="naiparq-form-group">-->
+<!--          <button-->
+<!--            [class.btn-loading]="isSubmitting"-->
+<!--            class="naiparq-btn naiparq-btn-primary"-->
+<!--            type="submit"-->
+<!--            [disabled]="isSubmitting"-->
+<!--          >-->
+<!--            <span class="btn-text">Submit</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div-->
+<!--  class="modal fade add-plate-modal"-->
+<!--  id="addWhiteList"-->
+<!--  tabindex="-1"-->
+<!--  aria-labelledby="addNumberPlate"-->
+<!--  aria-hidden="true"-->
+<!--&gt;-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title">Add To White List</h5>-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="btn-close naiparq-close-btn"-->
+<!--          data-bs-dismiss="modal"-->
+<!--          aria-label="Close"-->
+<!--          #closeDriveIn-->
+<!--        >-->
+<!--          <svg-->
+<!--            xmlns="http://www.w3.org/2000/svg"-->
+<!--            fill="none"-->
+<!--            viewBox="0 0 24 24"-->
+<!--            stroke-width="1.5"-->
+<!--            stroke="currentColor"-->
+<!--            class="w-6 h-6"-->
+<!--          >-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              d="M6 18L18 6M6 6l12 12"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <form-->
+<!--        [formGroup]="whiteListForm"-->
+<!--        (ngSubmit)="onSubmitWhiteList()"-->
+<!--        class="modal-body"-->
+<!--      >-->
+<!--        <div class="grid grid-cols-2 py-1 gap-3">-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label for="nPlate">Space Name</label>-->
+<!--            <select-->
+<!--              class="form-select my-1.5"-->
+<!--              formControlName="space"-->
+<!--              (change)="handleSelectedSpace($event)"-->
+<!--            >-->
+<!--              <option-->
+<!--                *ngFor="let space of spaces$ | async"-->
+<!--                value="{{ space.id }}"-->
+<!--              >-->
+<!--                {{ space.title }}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label for="nPlate">Organisation</label>-->
+<!--            <select-->
+<!--              formControlName="organisation"-->
+<!--              class="form-select my-1.5 w-[100%]"-->
+<!--            >-->
+<!--              <option-->
+<!--                *ngFor="let org of organizations | async"-->
+<!--                value="{{ org.id }}"-->
+<!--              >-->
+<!--                {{ org.name }}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="grid grid-cols-2 py-1 gap-3">-->
+<!--          <div class="flex flex-col">-->
+<!--            <label>Start Date</label>-->
+<!--            <input-->
+<!--              formControlName="start_date"-->
+<!--              type="datetime-local"-->
+<!--              name="start-date"-->
+<!--              class="p-2 my-1.5 rounded border"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="flex flex-col">-->
+<!--            <label>End Date</label>-->
+<!--            <input-->
+<!--              formControlName="end_date"-->
+<!--              type="datetime-local"-->
+<!--              name="end-date"-->
+<!--              class="p-2 my-1.5 rounded border"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="grid grid-cols-2 py-1 gap-3">-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label>License Date</label>-->
+<!--            <input-->
+<!--              formControlName="license_plate"-->
+<!--              type="text"-->
+<!--              class="px-2 py-1.5 my-1.5 rounded border"-->
+<!--              (keyup)="handleNum($event)"-->
+<!--              [value]="numberPlate.toLocaleUpperCase()"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label>Status</label>-->
+<!--            <select class="form-select my-1.5" formControlName="status">-->
+<!--              <option value="active">Active</option>-->
+<!--              <option value="expired">Expired</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="naiparq-form-group">-->
+<!--          <button-->
+<!--            [class.btn-loading]="isSubmitting"-->
+<!--            class="naiparq-btn naiparq-btn-primary"-->
+<!--            type="submit"-->
+<!--            [disabled]="isSubmitting"-->
+<!--          >-->
+<!--            <span class="btn-text">Submit</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

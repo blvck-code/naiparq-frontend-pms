@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-verify',
+  selector: 'naiparq-verify',
   templateUrl: './verify.component.html',
-  styleUrls: ['./verify.component.scss']
+  styleUrls: ['./verify.component.scss'],
 })
 export class VerifyComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

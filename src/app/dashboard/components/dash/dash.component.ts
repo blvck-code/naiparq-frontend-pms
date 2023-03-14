@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dash',
+  selector: 'naiparq-app-dash',
   templateUrl: './dash.component.html',
-  styleUrls: ['./dash.component.scss']
+  styleUrls: ['./dash.component.scss'],
 })
 export class DashComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

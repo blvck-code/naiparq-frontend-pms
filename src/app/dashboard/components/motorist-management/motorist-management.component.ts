@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-motorist-management',
+  selector: 'naiparq-motorist-management',
   templateUrl: './motorist-management.component.html',
-  styleUrls: ['./motorist-management.component.scss']
+  styleUrls: ['./motorist-management.component.scss'],
 })
 export class MotoristManagementComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   numSeq(n: number): Array<number> {
     return Array(n);
   }
-
 }

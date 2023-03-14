@@ -115,6 +115,11 @@ export class DashService {
     return isAdmin;
   }
 
+  // To emitate array content
+  numSeq(n: number): Array<number> {
+    return Array(n);
+  }
+
   // Space Drive In
   getDriveIn(): Observable<DriveInResponseModel> {
     return this.http.get<DriveInResponseModel>(env.naiparqDriveIn);

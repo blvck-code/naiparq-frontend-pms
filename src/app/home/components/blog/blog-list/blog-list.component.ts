@@ -9,7 +9,7 @@ import { BlogModel } from '../../../model/blog.model';
 import { blogList, blogLoaded, blogLoading } from '../../../state/home.reducer';
 
 @Component({
-  selector: 'app-blog-list',
+  selector: 'naiparq-blog-list',
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.scss'],
 })

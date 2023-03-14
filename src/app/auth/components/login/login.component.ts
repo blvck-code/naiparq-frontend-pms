@@ -18,7 +18,7 @@ import {
 } from '../../state/auth.selector';
 
 @Component({
-  selector: 'app-login',
+  selector: 'naiparq-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

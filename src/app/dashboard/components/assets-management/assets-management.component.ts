@@ -10,7 +10,7 @@ import { SharedService } from '../../../shared/services/shared.service';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-assets-management',
+  selector: 'naiparq-assets-management',
   templateUrl: './assets-management.component.html',
   styleUrls: ['./assets-management.component.scss'],
 })

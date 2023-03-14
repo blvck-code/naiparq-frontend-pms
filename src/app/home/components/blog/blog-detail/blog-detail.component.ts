@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 import { BlogModel } from '../../../model/blog.model';
 
 @Component({
-  selector: 'app-blog-detail',
+  selector: 'naiparq-blog-detail',
   templateUrl: './blog-detail.component.html',
   styleUrls: ['./blog-detail.component.scss'],
 })

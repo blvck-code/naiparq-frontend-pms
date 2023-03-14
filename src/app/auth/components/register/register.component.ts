@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {RegisterModel} from "../../model/register.model";
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { RegisterModel } from '../../model/register.model';
 
 // NgRx
-import {Store} from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import * as authActions from '../../state/auth.actions';
 
 @Component({
-  selector: 'app-register',
+  selector: 'naiparq-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   registerForm = this.formBuilder.group({
@@ -20,15 +20,14 @@ export class RegisterComponent implements OnInit {
     email: ['', [Validators.required]],
     password1: ['', [Validators.required]],
     password2: ['', [Validators.required]],
-  })
+  });
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private store: Store<AuthService>
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   register(): void {
     const sigUpContent: RegisterModel = {
@@ -37,9 +36,8 @@ export class RegisterComponent implements OnInit {
       phone_number: this.registerForm.value.phone_number,
       email: this.registerForm.value.email,
       password1: this.registerForm.value.password1,
-      password2: this.registerForm.value.password2
-    }
-    this.store.dispatch(new authActions.SignUp(sigUpContent))
+      password2: this.registerForm.value.password2,
+    };
+    this.store.dispatch(new authActions.SignUp(sigUpContent));
   }
-
 }

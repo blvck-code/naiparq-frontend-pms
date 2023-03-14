@@ -24,7 +24,7 @@ import { OrganisationModel } from '../../models/organisation.model';
 import { selectedSpaceOrgs } from '../../state/entities/organizations.entities';
 
 @Component({
-  selector: 'app-premises',
+  selector: 'naiparq-premises',
   templateUrl: './premises.component.html',
   styleUrls: ['./premises.component.scss'],
 })

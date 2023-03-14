@@ -157,80 +157,87 @@
           </svg>
         </button>
       </div>
-      <form class="modal-body">
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="onSubmitCreateUser()"
+        class="modal-body"
+      >
         <div class="grid grid-cols-2 py-1 gap-3">
-          <div class="naiparq-form-group">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
             <label>First name</label>
             <input
-              formControlName="start_date"
+              formControlName="first_name"
               type="text"
-              class="p-2 my-1.5 rounded border"
+              class="p-2 my-1.5 rounded border outline-0"
             />
           </div>
-          <div class="naiparq-form-group">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
             <label>Last name</label>
             <input
-              formControlName="end_date"
+              formControlName="last_name"
               type="text"
-              class="p-2 my-1.5 rounded border"
+              class="p-2 my-1.5 rounded border outline-0"
             />
           </div>
         </div>
 
         <div class="grid grid-cols-2 py-1 gap-3">
-          <div class="naiparq-form-group">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
             <label>User role</label>
             <select
-              class="form-select p-2 my-1.5 rounded border"
+              (change)="handleUserType($event)"
+              class="form-select p-2 my-1.5 rounded border outline-0"
               aria-label="Default select example"
             >
-              <option selected>Select user role</option>
-              <option value="1">Parking attendant</option>
-              <option value="2">Blogger</option>
+              <option selected value="null">Select user role</option>
+              <option value="parking_attendant">Parking attendant</option>
+              <option value="blogger">Blogger</option>
             </select>
           </div>
-          <div class="naiparq-form-group">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
             <label>Phone number</label>
             <input
-              formControlName="end_date"
+              formControlName="phone_number"
               type="text"
-              class="p-2 my-1.5 rounded border"
+              class="p-2 my-1.5 rounded border outline-0"
             />
           </div>
         </div>
 
-        <div class="naiparq-form-group">
+        <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
           <label>Email address</label>
           <input
-            formControlName="start_date"
+            formControlName="email"
             type="text"
-            class="p-2 my-1.5 rounded border"
+            class="p-2 my-1.5 rounded border outline-0"
           />
         </div>
 
         <div class="grid grid-cols-2 py-1 gap-3">
-          <div class="naiparq-form-group">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
             <label>Password</label>
             <input
-              formControlName="start_date"
+              formControlName="password1"
               type="text"
-              class="p-2 my-1.5 rounded border"
+              class="p-2 my-1.5 rounded border outline-0"
             />
           </div>
-          <div class="naiparq-form-group">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
             <label>Confirm password</label>
             <input
-              formControlName="end_date"
+              formControlName="password2"
               type="text"
-              class="p-2 my-1.5 rounded border"
+              class="p-2 my-1.5 rounded border outline-0"
             />
           </div>
         </div>
 
         <div class="naiparq-form-group">
           <button
-            class="naiparq-btn naiparq-btn-primary btn-loading"
+            [class.btn-loading]="isSubmitting"
+            class="naiparq-btn naiparq-btn-primary"
             type="submit"
+            [disabled]="isSubmitting"
           >
             <span class="btn-text">Submit</span>
           </button>

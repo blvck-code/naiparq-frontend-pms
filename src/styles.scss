@@ -49,7 +49,7 @@ body {
   --bkg-three-color: #f8f8f8;
   --bkg-four-color: #fff;
 
-  --bkg-modal: rgba(0, 0, 0, 0.5);
+  --bkg-modal: rgba(0, 0, 0, 0.8);
 }
 
 body.dark-theme {
@@ -127,7 +127,7 @@ img {
 
   &.is-invalid {
     input {
-      border: 1px solid #ff0000;
+      border: 1px solid #ff0000 !important;
       color: #ff0000;
       animation: shake 300ms;
     }

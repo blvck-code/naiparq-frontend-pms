@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
 // NgRx
-import { Store} from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import * as authActions from '../auth/state/auth.actions';
-import {AuthState} from "./state/auth.reducer";
-import {Observable} from "rxjs";
-import {isLoggedIn} from "./state/auth.selector";
-import {Router} from "@angular/router";
+import { AuthState } from './state/auth.reducer';
+import { Observable } from 'rxjs';
+import { isLoggedIn } from './state/auth.selector';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'naiparq-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
 
-  constructor(
-    private store: Store<AuthState>,
-    private router: Router
-  ) { }
+  constructor(private store: Store<AuthState>, private router: Router) {}
 
   ngOnInit(): void {
     this.redirectPage();
@@ -29,11 +26,12 @@ export class AuthComponent implements OnInit {
   redirectPage(): void {
     this.isLoggedIn$.subscribe({
       next: (isLoggedIn) => {
-        if (!isLoggedIn) { return; }
+        if (!isLoggedIn) {
+          return;
+        }
 
         this.router.navigate(['/dashboard']);
-      }
-    })
+      },
+    });
   }
-
 }

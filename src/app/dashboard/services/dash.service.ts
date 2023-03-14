@@ -115,6 +115,11 @@ export class DashService {
     return isAdmin;
   }
 
+  // To emitate array content
+  numSeq(n: number): Array<number> {
+    return Array(n);
+  }
+
   // Space Drive In
   getDriveIn(): Observable<DriveInResponseModel> {
     return this.http.get<DriveInResponseModel>(env.naiparqDriveIn);
@@ -217,5 +222,15 @@ export class DashService {
     return this.http.get<BillingResponseModel>(
       `${env.naiparqBillingList}/?last_days=${payload.days}`
     );
+  }
+
+  // Create new blogger
+  createBlogger(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateBlogger, content);
+  }
+
+  // Create new parking attendant
+  createParkingAttendant(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateAttendant, content);
   }
 }

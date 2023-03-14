@@ -29,7 +29,7 @@ import { WINDOW } from './services/home.service';
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
-  selector: 'app-home',
+  selector: 'naiparq-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

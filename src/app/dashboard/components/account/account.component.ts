@@ -8,7 +8,7 @@ import { UserModel } from '../../../auth/model/user.model';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-account',
+  selector: 'naiparq-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
 })

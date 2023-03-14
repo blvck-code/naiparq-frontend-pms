@@ -1,1 +1,432 @@
-<p>user-management works!</p>
+<div class="naiparq-user-management">
+  <div class="naiparq-table-wrap naiparq-scrollbar">
+    <div class="naiparq-table-title">
+      <p class="naiparq-table-date">All Users</p>
+
+      <div class="cash-table-btns d-flex">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#createUser"
+          class="naiparq-btn naiparq-btn-primary me-2"
+        >
+          Create a new user
+        </button>
+
+        <button class="filter-btn alt-btn">
+          <svg
+            width="14"
+            height="10"
+            viewBox="0 0 14 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
+            />
+          </svg>
+          Filters
+        </button>
+      </div>
+    </div>
+
+    <div class="naiparq-table-content">
+      <table class="table">
+        <thead class="table-nav sticky-top">
+          <tr>
+            <th scope="col">
+              <span class="table-title">User name</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Roles</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Space name</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Last login</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Contact</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Action</span>
+            </th>
+          </tr>
+        </thead>
+
+        <!--        <tbody *ngIf="!(driveInLoaded$ | async)" class="table-body">-->
+        <!--        <tr *ngFor="let item of numSeq(12)">-->
+        <!--          <td>-->
+        <!--            <div class="table-text">-->
+        <!--              <ngx-skeleton-loader-->
+        <!--                [theme]="{-->
+        <!--                    'width.px': 120,-->
+        <!--                    'borderRadius.px': 10-->
+        <!--                  }"-->
+        <!--                animation="pulse"-->
+        <!--              ></ngx-skeleton-loader>-->
+        <!--            </div>-->
+        <!--          </td>-->
+        <!--          <td>-->
+        <!--            <div class="table-text">-->
+        <!--              <ngx-skeleton-loader-->
+        <!--                [theme]="{-->
+        <!--                    'width.px': 120,-->
+        <!--                    'borderRadius.px': 10-->
+        <!--                  }"-->
+        <!--                animation="pulse"-->
+        <!--              ></ngx-skeleton-loader>-->
+        <!--            </div>-->
+        <!--          </td>-->
+        <!--        </tr>-->
+        <!--        </tbody>-->
+
+        <tbody class="table-body">
+          <tr *ngFor="let driveIn of numSeq(20)">
+            <td>
+              <div class="table-text">
+                <span>Mzee Waziri</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>Blogger</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>Complex Building</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>07/11/2022</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>0700 000 000</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text flex items-center gap-3">
+                <span
+                  data-bs-toggle="modal"
+                  data-bs-target="#createUser"
+                  class="cursor-pointer"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.5 5.99106L14.0089 2.49992C13.8928 2.38384 13.755 2.29177 13.6034 2.22894C13.4517 2.16612 13.2892 2.13379 13.125 2.13379C12.9609 2.13379 12.7983 2.16612 12.6467 2.22894C12.495 2.29177 12.3572 2.38384 12.2411 2.49992L10.1832 4.55788L10.1831 4.55799L10.183 4.55811L2.86618 11.8749C2.74972 11.9907 2.6574 12.1284 2.59454 12.2802C2.53169 12.4319 2.49956 12.5946 2.5 12.7588V16.2499C2.50038 16.5813 2.6322 16.899 2.86654 17.1334C3.10088 17.3677 3.4186 17.4995 3.75 17.4999H7.24114C7.40536 17.5004 7.56803 17.4682 7.71975 17.4054C7.87146 17.3425 8.00921 17.2502 8.125 17.1338L17.5 7.75879C17.7341 7.52418 17.8655 7.20631 17.8655 6.87492C17.8655 6.54352 17.7341 6.22566 17.5 5.99106ZM15 8.49106L11.5089 4.99992L13.125 3.38379L16.6161 6.87492L15 8.49106Z"
+                      fill="#4BC1F1"
+                    />
+                  </svg>
+                </span>
+                <span class="cursor-pointer">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.875 2.5H13.125C13.2908 2.5 13.4497 2.43415 13.5669 2.31694C13.6842 2.19973 13.75 2.04076 13.75 1.875C13.75 1.70924 13.6842 1.55027 13.5669 1.43306C13.4497 1.31585 13.2908 1.25 13.125 1.25H6.875C6.70924 1.25 6.55027 1.31585 6.43306 1.43306C6.31585 1.55027 6.25 1.70924 6.25 1.875C6.25 2.04076 6.31585 2.19973 6.43306 2.31694C6.55027 2.43415 6.70924 2.5 6.875 2.5Z"
+                      fill="#4BC1F1"
+                    />
+                    <path
+                      d="M16.875 3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75033 16.5814 3.88213 16.8992 4.11648 17.1335C4.35083 17.3679 4.66858 17.4997 5 17.5H15C15.3314 17.4997 15.6492 17.3679 15.8835 17.1335C16.1179 16.8992 16.2497 16.5814 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125Z"
+                      fill="#4BC1F1"
+                    />
+                  </svg>
+                </span>
+                <span class="cursor-pointer">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 4.37451C3.75 4.37451 1.25 10.0001 1.25 10.0001C1.25 10.0001 3.75 15.6245 10 15.6245C16.25 15.6245 18.75 10.0001 18.75 10.0001C18.75 10.0001 16.25 4.37451 10 4.37451Z"
+                      stroke="#4BC1F1"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 13.125C11.7259 13.125 13.125 11.7259 13.125 10C13.125 8.27411 11.7259 6.875 10 6.875C8.27411 6.875 6.875 8.27411 6.875 10C6.875 11.7259 8.27411 13.125 10 13.125Z"
+                      stroke="#4BC1F1"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </td>
+          </tr>
+          <div id="bottomPageDriveIn"></div>
+        </tbody>
+      </table>
+      <app-inline-loader></app-inline-loader>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade add-plate-modal"
+  id="createUser"
+  tabindex="-1"
+  aria-labelledby="createUser"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create new user</h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeCreateUser
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="onSubmitCreateUser()"
+        class="modal-body"
+      >
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+            <label>First name</label>
+            <input
+              formControlName="first_name"
+              type="text"
+              class="p-2 my-1.5 rounded border outline-0"
+            />
+          </div>
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+            <label>Last name</label>
+            <input
+              formControlName="last_name"
+              type="text"
+              class="p-2 my-1.5 rounded border outline-0"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+            <label>User role</label>
+            <select
+              (change)="handleUserType($event)"
+              class="form-select p-2 my-1.5 rounded border outline-0"
+              aria-label="Default select example"
+            >
+              <option selected value="null">Select user role</option>
+              <option value="parking_attendant">Parking attendant</option>
+              <option value="blogger">Blogger</option>
+            </select>
+          </div>
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+            <label>Phone number</label>
+            <input
+              formControlName="phone_number"
+              type="text"
+              class="p-2 my-1.5 rounded border outline-0"
+            />
+          </div>
+        </div>
+
+        <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+          <label>Email address</label>
+          <input
+            formControlName="email"
+            type="text"
+            class="p-2 my-1.5 rounded border outline-0"
+          />
+        </div>
+
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+            <label>Password</label>
+            <input
+              formControlName="password1"
+              type="text"
+              class="p-2 my-1.5 rounded border outline-0"
+            />
+          </div>
+          <div [class.is-invalid]="formInvalid" class="naiparq-form-group">
+            <label>Confirm password</label>
+            <input
+              formControlName="password2"
+              type="text"
+              class="p-2 my-1.5 rounded border outline-0"
+            />
+          </div>
+        </div>
+
+        <div class="naiparq-form-group">
+          <button
+            [class.btn-loading]="isSubmitting"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--<div-->
+<!--  class="modal fade add-plate-modal"-->
+<!--  id="addWhiteList"-->
+<!--  tabindex="-1"-->
+<!--  aria-labelledby="addNumberPlate"-->
+<!--  aria-hidden="true"-->
+<!--&gt;-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title">Add To White List</h5>-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="btn-close naiparq-close-btn"-->
+<!--          data-bs-dismiss="modal"-->
+<!--          aria-label="Close"-->
+<!--          #closeDriveIn-->
+<!--        >-->
+<!--          <svg-->
+<!--            xmlns="http://www.w3.org/2000/svg"-->
+<!--            fill="none"-->
+<!--            viewBox="0 0 24 24"-->
+<!--            stroke-width="1.5"-->
+<!--            stroke="currentColor"-->
+<!--            class="w-6 h-6"-->
+<!--          >-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              d="M6 18L18 6M6 6l12 12"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <form-->
+<!--        [formGroup]="whiteListForm"-->
+<!--        (ngSubmit)="onSubmitWhiteList()"-->
+<!--        class="modal-body"-->
+<!--      >-->
+<!--        <div class="grid grid-cols-2 py-1 gap-3">-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label for="nPlate">Space Name</label>-->
+<!--            <select-->
+<!--              class="form-select my-1.5"-->
+<!--              formControlName="space"-->
+<!--              (change)="handleSelectedSpace($event)"-->
+<!--            >-->
+<!--              <option-->
+<!--                *ngFor="let space of spaces$ | async"-->
+<!--                value="{{ space.id }}"-->
+<!--              >-->
+<!--                {{ space.title }}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label for="nPlate">Organisation</label>-->
+<!--            <select-->
+<!--              formControlName="organisation"-->
+<!--              class="form-select my-1.5 w-[100%]"-->
+<!--            >-->
+<!--              <option-->
+<!--                *ngFor="let org of organizations | async"-->
+<!--                value="{{ org.id }}"-->
+<!--              >-->
+<!--                {{ org.name }}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="grid grid-cols-2 py-1 gap-3">-->
+<!--          <div class="flex flex-col">-->
+<!--            <label>Start Date</label>-->
+<!--            <input-->
+<!--              formControlName="start_date"-->
+<!--              type="datetime-local"-->
+<!--              name="start-date"-->
+<!--              class="p-2 my-1.5 rounded border"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="flex flex-col">-->
+<!--            <label>End Date</label>-->
+<!--            <input-->
+<!--              formControlName="end_date"-->
+<!--              type="datetime-local"-->
+<!--              name="end-date"-->
+<!--              class="p-2 my-1.5 rounded border"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="grid grid-cols-2 py-1 gap-3">-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label>License Date</label>-->
+<!--            <input-->
+<!--              formControlName="license_plate"-->
+<!--              type="text"-->
+<!--              class="px-2 py-1.5 my-1.5 rounded border"-->
+<!--              (keyup)="handleNum($event)"-->
+<!--              [value]="numberPlate.toLocaleUpperCase()"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="naiparq-form-group">-->
+<!--            <label>Status</label>-->
+<!--            <select class="form-select my-1.5" formControlName="status">-->
+<!--              <option value="active">Active</option>-->
+<!--              <option value="expired">Expired</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="naiparq-form-group">-->
+<!--          <button-->
+<!--            [class.btn-loading]="isSubmitting"-->
+<!--            class="naiparq-btn naiparq-btn-primary"-->
+<!--            type="submit"-->
+<!--            [disabled]="isSubmitting"-->
+<!--          >-->
+<!--            <span class="btn-text">Submit</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

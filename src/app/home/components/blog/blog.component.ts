@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { blogLoaded } from '../../state/home.reducer';
 
 @Component({
-  selector: 'app-blog',
+  selector: 'naiparq-blog',
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
 })

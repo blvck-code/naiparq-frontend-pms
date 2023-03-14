@@ -6,7 +6,7 @@ import { AuthState } from '../../../auth/state/auth.reducer';
 import { DashService } from '../../services/dash.service';
 
 @Component({
-  selector: 'naiparq-app-drawer',
+  selector: 'naiparq-drawer',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
 })

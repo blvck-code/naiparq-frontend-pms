@@ -18,7 +18,7 @@ import { selectedBlog, selectedBlogId } from '../../../state/home.reducer';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
-  selector: 'app-blog-create',
+  selector: 'naiparq-blog-create',
   templateUrl: './blog-create.component.html',
   styleUrls: ['./blog-create.component.scss'],
 })

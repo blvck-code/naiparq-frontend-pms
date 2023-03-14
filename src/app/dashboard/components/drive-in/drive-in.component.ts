@@ -18,7 +18,7 @@ import {
 } from '../../state/entities/organizations.entities';
 
 @Component({
-  selector: 'drive-in-payment',
+  selector: 'naiparq-drive-in-payment',
   templateUrl: './drive-in.component.html',
   styleUrls: ['./drive-in.component.scss'],
 })

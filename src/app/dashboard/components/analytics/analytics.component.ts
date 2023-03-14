@@ -13,7 +13,7 @@ import {
 } from 'igniteui-angular-charts';
 
 @Component({
-  selector: 'app-analytics',
+  selector: 'naiparq-analytics',
   templateUrl: './analytics.component.html',
   styleUrls: ['./analytics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

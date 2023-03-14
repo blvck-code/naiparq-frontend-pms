@@ -6,7 +6,7 @@ import * as driveInActions from '../../state/actions/driveIn.actions';
 import { DriveOutModel } from '../../models/driveOut.model';
 
 @Component({
-  selector: 'app-logs',
+  selector: 'naiparq-logs',
   templateUrl: './logs.component.html',
   styleUrls: ['./logs.component.scss'],
 })

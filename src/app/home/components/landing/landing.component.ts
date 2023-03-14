@@ -18,7 +18,7 @@ import { SharedService } from '../../../shared/services/shared.service';
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
-  selector: 'app-landing',
+  selector: 'naiparq-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
 })

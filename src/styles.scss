@@ -48,6 +48,8 @@ body {
   --bkg-two-color: #121212;
   --bkg-three-color: #f8f8f8;
   --bkg-four-color: #fff;
+
+  --bkg-modal: rgba(0, 0, 0, 0.5);
 }
 
 body.dark-theme {
@@ -63,6 +65,8 @@ body.dark-theme {
   --bkg-two-color: #212125;
   --bkg-three-color: #333339;
   --bkg-four-color: #212125;
+
+  --bkg-modal: rgba(255, 255, 255, 0.5);
 }
 
 body {
@@ -605,8 +609,20 @@ form {
     }
   }
 }
+.modal-backdrop {
+  background: var(--bkg-modal) !important;
+}
 
 // Naiparq Table Styles
+.naiparq-drivein,
+.naiparq-user-management {
+  height: 100%;
+
+  .naiparq-table-wrap {
+    height: calc(100vh - 150px);
+  }
+}
+
 .table {
   .sticky-top {
     z-index: 3 !important;

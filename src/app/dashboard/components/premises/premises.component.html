@@ -5,6 +5,7 @@
     <div class="naiparq-space-header d-flex justify-content-end">
       <div class="cash-table-btns d-flex">
         <button
+          *ngIf="adminRights()"
           data-bs-toggle="modal"
           data-bs-target="#pricingModal"
           class="naiparq-btn naiparq-btn-primary me-2"

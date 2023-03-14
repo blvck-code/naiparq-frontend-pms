@@ -13,12 +13,15 @@ import {
   OrganisationModel,
   OrganisationResponseModel,
 } from '../models/organisation.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.state';
+import { userInfo } from '../../auth/state/auth.selector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private store: Store<AppState>) {}
   timeIntervals = [
     {
       key: '0 mins',
@@ -100,6 +103,18 @@ export class DashService {
     },
   ];
 
+  // Gives certain rights if user is admin
+  adminRights(): boolean {
+    let isAdmin: boolean = false;
+    this.store.select(userInfo).subscribe({
+      next: (userDetails) => {
+        isAdmin = !!userDetails.is_superuser;
+        return !!userDetails.is_superuser;
+      },
+    });
+    return isAdmin;
+  }
+
   // Space Drive In
   getDriveIn(): Observable<DriveInResponseModel> {
     return this.http.get<DriveInResponseModel>(env.naiparqDriveIn);
@@ -135,6 +150,7 @@ export class DashService {
     return this.http.post<{ space: string }>(env.naiparqGallery, content);
   }
 
+  // Paying parking space
   paymentDriveOut(payload: {
     payment_channel: string;
     phone_number: string;
@@ -144,7 +160,6 @@ export class DashService {
       payment_channel: payload.payment_channel,
       phone_number: payload.phone_number,
     };
-    console.log('Payload ==>>', content);
     return this.http.put(env.naiparqCheckout + `/${payload.billId}/`, content);
   }
 

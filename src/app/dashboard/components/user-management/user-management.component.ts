@@ -33,10 +33,19 @@ export class UserManagementComponent implements OnInit {
   // Determines the user type chosen
   handleUserType(event: any): void {
     this.userType = event.target.value;
-    console.log('Event ==>>', event.target.value);
   }
 
+  // Check password match
+  checkPassword(): boolean {
+    const password1 = this.userForm.get('password1')?.value;
+    const password2 = this.userForm.get('password2')?.value;
+
+    return password1 === password2;
+  }
+
+  // Submit create new user
   onSubmitCreateUser(): void {
+    // Check form valid
     if (this.userForm.invalid) {
       this.formInvalid = true;
       this.sharedSrv.showNotification(
@@ -45,10 +54,49 @@ export class UserManagementComponent implements OnInit {
       );
       return;
     }
-    // Todo check if passwords match
-    // Todo check if you already exists error handler
 
-    console.log('Validates ==>>', this.userForm.value);
+    // Check passwords match
+    if (!this.checkPassword()) {
+      this.formInvalid = true;
+      this.sharedSrv.showNotification('Passwords do not match!', 'error');
+      return;
+    }
+
+    // Either submit to create new parking attendant or new blogger
+    if (this.userType === 'blogger') {
+      this.dashSrv.createBlogger(this.userForm.value).subscribe({
+        next: (resp) => {
+          this.sharedSrv.showNotification(
+            'Blogger created successfully.',
+            'success'
+          );
+          // Todo add created user to store
+          this.userForm.reset();
+        },
+        error: (err) => {
+          this.sharedSrv.showNotification('Failed to create blogger', 'error');
+          console.log('Failed create blogger ==>>', err);
+        },
+      });
+    } else if (this.userType === 'parking_attendant') {
+      // Else create parking attendant
+      this.dashSrv.createParkingAttendant(this.userForm.value).subscribe({
+        next: (resp) => {
+          this.sharedSrv.showNotification(
+            'Parking attendant created successfully.',
+            'success'
+          );
+          // Todo add created user to store
+          this.userForm.reset();
+        },
+        error: (err: { message: string; status: number }) => {
+          this.sharedSrv.showNotification(err.message, 'error');
+          console.log('Failed create Parking attendant ==>>', err);
+        },
+      });
+    } else {
+      this.sharedSrv.showNotification('User role not selected!', 'error');
+    }
   }
 
   numSeq(n: number): Array<number> {

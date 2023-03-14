@@ -223,4 +223,14 @@ export class DashService {
       `${env.naiparqBillingList}/?last_days=${payload.days}`
     );
   }
+
+  // Create new blogger
+  createBlogger(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateBlogger, content);
+  }
+
+  // Create new parking attendant
+  createParkingAttendant(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateAttendant, content);
+  }
 }

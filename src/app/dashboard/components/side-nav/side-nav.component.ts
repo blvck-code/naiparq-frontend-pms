@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import * as authActions from '../../../auth/state/auth.actions';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../../auth/state/auth.reducer';
+import { DashService } from '../../services/dash.service';
 
 @Component({
   selector: 'naiparq-app-drawer',
@@ -14,14 +15,25 @@ export class SideNavComponent implements OnInit {
 
   darkTheme: boolean = false;
 
-  constructor(private cookie: CookieService, private store: Store<AuthState>) {}
+  constructor(
+    private cookie: CookieService,
+    private store: Store<AuthState>,
+    private dashSrv: DashService
+  ) {}
 
   ngOnInit(): void {}
 
+  // Limits only admin to see certains
+  adminRights(): boolean {
+    return this.dashSrv.adminRights();
+  }
+
+  // Click change theme
   handleClickTheme(): void {
     this.toggleTheme.nativeElement.click();
   }
 
+  // Toggle change site theme
   changeTheme(event: any): any {
     const checked = event.checked;
 
@@ -36,6 +48,7 @@ export class SideNavComponent implements OnInit {
     }
   }
 
+  // Bottom page logout
   logOut(): void {
     this.store.dispatch(new authActions.LogOut());
   }

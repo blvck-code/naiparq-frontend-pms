@@ -129,6 +129,10 @@ export class PremisesComponent implements OnInit {
     this.spacePhotos.nativeElement.click();
   }
 
+  adminRights(): boolean {
+    return this.dashSrv.adminRights();
+  }
+
   handleSpacePhotos(event: any): void {
     if (!event.target.files) {
       this.sharedSrv.showNotification('Please select image files.', 'info');

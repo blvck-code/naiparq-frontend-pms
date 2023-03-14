@@ -14,6 +14,7 @@ import { LogsComponent } from './components/logs/logs.component';
 import { RevenuesComponent } from './components/revenues/revenues.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { AdminGuard } from '../auth/services/admin.guard';
 
 const dashRoutes: Routes = [
   {
@@ -61,6 +62,7 @@ const dashRoutes: Routes = [
       {
         path: 'user-management',
         component: UserManagementComponent,
+        canActivate: [AdminGuard],
       },
       {
         path: 'settings',
@@ -73,6 +75,7 @@ const dashRoutes: Routes = [
       {
         path: 'asset-management',
         component: AssetsManagementComponent,
+        canActivate: [AdminGuard],
       },
     ],
   },

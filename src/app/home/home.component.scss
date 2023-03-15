@@ -1,5 +1,18 @@
 @import "responsive";
 
+nav.nav--hidden {
+  transform: translateY(-100%);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+  background-color: #2980b9;
+  padding: 0 2rem;
+}
+
 .naiparq-home {
   overflow: hidden;
   background: #fef9e8;

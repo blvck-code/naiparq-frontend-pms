@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   showMenu: boolean = false;
   currentYear: any;
 
-  @ViewChild('home', { static: true }) 'home': ElementRef;
+  @ViewChild('homeContent') 'homeContent': ElementRef;
+  @ViewChild('scroller') 'scroller': ElementRef;
 
   blogger$: Observable<boolean> = this.store.select(blogger);
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
@@ -72,6 +73,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getDate();
     this.getArticles();
     this.toggleSideNav();
+
+    setTimeout(() => {
+      console.log(this.homeContent.nativeElement);
+      this.scroller.nativeElement.onscroll = () => {
+        console.log('Scroll');
+      };
+    }, 500);
   }
   @HostListener('window:scroll', ['$event'])
   handleNavShadow(event: any): void {
@@ -96,7 +104,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   toggleSideNav(): void {
-    this.home?.nativeElement.addEventListener('click', (event: any) => {
+    this.homeContent?.nativeElement.addEventListener('click', (event: any) => {
       console.log(122222);
     });
   }

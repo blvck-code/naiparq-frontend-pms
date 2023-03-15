@@ -7,7 +7,6 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
 import { BlogCreateComponent } from './components/blog/blog-create/blog-create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -37,7 +36,6 @@ import { BlogComponent } from './components/blog/blog.component';
     HomeRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    NgxHideOnScrollModule,
     CKEditorModule,
     StoreModule.forFeature('home', homeReducer),
     EffectsModule.forFeature([HomeEffects]),

@@ -45,7 +45,6 @@
     "ngrx-store-localstorage": "^14.0.0",
     "ngx-cookie-service": "^15.0.0",
     "ngx-daterangepicker-material": "^6.0.4",
-    "ngx-hide-on-scroll": "^0.2.1",
     "ngx-online-status": "^2.0.0",
     "ngx-showdown": "^6.0.0",
     "ngx-skeleton-loader": "^6.0.0",

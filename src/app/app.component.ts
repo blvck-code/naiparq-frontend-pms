@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OnlineStatusService, OnlineStatusType } from 'ngx-online-status';
 import { trigger } from '@angular/animations';
 import { RouterOutlet } from '@angular/router';
 
@@ -10,8 +9,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'naiparq-frontend-pms';
-  status?: OnlineStatusType; //Enum provided by ngx-online-status
-  onlineStatusCheck: any = OnlineStatusType;
 
   prepareRoute(outlet: RouterOutlet) {
     return (
@@ -21,15 +18,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  constructor(private onlineStatusService: OnlineStatusService) {}
+  constructor() {}
 
-  ngOnInit() {
-    // this.onlineStatusService.status.subscribe({
-    //   next: (status: OnlineStatusType) => {
-    //     // Retrieve Online status Type
-    //     this.status = status;
-    //     console.log('Online status ', status);
-    //   },
-    // });
-  }
+  ngOnInit() {}
 }

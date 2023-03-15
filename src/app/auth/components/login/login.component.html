@@ -1,5 +1,11 @@
 <form [formGroup]="loginForm" class="naiparq-login-form" (ngSubmit)="login()">
-  <fieldset class="naiparq-login-form-item">
+  <h3 class="pb-2 px-2 font-[700] self-start text-[20px] leading-[20px]">
+    Sign in to your account
+  </h3>
+  <fieldset
+    [class.is-invalid]="formInvalid"
+    class="naiparq-login-form-item py-1"
+  >
     <label for="userEmail">Phone number</label>
     <div class="naiparq-login-email">
       <svg
@@ -12,13 +18,13 @@
       >
         <path
           d="M10 12.5C12.7614 12.5 15 10.2614 15 7.5C15 4.73858 12.7614 2.5 10 2.5C7.23858 2.5 5 4.73858 5 7.5C5 10.2614 7.23858 12.5 10 12.5Z"
-          stroke="white"
+          stroke="black"
           stroke-width="2"
           stroke-miterlimit="10"
         />
         <path
           d="M2.4209 16.8743C3.1893 15.5442 4.29419 14.4398 5.62456 13.672C6.95493 12.9042 8.46393 12.5 9.99997 12.5C11.536 12.5 13.045 12.9043 14.3754 13.6721C15.7057 14.44 16.8106 15.5444 17.579 16.8744"
-          stroke="white"
+          stroke="black"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -29,11 +35,15 @@
         id="userEmail"
         placeholder="0710000000"
         formControlName="phone"
+        (keydown)="resetInput()"
       />
     </div>
   </fieldset>
 
-  <fieldset class="naiparq-login-form-item password">
+  <fieldset
+    [class.is-invalid]="formInvalid"
+    class="naiparq-login-form-item py-1 password"
+  >
     <label for="userPassword">Password</label>
     <div class="pea-login-password">
       <svg
@@ -47,12 +57,12 @@
         <g clip-path="url(#clip0_5591_1185)">
           <path
             d="M15.8333 8.33317H16.6667C16.8877 8.33317 17.0996 8.42097 17.2559 8.57725C17.4122 8.73353 17.5 8.94549 17.5 9.1665V17.4998C17.5 17.7209 17.4122 17.9328 17.2559 18.0891C17.0996 18.2454 16.8877 18.3332 16.6667 18.3332H3.33333C3.11232 18.3332 2.90036 18.2454 2.74408 18.0891C2.5878 17.9328 2.5 17.7209 2.5 17.4998V9.1665C2.5 8.94549 2.5878 8.73353 2.74408 8.57725C2.90036 8.42097 3.11232 8.33317 3.33333 8.33317H4.16667V7.49984C4.16667 6.73379 4.31755 5.97525 4.6107 5.26752C4.90385 4.55978 5.33354 3.91672 5.87521 3.37505C6.41689 2.83337 7.05995 2.40369 7.76768 2.11054C8.47541 1.81739 9.23396 1.6665 10 1.6665C10.766 1.6665 11.5246 1.81739 12.2323 2.11054C12.9401 2.40369 13.5831 2.83337 14.1248 3.37505C14.6665 3.91672 15.0961 4.55978 15.3893 5.26752C15.6824 5.97525 15.8333 6.73379 15.8333 7.49984V8.33317ZM4.16667 9.99984V16.6665H15.8333V9.99984H4.16667ZM9.16667 11.6665H10.8333V14.9998H9.16667V11.6665ZM14.1667 8.33317V7.49984C14.1667 6.39477 13.7277 5.33496 12.9463 4.55356C12.1649 3.77216 11.1051 3.33317 10 3.33317C8.89493 3.33317 7.83512 3.77216 7.05372 4.55356C6.27232 5.33496 5.83333 6.39477 5.83333 7.49984V8.33317H14.1667Z"
-            fill="white"
+            fill="black"
           />
         </g>
         <defs>
           <clipPath id="clip0_5591_1185">
-            <rect width="20" height="20" fill="white" />
+            <rect width="20" height="20" fill="black" />
           </clipPath>
         </defs>
       </svg>
@@ -68,49 +78,66 @@
       <svg
         (click)="togglePass('show')"
         *ngIf="!showPass"
-        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
         fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 toggle-password"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 toggle-password select-none"
       >
         <path
+          d="M16 6.99902C6 6.99902 2 16 2 16C2 16 6 24.999 16 24.999C26 24.999 30 16 30 16C30 16 26 6.99902 16 6.99902Z"
+          stroke="black"
+          stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+        />
+        <path
+          d="M16 21.0001C18.7614 21.0001 21 18.7615 21 16.0001C21 13.2387 18.7614 11.0001 16 11.0001C13.2386 11.0001 11 13.2387 11 16.0001C11 18.7615 13.2386 21.0001 16 21.0001Z"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
       </svg>
+
       <svg
         (click)="togglePass('hide')"
         *ngIf="showPass"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
+        width="24"
+        height="24"
         viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 toggle-password"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 toggle-password select-none"
       >
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-        />
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M2.70713 1.29291L1.29292 2.70712L5.35774 6.77194C4.97908 7.08575 4.60434 7.42277 4.23373 7.78116C3.40451 8.58306 2.65433 9.43917 1.99393 10.2956C1.59543 10.8125 1.3125 11.219 1.15759 11.4612L0.812988 12L1.15759 12.5388C1.3125 12.781 1.59543 13.1876 1.99393 13.7044C2.65433 14.5609 3.40451 15.417 4.23373 16.2189C6.66434 18.5694 9.27247 20 12 20C13.7209 20 15.3943 19.4305 17.0056 18.4198L21.2929 22.7071L22.7071 21.2929L2.70713 1.29291ZM15.5447 16.9589L14.032 15.4462C13.4365 15.7981 12.7418 16 12 16C9.79088 16 8.00002 14.2092 8.00002 12C8.00002 11.2582 8.20195 10.5636 8.55384 9.96805L6.77974 8.19395C6.39235 8.50636 6.0068 8.84874 5.62406 9.21886C4.86986 9.94822 4.18241 10.7327 3.57777 11.5169C3.44718 11.6862 3.32651 11.8478 3.21619 12C3.32651 12.1522 3.44718 12.3138 3.57777 12.4831C4.18241 13.2673 4.86986 14.0518 5.62406 14.7812C7.71751 16.8056 9.89495 18 12 18C13.1682 18 14.3586 17.6322 15.5447 16.9589ZM10.0678 11.482C10.0236 11.6472 10 11.8209 10 12C10 13.1046 10.8955 14 12 14C12.1792 14 12.3528 13.9765 12.5181 13.9323L10.0678 11.482ZM20.0981 15.891L18.6838 14.4767C19.318 13.8357 19.9009 13.1593 20.4223 12.4831C20.5529 12.3138 20.6735 12.1522 20.7839 12C20.6735 11.8478 20.5529 11.6862 20.4223 11.5169C19.8176 10.7327 19.1302 9.94822 18.376 9.21886C16.2825 7.19439 14.1051 6.00001 12 6.00001C11.4777 6.00001 10.951 6.07354 10.4221 6.21503L8.84017 4.63306C9.87262 4.22139 10.9271 4.00001 12 4.00001C14.7276 4.00001 17.3357 5.43064 19.7663 7.78116C20.5955 8.58306 21.3457 9.43917 22.0061 10.2956C22.4046 10.8125 22.6875 11.219 22.8425 11.4612L23.1871 12L22.8425 12.5388C22.6875 12.781 22.4046 13.1876 22.0061 13.7044C21.4349 14.4451 20.7966 15.1856 20.0981 15.891Z"
+          fill="#000"
         />
       </svg>
     </div>
   </fieldset>
 
-  <button class="naiparq-btn naiparq-btn-primary" type="submit">
+  <a
+    href=""
+    class="text-base self-start px-3 font-bold hover:underline text-[#000] hover:text-[#000]"
+  >
+    Forgot password?
+  </a>
+
+  <button
+    [class.btn-loading]="isLoading$ | async"
+    class="naiparq-btn naiparq-btn-dark"
+    type="submit"
+  >
     <span class="btn-text">Sign in</span>
   </button>
   <div class="login-error d-flex justify-content-center">
     <p *ngIf="errMsg$ | async" class="login-error-msg">
-      {{ errMsg$ | async }}
+      {{ (errMsg$ | async) === "Login Successful" ? "" : (errMsg$ | async) }}
     </p>
   </div>
 </form>

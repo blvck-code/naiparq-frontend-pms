@@ -1,54 +1,82 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()" class="naiparq-login-form">
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="register()"
+  class="naiparq-register-form"
+>
   <fieldset class="naiparq-form-group">
     <label for="fName">First name</label>
-    <input type="text" id="fName" formControlName="first_name"  class="naiparq-form-input">
+    <input
+      type="text"
+      id="fName"
+      formControlName="first_name"
+      class="naiparq-form-input"
+    />
   </fieldset>
 
   <fieldset class="naiparq-form-group">
     <label for="lName">Last name</label>
-    <input type="text" id="lName" formControlName="last_name"  class="naiparq-form-input">
+    <input
+      type="text"
+      id="lName"
+      formControlName="last_name"
+      class="naiparq-form-input"
+    />
   </fieldset>
 
   <fieldset class="naiparq-form-group">
     <label for="pNumber">Phone Number</label>
-    <input type="text" id="pNumber" formControlName="phone_number"  class="naiparq-form-input">
+    <input
+      type="text"
+      id="pNumber"
+      formControlName="phone_number"
+      class="naiparq-form-input"
+    />
   </fieldset>
 
   <fieldset class="naiparq-form-group">
     <label for="email">Email</label>
-    <input type="text" id="email" formControlName="email"  class="naiparq-form-input">
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      class="naiparq-form-input"
+    />
   </fieldset>
 
   <fieldset class="naiparq-form-group">
     <!--       Todo Add view password-->
     <label for="password1">Password</label>
-    <input formControlName="password1" type="password" id="password1" class="naiparq-form-input">
+    <input
+      formControlName="password1"
+      type="password"
+      id="password1"
+      class="naiparq-form-input"
+    />
   </fieldset>
 
   <fieldset class="naiparq-form-group">
     <!--       Todo Add view password-->
     <label for="password2">Confirm Password</label>
-    <input formControlName="password2" type="password" id="password2" class="naiparq-form-input">
+    <input
+      formControlName="password2"
+      type="password"
+      id="password2"
+      class="naiparq-form-input"
+    />
   </fieldset>
 
-
   <div class="naiparq-form-group">
-    <button
-      class="naiparq-btn naiparq-btn-primary"
-      type="submit"
-    >
+    <button class="naiparq-btn naiparq-btn-dark" type="submit">
       <span class="btn-text">Sign Up</span>
     </button>
   </div>
   <div class="login-message">
-<!--    <span>{{ errMsg$ | async }}</span>-->
+    <!--    <span>{{ errMsg$ | async }}</span>-->
   </div>
   <div class="naiparq-form-group">
-    <p>
+    <p class="text-[#000]">
       <!--      Todo add the add icon-->
       Already have an account? <a [routerLink]="['/auth']">Log In</a>
     </p>
   </div>
-
 </form>
-

@@ -14,5 +14,12 @@ export interface DriveInModel {
   space: string;
   entry_screenshot: string;
   create_at: string;
+  space_details: {
+    id: string;
+    title: string;
+    type: string;
+    address: string;
+  };
+  status: string;
   driveOut?: DriveOutModel;
 }

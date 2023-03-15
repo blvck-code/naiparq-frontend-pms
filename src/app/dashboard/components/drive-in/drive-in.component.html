@@ -2,7 +2,6 @@
   <div class="naiparq-table-wrap naiparq-scrollbar">
     <div class="naiparq-table-title">
       <p class="naiparq-table-date">December 09, 2022</p>
-
       <div class="cash-table-btns d-flex">
         <button
           data-bs-toggle="modal"
@@ -41,14 +40,21 @@
         <thead class="table-nav sticky-top">
           <tr>
             <th scope="col">
-              <span class="table-title"> Number Plate </span>
+              <span class="table-title">Number Plate</span>
             </th>
             <th scope="col">
-              <span class="table-title"> Time In </span>
+              <span class="table-title">Space</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Time In</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Status</span>
             </th>
           </tr>
         </thead>
 
+        <!--        Loading Indicator -->
         <tbody *ngIf="!(driveInLoaded$ | async)" class="table-body">
           <tr *ngFor="let item of numSeq(12)">
             <td>
@@ -73,8 +79,31 @@
                 ></ngx-skeleton-loader>
               </div>
             </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
           </tr>
         </tbody>
+        <!--        Content Loaded -->
         <tbody class="table-body">
           <tr *ngFor="let driveIn of driveIns$ | async">
             <td>
@@ -84,9 +113,19 @@
             </td>
             <td>
               <div class="table-text">
+                <span>{{ driveIn.space_details.title }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
                 <span>{{
                   driveIn.check_in_time | date : "MMM d, y, h:mm a"
                 }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn.status }}</span>
               </div>
             </td>
           </tr>

@@ -3,21 +3,78 @@
 .naiparq-login {
   height: 100vh;
   width: 100%;
-  background: #121212;
+  background: #fef9e8;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  .circle {
+    position: absolute;
+    z-index: 1;
+
+    &.top {
+      height: 568px;
+      width: 568px;
+      background: #4bc1f1;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+      top: -25%;
+      margin: 0 auto;
+    }
+
+    &.left {
+      width: 341px;
+      height: 341px;
+      top: -80px;
+      left: -78px;
+      background: #fbce33;
+      filter: blur(200px);
+    }
+
+    &.right {
+      height: 483px;
+      width: 483px;
+      top: -127px;
+      right: -10%;
+      background: #fbce33;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+
+    &.bottom1 {
+      width: 568px;
+      height: 568px;
+      left: -174px;
+      bottom: -27px;
+      background: #4bc1f1;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+
+    &.bottom2 {
+      height: 483px;
+      width: 483px;
+      bottom: -25%;
+      margin: 0 auto;
+      transform: translateX(42px);
+      background: #fbce33;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+  }
 
   .naiparq-login-wrap {
     width: 554px;
-    max-height: 559px;
-    background: #191919;
+    min-height: 559px;
+    background: #ffffff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 40px;
+    z-index: 10;
 
     @include respond(tab-port) {
       margin: 0 20px;
@@ -26,7 +83,7 @@
 
     .naiparq-logo {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       margin-bottom: 30px;
 
@@ -35,7 +92,8 @@
       }
 
       img {
-        width: 75px;
+        width: 38px;
+        height: 36px;
 
         @include respond(tab-port) {
           width: 50px;
@@ -43,8 +101,8 @@
       }
 
       h4 {
-        color: #fff;
-        font-size: 50px;
+        color: #000;
+        font-size: 25px;
         margin-left: 10px;
         font-weight: 600;
 

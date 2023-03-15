@@ -37,6 +37,7 @@ export class BlogDetailComponent implements OnInit {
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
       this.blogSlug = slug;
+      // @ts-ignore
       this.blogDetails$ = this.store.select(selectedBlog(slug));
       // this.store.select(selectedBlog(slug)).subscribe({
       //   next: (resp) => {

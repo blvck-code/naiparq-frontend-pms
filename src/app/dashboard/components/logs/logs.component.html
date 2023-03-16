@@ -200,28 +200,36 @@
       <div class="modal-body">
         <div class="flex flex-col gap-3">
           <div class="flex items-center justify-between">
-            <h5 class="font-extrabold text-lg leading-6">Number Plate</h5>
-            <h5 class="font-normal text-lg leading-6">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Number Plate
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
               {{ selectedDriveOut?.drive_in_details?.license_plate }}
             </h5>
           </div>
           <div class="flex items-center justify-between">
-            <h5 class="font-extrabold text-lg leading-6">Space Name</h5>
-            <h5 class="font-normal text-lg leading-6">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Space Name
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
               {{ selectedDriveOut?.drive_in_details?.space_details?.title }}
             </h5>
           </div>
           <div class="flex items-center justify-between">
-            <h5 class="font-extrabold text-lg leading-6">Time In</h5>
-            <h5 class="font-normal text-lg leading-6">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Time In
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
               {{
                 selectedDriveOut?.drive_in_details?.check_in_time
                   | date : "EEEE, dd MMM, YYYY, h:mm a"
               }}
             </h5>
           </div>
-          <div class="flex items-center justify-between">
-            <h5 class="font-extrabold text-lg leading-6">Time Out</h5>
+          <div class="flex items-center space-titles justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Time Out
+            </h5>
             <h5 class="font-normal text-lg leading-6">
               {{
                 selectedDriveOut?.check_out_time

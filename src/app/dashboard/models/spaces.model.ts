@@ -35,7 +35,7 @@ export interface SpaceModel {
     phone_number: string;
     user_type: any;
   };
-  create_at: string;
+  created_at: string;
   price_schedule: PriceScheduleModel[];
 }
 

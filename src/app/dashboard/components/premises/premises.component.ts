@@ -326,18 +326,25 @@ export class PremisesComponent implements OnInit {
       );
       return;
     }
+
     this.dashSrv.createPricing(this.pricingForm.value).subscribe({
       next: (response: PricingModel) => {
         // Contains prices for preview
         this.spacePrices = [...this.spacePrices, response];
+
         // Grab price ids to create price schedule with space title
-        // Todo add max time to form as new min time
         this.priceSchedule = [...this.priceSchedule, response.id];
         this.sharedSrv.showNotification(
           'Created space pricing success',
           'success'
         );
-        this.pricingForm.reset();
+
+        // Make next min time be the last max time
+        this.pricingForm.patchValue({
+          min_time: this.pricingForm.get('max_time')?.value,
+          max_time: '',
+          price: '',
+        });
         console.log('Created space item success ==>>', response);
       },
       error: (err) => {

@@ -10,7 +10,7 @@ export interface DriveOutModel {
   exit_screenshot: string | null;
   check_out_time: string;
   drive_in: string;
-  drive_in_details?: {
+  drive_in_details: {
     id: string;
     license_plate: string;
     check_in_time: string;

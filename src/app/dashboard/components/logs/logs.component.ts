@@ -27,7 +27,7 @@ export class LogsComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new driveInActions.LoadDriveIn());
     this.store.dispatch(new driveInActions.LoadDriveOut());
-    this.combinedDriveOut();
+    // this.combinedDriveOut();
   }
   numSeq(n: number): Array<number> {
     return Array(n);

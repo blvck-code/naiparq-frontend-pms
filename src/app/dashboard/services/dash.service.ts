@@ -63,6 +63,10 @@ export class DashService {
       key: '4hr 30 mins',
       value: 4.5,
     },
+    {
+      key: 'More',
+      value: 86400,
+    },
   ];
   spaceFeatures = [
     {

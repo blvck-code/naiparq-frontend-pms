@@ -183,9 +183,7 @@ export class SignUpFail implements ActionExecutable<AuthState> {
 // Load Profile
 export class LoadProfile implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOAD_PROFILE;
-  constructor() {
-    console.log('Getting profileeee');
-  }
+  constructor() {}
 
   execute(state: AuthState): AuthState {
     return {
@@ -195,9 +193,7 @@ export class LoadProfile implements ActionExecutable<AuthState> {
 }
 export class LoadProfileSuccess implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOAD_PROFILE_SUCCESS;
-  constructor(public payload: ProfileResponseModel) {
-    console.log('User profile ===>>', payload);
-  }
+  constructor(public payload: ProfileResponseModel) {}
 
   execute(state: AuthState): AuthState {
     const userId = state.userInfo.user.id;

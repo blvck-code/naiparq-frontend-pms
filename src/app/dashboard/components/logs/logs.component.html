@@ -117,7 +117,7 @@
           <tr *ngFor="let driveIn of driveOuts$ | async">
             <td>
               <div class="table-text">
-                <span>{{ driveIn.drive_in_details.license_plate }}</span>
+                <span>{{ driveIn.drive_in_details?.license_plate }}</span>
               </div>
             </td>
             <td>
@@ -128,7 +128,7 @@
             <td>
               <div class="table-text">
                 <span>{{
-                  driveIn.drive_in_details.check_in_time
+                  driveIn.drive_in_details?.check_in_time
                     | date : "MMM d, y, h:mm a"
                 }}</span>
               </div>

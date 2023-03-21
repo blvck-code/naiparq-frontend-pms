@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { StoreService } from '../../state/store.service';
 import { Store } from '@ngrx/store';
 import * as driveInActions from '../../state/actions/driveIn.actions';
 import { DriveOutModel } from '../../models/driveOut.model';
+import { DashService } from '../../services/dash.service';
 
 @Component({
   selector: 'naiparq-logs',
@@ -17,14 +18,36 @@ export class LogsComponent implements OnInit {
 
   selectedDriveOut!: DriveOutModel;
 
-  constructor(private storeSrv: StoreService, private store: Store) {}
+  constructor(
+    private storeSrv: StoreService,
+    private dashSrv: DashService,
+    private store: Store
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(new driveInActions.LoadDriveIn());
     this.store.dispatch(new driveInActions.LoadDriveOut());
+    this.combinedDriveOut();
   }
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  combinedDriveOut(): void {
+    forkJoin([
+      this.dashSrv.loadDriveOut(),
+      this.dashSrv.loadGuestDriveOut(),
+    ]).subscribe({
+      next: ([resp1, resp2]) => {
+        const combinedRes = [...resp1.results, ...resp2.results];
+        console.log('Resp 1 ==>>', resp1.results);
+        console.log('Resp 2 ==>>', resp2.results);
+        console.log('Combined content ==>>', combinedRes);
+        // this.store.dispatch(
+        //   new driveInActions.LoadDriveOutSuccess(combinedRes)
+        // );
+      },
+    });
   }
 
   selectedLog(driveOut: DriveOutModel): void {

@@ -11,6 +11,12 @@
 .naiparq-auth-form {
   border: 1px solid red;
 
+  .naiparq-login-form-item {
+    label {
+      color: #000 !important;
+    }
+  }
+
   &-password {
     display: flex;
     justify-content: center;
@@ -88,7 +94,10 @@
 
     label {
       margin-bottom: 0.5rem;
-      color: white;
+      color: #000;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 150%;
 
       &.form-check-label {
         font-size: 0.875rem;
@@ -100,10 +109,10 @@
       width: 100%;
       margin-bottom: 1rem;
       padding-left: 1rem;
-      border: 1px solid #ffffff;
+      border: 1px solid transparent;
       border-radius: 10px;
-      background-color: transparent;
-      color: #fff;
+      background-color: #e8f0fe;
+      color: #000;
       font-size: 1rem;
 
       &.form-check-input {
@@ -123,8 +132,11 @@
         color: #ff0000;
       }
       input {
-        color: #ff0000;
+        color: #ff0000 !important;
         border: 1px solid #ff0000;
+      }
+      svg {
+        color: #ff0000 !important;
       }
 
       .pea-login-password {
@@ -154,6 +166,7 @@
         height: 20px;
         width: 20px;
         cursor: pointer;
+        color: #000;
       }
       .toggle-password {
         position: absolute;

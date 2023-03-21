@@ -25,6 +25,7 @@ import {
 export class LoginComponent implements OnInit {
   showPass: boolean = false;
   formInvalid: boolean = false;
+  btnLoading: boolean = false;
 
   loginForm = this.formBuilder.group({
     phone: ['', [Validators.required]],

@@ -16,6 +16,7 @@ import {
   organizationsList,
   selectedSpaceOrgs,
 } from '../../state/entities/organizations.entities';
+import { Dayjs } from 'dayjs';
 
 @Component({
   selector: 'naiparq-drive-in-payment',
@@ -76,10 +77,11 @@ export class DriveInComponent implements OnInit {
           const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
+                this.loadingMoreDriveIn = true;
                 this.handlePaginateDriveIn();
-                // this.loadingMoreDriveIn = true;
+                console.log('Visible ==>>', this.loadingMoreDriveIn);
               } else {
-                // this.loadingMoreDriveIn = false;
+                console.log('Invisible ==>>', this.loadingMoreDriveIn);
               }
             });
           });
@@ -97,10 +99,10 @@ export class DriveInComponent implements OnInit {
         if (!url) {
           return;
         }
-
         // Check if next pagination URL change
-        if (this.nextPaginationURL !== url) {
+        if (this.nextPaginationURL !== url && this.loadingMoreDriveIn) {
           this.store.dispatch(new driveInActions.LoadMoreDriveIn(url));
+          this.loadingMoreDriveIn = false;
         }
         // Dispatch load more
 

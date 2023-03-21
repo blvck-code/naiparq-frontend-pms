@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="naiparq-space-wrap">
+    <div class="naiparq-space-wrap py-3">
       <!--      No spaces available -->
       <div *ngIf="(spacesLoaded$ | async) && !(spaces$ | async)?.length">
         <h4>No spaces found</h4>
@@ -548,7 +548,7 @@
     <div class="modal-content p-0">
       <div class="modal-header border">
         <div class="d-flex gap-2 align-items-center">
-          <h5 class="font-[700] text-[18px] leading-[22px] text-[#000]">
+          <h5 class="space-titles font-[700] text-[18px] leading-[22px]">
             {{ (activeSpaceDetail$ | async)?.title }}
           </h5>
         </div>
@@ -578,7 +578,7 @@
 
       <div class="modal-body">
         <div class="pb-2">
-          <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
             Description
           </h4>
           <p
@@ -588,7 +588,7 @@
           </p>
         </div>
         <div>
-          <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
             Address
           </h4>
           <p
@@ -598,7 +598,7 @@
           </p>
         </div>
         <div class="py-2">
-          <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
             Organisations
           </h4>
           <p *ngIf="!(organizations$ | async)?.length">
@@ -614,7 +614,7 @@
           </div>
         </div>
         <div class="py-2">
-          <h4 class="font-[700] pb-1 text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] pb-1 text-[14px] leading-[17px]">
             Map
           </h4>
           <div class="h-[350px] w-[100%] bg-sky-100 rounded-lg">
@@ -622,7 +622,7 @@
           </div>
         </div>
         <div class="py-2">
-          <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
             Parking Features
           </h4>
           <div class="grid grid-cols-2 gap-3 py-2">
@@ -663,7 +663,7 @@
           </div>
         </div>
         <div class="py-2">
-          <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
             Type
           </h4>
           <p
@@ -674,7 +674,7 @@
         </div>
         <div class="py-2 grid grid-cols-2">
           <div>
-            <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+            <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
               Opening Time
             </h4>
             <p
@@ -684,7 +684,7 @@
             </p>
           </div>
           <div>
-            <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+            <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
               Closing Time
             </h4>
             <p
@@ -696,7 +696,7 @@
         </div>
 
         <div class="py-1 w-[70%]">
-          <h4 class="font-[700] text-[14px] leading-[17px] text-[#000]">
+          <h4 class="space-titles font-[700] text-[14px] leading-[17px]">
             Price schedule
           </h4>
           <div

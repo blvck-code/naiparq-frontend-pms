@@ -1,0 +1,38 @@
+.naiparq-register-form {
+  .naiparq-form-group {
+    label {
+      color: #000;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    input {
+      height: 48px;
+      width: 100%;
+      padding-left: 1rem;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background-color: #e8f0fe;
+      color: #000;
+      font-size: 1rem;
+
+      &.form-check-input {
+        height: 18px;
+        width: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    p {
+      color: #000;
+    }
+    a {
+      color: #000;
+      font-weight: bold;
+    }
+  }
+}

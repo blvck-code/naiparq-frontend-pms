@@ -58,3 +58,10 @@ export const billingsLoaded = createSelector(
   billingStateKey,
   (state) => state.loaded
 );
+export const totalRevenue = createSelector(getBillings, (bills) =>
+  bills.reduce(
+    (partialSum: number, revenue: BillingModel) =>
+      partialSum + parseInt(String(revenue.total_amount)),
+    0
+  )
+);

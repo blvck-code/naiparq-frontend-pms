@@ -17,6 +17,7 @@ import {
   selectedSpaceOrgs,
 } from '../../state/entities/organizations.entities';
 import { Dayjs } from 'dayjs';
+import { DriveOutModel } from '../../models/driveOut.model';
 
 @Component({
   selector: 'naiparq-drive-in-payment',
@@ -36,7 +37,7 @@ export class DriveInComponent implements OnInit {
 
   driveInForm = this.formBuilder.group({
     // Todo change this
-    space: ['a386fe43-eb73-4875-808c-72143279c136'],
+    space: ['', Validators.required],
     license_plate: ['', Validators.required],
   });
   whiteListForm = this.formBuilder.group({
@@ -49,6 +50,7 @@ export class DriveInComponent implements OnInit {
   });
 
   nextPaginationURL: string = '';
+  selectedDriveIn: any;
 
   isSubmitting: boolean = false;
   loadingMoreDriveIn: boolean = false;
@@ -231,6 +233,10 @@ export class DriveInComponent implements OnInit {
       map((entry) => entry.isIntersecting),
       distinctUntilChanged()
     );
+  }
+
+  clickDriveIn(driveIn: any): void {
+    this.selectedDriveIn = driveIn;
   }
 
   numSeq(n: number): Array<number> {

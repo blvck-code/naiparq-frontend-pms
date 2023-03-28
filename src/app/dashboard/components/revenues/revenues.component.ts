@@ -19,6 +19,7 @@ import {
   billingsLoaded,
   billingsLoading,
   getBillings,
+  totalRevenue,
 } from '../../state/entities/bill.entities';
 import { Observable } from 'rxjs';
 import { BillingModel } from '../../models/billing.model';
@@ -56,6 +57,7 @@ export class RevenuesComponent implements OnInit {
   billings$: Observable<BillingModel[]> = this.store.select(getBillings);
   billingsLoaded$: Observable<boolean> = this.store.select(billingsLoaded);
   billingsLoading: Observable<boolean> = this.store.select(billingsLoading);
+  revenue$: Observable<number> = this.store.select(totalRevenue);
 
   ngOnInit(): void {
     this.onInitHandler();
@@ -67,6 +69,6 @@ export class RevenuesComponent implements OnInit {
   }
 
   onInitHandler(): void {
-    this.store.dispatch(new billingActions.LoadBillings({ days: 30 }));
+    this.store.dispatch(new billingActions.LoadBillings({ days: 100 }));
   }
 }

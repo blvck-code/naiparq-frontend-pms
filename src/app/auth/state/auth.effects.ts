@@ -108,6 +108,23 @@ export class AuthEffects {
     );
   });
 
+  loadUsers: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType<authActions.LoadUsers>(authActions.AuthActionsTypes.LOAD_USERS),
+      switchMap(() => {
+        return this.authSrv.allUsers().pipe(
+          map((users) => {
+            return new authActions.LoadUsersSuccess(users);
+          }),
+          //@ts-ignore
+          catchError((err: HttpErrorResponse) => {
+            return console.log('Getting users failed ===>>', err);
+          })
+        );
+      })
+    );
+  });
+
   signUp$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.SignUp>(authActions.AuthActionsTypes.REGISTER),

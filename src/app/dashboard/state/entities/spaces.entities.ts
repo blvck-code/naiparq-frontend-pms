@@ -12,8 +12,14 @@ export interface SpacesEntities extends EntityState<SpaceModel> {
   loaded: boolean;
 }
 
+const sortByDate = (a: SpaceModel, b: SpaceModel) => {
+  return a.created_at.localeCompare(a.created_at);
+};
+
 export const spacesAdapter: EntityAdapter<SpaceModel> =
-  createEntityAdapter<SpaceModel>();
+  createEntityAdapter<SpaceModel>({
+    sortComparer: sortByDate,
+  });
 
 export const defaultSpace: SpacesEntities = {
   ids: [],

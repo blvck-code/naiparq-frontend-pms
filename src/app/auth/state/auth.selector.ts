@@ -43,3 +43,12 @@ export const blogger = createSelector(
   getAuthState,
   (state) => state.userInfo.user.user_type === 'blogger'
 );
+
+export const usersLoading = createSelector(
+  getAuthState,
+  (state) => state.users.loading
+);
+export const allUsers = createSelector(
+  getAuthState,
+  (state) => state.users.results
+);

@@ -3,6 +3,14 @@ import { DashService } from '../../services/dash.service';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../../shared/services/shared.service';
 
+// NgRx
+import { AppState } from '../../../app.state';
+import { Store } from '@ngrx/store';
+import * as authActions from '../../../auth/state/auth.actions';
+import { Observable } from 'rxjs';
+import { UserModel } from '../../../auth/model/user.model';
+import { allUsers, usersLoading } from '../../../auth/state/auth.selector';
+
 @Component({
   selector: 'naiparq-user-management',
   templateUrl: './user-management.component.html',
@@ -12,6 +20,10 @@ export class UserManagementComponent implements OnInit {
   userType: string = '';
   isSubmitting: boolean = false;
   formInvalid: boolean = false;
+
+  users: any[] = [];
+  allUsers$: Observable<UserModel[]> = this.store.select(allUsers);
+  allUsersLoading$: Observable<boolean> = this.store.select(usersLoading);
 
   userForm = this.fb.group({
     first_name: ['', Validators.required],
@@ -23,12 +35,20 @@ export class UserManagementComponent implements OnInit {
   });
 
   constructor(
+    private store: Store<AppState>,
     private dashSrv: DashService,
     private fb: UntypedFormBuilder,
     private sharedSrv: SharedService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dashSrv.getUsers().subscribe({
+      next: (resp) => {
+        this.users = resp.results;
+      },
+    });
+    this.store.dispatch(new authActions.LoadUsers());
+  }
 
   // Determines the user type chosen
   handleUserType(event: any): void {

@@ -37,7 +37,7 @@ export class LoadDriveOut implements Action {
 }
 export class LoadDriveOutSuccess implements Action {
   readonly type = DashActionTypes.LOAD_DRIVE_OUT_SUCCESS;
-  constructor(public payload: DriveOutResponseModel) {}
+  constructor(public payload: any) {}
 }
 export class LoadDriveOutFail implements Action {
   readonly type = DashActionTypes.LOAD_DRIVE_OUT_FAIL;

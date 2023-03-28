@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { DriveInResponseModel } from '../models/driveIn.model';
 import { SpaceModelResponse } from '../models/spaces.model';
 import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
@@ -16,11 +16,13 @@ import {
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { userInfo } from '../../auth/state/auth.selector';
+import { AllUsersModel } from '../../auth/model/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashService {
+  currentDate = new Date();
   constructor(private http: HttpClient, private store: Store<AppState>) {}
   timeIntervals = [
     {
@@ -63,6 +65,10 @@ export class DashService {
       key: '4hr 30 mins',
       value: 4.5,
     },
+    {
+      key: 'More',
+      value: 86400,
+    },
   ];
   spaceFeatures = [
     {
@@ -103,6 +109,10 @@ export class DashService {
     },
   ];
 
+  getUsers(): Observable<AllUsersModel> {
+    return this.http.get<AllUsersModel>(env.naiparqUsers);
+  }
+
   // Gives certain rights if user is admin
   adminRights(): boolean {
     let isAdmin: boolean = false;
@@ -140,6 +150,18 @@ export class DashService {
   loadDriveOut(): Observable<DriveOutResponseModel> {
     return this.http.get<DriveOutResponseModel>(env.naiparqDriveOut);
   }
+  loadGuestDriveOut(): Observable<any> {
+    return this.http.get<DriveOutResponseModel>(env.naiparqGuestDriveOut);
+  }
+
+  combinedDriveOut(): void {
+    forkJoin([this.loadDriveOut(), this.loadGuestDriveOut()]).subscribe({
+      next: ([resp1, resp2]) => {
+        return [...resp1.results, ...resp2.results];
+      },
+    });
+  }
+
   retrieveDriveOut(driveOutId: string): Observable<DriveOutModel> {
     return this.http.get<DriveOutModel>(`${env.naiparqDriveOut}/${driveOutId}`);
   }

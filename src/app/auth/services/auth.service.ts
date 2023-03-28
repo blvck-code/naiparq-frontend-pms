@@ -9,6 +9,7 @@ import { SharedService } from '../../shared/services/shared.service';
 import dayjs from 'dayjs';
 import { RegisterModel, RegisterResponseModel } from '../model/register.model';
 import { ProfileResponseModel } from '../model/profile.model';
+import { AllUsersModel } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,10 @@ export class AuthService {
         Authorization: `Bearer ${this.storageService.getToken()}`,
       }),
     };
+  }
+
+  allUsers(): Observable<AllUsersModel> {
+    return this.http.get<AllUsersModel>(env.naiparqUsers);
   }
 
   logIn(loginData: LoginModel): Observable<LoginResponseModel> {

@@ -16,6 +16,13 @@ export interface UserModel {
   last_login?: string;
 }
 
+export interface AllUsersModel {
+  count: number;
+  next: string;
+  previous: string;
+  results: UserModel[];
+}
+
 export interface TokenModel {
   expiry_time: string;
   lifetime: string;

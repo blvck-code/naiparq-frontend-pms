@@ -40,13 +40,13 @@
               <span class="table-title">Roles</span>
             </th>
             <th scope="col">
-              <span class="table-title">Space name</span>
-            </th>
-            <th scope="col">
               <span class="table-title">Last login</span>
             </th>
             <th scope="col">
-              <span class="table-title">Contact</span>
+              <span class="table-title">Phone number</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Email address</span>
             </th>
             <th scope="col">
               <span class="table-title">Action</span>
@@ -82,30 +82,30 @@
         <!--        </tbody>-->
 
         <tbody class="table-body">
-          <tr *ngFor="let driveIn of numSeq(20)">
+          <tr *ngFor="let user of allUsers$ | async">
             <td>
               <div class="table-text">
-                <span>Mzee Waziri</span>
+                <span>{{ user.first_name }} {{ user.last_name }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>Blogger</span>
+                <span>{{ user.user_type | titlecase }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>Complex Building</span>
+                <span>{{ user.last_login | date : "MMM d, y, h:mm a" }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>07/11/2022</span>
+                <span>{{ user.phone_number }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>0700 000 000</span>
+                <span>{{ user.email }}</span>
               </div>
             </td>
             <td>

@@ -1,7 +1,9 @@
 <div class="naiparq-drivein">
   <div class="naiparq-table-wrap naiparq-scrollbar">
     <div class="naiparq-table-title">
-      <p class="naiparq-table-date">December 09, 2022</p>
+      <p class="naiparq-table-date">
+        {{ todayDate() | date : "MMMM dd, yyyy" }}
+      </p>
 
       <div class="cash-table-btns d-flex">
         <button
@@ -242,6 +244,7 @@
           class="rounded-lg relative overflow-hidden h-[250px] bg-sky-100 mt-2"
         >
           <button
+            (click)="changeSlider(-1)"
             class="absolute left-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
           >
             <svg
@@ -258,7 +261,8 @@
             </svg>
           </button>
           <button
-            class="absolute right-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
+            (click)="changeSlider(1)"
+            class="absolute h-[100%] right-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
           >
             <svg
               width="32"
@@ -275,8 +279,8 @@
           </button>
           <img
             *ngIf="selectedDriveOut?.drive_in_details?.entry_screenshot"
-            [src]="selectedDriveOut?.drive_in_details?.entry_screenshot"
-            class="w-[100%] object-cover"
+            [src]="images[slideIndex]"
+            class="w-[100%] object-cover ease-in-out duration-500"
             alt=""
           />
           <img

@@ -87,10 +87,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private isExpired(expTime: string): boolean {
     let currentTimeInMilli = new Date().getTime();
-    console.warn('Token Expired! ===>>', currentTimeInMilli);
+    // console.warn('Token Expired! ===>>', currentTimeInMilli);
     if (+expTime < currentTimeInMilli) {
       // Todo send token generator
-      console.warn('Token Expired! ===>>', currentTimeInMilli);
+      // console.warn('Token Expired! ===>>', currentTimeInMilli);
       return true;
     }
     return false;
@@ -129,7 +129,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   isRefreshTokenProgress(accessToken: string, expTime: string) {
-    console.log('test ===>>', expTime);
     if (this.isExpired(expTime)) {
       // Set the refreshTokenSubject to null so that subsequent API calls will wait until the new token has been retrieved
       this.refreshTokenSubject.next(null);

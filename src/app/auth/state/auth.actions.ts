@@ -3,7 +3,7 @@ import { LoginResponseModel } from '../model/login.model';
 import { AuthState, initialState } from './auth.reducer';
 import { RegisterModel, RegisterResponseModel } from '../model/register.model';
 import { ProfileResponseModel } from '../model/profile.model';
-import { TokenModel } from '../model/user.model';
+import { AllUsersModel, TokenModel } from '../model/user.model';
 
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
@@ -42,6 +42,11 @@ export enum AuthActionsTypes {
   LOGOUT = 'userCenter/logout',
   LOGOUT_SUCCESS = 'userCenter/logoutSuccess',
   LOGOUT_FAIL = 'userCenter/logoutFail',
+
+  // Users
+  LOAD_USERS = 'userCenter/loadUsers',
+  LOAD_USERS_SUCCESS = 'userCenter/loadUsersSuccess',
+  LOAD_USERS_FAIL = 'userCenter/loadUsersFail',
 }
 
 // Reset Form Invalid
@@ -147,6 +152,37 @@ export class LogOutFail implements ActionExecutable<AuthState> {
   }
 }
 
+// Load Users
+export class LoadUsers implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_USERS;
+  constructor() {}
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+      users: {
+        loading: true,
+        next: '',
+        results: [],
+      },
+    };
+  }
+}
+
+export class LoadUsersSuccess implements ActionExecutable<AuthState> {
+  readonly type = AuthActionsTypes.LOAD_USERS_SUCCESS;
+  constructor(public payload: AllUsersModel) {}
+  execute(state: AuthState): AuthState {
+    return {
+      ...state,
+      users: {
+        loading: false,
+        next: this.payload.next,
+        results: this.payload.results,
+      },
+    };
+  }
+}
+
 // Sign Up
 // Todo set up sign up with store
 export class SignUp implements ActionExecutable<AuthState> {
@@ -183,9 +219,7 @@ export class SignUpFail implements ActionExecutable<AuthState> {
 // Load Profile
 export class LoadProfile implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOAD_PROFILE;
-  constructor() {
-    console.log('Getting profileeee');
-  }
+  constructor() {}
 
   execute(state: AuthState): AuthState {
     return {
@@ -195,9 +229,7 @@ export class LoadProfile implements ActionExecutable<AuthState> {
 }
 export class LoadProfileSuccess implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOAD_PROFILE_SUCCESS;
-  constructor(public payload: ProfileResponseModel) {
-    console.log('User profile ===>>', payload);
-  }
+  constructor(public payload: ProfileResponseModel) {}
 
   execute(state: AuthState): AuthState {
     const userId = state.userInfo.user.id;

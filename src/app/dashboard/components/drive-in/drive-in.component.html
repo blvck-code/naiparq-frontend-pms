@@ -1,7 +1,9 @@
 <div class="naiparq-drivein">
   <div class="naiparq-table-wrap naiparq-scrollbar">
     <div class="naiparq-table-title">
-      <p class="naiparq-table-date">December 09, 2022</p>
+      <p class="naiparq-table-date">
+        {{ todayDate() | date : "MMMM dd, yyyy" }}
+      </p>
       <div class="cash-table-btns d-flex">
         <button
           data-bs-toggle="modal"
@@ -50,6 +52,9 @@
             </th>
             <th scope="col">
               <span class="table-title">Status</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Action</span>
             </th>
           </tr>
         </thead>
@@ -125,8 +130,29 @@
             </td>
             <td>
               <div class="table-text">
-                <span>{{ driveIn.status }}</span>
+                <button
+                  *ngIf="driveIn.status === 'active'"
+                  class="naiparq-btn naiparq-btn-success"
+                >
+                  <span>{{ driveIn.status | titlecase }}</span>
+                </button>
+                <button
+                  *ngIf="driveIn.status === 'complete'"
+                  class="naiparq-btn naiparq-btn-dark"
+                >
+                  <span>{{ driveIn.status | titlecase }}</span>
+                </button>
               </div>
+            </td>
+            <td>
+              <button
+                (click)="clickDriveIn(driveIn)"
+                data-bs-toggle="modal"
+                data-bs-target="#previewDriveIn"
+                class="naiparq-btn naiparq-btn-primary px-3"
+              >
+                View
+              </button>
             </td>
           </tr>
           <div id="bottomPageDriveIn"></div>
@@ -135,9 +161,9 @@
       <app-inline-loader *ngIf="loadingMoreDriveIn"></app-inline-loader>
     </div>
   </div>
-  <div class="naiparq-cash-payment">
-    <p>Total: KES 10, 000</p>
-  </div>
+  <!--  <div class="naiparq-cash-payment">-->
+  <!--    <p>Total: KES 10, 000</p>-->
+  <!--  </div>-->
 </div>
 
 <!-- Modal -->
@@ -180,6 +206,21 @@
         (ngSubmit)="onSubmit()"
         class="modal-body"
       >
+        <div class="naiparq-form-group">
+          <label for="nPlate">Space</label>
+          <select
+            class="form-select h-[48px] mt-1.5"
+            aria-label="Default select example"
+            formControlName="space"
+          >
+            <option
+              *ngFor="let space of spaces$ | async"
+              value="{{ space.id }}"
+            >
+              {{ space.title | titlecase }}
+            </option>
+          </select>
+        </div>
         <div class="naiparq-form-group">
           <label for="nPlate"> Number Plate </label>
           <input
@@ -326,6 +367,94 @@
           </button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  -->
+<div
+  class="modal fade add-plate-modal"
+  id="previewDriveIn"
+  tabindex="-1"
+  aria-labelledby="previewDriveIn"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Number Plate
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
+              {{ selectedDriveIn?.license_plate }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Space Name
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
+              {{ selectedDriveIn?.space_details?.title }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Time In
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
+              {{
+                selectedDriveIn?.check_in_time
+                  | date : "EEEE, dd MMM, YYYY, h:mm a"
+              }}
+            </h5>
+          </div>
+        </div>
+        <div
+          class="rounded-lg relative overflow-hidden h-[250px] bg-sky-100 mt-2"
+        >
+          <img
+            *ngIf="selectedDriveIn?.entry_screenshot"
+            [src]="selectedDriveIn?.entry_screenshot"
+            class="w-[100%] object-cover ease-in-out duration-500"
+            alt=""
+          />
+          <img
+            *ngIf="!selectedDriveIn?.entry_screenshot"
+            src="
+              assets/images/no-image.jpg
+            "
+            class="h-[100%] object-cover"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>

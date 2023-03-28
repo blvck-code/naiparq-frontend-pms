@@ -63,6 +63,10 @@ export class DriveInComponent implements OnInit {
     private formBuilder: UntypedFormBuilder
   ) {}
 
+  todayDate(): Date {
+    return this.dashSrv.currentDate;
+  }
+
   ngOnInit(): void {
     this.onInitHandler();
     this.observerInstance();

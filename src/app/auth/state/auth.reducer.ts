@@ -12,6 +12,11 @@ export interface AuthState {
     isLoggedIn: boolean;
     invalid: boolean;
   };
+  users: {
+    loading: boolean;
+    next?: string;
+    results: UserModel[];
+  };
 }
 
 export const initialState: AuthState = {
@@ -35,6 +40,11 @@ export const initialState: AuthState = {
     isLoading: false,
     isLoggedIn: false,
     invalid: false,
+  },
+  users: {
+    loading: false,
+    next: '',
+    results: [],
   },
 };
 

@@ -52,6 +52,10 @@ export class LogsComponent implements OnInit {
     this.slideIndex += n;
   }
 
+  todayDate(): Date {
+    return this.dashSrv.currentDate;
+  }
+
   combinedDriveOut(): void {
     forkJoin([
       this.dashSrv.loadDriveOut(),

@@ -16,11 +16,13 @@ import {
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { userInfo } from '../../auth/state/auth.selector';
+import { AllUsersModel } from '../../auth/model/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashService {
+  currentDate = new Date();
   constructor(private http: HttpClient, private store: Store<AppState>) {}
   timeIntervals = [
     {
@@ -106,6 +108,10 @@ export class DashService {
       value: 'yard',
     },
   ];
+
+  getUsers(): Observable<AllUsersModel> {
+    return this.http.get<AllUsersModel>(env.naiparqUsers);
+  }
 
   // Gives certain rights if user is admin
   adminRights(): boolean {

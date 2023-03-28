@@ -1,7 +1,9 @@
 <div class="naiparq-drivein">
   <div class="naiparq-table-wrap naiparq-scrollbar">
     <div class="naiparq-table-title">
-      <p class="naiparq-table-date">December 09, 2022</p>
+      <p class="naiparq-table-date">
+        {{ todayDate() | date : "MMMM dd, yyyy" }}
+      </p>
 
       <div class="cash-table-btns d-flex">
         <button

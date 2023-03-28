@@ -242,6 +242,7 @@
           class="rounded-lg relative overflow-hidden h-[250px] bg-sky-100 mt-2"
         >
           <button
+            (click)="changeSlider(-1)"
             class="absolute left-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
           >
             <svg
@@ -258,7 +259,8 @@
             </svg>
           </button>
           <button
-            class="absolute right-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
+            (click)="changeSlider(1)"
+            class="absolute h-[100%] right-2 top-[50%] translate-y-[-50%] transition-all duration-500 hover:opacity-75 hover:scale-125"
           >
             <svg
               width="32"
@@ -275,8 +277,8 @@
           </button>
           <img
             *ngIf="selectedDriveOut?.drive_in_details?.entry_screenshot"
-            [src]="selectedDriveOut?.drive_in_details?.entry_screenshot"
-            class="w-[100%] object-cover"
+            [src]="images[slideIndex]"
+            class="w-[100%] object-cover ease-in-out duration-500"
             alt=""
           />
           <img

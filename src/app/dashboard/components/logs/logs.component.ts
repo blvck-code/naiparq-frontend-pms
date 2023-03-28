@@ -17,6 +17,9 @@ export class LogsComponent implements OnInit {
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
 
   selectedDriveOut!: DriveOutModel;
+  currentImg: any;
+  slideIndex: number = 0;
+  images: any[] = [];
 
   constructor(
     private storeSrv: StoreService,
@@ -31,6 +34,22 @@ export class LogsComponent implements OnInit {
   }
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  changeSlider(n: number): void {
+    if (this.images.length !== 2) {
+      return;
+    }
+
+    if (this.slideIndex === 1) {
+      this.slideIndex = 0;
+      return;
+    }
+    if (this.slideIndex === 0) {
+      this.slideIndex = 1;
+      return;
+    }
+    this.slideIndex += n;
   }
 
   combinedDriveOut(): void {
@@ -51,6 +70,11 @@ export class LogsComponent implements OnInit {
   }
 
   selectedLog(driveOut: DriveOutModel): void {
+    console.log('Selected item ==>>', driveOut);
     this.selectedDriveOut = driveOut;
+    this.images = [
+      driveOut.drive_in_details.entry_screenshot,
+      driveOut.exit_screenshot,
+    ];
   }
 }

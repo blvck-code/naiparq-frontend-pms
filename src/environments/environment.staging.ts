@@ -24,7 +24,7 @@ export const environment = {
   // Create users
   naiparqCreateBlogger: naiparqBaseURL + 'accounts/register/blogger/',
   naiparqCreateAttendant: naiparqBaseURL + 'accounts/register/attendant/',
-
+  naiparqUsers: naiparqBaseURL + 'accounts/users/',
   // Spaces
   naiparqListSpaces: naiparqBaseURL + 'spaces/space',
   naiparqCreateSpace: naiparqBaseURL + 'spaces/space/',
@@ -44,6 +44,7 @@ export const environment = {
 
   // Drive Out Model URLS
   naiparqDriveOut: naiparqBaseURL + 'spaces/drive/out',
+  naiparqGuestDriveOut: naiparqBaseURL + 'guest/drive/out',
 
   // Billing Module URLS
   naiparqBillingList: naiparqBaseURL + 'bill/billings',

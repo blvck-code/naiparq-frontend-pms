@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
         }
         this.store.dispatch(new spaceActions.LoadSpaces());
         this.store.dispatch(new authActions.LoadProfile());
-        this.store.dispatch(new billingActions.LoadBillings({ days: 30 }));
+        this.store.dispatch(new billingActions.LoadBillings({ days: 100 }));
       },
     });
   }

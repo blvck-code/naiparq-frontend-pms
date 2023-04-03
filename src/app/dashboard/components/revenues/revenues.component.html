@@ -3,7 +3,7 @@
     <!--    Revenue Header-->
     <div class="naiparq-revenue-header pb-14 max-w-[1200px]">
       <div class="naiparq-revenue-header-date">
-        <h4>May 22, 2022</h4>
+        <h4>{{ todayDate() | date : "MMMM dd, yyyy" }}</h4>
       </div>
       <div
         class="naiparq-revenue-header-amounts grid grid-cols-2 tablet:grid-cols-4 gap-3"

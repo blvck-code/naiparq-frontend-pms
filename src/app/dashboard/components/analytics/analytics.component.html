@@ -1,103 +1,72 @@
 <div class="naiparq-revenue">
-  <div class="naiparq-revenue-container">
+  <div class="naiparq-revenue-container grid grid-cols-3 gap-4">
     <!--    Revenue Header-->
-    <div class="naiparq-revenue-header pb-14 max-w-[1200px]">
-      <div class="naiparq-revenue-header-date">
-        <h4>May 22, 2022</h4>
+    <div class="col-span-2">
+      <div class="naiparq-revenue-header pb-14 max-w-[1200px]">
+        <div class="naiparq-revenue-header-date">
+          <h4>{{ todayDate() | date : "MMMM dd, yyyy" }}</h4>
+        </div>
+        <div
+          class="naiparq-revenue-header-amounts grid grid-cols-2 tablet:grid-cols-4 gap-3"
+        >
+          <div
+            class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"
+          >
+            <p class="text-base mb-2">Total Revenue</p>
+            <h4 class="text-3xl font-bold">
+              KES {{ revenue$ | async | number : "1.2-2" }}
+            </h4>
+          </div>
+        </div>
       </div>
-      <div
-        class="naiparq-revenue-header-amounts grid grid-cols-2 tablet:grid-cols-4 gap-3"
-      >
-        <div
-          class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"
-        >
-          <p class="text-base mb-2">Total Number of Cars</p>
-          <h4 class="text-4xl font-bold">200</h4>
-        </div>
 
-        <div
-          class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"
-        >
-          <p class="text-base mb-2">Staff</p>
-          <h4 class="text-4xl font-bold">200</h4>
-        </div>
+      <!--    Revenue Chart Graph -->
+      <div class="naiparq-revenue-chart">
+        <div class="container vertical sample">
+          <div class="graph-title">
+            <p class="graph-title-text">Transaction trend</p>
 
-        <div
-          class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"
-        >
-          <p class="text-base mb-2">VIP</p>
-          <h4 class="text-4xl font-bold">200</h4>
-        </div>
+            <div class="graph-legend">
+              <!--            <div class="legend-icon"></div>-->
+              <!--            <p>Income</p>-->
+              <div class="legend-icon expense"></div>
+              <p>Income</p>
 
-        <div
-          class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"
-        >
-          <p class="text-base mb-2">Guest</p>
-          <h4 class="text-4xl font-bold">200</h4>
+              <select
+                (change)="handleChangeIncome($event)"
+                class="form-select cursor-pointer"
+              >
+                <option selected value="7">Last 7 day</option>
+                <option value="30">Last 30 days</option>
+                <option value="100">All Incomes</option>
+              </select>
+            </div>
+          </div>
+          <div class="legend">
+            <igx-legend orientation="Horizontal" name="Legend" #legend>
+            </igx-legend>
+          </div>
+          <div class="container fill">
+            <igx-category-chart
+              chartType="Spline"
+              isTransitionInEnabled="true"
+              yAxisTitle="Money"
+              [dataSource]="billings"
+              [legend]="legend"
+              isHorizontalZoomEnabled="false"
+              isVerticalZoomEnabled="false"
+              computedPlotAreaMarginMode="Series"
+              name="chart"
+              #chart
+            >
+            </igx-category-chart>
+          </div>
         </div>
       </div>
     </div>
 
-    <!--    Revenue Chart Graph -->
-    <div class="naiparq-revenue-chart max-w-[1200px]">
-      <div class="container vertical sample">
-        <div class="graph-title">
-          <p class="graph-title-text">Transaction trend</p>
-
-          <div class="graph-legend">
-            <div class="legend-icon"></div>
-            <p>Income</p>
-            <div class="legend-icon expense"></div>
-            <p>Expenses</p>
-
-            <div class="dropdown">
-              <div
-                class="graph-period"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <p>Last 7 days</p>
-                <svg
-                  width="9"
-                  height="6"
-                  viewBox="0 0 9 6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.9425 0.442497L4.5 3.8775L1.0575 0.442497L0 1.5L4.5 6L9 1.5L7.9425 0.442497Z"
-                    fill="#1B212D"
-                  />
-                </svg>
-              </div>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Option 1</a></li>
-                <li><a class="dropdown-item" href="#">Option 2</a></li>
-                <li><a class="dropdown-item" href="#">Option 3</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="legend">
-          <igx-legend orientation="Horizontal" name="Legend" #legend>
-          </igx-legend>
-        </div>
-        <div class="container fill">
-          <igx-category-chart
-            chartType="Spline"
-            isTransitionInEnabled="true"
-            yAxisTitle="Money"
-            [dataSource]="billings"
-            [legend]="legend"
-            isHorizontalZoomEnabled="false"
-            isVerticalZoomEnabled="false"
-            computedPlotAreaMarginMode="Series"
-            name="chart"
-            #chart
-          >
-          </igx-category-chart>
-        </div>
-      </div>
+    <div class="border-2">
+      <naiparq-linear-graph></naiparq-linear-graph>
     </div>
   </div>
 </div>

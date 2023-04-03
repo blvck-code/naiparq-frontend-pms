@@ -141,6 +141,12 @@ export class DashService {
     return this.http.post(`${env.naiparqDriveIn}/`, driveInContent);
   }
 
+  loadTest(): Observable<any> {
+    return this.http.get(
+      "https://canvasjs.com/data/gallery/angular/btcusd2021.json'"
+    );
+  }
+
   // Space Drive Out
   createDriveOut(payload: {
     license_plate: string;

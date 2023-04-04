@@ -3,31 +3,31 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HttpErrorResponse
+  HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import {catchError, Observable, throwError} from 'rxjs';
-import {ErrorModel} from "../shared/models/error.model";
+import { catchError, Observable, throwError } from 'rxjs';
+import { ErrorModel } from '../shared/models/error.model';
 
 // NgRx
-import {Store} from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import * as authActions from '../auth/state/auth.actions';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  error: ErrorModel = {}
+  error: ErrorModel = {};
 
-
-  constructor(
-    private store: Store,
-  ) {
-  }
+  constructor(private store: Store) {}
 
   handleError = (err: HttpErrorResponse): ErrorModel => {
     let errMsg: string;
     console.log('First time error ==>>>', err);
+    console.log('Ip address ==>>>', err.error.ip_address[0]);
 
     if (err.error.email) {
       errMsg = err.error.email.toString();
+    } else if (err.error.ip_address[0] === 'Enter a valid URL') {
+      errMsg = 'Enter valid URL for ip address';
     } else if (err.error.phone_number) {
       errMsg = err.error.phone_number.toString();
     } else if (err.error['non_field_errors'][0]) {
@@ -38,19 +38,21 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     this.error = {
       message: errMsg,
-      status: err.status
-    }
+      status: err.status,
+    };
     console.log('Final error content ==>>', this.error);
-    return this.error
-  }
+    return this.error;
+  };
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-
         // Unauthorised User Access
         if (error.status === 401 || error.status === 403) {
-          this.store.dispatch(new authActions.LogOut())
+          this.store.dispatch(new authActions.LogOut());
         }
         // Client Side Error
         if (error instanceof ErrorEvent) {
@@ -64,6 +66,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         return throwError(() => this.handleError(error));
       })
-    )
+    );
   }
 }

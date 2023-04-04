@@ -56,6 +56,7 @@ export const environment = {
   naiparqCreatePriceSchedule: naiparqBaseURL + 'spaces/priceschedule/',
 
   // Device Module URLS
+  naiparqCreateDevice: naiparqBaseURL + 'asset/device/',
   naiparqDevicesList: naiparqBaseURL + 'asset/device',
 
   // Naiparq Blog

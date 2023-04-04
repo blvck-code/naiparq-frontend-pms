@@ -122,8 +122,8 @@
   </fieldset>
 
   <a
-    href="/auth/password_reset"
-    class="text-base self-start px-3 font-bold hover:underline text-[#000] hover:text-[#000]"
+    (click)="redirectRoute('/auth/password_reset')"
+    class="text-base cursor-pointer self-start px-3 font-bold hover:underline text-[#000] hover:text-[#000]"
   >
     Forgot password?
   </a>

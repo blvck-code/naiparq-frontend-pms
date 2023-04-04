@@ -19,6 +19,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private storageService: StorageService
   ) {}
 
@@ -28,6 +29,10 @@ export class AuthService {
         Authorization: `Bearer ${this.storageService.getToken()}`,
       }),
     };
+  }
+
+  redirectRoute(url: string): void {
+    this.router.navigate([url]);
   }
 
   allUsers(): Observable<AllUsersModel> {

@@ -49,6 +49,10 @@ export class LoginComponent implements OnInit {
     this.handleError();
   }
 
+  redirectRoute(link: string): void {
+    this.authSrv.redirectRoute(link);
+  }
+
   handleError(): void {
     this.errMsg$.subscribe({
       next: (message) => {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'naiparq-confirm-reset',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm-reset.component.scss'],
 })
 export class ConfirmResetComponent implements OnInit {
-  constructor() {}
+  constructor(private authSrv: AuthService) {}
 
   ngOnInit(): void {}
+
+  redirectRoute(link: string): void {
+    this.authSrv.redirectRoute(link);
+  }
 }

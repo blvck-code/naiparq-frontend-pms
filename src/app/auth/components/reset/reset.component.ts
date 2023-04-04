@@ -32,6 +32,10 @@ export class ResetComponent implements OnInit {
     );
   }
 
+  redirectRoute(link: string): void {
+    this.authSrv.redirectRoute(link);
+  }
+
   resetSubmit(): void {
     this.submitting = true;
 

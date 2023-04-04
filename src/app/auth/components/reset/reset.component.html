@@ -1,1 +1,80 @@
-<p>reset works!</p>
+<form
+  [formGroup]="resetForm"
+  (ngSubmit)="resetSubmit()"
+  class="naiparq-login-form"
+>
+  <h3 class="pb-2 px-2 font-[700] self-start text-[20px] leading-[20px]">
+    Reset password
+  </h3>
+  <fieldset class="naiparq-login-form-item py-2">
+    <label for="userEmail">Phone number</label>
+    <div class="naiparq-login-email">
+      <svg
+        class="input-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 12.5C12.7614 12.5 15 10.2614 15 7.5C15 4.73858 12.7614 2.5 10 2.5C7.23858 2.5 5 4.73858 5 7.5C5 10.2614 7.23858 12.5 10 12.5Z"
+          stroke="black"
+          stroke-width="2"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M2.4209 16.8743C3.1893 15.5442 4.29419 14.4398 5.62456 13.672C6.95493 12.9042 8.46393 12.5 9.99997 12.5C11.536 12.5 13.045 12.9043 14.3754 13.6721C15.7057 14.44 16.8106 15.5444 17.579 16.8744"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <input
+        [autocomplete]="true"
+        [class.is-invalid]="isValid('phone_number')"
+        type="text"
+        class="form-control form-input"
+        formControlName="phone_number"
+        placeholder="0710000000"
+        onkeypress="return (event.charCode !==8 && event.charCode ===0 || (event.charCode >= 48 && event.charCode <= 57))"
+      />
+    </div>
+    <div *ngIf="isValid('phone_number')">
+      <small
+        *ngIf="
+          resetForm.controls['phone_number'].errors &&
+          resetForm.controls['phone_number'].errors['required']
+        "
+        class="text-danger"
+        >Phone is required</small
+      >
+      <small
+        *ngIf="
+          resetForm.controls['phone_number'].errors &&
+          resetForm.controls['phone_number'].errors['pattern']
+        "
+        class="text-danger"
+        >Phone number should be 10 digits long, Only numbers</small
+      >
+    </div>
+  </fieldset>
+
+  <a
+    href="/auth"
+    class="text-base self-start px-3 font-bold hover:underline text-[#000] hover:text-[#000]"
+  >
+    Back to login
+  </a>
+
+  <button
+    [class.btn-loading]="submitting"
+    [disabled]="isValid('phone_number')"
+    class="naiparq-btn naiparq-btn-dark"
+    type="submit"
+  >
+    <span class="btn-text">Submit</span>
+  </button>
+</form>

@@ -49,6 +49,10 @@ export class AuthService {
     );
   }
 
+  resetPass(phoneNum: string): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(env.naiparqResetPass, phoneNum);
+  }
+
   refreshToken(refreshToken: string): Observable<any> {
     console.log('Refresh topic ==>>', refreshToken);
     return this.http.post('', '');

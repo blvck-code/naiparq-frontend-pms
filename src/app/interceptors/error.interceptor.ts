@@ -22,16 +22,16 @@ export class ErrorInterceptor implements HttpInterceptor {
   handleError = (err: HttpErrorResponse): ErrorModel => {
     let errMsg: string;
     console.log('First time error ==>>>', err);
-    console.log('Ip address ==>>>', err.error.ip_address[0]);
+    console.log('Non field ==>>>', err.error.non_field_errors.toString());
 
     if (err.error.email) {
       errMsg = err.error.email.toString();
-    } else if (err.error.ip_address[0] === 'Enter a valid URL') {
-      errMsg = 'Enter valid URL for ip address';
+    } else if (err.error.ip_address) {
+      errMsg = err.error.ip_address.toString();
+    } else if (err.error.non_field_errors.toString()) {
+      errMsg = err.error.non_field_errors.toString();
     } else if (err.error.phone_number) {
       errMsg = err.error.phone_number.toString();
-    } else if (err.error['non_field_errors'][0]) {
-      errMsg = err.error['non_field_errors'][0];
     } else {
       errMsg = 'Unknown error, please try again.';
     }

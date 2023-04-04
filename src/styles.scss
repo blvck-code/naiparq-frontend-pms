@@ -238,8 +238,8 @@ showdown {
   }
 
   p {
-    font-size: 18px;
-    line-height: 140%;
+    font-size: 14px;
+    line-height: 18px;
   }
   a {
     font-weight: 700;
@@ -288,6 +288,11 @@ showdown {
   position: relative;
   transition: all 250ms ease-in-out;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 
   &.naiparq-btn-primary {
     width: auto;

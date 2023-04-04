@@ -67,7 +67,8 @@
 
   .naiparq-login-wrap {
     width: 554px;
-    min-height: 559px;
+    //max-height: 559px;
+    height: auto;
     background: #ffffff;
     border-radius: 10px;
     display: flex;

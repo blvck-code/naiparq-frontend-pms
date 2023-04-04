@@ -6,7 +6,7 @@ import { DriveInResponseModel } from '../models/driveIn.model';
 import { SpaceModelResponse } from '../models/spaces.model';
 import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
 import { BillingModel, BillingResponseModel } from '../models/billing.model';
-import { DevicesResponseModel } from '../models/devices.model';
+import { DevicesModel, DevicesResponseModel } from '../models/devices.model';
 import { PricingModel } from '../models/pricing.model';
 import { PriceScheduleModel } from '../models/priceSchedule.model';
 import {
@@ -141,6 +141,12 @@ export class DashService {
     return this.http.post(`${env.naiparqDriveIn}/`, driveInContent);
   }
 
+  loadTest(): Observable<any> {
+    return this.http.get(
+      "https://canvasjs.com/data/gallery/angular/btcusd2021.json'"
+    );
+  }
+
   // Space Drive Out
   createDriveOut(payload: {
     license_plate: string;
@@ -164,6 +170,18 @@ export class DashService {
 
   retrieveDriveOut(driveOutId: string): Observable<DriveOutModel> {
     return this.http.get<DriveOutModel>(`${env.naiparqDriveOut}/${driveOutId}`);
+  }
+
+  // create Asset Devices
+  createAsset(content: any): Observable<DevicesModel> {
+    return this.http.post<DevicesModel>(env.naiparqCreateDevice, content);
+  }
+  deleteAsset(
+    assetId: string
+  ): Observable<{ message: string; status: number }> {
+    return this.http.delete<{ message: string; status: number }>(
+      `${env.naiparqCreateDevice}${assetId}`
+    );
   }
 
   // Spaces

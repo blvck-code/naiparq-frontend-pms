@@ -34,4 +34,5 @@ export enum DashActionTypes {
   LOAD_DEVICES = 'devices/loadDevices',
   LOAD_DEVICES_SUCCESS = 'devices/loadDevicesSuccess',
   LOAD_DEVICES_FAIL = 'devices/loadDevicesFail',
+  ADD_DEVICE = 'devices/addDevice',
 }

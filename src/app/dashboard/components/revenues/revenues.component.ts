@@ -23,6 +23,7 @@ import {
 } from '../../state/entities/bill.entities';
 import { Observable } from 'rxjs';
 import { BillingModel } from '../../models/billing.model';
+import { DashService } from '../../services/dash.service';
 
 @Component({
   selector: 'naiparq-revenues',
@@ -33,6 +34,7 @@ import { BillingModel } from '../../models/billing.model';
 export class RevenuesComponent implements OnInit {
   constructor(
     private _detector: ChangeDetectorRef,
+    private dashSrv: DashService,
     private store: Store<AppState>
   ) {}
 
@@ -66,6 +68,10 @@ export class RevenuesComponent implements OnInit {
   handleChangeIncome(event: any): void {
     const days = event.target.value;
     this.store.dispatch(new billingActions.LoadBillings({ days }));
+  }
+
+  todayDate(): Date {
+    return this.dashSrv.currentDate;
   }
 
   onInitHandler(): void {

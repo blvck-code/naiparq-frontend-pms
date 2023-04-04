@@ -32,6 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SpacesEffects } from './state/effects/spaces.effects';
 import { SharedModule } from '../shared/shared.module';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { LinearGraphComponent } from './components/analytics/linear-graph/linear-graph.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     MotoristManagementComponent,
     NotificationsComponent,
     SideNavComponent,
+    LinearGraphComponent,
   ],
   imports: [
     CommonModule,

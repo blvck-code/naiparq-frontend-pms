@@ -1,9 +1,9 @@
 <div class="naiparq-revenue">
   <div class="naiparq-revenue-container">
     <!--    Revenue Header-->
-    <div class="naiparq-revenue-header pb-14 max-w-[1200px]">
+    <div class="naiparq-revenue-header pb-3 max-w-[1200px]">
       <div class="naiparq-revenue-header-date">
-        <h4>May 22, 2022</h4>
+        <h4>{{ todayDate() | date : "MMMM dd, yyyy" }}</h4>
       </div>
       <div
         class="naiparq-revenue-header-amounts grid grid-cols-2 tablet:grid-cols-4 gap-3"
@@ -15,13 +15,6 @@
           <h4 class="text-3xl font-bold">
             KES {{ revenue$ | async | number : "1.2-2" }}
           </h4>
-        </div>
-
-        <div
-          class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"
-        >
-          <p class="text-base mb-2">Commission</p>
-          <h4 class="text-3xl font-bold">KES 0.00</h4>
         </div>
       </div>
     </div>

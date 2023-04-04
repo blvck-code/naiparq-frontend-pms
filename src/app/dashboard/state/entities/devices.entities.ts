@@ -32,6 +32,11 @@ export function driveOutReducer(
         loaded: true,
         devices: action.payload.results,
       };
+    case dashActions.DashActionTypes.ADD_DEVICE:
+      return {
+        ...state,
+        devices: [action.payload, ...state.devices],
+      };
     default:
       return state;
   }

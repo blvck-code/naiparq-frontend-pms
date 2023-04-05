@@ -52,48 +52,51 @@
             </th>
           </tr>
         </thead>
-
+        <!--        No content -->
+        <div *ngIf="(driveOutLoaded$ | async) && !(driveOuts$ | async)?.length">
+          <p class="text-base px-2 py-3">No drive outs recorded!</p>
+        </div>
         <!--        Loading Indicator -->
         <tbody *ngIf="!(driveOutLoaded$ | async)" class="table-body">
           <tr *ngFor="let item of numSeq(12)">
-            <td>
+            <td class="w-[250px]">
               <div class="table-text">
                 <ngx-skeleton-loader
                   [theme]="{
-                    'width.px': 120,
+                    'width.px': 150,
+                    'borderRadius.px': 15
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td class="w-[305px]">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 200,
+                    'borderRadius.px': 15
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td class="w-[384px]">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 200,
                     'borderRadius.px': 10
                   }"
                   animation="pulse"
                 ></ngx-skeleton-loader>
               </div>
             </td>
-            <td>
+            <td class="w-[384px]">
               <div class="table-text">
                 <ngx-skeleton-loader
                   [theme]="{
-                    'width.px': 120,
-                    'borderRadius.px': 10
-                  }"
-                  animation="pulse"
-                ></ngx-skeleton-loader>
-              </div>
-            </td>
-            <td>
-              <div class="table-text">
-                <ngx-skeleton-loader
-                  [theme]="{
-                    'width.px': 120,
-                    'borderRadius.px': 10
-                  }"
-                  animation="pulse"
-                ></ngx-skeleton-loader>
-              </div>
-            </td>
-            <td>
-              <div class="table-text">
-                <ngx-skeleton-loader
-                  [theme]="{
-                    'width.px': 120,
+                    'width.px': 200,
                     'borderRadius.px': 10
                   }"
                   animation="pulse"
@@ -115,7 +118,10 @@
         </tbody>
 
         <!--        Content Loaded -->
-        <tbody class="table-body">
+        <tbody
+          *ngIf="(driveOutLoaded$ | async) && (driveOuts$ | async)?.length"
+          class="table-body"
+        >
           <tr *ngFor="let driveIn of driveOuts$ | async">
             <td>
               <div class="table-text">

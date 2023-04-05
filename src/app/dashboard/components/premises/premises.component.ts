@@ -175,47 +175,13 @@ export class PremisesComponent implements OnInit {
     }
   }
 
-  handleDisplayRateValues(rateValue: string): string {
-    switch (rateValue) {
-      case '0':
-        return '0';
-      case '0.5':
-        return '30mins';
-      case '1':
-        return '1hr';
-      case '1.5':
-        return '1hr 30mins';
-      case '2':
-        return '2hr';
-      case '2.5':
-        return '2hr 30mins';
-      case '3':
-        return '3hr';
-      case '3.5':
-        return '3hr 30mins';
-      case '4':
-        return '4hr';
-      case '4.5':
-        return '4hr 30mins';
-      case '5':
-        return '5hr';
-      case '5.5':
-        return '5hr 30mins';
-      case '6':
-        return '6hr';
-
-      default:
-        return '';
-    }
-  }
-
   timeIntervals(): { value: number; key: string }[] {
     return this.dashSrv.timeIntervals;
   }
 
   createMapContent(): void {
     if (!this.mapLoaded) {
-      this.map = L.map('map').setView([-1.27963, 36.87105], 12);
+      this.map = L.map('map').setView([-1.27963, 36.87105], 14);
 
       L.tileLayer(
         'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
@@ -242,16 +208,24 @@ export class PremisesComponent implements OnInit {
         next: (resp) => {
           this.populateMap(
             resp?.location.coordinates[0],
-            resp?.location.coordinates[1]
+            resp?.location.coordinates[1],
+            resp?.title
           );
         },
       });
     }, 500);
   }
 
-  populateMap(lat: number | undefined, lng: number | undefined): void {
+  populateMap(
+    lat: number | undefined,
+    lng: number | undefined,
+    name: string | undefined
+  ): void {
     // @ts-ignore
-    L.marker([lat, lng]).addTo(this.map);
+    L.marker([lat, lng])
+      .addTo(this.map)
+      .bindPopup(`${name} location`)
+      .openPopup();
   }
 
   numSeq(n: number): Array<number> {
@@ -476,5 +450,39 @@ export class PremisesComponent implements OnInit {
         console.log('Create space images failed ==>>', err);
       },
     });
+  }
+
+  handleDisplayRateValues(rateValue: string): string {
+    switch (rateValue) {
+      case '0':
+        return '0';
+      case '0.5':
+        return '30mins';
+      case '1':
+        return '1hr';
+      case '1.5':
+        return '1hr 30mins';
+      case '2':
+        return '2hr';
+      case '2.5':
+        return '2hr 30mins';
+      case '3':
+        return '3hr';
+      case '3.5':
+        return '3hr 30mins';
+      case '4':
+        return '4hr';
+      case '4.5':
+        return '4hr 30mins';
+      case '5':
+        return '5hr';
+      case '5.5':
+        return '5hr 30mins';
+      case '6':
+        return '6hr';
+
+      default:
+        return '';
+    }
   }
 }

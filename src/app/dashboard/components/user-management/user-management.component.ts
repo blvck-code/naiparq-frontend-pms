@@ -21,6 +21,8 @@ export class UserManagementComponent implements OnInit {
   isSubmitting: boolean = false;
   formInvalid: boolean = false;
 
+  loadingMore: boolean = false;
+
   users: any[] = [];
   allUsers$: Observable<UserModel[]> = this.store.select(allUsers);
   allUsersLoading$: Observable<boolean> = this.store.select(usersLoading);

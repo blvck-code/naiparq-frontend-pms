@@ -54,32 +54,76 @@
           </tr>
         </thead>
 
-        <!--        <tbody *ngIf="!(driveInLoaded$ | async)" class="table-body">-->
-        <!--        <tr *ngFor="let item of numSeq(12)">-->
-        <!--          <td>-->
-        <!--            <div class="table-text">-->
-        <!--              <ngx-skeleton-loader-->
-        <!--                [theme]="{-->
-        <!--                    'width.px': 120,-->
-        <!--                    'borderRadius.px': 10-->
-        <!--                  }"-->
-        <!--                animation="pulse"-->
-        <!--              ></ngx-skeleton-loader>-->
-        <!--            </div>-->
-        <!--          </td>-->
-        <!--          <td>-->
-        <!--            <div class="table-text">-->
-        <!--              <ngx-skeleton-loader-->
-        <!--                [theme]="{-->
-        <!--                    'width.px': 120,-->
-        <!--                    'borderRadius.px': 10-->
-        <!--                  }"-->
-        <!--                animation="pulse"-->
-        <!--              ></ngx-skeleton-loader>-->
-        <!--            </div>-->
-        <!--          </td>-->
-        <!--        </tr>-->
-        <!--        </tbody>-->
+        <tbody *ngIf="allUsersLoading$ | async" class="table-body">
+          <tr *ngFor="let item of numSeq(5)">
+            <td class="w-[260px]">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td class="218">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td class="265">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td class="200">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td class="350">
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+          </tr>
+        </tbody>
 
         <tbody class="table-body">
           <tr *ngFor="let user of allUsers$ | async">
@@ -176,7 +220,7 @@
           <div id="bottomPageDriveIn"></div>
         </tbody>
       </table>
-      <app-inline-loader></app-inline-loader>
+      <app-inline-loader *ngIf="loadingMore"></app-inline-loader>
     </div>
   </div>
 </div>

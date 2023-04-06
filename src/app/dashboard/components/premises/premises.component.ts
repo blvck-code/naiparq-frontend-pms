@@ -268,6 +268,7 @@ export class PremisesComponent implements OnInit {
       this.sharedSrv.showNotification(
         'Please fill the form to continue.',
         'info'
+        // console.log()
       );
       return;
     }

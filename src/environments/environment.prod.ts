@@ -9,7 +9,6 @@ const naiparqWsURL = '';
 
 export const environment = {
   production: true,
-
   mapbox: {
     accessToken:
       'pk.eyJ1IjoiYmx2Y2tkZXgiLCJhIjoiY2xlcGk4aXB0MDRkeDQxb2VwamJpbnd3NyJ9.-IlY_PVl-BYsWx-coGTk-g',
@@ -20,6 +19,7 @@ export const environment = {
   naiparqRegister: naiparqBaseURL + 'accounts/register/',
   naiparqLogout: naiparqBaseURL + 'accounts/logout',
   naiparqProfile: naiparqBaseURL + 'accounts/users/',
+  naiparqResetPass: naiparqBaseURL + 'accounts/password/reset/request/',
 
   // Create users
   naiparqCreateBlogger: naiparqBaseURL + 'accounts/register/blogger/',
@@ -55,6 +55,7 @@ export const environment = {
   naiparqCreatePriceSchedule: naiparqBaseURL + 'spaces/priceschedule/',
 
   // Device Module URLS
+  naiparqCreateDevice: naiparqBaseURL + 'asset/device/',
   naiparqDevicesList: naiparqBaseURL + 'asset/device',
 
   // Naiparq Blog

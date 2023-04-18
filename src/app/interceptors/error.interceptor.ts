@@ -12,17 +12,34 @@ import { ErrorModel } from '../shared/models/error.model';
 // NgRx
 import { Store } from '@ngrx/store';
 import * as authActions from '../auth/state/auth.actions';
+import { SharedService } from '../shared/services/shared.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   error: ErrorModel = {};
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private sharedSrv: SharedService) {}
 
   handleError = (err: HttpErrorResponse): ErrorModel => {
     let errMsg: string;
     console.log('First time error ==>>>', err);
-    console.log('Non field ==>>>', err.error.non_field_errors.toString());
+    console.log('Non field ==>>>', err.statusText);
+
+    // No server access error
+    // if (err.statusText === 'Unknown Error') {
+    //   this.error = {
+    //     message: 'Server error',
+    //     status: err.status,
+    //   };
+    //
+    //   console.log('Server error');
+    //
+    //   setInterval(() => {
+    //     this.sharedSrv.showNotification('Server error!', 'info');
+    //   }, 5000);
+    //
+    //   return this.error;
+    // }
 
     if (err.error.email) {
       errMsg = err.error.email.toString();

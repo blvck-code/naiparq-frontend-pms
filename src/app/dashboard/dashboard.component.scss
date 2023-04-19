@@ -14,7 +14,7 @@
     overflow-y: scroll;
 
     &.hide {
-      width: 0;
+      width: 100px;
       display: none;
 
       @include respond(phone) {

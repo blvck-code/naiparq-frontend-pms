@@ -551,6 +551,37 @@ form {
   }
 }
 
+// Naiparq Link
+.naiparq-link {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  position: relative;
+  color: #000;
+  transition: color 0.6s;
+
+  &:hover {
+    color: #fbce33;
+  }
+
+  &::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fbce33;
+    transition: width 0.4s;
+  }
+
+  &:hover::after {
+    width: 100%;
+    color: #fbce33;
+  }
+}
+
 // Naiparq Scroll Bar
 .naiparq-scrollbar {
   ::-webkit-scrollbar {
@@ -1347,23 +1378,18 @@ table {
   .page-title-two {
     @apply laptop:text-[50px]
     laptop:leading-[65px]
-    laptop:py-10
 
     tabletLand:text-[40px]
     tabletLand:leading-[45px]
-    tabletLand:py-5
 
     tablet:text-[40px]
     tablet:leading-[45px]
-    tablet:py-5
 
     mobile:text-[35px]
     mobile:leading-[40px]
-    mobile:py-5
 
     sm:text-[30px]
     sm:leading-[35px]
-    sm:py-3
 
     text-center
     font-bold;

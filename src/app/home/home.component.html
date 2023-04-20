@@ -24,14 +24,11 @@
       >
         <ul
           #menuSecond
-          class="flex flex-row justify-evenly items-center basis-2/3"
+          class="flex flex-row justify-around px-3 items-center basis-2/3"
         >
-          <!--          <ul-->
-          <!--            class="flex flex-row items-center justify-evenly border border-red-600"-->
-          <!--          >-->
-          <li class="nav-item basis-1/4 center-nav-item">
+          <li class="basis-1/4">
             <a
-              class="font-base font-[700] leading-[19px]"
+              class="naiparq-link"
               aria-current="page"
               routerLink="/about-us"
               routerLinkActive="active-link"
@@ -40,17 +37,15 @@
             >
           </li>
 
-          <li class="nav-item basis-2/4dropdown">
+          <li class="basis-2/4 dropdown">
             <a
-              class="flex flex-row items-center gap-0.5"
+              class="flex flex-row justify-center items-center gap-0.5"
               id="navbarLightDropdownMenuLink1"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <span class="font-base font-[700] leading-[19px]">
-                Products &nbsp;
-              </span>
+              <span class="naiparq-link"> Products &nbsp; </span>
               <svg
                 width="24"
                 height="24"
@@ -73,19 +68,19 @@
             >
               <li class="py-1">
                 <a
-                  class="font-base font-normal hover:font-bold hover:text-black leading-[28px]"
+                  class="naiparq-link"
                   [routerLink]="['parking-slots']"
                   routerLinkActive="active-link"
                   [routerLinkActiveOptions]="{ exact: true }"
-                  >Parking management system</a
+                  >Parking Management System</a
                 >
               </li>
               <li class="py-1">
                 <a
-                  class="font-base font-normal hover:font-bold hover:text-black leading-[28px]"
+                  class="naiparq-link"
                   routerLink="/dashboard/parking-slots/manage-spaces"
                   routerLinkActive="active-link"
-                  >Parking reservation</a
+                  >Parking Reservation</a
                 >
               </li>
             </ul>
@@ -95,7 +90,7 @@
             <a
               routerLink="/contact-us"
               routerLinkActive="active-link"
-              class="font-base font-[700] leading-[19px]"
+              class="naiparq-link"
               >Contact Us</a
             >
           </li>
@@ -108,6 +103,7 @@
             <a
               class="no-underline text-[16px] font-[700] text-[#000] hover:text-[#000]"
               [routerLink]="['/auth']"
+              class="naiparq-link"
               >Login</a
             >
             <a

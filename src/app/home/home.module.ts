@@ -19,6 +19,8 @@ import { SharedModule } from '../shared/shared.module';
 import { BlogDetailComponent } from './components/blog/blog-detail/blog-detail.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BlogComponent } from './components/blog/blog.component';
+import { PmsComponent } from './components/products/pms/pms.component';
+import { ReservationComponent } from './components/products/reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { BlogComponent } from './components/blog/blog.component';
     BlogCreateComponent,
     BlogDetailComponent,
     BlogComponent,
+    PmsComponent,
+    ReservationComponent,
   ],
   imports: [
     CommonModule,

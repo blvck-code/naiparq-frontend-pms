@@ -75,6 +75,7 @@ export class DriveInComponent implements OnInit {
   }
 
   observerInstance(): void {
+    // Only runs after content been loaded
     this.driveInLoaded$.subscribe({
       next: (loaded) => {
         if (loaded) {
@@ -83,10 +84,10 @@ export class DriveInComponent implements OnInit {
           const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                this.loadingMoreDriveIn = true;
                 this.handlePaginateDriveIn();
                 console.log('Visible ==>>', this.loadingMoreDriveIn);
               } else {
+                this.loadingMoreDriveIn = false;
                 console.log('Invisible ==>>', this.loadingMoreDriveIn);
               }
             });
@@ -99,6 +100,7 @@ export class DriveInComponent implements OnInit {
 
   // Todo fetch one pagination at a time
   handlePaginateDriveIn(): void {
+    this.loadingMoreDriveIn = true;
     this.loadNextPage$.subscribe({
       next: (url) => {
         // Only dispatch if URL not null

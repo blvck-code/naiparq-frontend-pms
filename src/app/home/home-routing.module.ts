@@ -9,6 +9,8 @@ import { BlogCreateComponent } from './components/blog/blog-create/blog-create.c
 import { BlogDetailComponent } from './components/blog/blog-detail/blog-detail.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BloggerGuard } from '../auth/services/blogger.guard';
+import { PmsComponent } from './components/products/pms/pms.component';
+import { ReservationComponent } from './components/products/reservation/reservation.component';
 
 const homeRoutes: Routes = [
   {
@@ -26,6 +28,14 @@ const homeRoutes: Routes = [
       {
         path: 'contact-us',
         component: ContactComponent,
+      },
+      {
+        path: 'parking-management-system',
+        component: PmsComponent,
+      },
+      {
+        path: 'parking-reservation',
+        component: ReservationComponent,
       },
       {
         path: 'blog',

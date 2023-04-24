@@ -2,7 +2,6 @@ image: node:19.6.0
 
 stages:
   - setup
-  - test
 
 
 Install:

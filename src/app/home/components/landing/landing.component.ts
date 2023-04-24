@@ -57,6 +57,19 @@ export class LandingComponent implements OnInit {
     // this.initScrollAnimation();
   }
 
+  images = [
+    {
+      imgSrc: 'assets/images/naiparq-barrier.png',
+      imgAlt: 'Naiparq Barrier',
+      title: 'Vehicle Access Control System',
+    },
+    {
+      imgSrc: 'assets/images/naiparq-pms.png',
+      imgAlt: 'Naiparq Barrier',
+      title: 'Reservation',
+    },
+  ];
+
   showArticles(): void {
     this.blogList$.subscribe({
       next: (resp) => {

@@ -11,17 +11,17 @@ $primary-yellow: "";
 // Fonts
 $font-family: "Sk-Modernist";
 @font-face {
-  font-family: "Okta Neue";
+  font-family: $font-family;
   src: url("assets/fonts/Sk-Modernist-Mono.woff") format("woff");
   font-weight: 300;
 }
 @font-face {
-  font-family: "Okta Neue";
+  font-family: $font-family;
   src: url("assets/fonts/Sk-Modernist-Regular.woff") format("woff");
   font-weight: normal;
 }
 @font-face {
-  font-family: "Okta Neue";
+  font-family: $font-family;
   src: url("assets/fonts/Sk-Modernist-Bold.woff") format("woff");
   font-weight: 700;
 }
@@ -70,7 +70,7 @@ body.dark-theme {
 }
 
 body {
-  font-family: "Okta Neue", sans-serif !important;
+  font-family: $font-family, sans-serif !important;
   font-weight: normal;
   margin: 0;
   background: var(--bkg-color);
@@ -92,7 +92,7 @@ body {
 }
 
 p {
-  font-family: "Okta Neue", sans-serif;
+  font-family: $font-family, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

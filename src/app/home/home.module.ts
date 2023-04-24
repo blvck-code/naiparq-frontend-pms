@@ -21,6 +21,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BlogComponent } from './components/blog/blog.component';
 import { PmsComponent } from './components/products/pms/pms.component';
 import { ReservationComponent } from './components/products/reservation/reservation.component';
+import { CarouselComponent } from './components/landing/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReservationComponent } from './components/products/reservation/reservat
     BlogComponent,
     PmsComponent,
     ReservationComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,6 @@
-$appBg: "~src/assets/images/app-bg.png";
+section {
+  //border: 1px solid red;
+}
 
 .naiparq-home {
   &__operator {
@@ -10,14 +12,6 @@ $appBg: "~src/assets/images/app-bg.png";
     width: 100vw;
 
     .naiparq-slide- {
-      &one {
-        background: url("/assets/images/naiparq-slide-1.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-      }
     }
   }
 
@@ -86,6 +80,48 @@ $appBg: "~src/assets/images/app-bg.png";
   &__operator {
     position: relative;
   }
+
+  &__reservation {
+    min-height: 80vh;
+
+    .circle-blue {
+      width: 487px;
+      height: 487px;
+      left: -254px;
+      bottom: -20%;
+
+      background: #4bc1f1;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+
+    .naiparq-home-title {
+      z-index: 2;
+    }
+
+    &-wrap {
+      height: 80vh;
+      z-index: 5;
+    }
+  }
+
+  &__apps {
+    z-index: 5;
+  }
+
+  &__blog {
+    .circle-blue {
+      width: 895px;
+      height: 895px;
+      left: -667px;
+      bottom: -75%;
+      border: 1px solid red;
+
+      background: #4bc1f1;
+      mix-blend-mode: normal;
+      filter: blur(200px);
+    }
+  }
 }
 
 .bg-circle {
@@ -94,7 +130,14 @@ $appBg: "~src/assets/images/app-bg.png";
 }
 
 .naiparq-home__apps {
-  background-image: url(#{$appBg});
+  background-image: url("/assets/images/naiparq-app-bg.png");
   background-position: center;
   background-size: cover;
+}
+
+.naiparq-home-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 67px;
 }

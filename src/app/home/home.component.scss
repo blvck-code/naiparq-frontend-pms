@@ -25,6 +25,7 @@ nav {
   &__footer {
     bottom: 0;
     background: #000;
+    z-index: 2;
   }
 }
 .nav--hidden {

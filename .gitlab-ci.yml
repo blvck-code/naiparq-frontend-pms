@@ -6,7 +6,7 @@ stages:
 
 
 Install:
-  stage: Setup
+  stage: setup
   image: node:19.6.0 
   tags:
     - docker

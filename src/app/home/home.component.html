@@ -2,7 +2,7 @@
 <div class="naiparq-home flex flex-col" #homeContent>
   <header
     #navBar
-    class="naiparq-home__header shadow-lg z-50 fixed top-0 left-0 right-0 py-2"
+    class="naiparq-home__header shadow-lg z-50 fixed top-0 left-0 right-0"
   >
     <div
       class="naiparq-home__header-wrap relative flex flex-row items-center h-[100%] p-3 max-w-[1200px] mx-auto"
@@ -18,15 +18,9 @@
           alt="NaiParq"
         />
       </a>
-
-      <div
-        class="naiparq-home__header-links laptop:flex tabletLand:hidden mobile:hidden sm:hidden basis-3/4"
-      >
-        <ul
-          #menuSecond
-          class="flex flex-row justify-around px-3 items-center basis-2/3"
-        >
-          <li class="basis-1/4">
+      <div class="basis-2/4">
+        <ul #menuSecond class="flex flex-row justify-center gap-x-12">
+          <li class="">
             <a
               class="naiparq-link"
               aria-current="page"
@@ -37,7 +31,7 @@
             >
           </li>
 
-          <li class="basis-2/4 dropdown">
+          <li class="dropdown">
             <a
               class="flex flex-row justify-center items-center gap-0.5"
               id="navbarLightDropdownMenuLink1"
@@ -63,7 +57,7 @@
               </svg>
             </a>
             <ul
-              class="dropdown-menu py-2.5 px-4 dropdown-menu-light mt-4 border-0 shadow"
+              class="dropdown-menu min-w-[300px] py-2.5 px-4 dropdown-menu-light mt-4 border-0 shadow"
               aria-labelledby="navbarLightDropdownMenuLink1"
             >
               <li class="py-1">
@@ -86,7 +80,7 @@
             </ul>
           </li>
 
-          <li class="nav-item basis-1/4">
+          <li class="nav-item">
             <a
               routerLink="/contact-us"
               routerLinkActive="active-link"
@@ -95,139 +89,69 @@
             >
           </li>
         </ul>
-        <div #menu class="auth-links flex justify-end basis-1/3">
-          <div
-            *ngIf="!(isLoggedIn$ | async)"
-            class="flex items-center justify-end gap-3"
-          >
-            <a
-              class="no-underline text-[16px] font-[700] text-[#000] hover:text-[#000]"
-              [routerLink]="['/auth']"
-              class="naiparq-link"
-              >Login</a
-            >
-            <a
-              class="py-2 px-3 bg-[#000] text-[16px] font-[700] text-[#fff] hover:text-[#fff] rounded-[60px] no-underline"
-              [routerLink]="['/auth/register']"
-              >Sign Up</a
-            >
-          </div>
-
-          <div
-            *ngIf="isLoggedIn$ | async"
-            class="user-profile-dropdown flex justify-end min-w-[235px] basis-1/3 dropdown"
-          >
-            <div
-              class="nav-user-profile"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <div class="img-name">
-                <!--                  Todo updating profile pic -->
-                <img src="assets/images/naiparq-user.svg" alt="Naiparq User" />
-                <p class="naiparq-navbar-username">{{ userName$ | async }}</p>
-              </div>
-              <svg
-                width="11"
-                height="6"
-                viewBox="0 0 11 6"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.69232 0.293945H5.27941H1.30563C0.625634 0.293945 0.285634 1.11561 0.767301 1.59729L4.43649 5.26645C5.02441 5.85437 5.98066 5.85437 6.56857 5.26645L7.96399 3.87104L10.2377 1.59729C10.7123 1.11561 10.3723 0.293945 9.69232 0.293945Z"
-                />
-              </svg>
-            </div>
-
-            <ul class="dropdown-menu">
-              <li *ngIf="blogger$ | async">
-                <a [routerLink]="['/blog/create']" class="dropdown-item"
-                  >Create blog</a
-                >
-              </li>
-              <li>
-                <a [routerLink]="['/dashboard']" class="dropdown-item"
-                  >Dashboard</a
-                >
-              </li>
-              <li>
-                <a [routerLink]="['/dashboard/account']" class="dropdown-item"
-                  >Account</a
-                >
-              </li>
-              <li><a (click)="logOut()" class="dropdown-item">Logout</a></li>
-            </ul>
-          </div>
-        </div>
       </div>
-
-      <div
-        (click)="toggleSideNav()"
-        class="side cursor-pointer-btn laptop:hidden basis-3/4 flex justify-end"
-      >
-        <svg
-          width="30"
-          height="21"
-          viewBox="0 0 30 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="30" height="3" fill="black" />
-          <rect y="9" width="30" height="3" fill="black" />
-          <rect y="18" width="30" height="3" fill="black" />
-        </svg>
-      </div>
-      <div
-        [class.hidden]="!showMenu"
-        class="laptop:hidden tabletLand:fixed ease-in-out duration-300 mobile:fixed sm:fixed z-50 top-0 bottom-0 right-0 left-0"
-      >
+      <div class="basis-1/4">
         <div
-          (click)="closeMenu($event)"
-          class="backdrop relative bg-[#000]/[.5] w-[100%] h-[100%]"
+          *ngIf="!(isLoggedIn$ | async)"
+          class="flex items-center justify-end gap-3"
         >
-          <div class="menu absolute right-0 w-[75vw] h-[100%] bg-[#fff] p-3">
-            <div class="w-[100%] flex justify-end">
-              <svg
-                (click)="closeMenu()"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-10 h-10 text-[20px]"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+          <a
+            class="no-underline text-[16px] font-[700] text-[#000] hover:text-[#000]"
+            [routerLink]="['/auth']"
+            >Login</a
+          >
+          <a
+            class="py-2 px-3 bg-[#000] text-[16px] font-[700] text-[#fff] hover:text-[#fff] rounded-[60px] no-underline"
+            [routerLink]="['/auth/register']"
+            >Sign Up</a
+          >
+        </div>
+
+        <div
+          *ngIf="isLoggedIn$ | async"
+          class="user-profile-dropdown flex justify-end min-w-[235px] basis-1/3 dropdown"
+        >
+          <div
+            class="nav-user-profile"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <div class="img-name">
+              <!--                  Todo updating profile pic -->
+              <img src="assets/images/naiparq-user.svg" alt="Naiparq User" />
+              <p class="naiparq-navbar-username">{{ userName$ | async }}</p>
             </div>
-            <ul class="p-0 h-[100%] flex flex-col gap-3">
-              <li>
-                <a
-                  class="text-[#000] no-underline font-[700] text-[18px]"
-                  [routerLink]="['/']"
-                  >How it works</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-[#000] no-underline font-[700] text-[18px]"
-                  [routerLink]="['/about-us']"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a
-                  class="text-[#000] no-underline font-[700] text-[18px]"
-                  [routerLink]="['/contact-us']"
-                  >Contact Us</a
-                >
-              </li>
-            </ul>
+            <svg
+              width="11"
+              height="6"
+              viewBox="0 0 11 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.69232 0.293945H5.27941H1.30563C0.625634 0.293945 0.285634 1.11561 0.767301 1.59729L4.43649 5.26645C5.02441 5.85437 5.98066 5.85437 6.56857 5.26645L7.96399 3.87104L10.2377 1.59729C10.7123 1.11561 10.3723 0.293945 9.69232 0.293945Z"
+              />
+            </svg>
           </div>
+
+          <ul class="dropdown-menu">
+            <li *ngIf="blogger$ | async">
+              <a [routerLink]="['/blog/create']" class="dropdown-item"
+                >Create blog</a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['/dashboard']" class="dropdown-item"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['/dashboard/account']" class="dropdown-item"
+                >Account</a
+              >
+            </li>
+            <li><a (click)="logOut()" class="dropdown-item">Logout</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -439,7 +363,7 @@
               <li>
                 <a
                   class="naiparq-link text-[20px] leading-[30px] text-white"
-                  href=""
+                  [routerLink]="['parking-management-system']"
                   routerLinkActive="active-link"
                   [routerLinkActiveOptions]="{ exact: true }"
                   >Parking Management System</a
@@ -448,7 +372,9 @@
               <li>
                 <a
                   class="naiparq-link text-[20px] leading-[30px] text-white"
-                  href=""
+                  [routerLink]="['parking-reservation']"
+                  routerLinkActive="active-link"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Parking Reservation</a
                 >
               </li>

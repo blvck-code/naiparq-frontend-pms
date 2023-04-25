@@ -1,0 +1,56 @@
+.naiparq-pms__landing {
+  height: 83vh;
+  overflow: hidden;
+
+  .circle-blue {
+    width: 483px;
+    height: 483px;
+    right: -20px;
+    top: -20px;
+
+    background: #4bc1f1;
+    mix-blend-mode: normal;
+    filter: blur(200px);
+  }
+
+  .circle-yellow {
+    width: 895px;
+    height: 895px;
+    left: -635px;
+    top: 268px;
+
+    background: #fbce33;
+    mix-blend-mode: normal;
+    filter: blur(200px);
+  }
+
+  &-wrap {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      position: absolute;
+      bottom: -20%;
+      max-width: 1100px;
+    }
+  }
+}
+
+.naiparq-home__wcn {
+  //border: 1px solid red;
+}
+
+.accordion-item {
+  border-radius: 20px;
+
+  .show {
+    visibility: visible !important;
+    animation-duration: 2s;
+  }
+
+  &:last-of-type {
+    border-radius: 20px;
+  }
+}

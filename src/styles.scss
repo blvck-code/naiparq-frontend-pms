@@ -115,11 +115,24 @@ img {
   color: var(--text-primary);
 }
 
+// Landing styles
+.naiparq-home-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 67px;
+}
+
+.bg-circle {
+  position: absolute;
+  z-index: 0;
+}
+
 // Form
 .naiparq-form-group {
   display: flex;
   flex-direction: column;
-  padding: 5px 20px;
+  padding: 5px;
 
   label {
     font-family: "Sk-Modernist", sans-serif;
@@ -127,6 +140,16 @@ img {
     line-height: 17px;
     font-weight: 400;
     color: #ffffff;
+  }
+
+  textarea {
+    width: 100%;
+    padding-left: 1rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #e8f0fe;
+    color: #000;
+    font-size: 1rem;
   }
 
   &.is-invalid {

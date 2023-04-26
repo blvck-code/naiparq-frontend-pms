@@ -16,7 +16,12 @@ export class CarouselComponent implements OnInit {
   selectIndex = 0;
 
   nextSlide(): void {
+    if (this.selectIndex === this.carousel.length - 1) {
+      this.selectIndex = 0;
+      return;
+    }
     this.selectIndex += 1;
+    console.log('Slides ==>>', this.carousel.length);
   }
 
   ngOnInit() {}

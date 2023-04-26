@@ -1,3 +1,28 @@
+.naiparq-GIT__contacts {
+  background: url("/assets/images/naiparq-GIT-bg.png") no-repeat center;
+
+  .blue-circle {
+    width: 483px;
+    height: 483px;
+    right: -5%;
+    top: -20px;
+
+    background: #4bc1f1;
+    mix-blend-mode: normal;
+    filter: blur(200px);
+  }
+  .yellow-circle {
+    width: 895px;
+    height: 895px;
+    left: -635px;
+    top: 145px;
+
+    background: #fbce33;
+    mix-blend-mode: normal;
+    filter: blur(200px);
+  }
+}
+
 .naiparq-contact__GIT-title {
   max-width: 1440px;
   width: 100%;
@@ -62,5 +87,9 @@
 }
 
 .naiparq-contact__GIT-contacts {
+  position: absolute;
+}
+
+.bg-circle {
   position: absolute;
 }

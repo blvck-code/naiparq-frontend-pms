@@ -1,18 +1,14 @@
-section {
-  //border: 1px solid red;
-}
-
 .naiparq-home {
   &__operator {
     position: relative;
   }
 
   &__slide-wrap {
-    height: 100vh;
+    height: calc(95vh - 80px);
     width: 100vw;
-
-    .naiparq-slide- {
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__landing,

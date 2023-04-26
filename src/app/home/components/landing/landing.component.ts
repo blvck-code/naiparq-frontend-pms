@@ -59,14 +59,24 @@ export class LandingComponent implements OnInit {
 
   images = [
     {
-      imgSrc: 'assets/images/naiparq-barrier.png',
+      imgSrc: 'assets/images/naiparq-slide-1.png',
       imgAlt: 'Naiparq Barrier',
       title: 'Vehicle Access Control System',
     },
     {
-      imgSrc: 'assets/images/naiparq-pms.png',
-      imgAlt: 'Naiparq Barrier',
-      title: 'Reservation',
+      imgSrc: 'assets/images/naiparq-slide-2.png',
+      imgAlt: 'Parking Management Software',
+      title: 'Parking Management Software',
+    },
+    {
+      imgSrc: 'assets/images/naiparq-slide-3.png',
+      imgAlt: 'Parking Management System',
+      title: 'Parking Management System',
+    },
+    {
+      imgSrc: 'assets/images/naiparq-slide-4.png',
+      imgAlt: 'Enable Parking Reservation',
+      title: 'Enable Parking Reservation',
     },
   ];
 

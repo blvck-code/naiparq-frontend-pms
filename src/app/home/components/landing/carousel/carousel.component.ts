@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 interface carouselContent {
   imgSrc: string;
@@ -14,15 +15,21 @@ interface carouselContent {
 export class CarouselComponent implements OnInit {
   @Input() carousel: carouselContent[] = [];
   selectIndex = 0;
+  indexObservable = new BehaviorSubject(this.selectIndex);
+  indexAsSubject$ = this.indexObservable.asObservable();
 
   nextSlide(): void {
     if (this.selectIndex === this.carousel.length - 1) {
-      this.selectIndex = 0;
+      this.indexObservable.next((this.selectIndex = 0));
       return;
     }
-    this.selectIndex += 1;
-    console.log('Slides ==>>', this.carousel.length);
+    this.indexObservable.next((this.selectIndex += 1));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    setInterval(() => {
+      this.nextSlide();
+      console.log('Next slide', this.selectIndex);
+    }, 5000);
+  }
 }

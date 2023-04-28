@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
 import { BlogCreateComponent } from './components/blog/blog-create/blog-create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { ShowdownModule } from 'ngx-showdown';
 import { StoreModule } from '@ngrx/store';
 import { homeReducer } from './state/home.reducer';
 import { EffectsModule } from '@ngrx/effects';
@@ -45,7 +44,6 @@ import { CarouselComponent } from './components/landing/carousel/carousel.compon
     CKEditorModule,
     StoreModule.forFeature('home', homeReducer),
     EffectsModule.forFeature([HomeEffects]),
-    ShowdownModule.forRoot({ emoji: true, noHeaderId: true, flavor: 'github' }),
     FormsModule,
     SharedModule,
     NgxSkeletonLoaderModule.forRoot({

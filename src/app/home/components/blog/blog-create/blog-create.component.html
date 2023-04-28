@@ -101,14 +101,14 @@
             />
           </div>
         </div>
-        <ckeditor
-          [(ngModel)]="blogContent"
-          [ngModelOptions]="{ standalone: true }"
-          #editor
-          [editor]="Editor"
-          (ready)="onReady($event)"
-          data=""
-        ></ckeditor>
+        <!--        <ckeditor-->
+        <!--          [(ngModel)]="blogContent"-->
+        <!--          [ngModelOptions]="{ standalone: true }"-->
+        <!--          #editor-->
+        <!--          [editor]="Editor"-->
+        <!--          (ready)="onReady($event)"-->
+        <!--          data=""-->
+        <!--        ></ckeditor>-->
         <button
           (click)="onSubmit()"
           [class.btn-loading]="submitting"

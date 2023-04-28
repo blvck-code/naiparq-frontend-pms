@@ -1,6 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor5 } from '@ckeditor/ckeditor5-angular';
 import { UploadAdapter } from './UploadAdapter';
 import { HttpClient } from '@angular/common/http';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -15,7 +13,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
 import * as homeActions from '../../../state/home.actions';
 import { selectedBlog, selectedBlogId } from '../../../state/home.reducer';
-import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+// import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
   selector: 'naiparq-blog-create',
@@ -27,7 +25,7 @@ export class BlogCreateComponent implements OnInit {
   @ViewChild('editor', { static: true }) 'editor': ElementRef;
   @ViewChild('coverImgInput', { static: true }) 'coverImgInput': ElementRef;
   // @ts-ignore
-  public Editor: CKEditor5.EditorConstructor = DecoupledEditor;
+  // public Editor: CKEditor5.EditorConstructor = DecoupledEditor;
   blogFormData = new FormData();
   blogContent: any;
 

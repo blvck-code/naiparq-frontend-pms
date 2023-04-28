@@ -1,0 +1,136 @@
+<section class="naiparq-pms__landing mt-[96px] flex relative px-3">
+  <div class="bg-circle circle-blue -z-10"></div>
+  <div class="bg-circle circle-yellow -z-10"></div>
+  <div class="naiparq-pms__landing-wrap pt-5 relative mx-auto w-full">
+    <h1 class="naiparq-home-title text-center py-3">
+      Parking Management System
+    </h1>
+    <img
+      class="mx-auto"
+      src="assets/images/naiparq-pms-hero.png"
+      alt="Naiparq PMS"
+    />
+  </div>
+</section>
+
+<section
+  class="naiparq-home__how-it-works laptop:p-10 tabletLand:p-5 mobile:p-4 sm:p-4"
+>
+  <div class="HIT-content max-w-[1200px] mx-auto relative z-0">
+    <!--    Intro-->
+    <div
+      class="HIT-content__top flex flex-col max-w-[670px] px-2 mx-auto items-center text-center"
+    >
+      <h1 class="naiparq-home-title text-center py-3">Key Features</h1>
+    </div>
+    <!--    Icons-->
+    <div
+      class="HIT-content__steps grid gap-x-5 gap-y-10 laptop:grid-cols-4 tabletLand:grid-cols-2 mobile:grid-cols-2 sm:grid-cols-1 laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3"
+    >
+      <div
+        *ngFor="let feature of keyFeatures"
+        class="bg-white gap-y-4 hover:shadow flex flex-col px-4 py-5 rounded-[20px] w-full"
+      >
+        <img class="h-[78px] w-[70px]" [src]="feature.icon" alt="" />
+        <h3 class="text-base font-[600] leading-[23px]">
+          {{ feature.title }}
+        </h3>
+        <p class="text-base font-normal leading-[22px]">
+          {{ feature.desc }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="naiparq-home__wcn relative pb-5">
+  <div class="bg-circle circle-blue"></div>
+  <h1 class="naiparq-home-title py-3 pb-4">Why choose Naiparq?</h1>
+  <div
+    class="naiparq-home__reservation-wrap py-4 h-full gap-5 flex flex-row items-center mx-auto"
+  >
+    <div class="naiparq-home__reservation-wrap-image basis-1/2">
+      <img
+        class="object-contain max-h-[768px] h-full"
+        [src]="'assets/images/naiparq-pms-log.png'"
+        alt="Naiparq Landing Dash"
+      />
+    </div>
+    <div
+      class="naiparq-home__reservation-wrap-content max-w-[560px] accordion grid justify-items-stretch basis-1/2"
+    >
+      <div
+        *ngFor="let item of wcnContent; let i = index"
+        [class.shadow]="selectedWCN === i"
+        class="accordion-item border-0 rounded-[20px] p-4 my-2"
+      >
+        <div
+          (click)="handleActiveWCN(i)"
+          class="flex items-center rounded-[20px] cursor-pointer justify-between w-full py-1"
+          attr.data-bs-toggle="collapse-{{ i }}"
+          attr.data-bs-target="#collapse-{{ i }}"
+          aria-expanded="true"
+          attr.aria-controls="collapse-{{ i }}"
+          attr.id="heading-{{ i }}"
+        >
+          <h2
+            class="accordion-header text-[20px] leading-[29px] font-bold rounded-[20px]"
+          >
+            {{ item.title }}
+          </h2>
+          <svg
+            *ngIf="selectedWCN === i"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 16H27"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <svg
+            *ngIf="selectedWCN !== i"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 16H27"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16 5V27"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div
+          [class.show]="selectedWCN === i"
+          attr.id="collapse-{{ i }}"
+          class="accordion-collapse collapse text-black"
+          attr.aria-labelledby="heading-{{ i }}"
+          data-bs-parent="#accordionExample"
+        >
+          <p class="accordion-body text-base font-normal leading-[26px] px-0">
+            {{ item.desc }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

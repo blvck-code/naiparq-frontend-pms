@@ -4,6 +4,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {},
+    fontFamily: {
+      Modernist: ["SK-Modernist", "sans-serif"],
+    },
     screens: {
       sm: "320px",
       mobile: "480px",

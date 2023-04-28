@@ -57,6 +57,29 @@ export class LandingComponent implements OnInit {
     // this.initScrollAnimation();
   }
 
+  images = [
+    {
+      imgSrc: 'assets/images/naiparq-slide-1.png',
+      imgAlt: 'Naiparq Barrier',
+      title: 'Vehicle Access Control System',
+    },
+    {
+      imgSrc: 'assets/images/naiparq-slide-2.png',
+      imgAlt: 'Parking Management Software',
+      title: 'Parking Management Software',
+    },
+    {
+      imgSrc: 'assets/images/naiparq-slide-3.png',
+      imgAlt: 'Parking Management System',
+      title: 'Parking Management System',
+    },
+    {
+      imgSrc: 'assets/images/naiparq-slide-4.png',
+      imgAlt: 'Enable Parking Reservation',
+      title: 'Enable Parking Reservation',
+    },
+  ];
+
   showArticles(): void {
     this.blogList$.subscribe({
       next: (resp) => {

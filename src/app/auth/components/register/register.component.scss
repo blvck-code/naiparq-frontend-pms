@@ -2,7 +2,7 @@
   .naiparq-form-group {
     label {
       color: #000;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 400;
     }
     input {
@@ -33,6 +33,83 @@
     a {
       color: #000;
       font-weight: bold;
+    }
+  }
+}
+
+.space-number {
+  padding: 15px 0 10px;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 30px !important;
+    padding: 0 10px !important;
+    background: transparent !important;
+    font-weight: bold;
+  }
+
+  button {
+    border: 1px solid #000;
+    height: 39px;
+    width: 39px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+
+    svg {
+      fill: black;
+
+      path {
+        stroke: black;
+      }
+    }
+
+    &:hover {
+      background: black;
+
+      svg {
+        fill: white;
+
+        path {
+          stroke: white;
+        }
+      }
+    }
+  }
+}
+
+.naiparq-check {
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background: #fbce33;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+
+    &:after {
+      content: "\2714";
+      font-weight: 800;
+      color: black;
+      display: none;
+      border: none;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:checked:after {
+      display: block;
     }
   }
 }

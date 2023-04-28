@@ -1,0 +1,14 @@
+image: node:19.6.0 
+
+stages:
+  - setup
+
+
+Install:
+  stage: setup
+  image: node:19.6.0 
+  tags:
+    - docker
+  script:
+    - npm ci
+    - node --version

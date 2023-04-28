@@ -1,0 +1,36 @@
+.naiparq-carousel {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+
+  .naiparq-slide {
+    display: none;
+    min-height: 667px;
+
+    &.active-slide {
+      display: flex;
+      width: 100%;
+    }
+  }
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.translateImage {
+  transform: translateX(1.5rem) translateY(-1.5rem);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -26,19 +26,19 @@ export class PmsComponent {
     },
     {
       title: 'Transparent',
-      desc: 'We can customize the Parking Management Solution to the needs of your business.',
+      desc: 'As the parking facility owner, you have logins to access the system to keep up with your business from anywhere and at any time.',
     },
     {
       title: 'No Revenue Leakages',
-      desc: 'We can customize the Parking Management Solution to the needs of your business.',
+      desc: 'Automation through License Plate Recognition leaves no room for manipulations or human error.',
     },
     {
       title: 'Convenience',
-      desc: 'We can customize the Parking Management Solution to the needs of your business.',
+      desc: 'Ticketless and convenient to your tenants/shoppers (no more disputes over lost tickets).',
     },
     {
       title: 'Secure',
-      desc: 'We can customize the Parking Management Solution to the needs of your business.',
+      desc: 'Capability to deny access to certain vehicles easily through the inbuilt blacklist capability.',
     },
   ];
 

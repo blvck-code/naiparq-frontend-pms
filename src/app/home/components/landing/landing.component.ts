@@ -146,6 +146,10 @@ export class LandingComponent implements OnInit {
     });
   }
 
+  numSeq(n: number): Array<number> {
+    return Array(n);
+  }
+
   increaseSlots(): void {
     this.numOfSlots += 1;
   }

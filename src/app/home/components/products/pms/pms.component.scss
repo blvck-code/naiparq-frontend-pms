@@ -1,5 +1,7 @@
 .naiparq-pms__landing {
-  height: 83vh;
+  height: 100%;
+  max-height: 83vh;
+  min-height: 68vh;
   overflow: hidden;
 
   .circle-blue {
@@ -33,7 +35,6 @@
     img {
       position: absolute;
       bottom: -20%;
-      max-width: 1100px;
     }
   }
 }

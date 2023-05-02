@@ -81,7 +81,6 @@
   }
 
   &__reservation {
-    min-height: 80vh;
     border: 1px solid red;
 
     .circle-blue {
@@ -89,18 +88,15 @@
       height: 487px;
       left: -254px;
       bottom: -20%;
+      z-index: 1;
 
       background: #4bc1f1;
       mix-blend-mode: normal;
       filter: blur(200px);
     }
 
-    .naiparq-home-title {
-      z-index: 2;
-    }
-
     &-wrap {
-      height: 80vh;
+      border: 1px solid red;
       z-index: 5;
     }
   }

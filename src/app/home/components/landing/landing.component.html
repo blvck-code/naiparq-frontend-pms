@@ -13,7 +13,7 @@
   <div class="HIT-content max-w-[1200px] mx-auto relative z-0">
     <!--    Intro-->
     <h1
-      class="py-3 text-center laptop:text-[50px] laptop:leading-[58px] tablet:text-[30px] tablet:leading-[35px] mobile:text-[30px] mobile:leading-[35px] sm:text-[30px] sm:leading-[35px] xl:text-[30px] xl:leading-[35px] font-[700]"
+      class="py-3 text-center bigScreen:text-[50px] bigScreen:leading-[58px] desktop:text-[50px] desktop::leading-[58px] laptop:text-[50px] laptop:leading-[58px] tablet:text-[30px] tablet:leading-[35px] mobile:text-[30px] mobile:leading-[35px] sm:text-[30px] sm:leading-[35px] xl:text-[30px] xl:leading-[35px] font-[700]"
     >
       We Work With
     </h1>
@@ -102,27 +102,29 @@
   </div>
 </section>
 
-<section class="naiparq-home__reservation relative pb-3">
+<section class="naiparq-home__reservation relative py-3">
   <div class="bg-circle circle-blue"></div>
 
   <div
-    class="naiparq-home__reservation-wrap flex flew-row py-3 bigScreen:px-0 desktop:px-0 laptop:px-0 tablet:px-3 mobile:px-3 sm:px-3 xl:px-3 gap-x-3 max-w-[1200px] mx-auto"
+    class="naiparq-home__reservation-wrap bigScreen:min-h-[70vh] desktop:min-h-[70vh] laptop:min-h-[70vh] tablet:min-h-[100%] mobile:min-h-[100%] sm:min-h-[100%] xl:min-h-[100%] grid bigScreen:grid-cols-2 desktop:grid-cols-2 laptop:grid-cols-2 tablet:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 xl:grid-cols-1 py-3 px-4 gap-x-3 gap-y-5 max-w-[1200px] mx-auto"
   >
-    <div
-      class="naiparq-home__reservation-wrap-content flex flex-col pr-3 basis-1/2"
-    >
-      <h1 class="text-[40px] font-bold leading-[67px] pb-3">
+    <div class="naiparq-home__reservation-wrap-content flex flex-col pr-3">
+      <h1
+        class="bigScreen:text-left desktop:text-left laptop:text-left tablet:text-center mobile:text-center sm:text-center xl:text-center bigScreen:text-[40px] bigScreen:leading-[67px] desktop:text-[40px] desktop:leading-[67px] laptop:text-[40px] laptop:leading-[67px] tablet:text-[30px] tablet:leading-[35px] mobile:text-[30px] mobile:leading-[35px] sm:text-[30px] sm:leading-[35px] xl:text-[30px] xl:leading-[35px] font-bold pb-3"
+      >
         Parking Management
       </h1>
-      <p class="text-[36px] leading-[41px] font-normal">
+      <p
+        class="bigScreen:text-left desktop:text-left laptop:text-left tablet:text-center mobile:text-center sm:text-center xl:text-center bigScreen:text-[36px] bigScreen:leading-[41px] desktop:text-[36px] desktop:leading-[41px] laptop:text-[36px] laptop:leading-[41px] tablet:text-[18px] tablet:leading-[20px] mobile:text-[18px] mobile:leading-[20px] sm:text-[18px] sm:leading-[20px] xl:text-[18px] xl:leading-[20px] font-normal"
+      >
         Revolutionize the way you manage parking with our cutting-edge solution.
         Simplify and streamline parking management effortlessly with our
         reliable and user-friendly platform.
       </p>
     </div>
-    <div class="naiparq-home__reservation-wrap-image basis-1/2">
+    <div class="naiparq-home__reservation-wrap-image">
       <img
-        class="object-cover"
+        class="object-cover mx-auto bigScreen:w-full desktop:w-full laptop:w-full tablet:w-[85%] mobile:w-full sm:w-full xl:w-full"
         [src]="'assets/images/naiparq-landing-dash.png'"
         alt="Naiparq Landing Dash"
       />

@@ -140,7 +140,7 @@
                   />
                 </div>
               </li>
-              <li *ngIf="blogger$ | async">
+              <li *ngIf="(blogger$ | async) || (isSuperAdmin$ | async)">
                 <a [routerLink]="['/blog/create']" class="dropdown-item"
                   >Create blog</a
                 >

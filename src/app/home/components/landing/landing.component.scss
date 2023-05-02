@@ -1,3 +1,5 @@
+@tailwind components;
+
 .naiparq-home {
   &__operator {
     position: relative;
@@ -9,6 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid red;
   }
 
   &__landing,
@@ -79,6 +82,7 @@
 
   &__reservation {
     min-height: 80vh;
+    border: 1px solid red;
 
     .circle-blue {
       width: 487px;
@@ -111,7 +115,6 @@
       height: 895px;
       left: -667px;
       bottom: -75%;
-      border: 1px solid red;
 
       background: #4bc1f1;
       mix-blend-mode: normal;
@@ -124,4 +127,15 @@
   background-image: url("/assets/images/naiparq-app-bg.png");
   background-position: center;
   background-size: cover;
+}
+
+// How It Works Section
+.naiparq-home__how-it-works {
+  .HIT-content {
+    &__steps {
+      .HIT-step-item {
+        border: 1px solid red;
+      }
+    }
+  }
 }

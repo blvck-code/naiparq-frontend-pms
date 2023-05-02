@@ -37,6 +37,7 @@ gsap.registerPlugin(ScrollTrigger);
 export class HomeComponent implements OnInit, OnDestroy {
   showMenu: boolean = false;
   currentYear: any;
+  showNav: boolean = false;
 
   @ViewChild('homeContent') 'homeContent': ElementRef;
   @ViewChild('scroller') 'scroller': ElementRef;
@@ -66,6 +67,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   getDate(): void {
     this.currentYear = new Date().getFullYear();
+  }
+
+  toggleNav(): void {
+    this.showNav = !this.showNav;
   }
 
   ngOnInit(): void {

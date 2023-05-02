@@ -1395,10 +1395,6 @@ table {
       laptop:leading-[85px]
       laptop:py-10
 
-      tabletLand:text-[40px]
-      tabletLand:leading-[45px]
-      tabletLand:py-5
-
       tablet:text-[40px]
       tablet:leading-[45px]
       tablet:py-5
@@ -1418,9 +1414,6 @@ table {
   .page-title-two {
     @apply laptop:text-[50px]
     laptop:leading-[65px]
-
-    tabletLand:text-[40px]
-    tabletLand:leading-[45px]
 
     tablet:text-[40px]
     tablet:leading-[45px]

@@ -13,12 +13,14 @@
         class="naiparq-home__header-logo basis-1/4 flex items-center"
       >
         <img
-          class="object-cover w-[65%]"
+          class="object-cover bigScreen:w-[65%] desktop:w-[65%] laptop:w-[65%] tablet:w-[100%] mobile:w-[100%] sm:w-[100%] xl:w-[100%]"
           src="assets/images/naiparq-logo-black.png"
           alt="NaiParq"
         />
       </a>
-      <div class="basis-2/4">
+      <div
+        class="naiparq-home__header-links bigScreen:block desktop:block laptop:block tablet:hidden mobile:hidden sm:hidden xl:hidden basis-2/4"
+      >
         <ul #menuSecond class="flex flex-row justify-center gap-x-12">
           <li class="">
             <a
@@ -90,7 +92,9 @@
           </li>
         </ul>
       </div>
-      <div class="basis-1/4">
+      <div
+        class="naiparq-home__header-auth bigScreen:block desktop:block laptop:block tablet:hidden mobile:hidden sm:hidden xl:hidden basis-1/4"
+      >
         <div
           *ngIf="!(isLoggedIn$ | async)"
           class="flex items-center justify-end gap-3"
@@ -152,6 +156,44 @@
             </li>
             <li><a (click)="logOut()" class="dropdown-item">Logout</a></li>
           </ul>
+        </div>
+      </div>
+      <div
+        (click)="toggleNav()"
+        class="naiparq-home__header-hambuger cursor-pointer bigScreen:hidden desktop:hidden laptop:hidden tablet:block mobile:block sm:block xl:block"
+      >
+        <svg
+          width="30"
+          height="21"
+          viewBox="0 0 30 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="30" height="3" fill="black" />
+          <rect y="9" width="30" height="3" fill="black" />
+          <rect y="18" width="30" height="3" fill="black" />
+        </svg>
+      </div>
+      <div [class.show]="showNav" class="mobile-nav px-3 py-4">
+        <div class="relative flex items-center justify-center">
+          <div (click)="toggleNav()" class="h-[32px] w-[32px] absolute left-0">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 26L10 16L20 6"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <h5 class="text-center font-bold text-[21px] leading-[25px]">Menu</h5>
         </div>
       </div>
     </div>

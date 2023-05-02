@@ -87,14 +87,10 @@
           </p>
         </div>
       </div>
-
-      <!--      <showdown-->
-      <!--        class="blog-content"-->
-      <!--        [value]="(blogDetails$ | async)?.content"-->
-      <!--        showdown-->
-      <!--        emoji-->
-      <!--      >-->
-      <!--      </showdown>-->
+      <div
+        class="blog-content"
+        [innerHTML]="(blogDetails$ | async)?.content"
+      ></div>
     </div>
 
     <div class="max-w-[900px] mx-auto py-3">

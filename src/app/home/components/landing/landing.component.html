@@ -285,13 +285,10 @@
           >
             {{ blog.title | truncate : [50] }}
           </h1>
-          <!--          <showdown-->
-          <!--            class="blog-content__showdown text-[14px] leading-[18px] no-underline text-[#000] font-[400]"-->
-          <!--            [value]="blog.content | truncate : [160]"-->
-          <!--            showdown-->
-          <!--            emoji-->
-          <!--          >-->
-          <!--          </showdown>-->
+          <div
+            class="blog-content"
+            [innerHTML]="blog.content | truncate : [160]"
+          ></div>
         </div>
         <!--      Image-->
         <div>

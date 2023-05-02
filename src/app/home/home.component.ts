@@ -5,21 +5,19 @@ import {
   HostListener,
   OnDestroy,
   OnInit,
-  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
+import { fromEvent, Observable, Subject, takeUntil } from 'rxjs';
 import {
-  fromEvent,
-  Observable,
-  BehaviorSubject,
-  Subject,
-  takeUntil,
-} from 'rxjs';
-import { blogger, isLoggedIn, userName } from '../auth/state/auth.selector';
+  blogger,
+  isLoggedIn,
+  isSuperAdmin,
+  userName,
+} from '../auth/state/auth.selector';
 import * as authActions from '../auth/state/auth.actions';
 import { blogLoaded } from './state/home.reducer';
 import * as homeActions from './state/home.actions';
@@ -37,11 +35,14 @@ gsap.registerPlugin(ScrollTrigger);
 export class HomeComponent implements OnInit, OnDestroy {
   showMenu: boolean = false;
   currentYear: any;
+  showNav: boolean = false;
 
   @ViewChild('homeContent') 'homeContent': ElementRef;
   @ViewChild('scroller') 'scroller': ElementRef;
 
   blogger$: Observable<boolean> = this.store.select(blogger);
+  // @ts-ignore
+  isSuperAdmin$: Observable<boolean> = this.store.select(isSuperAdmin);
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
   userName$: Observable<string> = this.store.select(userName);
 
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   destroy = new Subject();
   destroy$ = this.destroy.asObservable();
 
-  constructor(private store: Store<AppState>, private renderer2: Renderer2) {
+  constructor(private store: Store<AppState>) {
     fromEvent(window, 'scroll')
       .pipe(takeUntil(this.destroy$))
       .subscribe((e: Event) => console.log(this.getYPosition(e)));
@@ -66,6 +67,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   getDate(): void {
     this.currentYear = new Date().getFullYear();
+  }
+
+  toggleNav(): void {
+    this.showNav = !this.showNav;
   }
 
   ngOnInit(): void {

@@ -857,6 +857,63 @@ main {
   overflow-y: auto;
 }
 
+.blog-content {
+  // Headings
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  ul,
+  ol {
+    padding: 20px;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  a {
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+  }
+
+  // classes
+  .text-tiny {
+    font-size: 0.7em;
+  }
+  .text-small {
+    font-size: 0.85em;
+  }
+  .text-big {
+    font-size: 1.4em;
+  }
+  .text-huge {
+    font-size: 1.8em;
+  }
+}
+
 /* ============ container styles  ============ */
 
 .graph-title {
@@ -1395,10 +1452,6 @@ table {
       laptop:leading-[85px]
       laptop:py-10
 
-      tabletLand:text-[40px]
-      tabletLand:leading-[45px]
-      tabletLand:py-5
-
       tablet:text-[40px]
       tablet:leading-[45px]
       tablet:py-5
@@ -1418,9 +1471,6 @@ table {
   .page-title-two {
     @apply laptop:text-[50px]
     laptop:leading-[65px]
-
-    tabletLand:text-[40px]
-    tabletLand:leading-[45px]
 
     tablet:text-[40px]
     tablet:leading-[45px]

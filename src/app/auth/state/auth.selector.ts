@@ -44,6 +44,11 @@ export const blogger = createSelector(
   (state) => state.userInfo.user.user_type === 'blogger'
 );
 
+export const isSuperAdmin = createSelector(
+  getAuthState,
+  (state) => state.userInfo.user.is_superuser
+);
+
 export const usersLoading = createSelector(
   getAuthState,
   (state) => state.users.loading

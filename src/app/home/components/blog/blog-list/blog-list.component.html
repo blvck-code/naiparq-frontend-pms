@@ -36,13 +36,10 @@
         >
           {{ blog.title | truncate : [50] }}
         </h1>
-        <!--        <showdown-->
-        <!--          class="blog-content__showdown text-base leading-[26px] no-underline text-[#000] font-[400]"-->
-        <!--          [value]="blog.content | truncate : [180]"-->
-        <!--          showdown-->
-        <!--          emoji-->
-        <!--        >-->
-        <!--        </showdown>-->
+        <div
+          class="blog-content"
+          [innerHTML]="blog.content | truncate : [180]"
+        ></div>
       </div>
       <!--      Image-->
       <div>

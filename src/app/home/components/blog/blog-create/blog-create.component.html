@@ -42,18 +42,10 @@
           [src]="coverImage"
           alt=""
         />
-        <!--        <img class="rounded-lg object-cover" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/blog-examples.jpg" alt="">-->
       </div>
       <div class="blog-content" [innerHTML]="blogContent"></div>
-      <!--      <showdown class="blog-content" [value]="blogContent" showdown emoji>-->
-      <!--      </showdown>-->
     </div>
     <div [class.hidden]="preview" class="naiparq-blog-create__editor">
-      <!--      <h2 class="text-[30px] m-0 leading-[120%] font-[700] text-[#2F1C6A]">-->
-      <!--        Create Blog-->
-      <!--      </h2>-->
-      <!--      <editor></editor>-->
-
       <form [formGroup]="blogForm" class="flex flex-col gap-1.5">
         <div class="flex flex-col py-2 gap-1.5">
           <label class="text-base" for="bTitle">Blog title</label>

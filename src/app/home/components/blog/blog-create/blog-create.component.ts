@@ -45,15 +45,6 @@ export class BlogCreateComponent implements OnInit {
       );
   }
 
-  // public onReady(eventData: any) {
-  //   eventData.plugins.get('FileRepository').createUploadAdapter = (
-  //     loader: any
-  //   ) => {
-  //     console.log('Loader ==>>', loader);
-  //     return new UploadAdapter(loader, '', this.http);
-  //   };
-  // }
-
   blogForm = this.fb.group({
     title: ['', Validators.required],
     cover_image: ['', Validators.required],

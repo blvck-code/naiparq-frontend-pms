@@ -1,3 +1,5 @@
+@tailwind components;
+
 .naiparq-carousel {
   position: relative;
   margin: auto;
@@ -6,10 +8,11 @@
   flex-direction: row;
   align-items: center;
   width: 100vw;
+  border: 1px solid red;
 
   .naiparq-slide {
     display: none;
-    min-height: 667px;
+    max-height: 667px;
 
     &.active-slide {
       display: flex;
@@ -22,8 +25,16 @@
   animation-duration: 1.5s;
 }
 
-.translateImage {
-  transform: translateX(1.5rem) translateY(-1.5rem);
+@layer components {
+  .translateImage {
+    //@apply bigScreen:translate-x-0 bigScreen:translate-y-0;
+    //@apply desktop:translate-x-0 desktop:translate-y-0;
+    //@apply laptop:translate-x-0 laptop:translate-y-0;
+    //@apply tablet:translate-x-6 tablet:translate-y-6;
+    //@apply mobile:translate-x-6 mobile:translate-y-6;
+    //@apply sm:translate-x-6 sm:translate-y-6
+    //@apply xl:translate-x-6 xl:translate-y-6;
+  }
 }
 
 @keyframes fade {

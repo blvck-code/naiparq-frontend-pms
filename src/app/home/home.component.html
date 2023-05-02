@@ -59,7 +59,7 @@
               </svg>
             </a>
             <ul
-              class="dropdown-menu min-w-[300px] py-2.5 px-4 dropdown-menu-light mt-4 border-0 shadow"
+              class="dropdown-menu min-w-[300px] py-2.5 px-4 dropdown-menu-light mt-4 shadow"
               aria-labelledby="navbarLightDropdownMenuLink1"
             >
               <li class="py-1">
@@ -174,26 +174,119 @@
           <rect y="18" width="30" height="3" fill="black" />
         </svg>
       </div>
-      <div [class.show]="showNav" class="mobile-nav px-3 py-4">
-        <div class="relative flex items-center justify-center">
-          <div (click)="toggleNav()" class="h-[32px] w-[32px] absolute left-0">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      <div
+        [class.show]="showNav"
+        [class.hide]="!showNav"
+        class="mobile-nav px-3 py-4"
+      >
+        <div class="relative flex flex-col">
+          <div class="relative pt-1 pb-3 items-center justify-center">
+            <div
+              (click)="toggleNav()"
+              class="h-[32px] w-[32px] absolute left-0"
             >
-              <path
-                d="M20 26L10 16L20 6"
-                stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 26L10 16L20 6"
+                  stroke="black"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h5 class="text-center font-bold text-[21px] leading-[25px]">
+              Menu
+            </h5>
           </div>
-          <h5 class="text-center font-bold text-[21px] leading-[25px]">Menu</h5>
+          <ul class="flex flex-col items-start gap-y-3 pt-4">
+            <li (click)="toggleNav()" class="nav-item">
+              <a
+                routerLink="/about-us"
+                routerLinkActive="active-link"
+                class="naiparq-link"
+                >About Us</a
+              >
+            </li>
+            <li class="dropdown">
+              <p
+                class="flex flex-row justify-center items-center gap-0.5"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="naiparq-link"> Products &nbsp; </span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.5 9L12 16.5L4.5 9"
+                    stroke="black"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </p>
+              <ul
+                class="dropdown-menu min-w-[300px] py-2.5 px-4 dropdown-menu-light mt-4 shadow"
+                aria-labelledby="navbarLightDropdownMenuLink1"
+              >
+                <li class="py-1">
+                  <a
+                    class="naiparq-link"
+                    [routerLink]="['parking-management-system']"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    >Parking Management System</a
+                  >
+                </li>
+                <li class="py-1">
+                  <a
+                    class="naiparq-link"
+                    [routerLink]="['parking-reservation']"
+                    routerLinkActive="active-link"
+                    >Parking Reservation</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li (click)="toggleNav()" class="nav-item">
+              <a
+                routerLink="/contact-us"
+                routerLinkActive="active-link"
+                class="naiparq-link"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+          <ul class="flex flex-col items-start gap-y-3 pt-4">
+            <li (click)="toggleNav()" class="nav-item">
+              <a
+                routerLink="/auth"
+                routerLinkActive="active-link"
+                class="naiparq-link"
+                >Login</a
+              >
+            </li>
+            <li (click)="toggleNav()" class="nav-item mt-2">
+              <a
+                class="py-2 px-3 bg-[#000] text-[16px] font-[700] text-[#fff] hover:text-[#fff] rounded-[60px] no-underline"
+                [routerLink]="['/auth/register']"
+                >Sign Up</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -202,11 +295,11 @@
     <router-outlet></router-outlet>
   </div>
   <footer
-    class="naiparq-home__footer laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3 px-3 text-[#fff]"
+    class="naiparq-home__footer bigScreen:py-10 desktop:py-10 laptop:py-10 tablet:py-9 mobile:py-9 sm:py-9 px-4 text-[#fff]"
   >
     <div class="content max-w-[1200px] mx-auto">
       <div
-        class="footer-content flex gap-y-3 laptop:pt-4 laptop:pb-5 tabletLand:p-0 mobile:p-0 sm:p-0 laptop:flex-row tabletLand:flex-col mobile:flex-col sm:flex-col border-b"
+        class="footer-content flex gap-y-4 laptop:pt-4 laptop:pb-5 tabletLand:p-0 mobile:p-0 sm:p-0 laptop:flex-row tabletLand:flex-col mobile:flex-col sm:flex-col border-b"
       >
         <div
           class="laptop:pr-2 tabletLand:pr-0 mobile:pr-0 sm:pr-0 basis-2/5 flex flex-col items-start gap-3"
@@ -288,7 +381,9 @@
             at a time.
           </p>
           <!--            links-->
-          <div class="naiparq-socials pt-10 flex gap-2">
+          <div
+            class="naiparq-socials bigScreen:pt-10 desktop:pt-10 laptop:pt-5 mobile:pt-2 sm:pt-2 xl:pt-2 flex gap-2"
+          >
             <a href="https://www.linkedin.com/company/naiparq/" target="_blank">
               <svg
                 width="32"
@@ -336,7 +431,9 @@
           </div>
         </div>
 
-        <div class="flex flex-row basis-3/5">
+        <div
+          class="flex bigScreen:flex-row desktop:flex-row laptop:flex-row tablet:flex-col mobile:flex-col sm:flex-col xl:flex-col bigScreen:gap-y-4 desktop:gap-y-4 laptop:gap-y-4 tablet:gap-y-12 mobile:gap-y-12 sm:gap-y-12 xl:gap-y-12 basis-3/5"
+        >
           <div
             class="laptop:pl-16 tabletLand:pl-0 mobile:pl-0 sm:pl-0 basis-1/2 flex flex-col gap-2"
           >
@@ -394,7 +491,9 @@
           </div>
 
           <div class="basis-1/2 tabletLand:pr-0 mobile:pr-0 sm:pr-0">
-            <ul class="h-[100%] flex flex-col items-end justify-evenly">
+            <ul
+              class="h-[100%] flex flex-col bigScreen:items-end desktop:items-end laptop:items-end tablet:items-start mobile:items-start sm:items-start xl:items-start justify-evenly"
+            >
               <li>
                 <a
                   class="naiparq-link text-[20px] leading-[30px] text-white"
@@ -447,7 +546,9 @@
       </div>
 
       <div class="footer-copyright py-4">
-        <p class="text-[20px] text-center">
+        <p
+          class="bigScreen:text-[20px] desktop:text-[20px] laptop:text-[20px] tablet:text-[16px] mobile:text-[16px] sm:text-[16px] xl:text-[16px] text-center"
+        >
           Copyright © {{ currentYear }} NaiParq. All Rights Reserved.
         </p>
       </div>

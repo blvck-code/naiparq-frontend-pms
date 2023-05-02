@@ -1,10 +1,12 @@
+@tailwind components;
+
 .naiparq-home {
   &__operator {
     position: relative;
   }
 
   &__slide-wrap {
-    height: calc(95vh - 80px);
+    max-height: calc(95vh - 80px);
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -78,26 +80,16 @@
   }
 
   &__reservation {
-    min-height: 80vh;
-
     .circle-blue {
       width: 487px;
       height: 487px;
       left: -254px;
       bottom: -20%;
+      z-index: -1;
 
       background: #4bc1f1;
       mix-blend-mode: normal;
       filter: blur(200px);
-    }
-
-    .naiparq-home-title {
-      z-index: 2;
-    }
-
-    &-wrap {
-      height: 80vh;
-      z-index: 5;
     }
   }
 
@@ -111,7 +103,6 @@
       height: 895px;
       left: -667px;
       bottom: -75%;
-      border: 1px solid red;
 
       background: #4bc1f1;
       mix-blend-mode: normal;
@@ -124,4 +115,14 @@
   background-image: url("/assets/images/naiparq-app-bg.png");
   background-position: center;
   background-size: cover;
+}
+
+// How It Works Section
+.naiparq-home__how-it-works {
+  .HIT-content {
+    &__steps {
+      .HIT-step-item {
+      }
+    }
+  }
 }

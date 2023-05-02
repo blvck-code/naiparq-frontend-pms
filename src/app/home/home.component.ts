@@ -23,6 +23,7 @@ import { blogLoaded } from './state/home.reducer';
 import * as homeActions from './state/home.actions';
 // @ts-ignore
 import { WINDOW } from './services/home.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,10 +52,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   destroy = new Subject();
   destroy$ = this.destroy.asObservable();
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router) {
     fromEvent(window, 'scroll')
       .pipe(takeUntil(this.destroy$))
       .subscribe((e: Event) => console.log(this.getYPosition(e)));
+    this.scrollTop();
+  }
+
+  scrollTop(): void {
+    this.router.events.subscribe({
+      next: (resp) => {
+        if (resp instanceof NavigationEnd) {
+          window.scroll(0, 0);
+        }
+      },
+    });
   }
 
   getYPosition(e: any): number {

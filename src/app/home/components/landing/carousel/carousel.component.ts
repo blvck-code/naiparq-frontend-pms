@@ -14,7 +14,7 @@ interface carouselContent {
 })
 export class CarouselComponent implements OnInit {
   @Input() carousel: carouselContent[] = [];
-  selectIndex = 1;
+  selectIndex = 0;
   indexObservable = new BehaviorSubject(this.selectIndex);
   indexAsSubject$ = this.indexObservable.asObservable();
 

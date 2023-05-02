@@ -6,12 +6,11 @@
   }
 
   &__slide-wrap {
-    height: calc(95vh - 80px);
+    max-height: calc(95vh - 80px);
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
   }
 
   &__landing,
@@ -81,23 +80,16 @@
   }
 
   &__reservation {
-    border: 1px solid red;
-
     .circle-blue {
       width: 487px;
       height: 487px;
       left: -254px;
       bottom: -20%;
-      z-index: 1;
+      z-index: -1;
 
       background: #4bc1f1;
       mix-blend-mode: normal;
       filter: blur(200px);
-    }
-
-    &-wrap {
-      border: 1px solid red;
-      z-index: 5;
     }
   }
 
@@ -130,7 +122,6 @@
   .HIT-content {
     &__steps {
       .HIT-step-item {
-        border: 1px solid red;
       }
     }
   }

@@ -5,9 +5,12 @@
   <div
     *ngFor="let item of carousel; let i = index"
     [ngClass]="{ 'active-slide': selectIndex === i }"
-    class="naiparq-slide relative flex bigScreen:flex-row desktopLand:flex-row desktop:flex-row laptop:flex-row tabletLand:flex-row flex-col items-center py-5"
+    class="naiparq-slide relative flex bigScreen:flex-row desktop:flex-row laptop:flex-row table:flex-col-reverse mobile:flex-col-reverse sm:flex-col-reverse xl:flex-col-reverse items-center px-4 py-5"
   >
-    <div [class.bg-white]="selectIndex === 0" class="basis-1/2 rounded-[20px]">
+    <div
+      [class.bg-white]="selectIndex === 0"
+      class="basis-1/2 border rounded-[20px]"
+    >
       <img
         [class.translateImage]="selectIndex === 0"
         class="w-[587px] h-full rounded-[20px] object-scale-down"
@@ -15,8 +18,10 @@
         alt="{{ item.imgAlt }}"
       />
     </div>
-    <div class="basis-1/2 h-full px-5">
-      <h1 class="font-bold text-[65px] leading-[70px]">
+    <div class="basis-1/2 border h-full px-5">
+      <h1
+        class="font-bold bigScreen:text-[65px] bigScreen:leading-[70px] desktop:text-[65px] desktop:leading-[70px] laptop:text-[65px] laptop:leading-[70px] tablet:text-[30px] tablet:leading-[35px] mobile:text-[30px] mobile:leading-[35px] sm:text-[30px] sm:leading-[35px] xl:text-[30px] xl:leading-[35px]"
+      >
         {{ item.title }}
       </h1>
     </div>
@@ -37,7 +42,10 @@
   </div>
 </div>
 
-<div *ngIf="(indexAsSubject$ | async) === 1" class="naiparq-carousel mx-auto">
+<div
+  *ngIf="(indexAsSubject$ | async) === 1"
+  class="relative mx-auto overflow-hidden items-center w-full"
+>
   <div
     class="naiparq-slide relative active-slide flex bigScreen:flex-row desktopLand:flex-row desktop:flex-row laptop:flex-row tabletLand:flex-row flex-col items-center py-5"
   >

@@ -32,9 +32,8 @@ nav {
 
 .mobile-nav {
   position: fixed;
-  width: 0;
-  display: none;
   height: 100vh;
+  display: none;
   top: 0;
   right: 0;
   background: #ffffff;
@@ -45,6 +44,10 @@ nav {
     width: 85vw;
     display: block;
   }
+
+  &.hide {
+    width: 0;
+  }
 }
 
 @keyframes showNav {
@@ -52,7 +55,16 @@ nav {
     width: 0;
   }
   to {
-    width: 100%;
+    width: 85vw;
+  }
+}
+
+@keyframes hideNav {
+  from {
+    width: 85vw;
+  }
+  to {
+    width: 0;
   }
 }
 
@@ -68,7 +80,6 @@ nav {
   &__footer {
     bottom: 0;
     background: #000;
-    z-index: 2;
   }
 }
 .nav--hidden {

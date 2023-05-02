@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import {
   blogger,
   isLoggedIn,
+  isSuperAdmin,
   userInfo,
   userName,
 } from '../auth/state/auth.selector';
@@ -34,6 +35,8 @@ export class DashboardComponent implements OnInit {
   isLoggedIn$: Observable<boolean> = this.store.select(isLoggedIn);
   userInfo$: Observable<UserModel> = this.store.select(userInfo);
   blogger$: Observable<boolean> = this.store.select(blogger);
+  // @ts-ignore
+  isSuperAdmin$: Observable<boolean> = this.store.select(isSuperAdmin);
 
   toggleNav(): void {
     const nav = this.sideNav.nativeElement;

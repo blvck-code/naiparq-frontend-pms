@@ -1,31 +1,36 @@
 <div
   *ngIf="(indexAsSubject$ | async) !== 1"
-  class="naiparq-carousel max-w-[1200px] mx-auto"
+  class="naiparq-carousel py-4 max-w-[1200px] mx-auto"
 >
   <div
     *ngFor="let item of carousel; let i = index"
     [ngClass]="{ 'active-slide': selectIndex === i }"
-    class="naiparq-slide relative flex bigScreen:flex-row desktop:flex-row laptop:flex-row table:flex-col-reverse mobile:flex-col-reverse sm:flex-col-reverse xl:flex-col-reverse items-center px-4 py-5"
+    class="naiparq-slide relative py-4 flex gap-4 bigScreen:flex-row desktop:flex-row laptop:flex-row table:flex-col-reverse mobile:flex-col-reverse sm:flex-col-reverse xl:flex-col-reverse items-center px-4 py-5"
   >
-    <div
-      [class.bg-white]="selectIndex === 0"
-      class="basis-1/2 border rounded-[20px]"
-    >
+    <!--    Image -->
+    <div [class.bg-white]="selectIndex === 0" class="basis-1/2 rounded-[20px]">
       <img
         [class.translateImage]="selectIndex === 0"
-        class="w-[587px] h-full rounded-[20px] object-scale-down"
+        class="bigScreen:w-[587px] desktop:w-[587px] laptop:w-[500px] h-full rounded-[20px] object-scale-down"
         [src]="item.imgSrc"
         alt="{{ item.imgAlt }}"
       />
     </div>
-    <div class="basis-1/2 border h-full px-5">
+    <!--    Title-->
+    <div
+      class="basis-1/2 h-full bigScreen:pb-0 desktop:pb-0 laptop:pb-0 tablet:pb-4 mobile:pb-4 sm:pb-4 xl:pb-4"
+    >
       <h1
-        class="font-bold bigScreen:text-[65px] bigScreen:leading-[70px] desktop:text-[65px] desktop:leading-[70px] laptop:text-[65px] laptop:leading-[70px] tablet:text-[30px] tablet:leading-[35px] mobile:text-[30px] mobile:leading-[35px] sm:text-[30px] sm:leading-[35px] xl:text-[30px] xl:leading-[35px]"
+        class="font-bold bigScreen:text-left desktop:text-left laptop:text-left tablet:text-center mobile:text-center sm:text-center xl:text-center bigScreen:text-[65px] bigScreen:leading-[70px] desktop:text-[65px] desktop:leading-[70px] laptop:text-[65px] laptop:leading-[70px] tablet:text-[30px] tablet:leading-[35px] mobile:text-[30px] mobile:leading-[35px] sm:text-[30px] sm:leading-[35px] xl:text-[30px] xl:leading-[35px]"
       >
         {{ item.title }}
       </h1>
     </div>
-    <button (click)="nextSlide()" style="z-index: 2" class="absolute right-5">
+    <button
+      (click)="nextSlide()"
+      style="z-index: 2"
+      class="absolute right-5 bigScreen:block desktop:block laptop:block tablet:hidden mobile:hidden sm:hidden xl:hidden"
+    >
       <svg
         width="42"
         height="42"

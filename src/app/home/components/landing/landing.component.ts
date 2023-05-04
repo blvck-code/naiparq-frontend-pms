@@ -36,6 +36,9 @@ export class LandingComponent implements OnInit {
 
   numOfSlots: number = 1;
 
+  public screenWidth: any;
+  public screenHeight: any;
+
   blogList$: Observable<BlogModel[]> = this.store.select(blogList);
   blogLoading$: Observable<boolean> = this.store.select(blogLoading);
   articles: BlogModel[] = [];
@@ -52,12 +55,62 @@ export class LandingComponent implements OnInit {
     private store: Store<AppState>
   ) {}
 
-  ngOnInit(): void {
-    // this.initAnimation();
-    // this.initScrollAnimation();
+  screenSize(): void {
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+
+    console.log('Screen width ==>>', this.screenWidth);
+
+    if (this.screenWidth < 1024) {
+      this.images = [
+        {
+          imgSrc: 'assets/images/naiparq-slide-1.png',
+          imgAlt: 'Naiparq Barrier',
+          title: 'Vehicle Access Control System',
+        },
+        {
+          imgSrc: 'assets/images/naiparq-slide-2.png',
+          imgAlt: 'Parking Management Software',
+          title: 'Parking Management Software',
+        },
+        {
+          imgSrc: 'assets/images/naiparq-slide-3.png',
+          imgAlt: 'Parking Management System',
+          title: 'Parking Management System',
+        },
+        {
+          imgSrc: 'assets/images/naiparq-slide-4.png',
+          imgAlt: 'Enable Parking Reservation',
+          title: 'Enable Parking Reservation',
+        },
+      ];
+    } else {
+      this.images = [
+        {
+          imgSrc: 'assets/images/naiparq-slide-1.png',
+          imgAlt: 'Naiparq Barrier',
+          title: 'Vehicle Access Control System',
+        },
+
+        {
+          imgSrc: 'assets/images/naiparq-slide-3.png',
+          imgAlt: 'Parking Management System',
+          title: 'Parking Management System',
+        },
+        {
+          imgSrc: 'assets/images/naiparq-slide-4.png',
+          imgAlt: 'Enable Parking Reservation',
+          title: 'Enable Parking Reservation',
+        },
+      ];
+    }
   }
 
-  images = [
+  ngOnInit(): void {
+    // this.screenSize();
+  }
+
+  images: any[] = [
     {
       imgSrc: 'assets/images/naiparq-slide-1.png',
       imgAlt: 'Naiparq Barrier',

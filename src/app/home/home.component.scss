@@ -80,6 +80,7 @@ nav {
   &__footer {
     bottom: 0;
     background: #000;
+    z-index: 5;
   }
 }
 .nav--hidden {

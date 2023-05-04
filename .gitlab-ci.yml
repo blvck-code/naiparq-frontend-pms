@@ -1,7 +1,7 @@
 image: node:19.6.0 
 
 variables:
-  GIT_DEPTH: 1
+  GIT_DEPTH: 0
 
 default:
   tags:
@@ -40,7 +40,7 @@ build_image:
   stage: build
   image: docker:23.0.5
   services:
-    - docker:23.0.5-dind
+    - docker:dind
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest

@@ -30,7 +30,7 @@ dependencies_install:
   cache:
     key:
       files:
-        - package-lock.json
+        - package.json
     paths:
       - node_modules
     policy: pull
@@ -46,7 +46,8 @@ build_image:
     IMAGE_TAG: latest
     # DOCKER_TLS_CERTDIR: "/certs"
   before_script:
-    - docker login -u $DOCKER_USER -p $DOCKER_PWD
+      - docker login -u juliawakaba -p precious5620
+    # - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
     - echo "Push to docker hub" 
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .

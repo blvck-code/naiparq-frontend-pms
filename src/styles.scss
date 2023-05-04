@@ -1448,7 +1448,11 @@ table {
 
 @layer components {
   .page-title {
-    @apply laptop:text-[60px]
+    @apply desktop:text-[60px]
+    desktop:leading-[85px]
+    desktop:py-10
+
+    laptop:text-[60px]
       laptop:leading-[85px]
       laptop:py-10
 

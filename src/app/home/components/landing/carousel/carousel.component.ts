@@ -27,9 +27,9 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit() {
-    // setInterval(() => {
-    //   this.nextSlide();
-    //   console.log('Next slide', this.selectIndex);
-    // }, 5000);
+    setInterval(() => {
+      this.nextSlide();
+      console.log('Next slide', this.selectIndex);
+    }, 5000);
   }
 }

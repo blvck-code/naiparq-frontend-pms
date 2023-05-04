@@ -6,7 +6,6 @@
   }
 
   &__slide-wrap {
-    max-height: calc(95vh - 80px);
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -115,14 +114,4 @@
   background-image: url("/assets/images/naiparq-app-bg.png");
   background-position: center;
   background-size: cover;
-}
-
-// How It Works Section
-.naiparq-home__how-it-works {
-  .HIT-content {
-    &__steps {
-      .HIT-step-item {
-      }
-    }
-  }
 }

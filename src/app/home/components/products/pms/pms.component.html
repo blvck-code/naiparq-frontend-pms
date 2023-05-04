@@ -1,29 +1,31 @@
-<section class="naiparq-pms__landing flex mt-[80px] relative px-3">
+<section
+  class="naiparq-pms__landing flex bigScreen:min-h-[68vh] desktop:min-h-[68vh] laptop:min-h-[68vh] tablet:min-h-full mobile:min-h-full sm:min-h-full xl:min-h-full mt-[70px] relative px-4"
+>
   <div class="bg-circle circle-blue -z-10"></div>
   <div class="bg-circle circle-yellow -z-10"></div>
-  <div class="naiparq-pms__landing-wrap pt-5 relative mx-auto w-full">
-    <h1 class="naiparq-home-title text-center">Parking Management System</h1>
+  <div
+    class="naiparq-pms__landing-wrap laptop:py-5 tablet:py-5 mobile:py-5 sm:py-3 relative mx-auto w-full"
+  >
+    <h1 class="page-title">Parking Management System</h1>
     <img
-      class="mx-auto min-w-[600px] max-w-[830px] w-[75%]"
+      class="mx-auto pt-4 bigScreen:absolute desktop:absolute laptop:absolute tablet:static mobile:static sm:static xl:static bigScreen:bottom-[-20%] desktop:bottom-[-30%] laptop:bottom-[-20%] w-[75%] bigScreen:max-w-[865px] desktop:max-w-[600px] laptop:max-w-[600px] tablet:w-full mobile:w-full sm:w-full xl:w-full max-w-[830px]"
       src="assets/images/naiparq-pms-dash2.png"
       alt="Naiparq PMS"
     />
   </div>
 </section>
 
-<section
-  class="naiparq-home__how-it-works laptop:p-10 tabletLand:p-5 mobile:p-4 sm:p-4"
->
+<section class="naiparq-home__how-it-works px-4 laptop:p-10 mobile:p-4 sm:p-4">
   <div class="HIT-content max-w-[1200px] mx-auto relative z-0">
     <!--    Intro-->
     <div
       class="HIT-content__top flex flex-col max-w-[670px] px-2 mx-auto items-center text-center"
     >
-      <h1 class="naiparq-home-title text-center py-3">Key Features</h1>
+      <h1 class="page-title py-3">Key Features</h1>
     </div>
     <!--    Icons-->
     <div
-      class="HIT-content__steps grid gap-x-5 gap-y-10 laptop:grid-cols-4 tabletLand:grid-cols-2 mobile:grid-cols-2 sm:grid-cols-1 laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3"
+      class="HIT-content__steps grid gap-x-5 gap-y-5 bigScreen:grid-cols-4 desktop:grid-cols-4 laptop:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 sm:grid-cols-1 laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3"
     >
       <div
         *ngFor="let feature of keyFeatures"
@@ -33,7 +35,7 @@
         <h3 class="text-base font-[600] leading-[23px]">
           {{ feature.title }}
         </h3>
-        <p class="text-base font-normal leading-[22px]">
+        <p class="text-base font-normal justify-center leading-[22px]">
           {{ feature.desc }}
         </p>
       </div>
@@ -43,19 +45,19 @@
 
 <section class="naiparq-home__wcn relative pb-5">
   <div class="bg-circle circle-blue"></div>
-  <h1 class="naiparq-home-title py-3 pb-4">Why choose Naiparq?</h1>
+  <h1 class="page-title">Why choose Naiparq?</h1>
   <div
-    class="naiparq-home__reservation-wrap py-4 h-full gap-5 flex flex-row items-center mx-auto"
+    class="naiparq-home__reservation-wrap py-4 h-full gap-5 grid bigScreen:grid-cols-2 desktop:grid-cols-2 laptop:grid-cols-2 tablet:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 xl:grid-cols-1 items-center mx-auto"
   >
     <div class="naiparq-home__reservation-wrap-image basis-1/2">
       <img
-        class="object-contain max-h-[768px] h-full"
+        class="object-contain max-h-[768px] h-full pr-4"
         [src]="'assets/images/naiparq-pms-log.png'"
         alt="Naiparq Landing Dash"
       />
     </div>
     <div
-      class="naiparq-home__reservation-wrap-content max-w-[560px] accordion grid justify-items-stretch basis-1/2"
+      class="naiparq-home__reservation-wrap-content bigScreen:max-w-[80%] desktop:max-w-[80%] laptop:max-w-[80%] tablet:max-w-full mobile:max-w-full sm:max-w-full xl:max-w-full mx-auto accordion px-4 grid justify-center justify-items-stretch basis-1/2"
     >
       <div
         *ngFor="let item of wcnContent; let i = index"

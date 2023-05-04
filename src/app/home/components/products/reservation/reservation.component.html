@@ -1,4 +1,4 @@
-<section class="naiparq-reserve__landing mt-[96px] flex relative px-3">
+<section class="naiparq-reserve__landing mt-[70px] flex relative px-3">
   <div class="bg-circle blue-circle -z-10"></div>
   <div class="bg-circle yellow-circle -z-10"></div>
   <div
@@ -10,11 +10,13 @@
       <h1
         class="laptop:text-[60px] font-[700] laptop:leading-[65px] sm:text-[30px] sm:leading-[35px]"
       >
-        Parking<br />
+        Parking<br
+          class="bigScreen:block desktop:block laptop:block tablet:hidden mobile:hidden sm:hidden xl:hidden"
+        />
         Reservation
       </h1>
       <p
-        class="py-3 laptop:text-[22px] laptop:leading-[32px] tabletLand:text-[18px] tabletLand:leading-[28px] mobile:text-[18px] mobile:leading-[28px] sm:text-[16px] sm:leading-[20px]"
+        class="py-3 bigScreen:text-[22px] bigScreen:leading-[27px] desktop:text-[22px] desktop:leading-[27px] laptop:text-[20px] laptop:leading-[27px] tabletLand:text-[18px] tabletLand:leading-[28px] mobile:text-[18px] mobile:leading-[28px] sm:text-[16px] sm:leading-[20px]"
       >
         Naiparq works to activate thousands of underutilised parking spaces
         within Nairobi and other urban areas by not only making them visible to
@@ -132,7 +134,7 @@
     <div class="landing-img basis-1/2">
       <img
         #introImg
-        class="max-w-[577px] max-h-[703px] laptop:w-[100%] tabletLand:w-[75%] mobile:w-[75%] sm:w-[75%] mx-auto object-cover"
+        class="max-w-[577px] max-h-[703px] bigScreen:w-[100%] desktop:w-[100%] laptop:w-[100%] tablet:w-[65%] mobile:w-[65%] sm:w-[65%] xl:w-[65%] mx-auto object-cover"
         src="assets/images/naiparq-3d-app.png"
         alt="Naiparq Mobile"
       />
@@ -149,11 +151,7 @@
     <div
       class="HIT-content__top flex flex-col max-w-[670px] px-2 mx-auto items-center text-center"
     >
-      <h1
-        class="py-3 laptop:text-[50px] laptop:leading-[58px] tabletLand:text-[30px] tabletLand:leading-[35px] mobile:text-[30px] mobile:leading-[35px] font-[700]"
-      >
-        How It Works
-      </h1>
+      <h1 class="py-3 page-title">How It Works</h1>
       <p
         class="laptop:text-[24px] laptop:leading-[31px] tabletLand:text-[20px] tabletLand:leading-[28px] mobile:text-[20px] mobile:leading-[28px] sm:text-[20px] sm:leading-[28px] font-[400]"
       >
@@ -164,7 +162,7 @@
     </div>
     <!--    Icons-->
     <div
-      class="HIT-content__steps grid gap-x-2 laptop:grid-cols-4 tabletLand:grid-cols-2 mobile:grid-cols-2 sm:grid-cols-1 laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3"
+      class="HIT-content__steps grid gap-y-4 gap-x-2 laptop:grid-cols-4 tabletLand:grid-cols-2 mobile:grid-cols-2 sm:grid-cols-1 laptop:py-10 tabletLand:py-3 mobile:py-3 sm:py-3"
     >
       <div
         class="HIT-step-item flex flex-col justify-between items-center text-center"
@@ -214,16 +212,12 @@
   </div>
 </section>
 
-<section class="naiparq-home_border_motorist px-3">
+<section class="naiparq-home_border_motorist px-4">
   <div
     style="z-index: 1"
     class="content relative max-w-[1200px] laptop:p-10 tabletLand:py-5 mobile:py-5 sm:py-5 mx-auto"
   >
-    <h1
-      class="laptop:py-3 tabletLand:py-1 mobile:py-1 sm:py-1 laptop:text-[50px] mobile:text-[30px] leading-[58px] font-[700] text-center"
-    >
-      For Motorists
-    </h1>
+    <h1 class="page-title">For Motorists</h1>
 
     <div
       class="flex laptop:flex-row tabletLand:flex-col mobile:flex-col sm:flex-col gap-3 pt-3 items-center justify-center"

@@ -8,11 +8,9 @@
   flex-direction: row;
   align-items: center;
   width: 100vw;
-  border: 1px solid red;
 
   .naiparq-slide {
     display: none;
-    max-height: 667px;
 
     &.active-slide {
       display: flex;

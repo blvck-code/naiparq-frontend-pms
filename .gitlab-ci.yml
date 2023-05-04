@@ -1,3 +1,9 @@
+image: node:19.6.0 
+
+default:
+  tags:
+    - node
+
 stages:
   - setup
   - build
@@ -8,8 +14,10 @@ dependencies_install:
   tags:
     - docker
   script:
+    - echo "starting dependencies install"
     - npm install -g @angular/cli@latest
     - npm install --force
+    - echo "Staring npm build"
     - npm run build
 
 build_image:
@@ -24,5 +32,6 @@ build_image:
   before_script:
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
+    - echo "Push to docker hub" 
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG

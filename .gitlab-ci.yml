@@ -44,10 +44,10 @@ build_image:
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    # DOCKER_TLS_CERTDIR: "/certs"
+    # DOCKER_TLS_CERTDIR: ""
   before_script:
-      - docker login -u juliawakaba -p precious5620
-    # - docker login -u $DOCKER_USER -p $DOCKER_PWD
+      # - docker login -u juliawakaba -p precious5620
+    - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
     - echo "Push to docker hub" 
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .

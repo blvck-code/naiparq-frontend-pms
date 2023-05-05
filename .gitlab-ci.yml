@@ -16,12 +16,8 @@ stages:
 
 install_dependencies:
   stage: setup
-  # image: node:19.6.0 
-  # tags:
-  #   - docker
   script:
     - echo "starting dependencies install"
-    # - npm install -g @angular/cli@latest
     - npm install --force
   only:
     - develop
@@ -35,12 +31,7 @@ install_dependencies:
 
 build_frontend_image:
   stage: build
-  # image: node:19.6.0 
-  # needs: ["install_dependencies"]
-  # tags:
-  #   - docker
   script:
-    # - npm link @angular/cli
     - echo "Staring npm build"
     - npm run build
   artifacts:
@@ -65,7 +56,6 @@ push-docker-registry:
     IMAGE_TAG: latest
     DOCKER_TLS_CERTDIR: ""
   before_script:
-      # - docker login -u juliawakaba -p precious5620
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
     - echo "Push to docker hub" 
@@ -73,14 +63,26 @@ push-docker-registry:
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
 
-# deploy_to_production_server:
-#   stage: publish
-#   variables:
-#     IMAGE_NAME: 
-#   before_script:
-#       # - docker login -u juliawakaba -p precious5620
-#     - docker login -u $DOCKER_USER -p $DOCKER_PWD
-#   script:
-#     - echo "Push to docker hub" 
-#     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-#     - docker push $IMAGE_NAME:$IMAGE_TAG
+deploy_to_production_server:
+  stage: publish
+  image: docker:23.0.5
+  services:
+    - docker:dind
+  variables:
+    IMAGE_NAME: juliawakaba/pms-naiparq-frontend
+    IMAGE_TAG: latest
+    PWD: "#B9cC7(WANcE=mNo"
+  before_script:
+      # - docker login -u juliawakaba -p precious5620
+    - docker login -u $DOCKER_USER -p $DOCKER_PWD
+  script:
+    - apt-get update && apt-get install -y openssh-client sshpass
+    - sshpass -p "#B9cC7(WANcE=mNo" scp -o StrictHostKeyChecking=no -r site/* root@$104.238.161.77:/home/naiparq/naiparq-pms-frontend/
+    # - sshpass -p $PASSWORD scp -o StrictHostKeyChecking=no -r site/* $USERNAME@$HOST:/var/www/html/
+    - docker system prune -af
+    - echo "Pull from docker hub" 
+    - docker run --rm -v pms_web_portal:/data/ ubuntu /bin/sh -c "rm -rf /data/*"
+    - docker pull $IMAGE_NAME:$IMAGE_TAG
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+    - docker run -d --name frontend_prod -v pms_web_portal:/var/www/html/ $IMAGE_NAME:$IMAGE_TAG
+    - docker system prune -af

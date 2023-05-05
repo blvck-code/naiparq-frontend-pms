@@ -76,7 +76,7 @@ deploy_to_production_server:
   before_script:
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
-    - apk add --update --no-cache openssh-client
+    - apk add --update --no-cache openssh-client sshpass
     - sshpass -p $SERVER_PWD ssh -p 999 root@104.238.161.77 \
         "cd /home/naiparq/naiparq-pms-frontend && \
         docker system prune -af && \

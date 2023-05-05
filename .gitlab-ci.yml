@@ -54,7 +54,7 @@ push-docker-registry:
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    DOCKER_TLS_CERTDIR: ""
+    # DOCKER_TLS_CERTDIR: ""
   before_script:
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
@@ -62,7 +62,6 @@ push-docker-registry:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
-# $CI_COMMIT_SHA
 
 deploy_to_production_server:
   stage: publish

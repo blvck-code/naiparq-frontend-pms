@@ -9,9 +9,9 @@ default:
     - docker
 
 stages:
-  # - setup
-  # - build
-  # - docker_push
+  - setup
+  - build
+  - docker_push
   - publish
 
 install_dependencies:

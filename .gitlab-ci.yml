@@ -74,11 +74,10 @@ deploy_to_production_server:
     IMAGE_TAG: latest
     # PWD: "#B9cC7(WANcE=mNo"
   before_script:
-      # - docker login -u juliawakaba -p precious5620
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
     - apk add --update --no-cache openssh-client sshpass
-    - sshpass -p "$PWD" ssh -o StrictHostKeyChecking=no root@104.238.161.77 \
+    - sshpass -p "$PWD" ssh -p 999 -o StrictHostKeyChecking=no root@104.238.161.77 \
         "cd /home/naiparq/naiparq-pms-frontend && \
         docker system prune -af && \
         docker run --rm -v pms_web_portal:/data/ ubuntu /bin/sh -c 'rm -rf /data/*'

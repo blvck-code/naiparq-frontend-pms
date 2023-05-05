@@ -48,7 +48,6 @@ build_frontend_image:
       - dist/
   cache:
     key:
-      prefix: "naiparq_pms_frontend"
       files:
         - package.json
     paths:

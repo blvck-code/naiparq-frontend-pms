@@ -77,7 +77,7 @@ deploy_to_production_server:
       # - docker login -u juliawakaba -p precious5620
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
-    - apt-get update && apt-get install -y openssh-client sshpass
+    - apk add --update --no-cache openssh-client sshpass
     - sshpass -p "#B9cC7(WANcE=mNo" scp -o StrictHostKeyChecking=no  root@$104.238.161.77:/home/naiparq/naiparq-pms-frontend/
     # - sshpass -p $PASSWORD scp -o StrictHostKeyChecking=no -r site/* $USERNAME@$HOST:/var/www/html/
     - docker system prune -af

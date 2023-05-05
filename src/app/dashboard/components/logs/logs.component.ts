@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as driveInActions from '../../state/actions/driveIn.actions';
 import { DriveOutModel } from '../../models/driveOut.model';
 import { DashService } from '../../services/dash.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'naiparq-logs',
@@ -16,10 +17,40 @@ export class LogsComponent implements OnInit {
   driveOutLoaded$: Observable<boolean> = this.storeSrv.driveOutLoaded();
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
 
-  selectedDriveOut!: DriveOutModel;
   currentImg: any;
   slideIndex: number = 0;
   images: any[] = [];
+
+  selectedDriveOut = {
+    id: '',
+    exit_screenshot: '',
+    check_out_time: '',
+    drive_in: '',
+    drive_in_details: {
+      id: '',
+      license_plate: '',
+      check_in_time: '',
+      space: '',
+      entry_screenshot: '',
+      create_at: '',
+      space_details: {
+        address: '',
+        id: '',
+        title: '',
+        type: '',
+      },
+    },
+    metadata: {
+      message: '',
+      space_name: '',
+      driver_phone_number: '',
+      latest_checkout_time: '',
+    },
+    created_at: '',
+    message: '',
+  };
+  selectedDriveOutSubject = new BehaviorSubject(this.selectedDriveOut);
+  selectedDriveOutObservable = this.selectedDriveOutSubject.asObservable();
 
   constructor(
     private storeSrv: StoreService,
@@ -73,8 +104,7 @@ export class LogsComponent implements OnInit {
     });
   }
 
-  selectedLog(driveOut: DriveOutModel): void {
-    console.log('Selected item ==>>', driveOut);
+  selectedLog(driveOut: any): void {
     this.selectedDriveOut = driveOut;
     this.images = [
       driveOut.drive_in_details.entry_screenshot,

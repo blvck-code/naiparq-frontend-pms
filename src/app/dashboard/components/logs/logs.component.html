@@ -212,7 +212,7 @@
               Number Plate
             </h5>
             <h5 class="font-normal space-titles text-lg leading-6">
-              {{ selectedDriveOut?.drive_in_details?.license_plate }}
+              {{ selectedDriveOut.drive_in_details.license_plate }}
             </h5>
           </div>
           <div class="flex items-center justify-between">
@@ -220,7 +220,7 @@
               Space Name
             </h5>
             <h5 class="font-normal space-titles text-lg leading-6">
-              {{ selectedDriveOut?.drive_in_details?.space_details?.title }}
+              {{ selectedDriveOut.drive_in_details.space_details.title }}
             </h5>
           </div>
           <div class="flex items-center justify-between">
@@ -229,7 +229,7 @@
             </h5>
             <h5 class="font-normal space-titles text-lg leading-6">
               {{
-                selectedDriveOut?.drive_in_details?.check_in_time
+                selectedDriveOut.drive_in_details.check_in_time
                   | date : "EEEE, dd MMM, YYYY, h:mm a"
               }}
             </h5>
@@ -240,7 +240,7 @@
             </h5>
             <h5 class="font-normal text-lg leading-6">
               {{
-                selectedDriveOut?.check_out_time
+                selectedDriveOut.check_out_time
                   | date : "EEEE, dd MMM, YYYY, h:mm a"
               }}
             </h5>

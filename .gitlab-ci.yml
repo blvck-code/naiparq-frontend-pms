@@ -34,11 +34,12 @@ install_dependencies:
 
 build_frontend_image:
   stage: build
-  image: node:19.6.0 
-  tags:
-    - docker
+  # image: node:19.6.0 
+  needs: ["install_dependencies"]
+  # tags:
+  #   - docker
   script:
-    - npm link @angular/cli
+    # - npm link @angular/cli
     - echo "Staring npm build"
     - npm run build
   artifacts:

@@ -6,6 +6,7 @@ variables:
 default:
   tags:
     - node
+    - docker
 
 stages:
   - setup
@@ -15,9 +16,9 @@ stages:
 
 install_dependencies:
   stage: setup
-  image: node:19.6.0 
-  tags:
-    - docker
+  # image: node:19.6.0 
+  # tags:
+  #   - docker
   script:
     - echo "starting dependencies install"
     # - npm install -g @angular/cli@latest

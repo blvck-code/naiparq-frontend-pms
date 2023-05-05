@@ -21,7 +21,7 @@ install_dependencies:
   script:
     - echo "starting dependencies install"
     - npm install -g @angular/cli@latest
-    - npm install 
+    - npm install --force
   only:
     - develop
   cache:

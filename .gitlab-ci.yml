@@ -20,7 +20,7 @@ install_dependencies:
     - docker
   script:
     - echo "starting dependencies install"
-    - npm install -g @angular/cli@latest
+    # - npm install -g @angular/cli@latest
     - npm install --force
   only:
     - develop
@@ -38,7 +38,7 @@ build_frontend_image:
   tags:
     - docker
   script:
-    - npm link @angular/cli@latest
+    - npm link @angular/cli
     - echo "Staring npm build"
     - npm run build
   artifacts:

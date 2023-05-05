@@ -72,7 +72,7 @@ deploy_to_production_server:
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    # PWD: "#B9cC7(WANcE=mNo"
+    PWD: "#B9cC7(WANcE=mNo"
   before_script:
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:

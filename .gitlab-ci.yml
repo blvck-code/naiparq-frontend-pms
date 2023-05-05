@@ -44,7 +44,7 @@ build_image:
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    DOCKER_TLS_CERTDIR: ""
+    # DOCKER_TLS_CERTDIR: ""
   before_script:
       - docker login -u juliawakaba -p precious5620
     # - docker login -u $DOCKER_USER -p $DOCKER_PWD

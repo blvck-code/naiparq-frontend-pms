@@ -10,8 +10,10 @@ default:
 stages:
   - setup
   - build
+  - docker_push
+  - publish
 
-dependencies_install:
+install_dependencies:
   stage: setup
   image: node:19.6.0 
   tags:
@@ -19,7 +21,23 @@ dependencies_install:
   script:
     - echo "starting dependencies install"
     - npm install -g @angular/cli@latest
-    - npm install --force
+    - npm install 
+  only:
+    - develop
+  cache:
+    key:
+      files:
+        - package.json
+    paths:
+      - node_modules
+
+
+build_frontend_image:
+  stage: build
+  image: node:19.6.0 
+  tags:
+    - docker
+  script:
     - echo "Staring npm build"
     - npm run build
   only:
@@ -29,6 +47,7 @@ dependencies_install:
       - dist/
   cache:
     key:
+      prefix: "naiparq_pms_frontend"
       files:
         - package.json
     paths:
@@ -36,8 +55,26 @@ dependencies_install:
     policy: pull
 
 
-build_image:
-  stage: build
+push-docker-registry:
+  stage: docker_push
+  image: docker:23.0.5
+  services:
+    - docker:dind
+  variables:
+    IMAGE_NAME: juliawakaba/pms-naiparq-frontend
+    IMAGE_TAG: latest
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+      # - docker login -u juliawakaba -p precious5620
+    - docker login -u $DOCKER_USER -p $DOCKER_PWD
+  script:
+    - echo "Push to docker hub" 
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+
+
+deploy_to_production_server:
+  stage: docker_push
   image: docker:23.0.5
   services:
     - docker:dind

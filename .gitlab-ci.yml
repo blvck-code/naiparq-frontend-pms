@@ -38,10 +38,9 @@ build_frontend_image:
   tags:
     - docker
   script:
+    - npm link @angular/cli@latest
     - echo "Staring npm build"
     - npm run build
-  only:
-    - develop
   artifacts:
     paths:
       - dist/
@@ -73,19 +72,14 @@ push-docker-registry:
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
 
-deploy_to_production_server:
-  stage: docker_push
-  image: docker:23.0.5
-  services:
-    - docker:dind
-  variables:
-    IMAGE_NAME: juliawakaba/pms-naiparq-frontend
-    IMAGE_TAG: latest
-    # DOCKER_TLS_CERTDIR: ""
-  before_script:
-      # - docker login -u juliawakaba -p precious5620
-    - docker login -u $DOCKER_USER -p $DOCKER_PWD
-  script:
-    - echo "Push to docker hub" 
-    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-    - docker push $IMAGE_NAME:$IMAGE_TAG
+# deploy_to_production_server:
+#   stage: publish
+#   variables:
+#     IMAGE_NAME: 
+#   before_script:
+#       # - docker login -u juliawakaba -p precious5620
+#     - docker login -u $DOCKER_USER -p $DOCKER_PWD
+#   script:
+#     - echo "Push to docker hub" 
+#     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+#     - docker push $IMAGE_NAME:$IMAGE_TAG

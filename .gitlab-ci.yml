@@ -14,53 +14,53 @@ stages:
   # - docker_push
   - publish
 
-# install_dependencies:
-#   stage: setup
-#   script:
-#     - echo "starting dependencies install"
-#     - npm install --force
-#   only:
-#     - develop
-#   cache:
-#     key:
-#       files:
-#         - package.json
-#     paths:
-#       - node_modules
+install_dependencies:
+  stage: setup
+  script:
+    - echo "starting dependencies install"
+    - npm install --force
+  only:
+    - develop
+  cache:
+    key:
+      files:
+        - package.json
+    paths:
+      - node_modules
 
 
-# build_frontend_image:
-#   stage: build
-#   script:
-#     - echo "Staring npm build"
-#     - npm run build
-#   artifacts:
-#     paths:
-#       - dist/
-#   cache:
-#     key:
-#       files:
-#         - package.json
-#     paths:
-#       - node_modules
-#     policy: pull
+build_frontend_image:
+  stage: build
+  script:
+    - echo "Staring npm build"
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  cache:
+    key:
+      files:
+        - package.json
+    paths:
+      - node_modules
+    policy: pull
 
 
-# push-docker-registry:
-#   stage: docker_push
-#   image: docker:23.0.5
-#   services:
-#     - docker:dind
-#   variables:
-#     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
-#     IMAGE_TAG: latest
-#     DOCKER_TLS_CERTDIR: ""
-#   before_script:
-#     - docker login -u $DOCKER_USER -p $DOCKER_PWD
-#   script:
-#     - echo "Push to docker hub" 
-#     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-#     - docker push $IMAGE_NAME:$IMAGE_TAG
+push-docker-registry:
+  stage: docker_push
+  image: docker:23.0.5
+  services:
+    - docker:dind
+  variables:
+    IMAGE_NAME: juliawakaba/pms-naiparq-frontend
+    IMAGE_TAG: latest
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PWD
+  script:
+    - echo "Push to docker hub" 
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
 
 # $CI_COMMIT_SHA
 
@@ -72,7 +72,7 @@ deploy_to_production_server:
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    PWD: "#B9cC7(WANcE=mNo"
+    # PWD: "#B9cC7(WANcE=mNo"
   before_script:
     - apk add --update --no-cache openssh-client sshpass
     - ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa

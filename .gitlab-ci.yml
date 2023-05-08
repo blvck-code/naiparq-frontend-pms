@@ -51,11 +51,14 @@ push-docker-registry:
   stage: docker_push
   image: docker:23.0.5
   services:
-    - docker:dind
+    - name: docker:20-dind
+      command: ["--tls=false"]
+    
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    # DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
   before_script:
     - docker login -u $DOCKER_USER -p $DOCKER_PWD
   script:
@@ -68,11 +71,13 @@ deploy_to_production_server:
   stage: publish
   image: docker:23.0.5
   services:
-    - docker:dind
+    - name: docker:20-dind
+      command: ["--tls=false"]
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend
     IMAGE_TAG: latest
-    # PWD: "#B9cC7"
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
   before_script:
     - apk add --update --no-cache openssh-client sshpass
     - ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa

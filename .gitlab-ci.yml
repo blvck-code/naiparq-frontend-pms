@@ -2,6 +2,7 @@ image: node:19.6.0
 
 variables:
   GIT_DEPTH: 0
+  DOCKER_HOST: tcp://docker:2375
 
 default:
   tags:

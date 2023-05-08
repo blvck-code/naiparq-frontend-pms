@@ -14,7 +14,7 @@ interface carouselContent {
 })
 export class CarouselComponent implements OnInit {
   @Input() carousel: carouselContent[] = [];
-  selectIndex = 0;
+  selectIndex = 1;
   indexObservable = new BehaviorSubject(this.selectIndex);
   indexAsSubject$ = this.indexObservable.asObservable();
 
@@ -27,9 +27,8 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => {
-      this.nextSlide();
-      console.log('Next slide', this.selectIndex);
-    }, 5000);
+    // setInterval(() => {
+    //   this.nextSlide();
+    // }, 5000);
   }
 }

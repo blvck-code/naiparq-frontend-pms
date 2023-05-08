@@ -51,7 +51,7 @@ push-docker-registry:
   stage: docker_push
   image: docker:23.0.5
   services:
-    - name: docker:20-dind
+    - name: docker:23.0.5-dind
       command: ["--tls=false"]
     
   variables:
@@ -71,7 +71,7 @@ deploy_to_production_server:
   stage: publish
   image: docker:23.0.5
   services:
-    - name: docker:20-dind
+    - name: docker:23.0.5-dind
       command: ["--tls=false"]
   variables:
     IMAGE_NAME: juliawakaba/pms-naiparq-frontend

@@ -175,16 +175,18 @@
         </svg>
       </div>
       <div
-        [class.show]="showNav"
-        [class.hide]="!showNav"
-        class="mobile-nav px-3 py-4"
+        [ngClass]="{ '-translate-y-[100%] opacity-0': !showNav }"
+        class="mobile-nav fixed opacity-0 transition-all duration-500 bg-[#fff]/[.9] left-0 right-0 top-0 w-full block h-2/3 p-4"
       >
         <div class="relative flex flex-col">
-          <div class="relative pt-1 pb-3 items-center justify-center">
-            <div
-              (click)="toggleNav()"
-              class="h-[32px] w-[32px] absolute left-0"
+          <div class="pt-1 pb-3 flex items-center justify-between">
+            <div class="opacity-0">123</div>
+            <h5
+              class="text-center text-black text-[24px] leading-[28px] font-bold"
             >
+              Menu
+            </h5>
+            <div (click)="toggleNav()">
               <svg
                 width="32"
                 height="32"
@@ -193,100 +195,162 @@
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M20 26L10 16L20 6"
+                  d="M25 7L7 25"
                   stroke="black"
-                  stroke-width="2"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M25 25L7 7"
+                  stroke="black"
+                  stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />
               </svg>
             </div>
-            <h5 class="text-center font-bold text-[21px] leading-[25px]">
-              Menu
-            </h5>
           </div>
-          <ul class="flex flex-col items-start gap-y-3 pt-4">
-            <li (click)="toggleNav()" class="nav-item">
-              <a
-                routerLink="/about-us"
-                routerLinkActive="active-link"
-                class="naiparq-link"
-                >About Us</a
-              >
-            </li>
-            <li class="dropdown">
-              <p
-                class="flex flex-row justify-center items-center gap-0.5"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span class="naiparq-link"> Products &nbsp; </span>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+          <div class="menu-content">
+            <ul>
+              <li>
+                <a
+                  routerLink="/about-us"
+                  routerLinkActive="active-link"
+                  class="naiparq-link"
+                  (click)="toggleNav()"
+                  >About Us</a
                 >
-                  <path
-                    d="M19.5 9L12 16.5L4.5 9"
-                    stroke="black"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </p>
-              <ul
-                class="dropdown-menu min-w-[300px] py-2.5 px-4 dropdown-menu-light mt-4 shadow"
-                aria-labelledby="navbarLightDropdownMenuLink1"
-              >
-                <li class="py-1">
-                  <a
-                    class="naiparq-link"
-                    [routerLink]="['parking-management-system']"
-                    routerLinkActive="active-link"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    >Parking Management System</a
-                  >
-                </li>
-                <li class="py-1">
-                  <a
-                    class="naiparq-link"
-                    [routerLink]="['parking-reservation']"
-                    routerLinkActive="active-link"
-                    >Parking Reservation</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li (click)="toggleNav()" class="nav-item">
-              <a
-                routerLink="/contact-us"
-                routerLinkActive="active-link"
-                class="naiparq-link"
-                >Contact Us</a
-              >
-            </li>
-          </ul>
-          <ul class="flex flex-col items-start gap-y-3 pt-4">
-            <li (click)="toggleNav()" class="nav-item">
-              <a
-                routerLink="/auth"
-                routerLinkActive="active-link"
-                class="naiparq-link"
-                >Login</a
-              >
-            </li>
-            <li (click)="toggleNav()" class="nav-item mt-2">
-              <a
-                class="py-2 px-3 bg-[#000] text-[16px] font-[700] text-[#fff] hover:text-[#fff] rounded-[60px] no-underline"
-                [routerLink]="['/auth/register']"
-                >Sign Up</a
-              >
-            </li>
-          </ul>
+              </li>
+              <li>
+                <a
+                  class="naiparq-link"
+                  [routerLink]="['parking-management-system']"
+                  routerLinkActive="active-link"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="toggleNav()"
+                  >Parking Management System</a
+                >
+              </li>
+              <li>
+                <a
+                  class="naiparq-link"
+                  [routerLink]="['parking-reservation']"
+                  routerLinkActive="active-link"
+                  (click)="toggleNav()"
+                  >Parking Reservation</a
+                >
+              </li>
+              <li>
+                <a
+                  class="naiparq-link"
+                  (click)="toggleNav()"
+                  routerLink="/contact-us"
+                  routerLinkActive="active-link"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+            <ul class="pt-4">
+              <li>
+                <a
+                  routerLink="/auth"
+                  routerLinkActive="active-link"
+                  class="naiparq-link"
+                  >Log In</a
+                >
+              </li>
+              <li>
+                <a
+                  class="py-2 px-3 bg-[#000] text-[16px] font-[700] text-white hover:text-[#fff] rounded-[60px] no-underline"
+                  [routerLink]="['/auth/register']"
+                  >Sign Up</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!--          <ul class="flex flex-col items-start gap-y-3 pt-4">-->
+          <!--            <li (click)="toggleNav()" class="nav-item">-->
+          <!--              <a-->
+          <!--                routerLink="/about-us"-->
+          <!--                routerLinkActive="active-link"-->
+          <!--                class="naiparq-link"-->
+          <!--                >About Us</a-->
+          <!--              >-->
+          <!--            </li>-->
+          <!--            <li class="dropdown">-->
+          <!--              <p-->
+          <!--                class="flex flex-row justify-center items-center gap-0.5"-->
+          <!--                role="button"-->
+          <!--                data-bs-toggle="dropdown"-->
+          <!--                aria-expanded="false"-->
+          <!--              >-->
+          <!--                <span class="naiparq-link"> Products &nbsp; </span>-->
+          <!--                <svg-->
+          <!--                  width="24"-->
+          <!--                  height="24"-->
+          <!--                  viewBox="0 0 24 24"-->
+          <!--                  fill="none"-->
+          <!--                  xmlns="http://www.w3.org/2000/svg"-->
+          <!--                >-->
+          <!--                  <path-->
+          <!--                    d="M19.5 9L12 16.5L4.5 9"-->
+          <!--                    stroke="black"-->
+          <!--                    stroke-width="3"-->
+          <!--                    stroke-linecap="round"-->
+          <!--                    stroke-linejoin="round"-->
+          <!--                  />-->
+          <!--                </svg>-->
+          <!--              </p>-->
+          <!--              <ul-->
+          <!--                class="dropdown-menu min-w-[300px] py-2.5 px-4 dropdown-menu-light mt-4 shadow"-->
+          <!--                aria-labelledby="navbarLightDropdownMenuLink1"-->
+          <!--              >-->
+          <!--                <li class="py-1">-->
+          <!--                  <a-->
+          <!--                    class="naiparq-link"-->
+          <!--                    [routerLink]="['parking-management-system']"-->
+          <!--                    routerLinkActive="active-link"-->
+          <!--                    [routerLinkActiveOptions]="{ exact: true }"-->
+          <!--                    >Parking Management System</a-->
+          <!--                  >-->
+          <!--                </li>-->
+          <!--                <li class="py-1">-->
+          <!--                  <a-->
+          <!--                    class="naiparq-link"-->
+          <!--                    [routerLink]="['parking-reservation']"-->
+          <!--                    routerLinkActive="active-link"-->
+          <!--                    >Parking Reservation</a-->
+          <!--                  >-->
+          <!--                </li>-->
+          <!--              </ul>-->
+          <!--            </li>-->
+          <!--            <li (click)="toggleNav()" class="nav-item">-->
+          <!--              <a-->
+          <!--                routerLink="/contact-us"-->
+          <!--                routerLinkActive="active-link"-->
+          <!--                class="naiparq-link"-->
+          <!--                >Contact Us</a-->
+          <!--              >-->
+          <!--            </li>-->
+          <!--          </ul>-->
+          <!--          <ul class="flex flex-col items-start gap-y-3 pt-4">-->
+          <!--            <li (click)="toggleNav()" class="nav-item">-->
+          <!--              <a-->
+          <!--                routerLink="/auth"-->
+          <!--                routerLinkActive="active-link"-->
+          <!--                class="naiparq-link"-->
+          <!--                >Login</a-->
+          <!--              >-->
+          <!--            </li>-->
+          <!--            <li (click)="toggleNav()" class="nav-item mt-2">-->
+          <!--              <a-->
+          <!--                class="py-2 px-3 bg-[#000] text-[16px] font-[700] text-[#fff] hover:text-[#fff] rounded-[60px] no-underline"-->
+          <!--                [routerLink]="['/auth/register']"-->
+          <!--                >Sign Up</a-->
+          <!--              >-->
+          <!--            </li>-->
+          <!--          </ul>-->
         </div>
       </div>
     </div>

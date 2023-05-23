@@ -115,3 +115,42 @@
   background-position: center;
   background-size: cover;
 }
+
+@layer components {
+  // Naiparq Landing
+  .naiparq-home__landing {
+  }
+
+  // Naiparq How It Works
+  .naiparq-home__how-it-works {
+  }
+
+  // Naiparq Reservation
+  .naiparq-home__reservation {
+    @apply relative py-3 bigScreen:mb-10 desktop:mb-32 laptop:mb-32;
+  }
+  .naiparq-home__reservation-wrap {
+    @apply bigScreen:min-h-[70vh] desktop:min-h-[70vh] laptop:min-h-[70vh] tablet:min-h-[100%] mobile:min-h-[100%] sm:min-h-[100%] xl:min-h-[100%] grid bigScreen:grid-cols-2 desktop:grid-cols-2 laptop:grid-cols-2 tablet:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 xl:grid-cols-1;
+    @apply py-3 px-4 gap-x-3 gap-y-5 max-w-[1200px] mx-auto;
+    @apply flex bigScreen:flex-row desktop:flex-row laptop:flex-row tablet:flex-col mobile:flex-col sm:flex-col xl:flex-col;
+    @apply gap-x-11;
+  }
+  .naiparq-home__reservation-wrap-content {
+    @apply basis-2/5;
+  }
+  .naiparq-home__reservation-wrap-image {
+    @apply basis-3/5;
+  }
+
+  // Naiparq Apps
+  .naiparq-home__apps {
+    @apply p-4 tablet:h-[100%] mobile:h-[100%] sm:h-[100%];
+    @apply bigScreen:h-[541px] desktop:h-[541px] laptop:h-[541px] tablet:h-full mobile:h-full sm:h-full xl:h-full;
+  }
+  .naiparq-home__apps-content {
+    @apply max-w-[1200px] h-[100%] mx-auto relative z-0 grid laptop:grid-cols-2 tablet:grid-cols-1 mobile:grid-cols-1 sm:grid-cols-1 gap-3;
+  }
+  // Naiparq Blog
+  .naiparq-home__blog {
+  }
+}

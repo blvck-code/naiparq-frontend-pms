@@ -1,0 +1,1068 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>naiparq-frontend-pms documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">naiparq-frontend-pms documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AnalyticsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/dashboard/components/analytics/analytics.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>naiparq-analytics</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./analytics.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./analytics.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_billings" >_billings</a>
+                            </li>
+                            <li>
+                                <a href="#billings$" >billings$</a>
+                            </li>
+                            <li>
+                                <a href="#billingsLoaded$" >billingsLoaded$</a>
+                            </li>
+                            <li>
+                                <a href="#billingsLoading" >billingsLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#chart" >chart</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#legend" >legend</a>
+                            </li>
+                            <li>
+                                <a href="#revenue$" >revenue$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleChangeIncome" >handleChangeIncome</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onInitHandler" >onInitHandler</a>
+                            </li>
+                            <li>
+                                <a href="#todayDate" >todayDate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#billings" >billings</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_detector: ChangeDetectorRef, dashSrv: <a href="../injectables/DashService.html" target="_self">DashService</a>, store: <a href="../interfaces/AppState.html" target="_self">Store&lt;AppState&gt;</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_detector</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dashSrv</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DashService.html" target="_self" >DashService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/AppState.html" target="_self" >Store&lt;AppState&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleChangeIncome"></a>
+                    <span class="name">
+                        <span ><b>handleChangeIncome</b></span>
+                        <a href="#handleChangeIncome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleChangeIncome(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onInitHandler"></a>
+                    <span class="name">
+                        <span ><b>onInitHandler</b></span>
+                        <a href="#onInitHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onInitHandler()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="todayDate"></a>
+                    <span class="name">
+                        <span ><b>todayDate</b></span>
+                        <a href="#todayDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>todayDate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_billings"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_billings</b></span>
+                        <a href="#_billings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Billings.html" target="_self" >Billings</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="billings$"></a>
+                    <span class="name">
+                        <span ><b>billings$</b></span>
+                        <a href="#billings$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BillingModel.html" target="_self" >Observable&lt;BillingModel[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.store.select(getBillings)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="billingsLoaded$"></a>
+                    <span class="name">
+                        <span ><b>billingsLoaded$</b></span>
+                        <a href="#billingsLoaded$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.store.select(billingsLoaded)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="billingsLoading"></a>
+                    <span class="name">
+                        <span ><b>billingsLoading</b></span>
+                        <a href="#billingsLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.store.select(billingsLoading)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chart"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>chart</b></span>
+                        <a href="#chart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IgxCategoryChartComponent</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;chart&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="legend"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>legend</b></span>
+                        <a href="#legend"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IgxLegendComponent</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;legend&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="revenue$"></a>
+                    <span class="name">
+                        <span ><b>revenue$</b></span>
+                        <a href="#revenue$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.store.select(totalRevenue)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="billings"></a>
+                        <span class="name"><b>billings</b><a href="#billings"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>billings()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/dashboard/components/analytics/analytics.component.ts:47</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { CountryRenewableElectricityItem } from &#x27;../../services/ChartData&#x27;;
+import { Billings } from &#x27;./Billings&#x27;;
+import {
+  IgxCategoryChartComponent,
+  IgxLegendComponent,
+} from &#x27;igniteui-angular-charts&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { BillingModel } from &#x27;../../models/billing.model&#x27;;
+import {
+  billingsLoaded,
+  getBillings,
+  billingsLoading,
+  totalRevenue,
+} from &#x27;../../state/entities/bill.entities&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { AppState } from &#x27;../../../app.state&#x27;;
+import * as billingActions from &#x27;../../state/actions/billing.actions&#x27;;
+import { DashService } from &#x27;../../services/dash.service&#x27;;
+
+@Component({
+  selector: &#x27;naiparq-analytics&#x27;,
+  templateUrl: &#x27;./analytics.component.html&#x27;,
+  styleUrls: [&#x27;./analytics.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AnalyticsComponent implements OnInit {
+  @ViewChild(&#x27;legend&#x27;, { static: true })
+  private legend!: IgxLegendComponent;
+  @ViewChild(&#x27;chart&#x27;, { static: true })
+  private chart!: IgxCategoryChartComponent;
+
+  constructor(
+    private _detector: ChangeDetectorRef,
+    private dashSrv: DashService,
+    private store: Store&lt;AppState&gt;
+  ) {}
+
+  //@ts-ignore
+  private _billings: Billings &#x3D; null;
+  public get billings(): Billings {
+    this.billingsLoaded$.subscribe({
+      next: (status) &#x3D;&gt; {
+        if (!status) {
+          this._billings &#x3D; new Billings(this.billings$);
+        }
+      },
+    });
+    return this._billings;
+  }
+
+  billings$: Observable&lt;BillingModel[]&gt; &#x3D; this.store.select(getBillings);
+  billingsLoaded$: Observable&lt;boolean&gt; &#x3D; this.store.select(billingsLoaded);
+  billingsLoading: Observable&lt;boolean&gt; &#x3D; this.store.select(billingsLoading);
+  revenue$: Observable&lt;number&gt; &#x3D; this.store.select(totalRevenue);
+
+  ngOnInit(): void {
+    this.onInitHandler();
+  }
+
+  onInitHandler(): void {
+    this.store.dispatch(new billingActions.LoadBillings({ days: 100 }));
+  }
+
+  todayDate(): Date {
+    return this.dashSrv.currentDate;
+  }
+
+  handleChangeIncome(event: any): void {
+    const days &#x3D; event.target.value;
+    this.store.dispatch(new billingActions.LoadBillings({ days }));
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;naiparq-revenue&quot;&gt;
+  &lt;div class&#x3D;&quot;naiparq-revenue-container grid grid-cols-3 gap-4&quot;&gt;
+    &lt;!--    Revenue Header--&gt;
+    &lt;div class&#x3D;&quot;col-span-2&quot;&gt;
+      &lt;div class&#x3D;&quot;naiparq-revenue-header pb-3 max-w-[1200px]&quot;&gt;
+        &lt;div class&#x3D;&quot;naiparq-revenue-header-date&quot;&gt;
+          &lt;h4&gt;{{ todayDate() | date : &quot;MMMM dd, yyyy&quot; }}&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div
+          class&#x3D;&quot;naiparq-revenue-header-amounts grid grid-cols-2 tablet:grid-cols-4 gap-3&quot;
+        &gt;
+          &lt;div
+            class&#x3D;&quot;bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3&quot;
+          &gt;
+            &lt;p class&#x3D;&quot;text-base mb-2&quot;&gt;Total Revenue&lt;/p&gt;
+            &lt;h4 class&#x3D;&quot;text-3xl font-bold&quot;&gt;
+              KES {{ revenue$ | async | number : &quot;1.2-2&quot; }}
+            &lt;/h4&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!--    Revenue Chart Graph --&gt;
+      &lt;div class&#x3D;&quot;naiparq-revenue-chart&quot;&gt;
+        &lt;div class&#x3D;&quot;container vertical sample&quot;&gt;
+          &lt;div class&#x3D;&quot;graph-title&quot;&gt;
+            &lt;p class&#x3D;&quot;graph-title-text&quot;&gt;Transaction trend&lt;/p&gt;
+
+            &lt;div class&#x3D;&quot;graph-legend&quot;&gt;
+              &lt;!--            &lt;div class&#x3D;&quot;legend-icon&quot;&gt;&lt;/div&gt;--&gt;
+              &lt;!--            &lt;p&gt;Income&lt;/p&gt;--&gt;
+              &lt;div class&#x3D;&quot;legend-icon expense&quot;&gt;&lt;/div&gt;
+              &lt;p&gt;Income&lt;/p&gt;
+
+              &lt;select
+                (change)&#x3D;&quot;handleChangeIncome($event)&quot;
+                class&#x3D;&quot;form-select cursor-pointer&quot;
+              &gt;
+                &lt;option selected value&#x3D;&quot;7&quot;&gt;Last 7 day&lt;/option&gt;
+                &lt;option value&#x3D;&quot;30&quot;&gt;Last 30 days&lt;/option&gt;
+                &lt;option value&#x3D;&quot;100&quot;&gt;All Incomes&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;legend&quot;&gt;
+            &lt;igx-legend orientation&#x3D;&quot;Horizontal&quot; name&#x3D;&quot;Legend&quot; #legend&gt;
+            &lt;/igx-legend&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;container fill&quot;&gt;
+            &lt;igx-category-chart
+              chartType&#x3D;&quot;Spline&quot;
+              isTransitionInEnabled&#x3D;&quot;true&quot;
+              yAxisTitle&#x3D;&quot;Money&quot;
+              [dataSource]&#x3D;&quot;billings&quot;
+              [legend]&#x3D;&quot;legend&quot;
+              isHorizontalZoomEnabled&#x3D;&quot;false&quot;
+              isVerticalZoomEnabled&#x3D;&quot;false&quot;
+              computedPlotAreaMarginMode&#x3D;&quot;Series&quot;
+              name&#x3D;&quot;chart&quot;
+              #chart
+            &gt;
+            &lt;/igx-category-chart&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+      &lt;naiparq-linear-graph&gt;&lt;/naiparq-linear-graph&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./analytics.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;responsive&quot;;
+
+.naiparq-revenue {
+  &amp;-container {
+    .naiparq-revenue-header {
+      &amp;-date {
+        padding: 15px 0;
+
+        @include respond(phone) {
+          padding: 8px 0;
+        }
+
+        h4 {
+          font-family: &quot;Sk-Modernist&quot;, sans-serif;
+          font-size: 25px;
+          line-height: 30px;
+          color: var(--text-primary);
+
+          @include respond(phone) {
+            font-size: 20px;
+          }
+        }
+      }
+      &amp;-amounts {
+      }
+    }
+
+    .naiparq-revenue-chart {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 15px;
+      margin-top: 20px;
+
+      @include respond(phone) {
+        padding: 15px 0;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="naiparq-revenue">  <div class="naiparq-revenue-container grid grid-cols-3 gap-4">    <!--    Revenue Header-->    <div class="col-span-2">      <div class="naiparq-revenue-header pb-3 max-w-[1200px]">        <div class="naiparq-revenue-header-date">          <h4>{{ todayDate() | date : "MMMM dd, yyyy" }}</h4>        </div>        <div          class="naiparq-revenue-header-amounts grid grid-cols-2 tablet:grid-cols-4 gap-3"        >          <div            class="bg-[#4BC1F1] text-[#FFF] rounded-lg flex flex-col px-3 py-3"          >            <p class="text-base mb-2">Total Revenue</p>            <h4 class="text-3xl font-bold">              KES {{ revenue$ | async | number : "1.2-2" }}            </h4>          </div>        </div>      </div>      <!--    Revenue Chart Graph -->      <div class="naiparq-revenue-chart">        <div class="container vertical sample">          <div class="graph-title">            <p class="graph-title-text">Transaction trend</p>            <div class="graph-legend">              <!--            <div class="legend-icon"></div>-->              <!--            <p>Income</p>-->              <div class="legend-icon expense"></div>              <p>Income</p>              <select                (change)="handleChangeIncome($event)"                class="form-select cursor-pointer"              >                <option selected value="7">Last 7 day</option>                <option value="30">Last 30 days</option>                <option value="100">All Incomes</option>              </select>            </div>          </div>          <div class="legend">            <igx-legend orientation="Horizontal" name="Legend" #legend>            </igx-legend>          </div>          <div class="container fill">            <igx-category-chart              chartType="Spline"              isTransitionInEnabled="true"              yAxisTitle="Money"              [dataSource]="billings"              [legend]="legend"              isHorizontalZoomEnabled="false"              isVerticalZoomEnabled="false"              computedPlotAreaMarginMode="Series"              name="chart"              #chart            >            </igx-category-chart>          </div>        </div>      </div>    </div>    <div>      <naiparq-linear-graph></naiparq-linear-graph>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'naiparq-about'},{'name': 'AccountComponent', 'selector': 'naiparq-account'},{'name': 'AnalyticsComponent', 'selector': 'naiparq-analytics'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssetsManagementComponent', 'selector': 'naiparq-assets-management'},{'name': 'AuthComponent', 'selector': 'naiparq-auth'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BlogComponent', 'selector': 'naiparq-blog'},{'name': 'BlogCreateComponent', 'selector': 'naiparq-blog-create'},{'name': 'BlogDetailComponent', 'selector': 'naiparq-blog-detail'},{'name': 'BlogListComponent', 'selector': 'naiparq-blog-list'},{'name': 'CarouselComponent', 'selector': 'naiparq-carousel'},{'name': 'ConfirmResetComponent', 'selector': 'naiparq-confirm-reset'},{'name': 'ContactComponent', 'selector': 'naiparq-contact'},{'name': 'DashboardComponent', 'selector': 'naiparq-app-dashboard'},{'name': 'DashComponent', 'selector': 'naiparq-app-dash'},{'name': 'DriveInComponent', 'selector': 'naiparq-drive-in-payment'},{'name': 'DriveOutComponent', 'selector': 'app-drive-out'},{'name': 'HomeComponent', 'selector': 'naiparq-home'},{'name': 'InlineLoaderComponent', 'selector': 'app-inline-loader'},{'name': 'LandingComponent', 'selector': 'naiparq-landing'},{'name': 'LinearGraphComponent', 'selector': 'naiparq-linear-graph'},{'name': 'LoginComponent', 'selector': 'naiparq-login'},{'name': 'LogsComponent', 'selector': 'naiparq-logs'},{'name': 'MotoristManagementComponent', 'selector': 'naiparq-motorist-management'},{'name': 'NotificationsComponent', 'selector': 'naiparq-notifications'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PmsComponent', 'selector': 'app-pms'},{'name': 'PremisesComponent', 'selector': 'naiparq-premises'},{'name': 'RegisterComponent', 'selector': 'naiparq-register'},{'name': 'ReservationComponent', 'selector': 'app-reservation'},{'name': 'ResetComponent', 'selector': 'naiparq-reset'},{'name': 'RevenuesComponent', 'selector': 'naiparq-revenues'},{'name': 'SettingsComponent', 'selector': 'naiparq-settings'},{'name': 'SideNavComponent', 'selector': 'naiparq-drawer'},{'name': 'UserManagementComponent', 'selector': 'naiparq-user-management'},{'name': 'VerifyComponent', 'selector': 'naiparq-verify'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AnalyticsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AnalyticsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

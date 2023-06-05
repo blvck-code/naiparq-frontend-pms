@@ -4,13 +4,21 @@ import { getBillings } from '../../state/entities/bill.entities';
 import { BillingModel } from '../../models/billing.model';
 
 export class BillingItem {
+  /**
+   * @param init target for parsing Billing data
+   */
   public constructor(init: Partial<BillingItem>) {
     Object.assign(this, init);
   }
 
+  /**
+   *  Year of Billing
+   */
   public year: string | undefined;
+  /**
+   *  Income from the Bills
+   */
   public income: number | undefined;
-  public expense: number | undefined;
 }
 export class Billings extends Array<BillingItem> {
   constructor(billings: any) {

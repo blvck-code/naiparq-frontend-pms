@@ -8,6 +8,9 @@ const naiparqBaseURL: string = baseURL + version;
 // const naiparqBaseURL = 'https://192.168.0.61:444z/api/v1/';
 const naiparqWsURL = '';
 
+/**
+ * @ignore
+ */
 export const environment = {
   production: false,
 

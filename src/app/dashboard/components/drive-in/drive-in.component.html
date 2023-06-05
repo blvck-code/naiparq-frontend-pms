@@ -308,7 +308,7 @@
               class="form-select my-1.5 w-[100%]"
             >
               <option
-                *ngFor="let org of organizations | async"
+                *ngFor="let org of organizations$ | async"
                 value="{{ org.id }}"
               >
                 {{ org.name }}

@@ -12,12 +12,7 @@ import { StoreService } from '../../state/store.service';
 import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
 import { SpaceModel } from '../../models/spaces.model';
 import { OrganisationModel } from '../../models/organisation.model';
-import {
-  organizationsList,
-  selectedSpaceOrgs,
-} from '../../state/entities/organizations.entities';
-import { Dayjs } from 'dayjs';
-import { DriveOutModel } from '../../models/driveOut.model';
+import { selectedSpaceOrgs } from '../../state/entities/organizations.entities';
 
 @Component({
   selector: 'naiparq-drive-in-payment',
@@ -25,21 +20,45 @@ import { DriveOutModel } from '../../models/driveOut.model';
   styleUrls: ['./drive-in.component.scss'],
 })
 export class DriveInComponent implements OnInit {
+  /**
+   *  Close modal view child
+   */
   @ViewChild('closeDriveIn') 'closeDriveIn': ElementRef;
 
+  /**
+   * Drive in observable
+   */
   driveIns$: Observable<DriveInModel[]> = this.storeSrv.driveIn();
+  /**
+   *  Drive in loaded observable
+   */
   driveInLoaded$: Observable<boolean> = this.storeSrv.driveInLoaded();
+  /**
+   *  New page observable
+   */
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
 
+  /**
+   * Spaces observable
+   */
   spaces$: Observable<SpaceModel[]> = this.storeSrv.getSpaces();
-  organizations: Observable<OrganisationModel[]> =
+  /**
+   * Organizations observable
+   */
+  organizations$: Observable<OrganisationModel[]> =
     this.store.select(selectedSpaceOrgs);
 
+  /**
+   *  New drive In form content
+   */
   driveInForm = this.formBuilder.group({
     // Todo change this
     space: ['', Validators.required],
     license_plate: ['', Validators.required],
   });
+  /**
+   *  Form input for white list car
+   */
   whiteListForm = this.formBuilder.group({
     space: ['', Validators.required],
     organisation: ['', Validators.required],
@@ -49,13 +68,39 @@ export class DriveInComponent implements OnInit {
     status: [''],
   });
 
+  /**
+   * Nex page url
+   */
   nextPaginationURL: string = '';
+  /**
+   *  Selected driveIn in the modal
+   */
   selectedDriveIn: any;
 
+  /**
+   * Is submitting for create new drive In
+   * for loading animation
+   */
   isSubmitting: boolean = false;
+  /**
+   *  Loading indicator for more drive Ins
+   *  for loading more animation
+   */
   loadingMoreDriveIn: boolean = false;
+  /**
+   *  Default parameter for numberPlate
+   */
   numberPlate: string = '';
 
+  /**
+   *
+   * @param store
+   * @param dashSrv
+   * @param elementRef
+   * @param storeSrv
+   * @param sharedSrv
+   * @param formBuilder
+   */
   constructor(
     private store: Store,
     private dashSrv: DashService,
@@ -65,15 +110,24 @@ export class DriveInComponent implements OnInit {
     private formBuilder: UntypedFormBuilder
   ) {}
 
+  /**
+   * @returns Today's date
+   */
   todayDate(): Date {
     return this.dashSrv.currentDate;
   }
 
+  /**
+   *  Functions run on page load
+   */
   ngOnInit(): void {
     this.onInitHandler();
     this.observerInstance();
   }
 
+  /**
+   *  Observers of driveIns are scrolled to the bottom page to fetch more driveIns
+   */
   observerInstance(): void {
     // Only runs after content been loaded
     this.driveInLoaded$.subscribe({
@@ -99,6 +153,11 @@ export class DriveInComponent implements OnInit {
   }
 
   // Todo fetch one pagination at a time
+  /**
+   * Checks if more driveIns are fetched
+   * and page for pagination changes to fetch
+   * more content.
+   */
   handlePaginateDriveIn(): void {
     this.loadingMoreDriveIn = true;
     this.loadNextPage$.subscribe({
@@ -119,19 +178,26 @@ export class DriveInComponent implements OnInit {
     });
   }
 
+  /**
+   * Fetch driveIns, driveOuts and
+   * organizations on page load
+   */
   onInitHandler(): void {
-    this.handleDriveInList();
+    // this.handleDriveInList();
     this.store.dispatch(new driveInActions.LoadDriveIn());
     this.store.dispatch(new driveInActions.LoadDriveOut());
     this.store.dispatch(new spaceActions.LoadOrganizations());
   }
 
-  handleDriveInList(): void {
-    this.dashSrv.getDriveIn().subscribe({
-      next: (resp) => {},
-    });
-  }
+  // handleDriveInList(): void {
+  //   this.dashSrv.getDriveIn().subscribe({
+  //     next: (resp) => {},
+  //   });
+  // }
 
+  /**
+   * @param event Target selects the chose space
+   */
   handleSelectedSpace(event: any): void {
     this.store.dispatch(new spaceActions.SelectedSpaceId(event.target.value));
   }
@@ -147,6 +213,9 @@ export class DriveInComponent implements OnInit {
     });
   }
 
+  /**
+   * Creates a new drive In
+   */
   onSubmit(): void {
     this.isSubmitting = true;
 
@@ -170,16 +239,12 @@ export class DriveInComponent implements OnInit {
     });
   }
 
+  /**
+   *  Submit white list car to server
+   */
   onSubmitWhiteList(): void {
     const checkIn = this.whiteListForm.get('start_date')?.value;
     const checkOut = this.whiteListForm.get('end_date')?.value;
-    const today = new Date();
-
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    const yyyy = today.getFullYear();
-
-    const todayDate = `${yyyy}-${mm}-${dd}`;
 
     if (this.whiteListForm.invalid) {
       this.sharedSrv.showNotification(
@@ -221,6 +286,11 @@ export class DriveInComponent implements OnInit {
     console.log('Form data ==>>', this.whiteListForm.value);
   }
 
+  /**
+   *
+   * @param element target that listed to
+   * page if scrolled to the bottom
+   */
   createAndObserve(element: ElementRef): Observable<boolean> {
     // Check if page reaches to the bottom page
     return new Observable((observe) => {
@@ -241,10 +311,19 @@ export class DriveInComponent implements OnInit {
     );
   }
 
+  /**
+   * @param driveIn target shows the modal
+   * of clicked driveIn
+   */
   clickDriveIn(driveIn: any): void {
     this.selectedDriveIn = driveIn;
   }
 
+  /**
+   * @param n
+   * Functions used when looping is needed
+   * @returns an array with given number
+   */
   numSeq(n: number): Array<number> {
     return Array(n);
   }

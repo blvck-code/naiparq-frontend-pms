@@ -136,6 +136,10 @@ export class DriveInComponent implements OnInit {
     this.store.dispatch(new spaceActions.SelectedSpaceId(event.target.value));
   }
 
+  /**
+   * @param event target the licence plate data
+   *
+   */
   handleNum(event: any): void {
     this.numberPlate = event.target.value.replace(/\s+/g, '');
     this.whiteListForm.patchValue({

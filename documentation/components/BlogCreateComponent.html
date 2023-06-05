@@ -8,64 +8,1251 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css">
+	    <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="../" class="navbar-brand">naiparq-frontend-pms documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../">naiparq-frontend-pms documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AuthModule.html" >AuthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/DashboardModule.html" >DashboardModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HomeModule.html" >HomeModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AboutComponent.html" >AboutComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AccountComponent.html" >AccountComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AnalyticsComponent.html" >AnalyticsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AssetsManagementComponent.html" >AssetsManagementComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AuthComponent.html" >AuthComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BillingComponent.html" >BillingComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogComponent.html" >BlogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogCreateComponent.html"  class="active" >BlogCreateComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogDetailComponent.html" >BlogDetailComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogListComponent.html" >BlogListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CarouselComponent.html" >CarouselComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ConfirmResetComponent.html" >ConfirmResetComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ContactComponent.html" >ContactComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DashComponent.html" >DashComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DashboardComponent.html" >DashboardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DriveInComponent.html" >DriveInComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DriveOutComponent.html" >DriveOutComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HomeComponent.html" >HomeComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/InlineLoaderComponent.html" >InlineLoaderComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LandingComponent.html" >LandingComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LinearGraphComponent.html" >LinearGraphComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LogsComponent.html" >LogsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MotoristManagementComponent.html" >MotoristManagementComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PageNotFoundComponent.html" >PageNotFoundComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PmsComponent.html" >PmsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PremisesComponent.html" >PremisesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RegisterComponent.html" >RegisterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ReservationComponent.html" >ReservationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResetComponent.html" >ResetComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RevenuesComponent.html" >RevenuesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SideNavComponent.html" >SideNavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/UserManagementComponent.html" >UserManagementComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/VerifyComponent.html" >VerifyComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/AddAsset.html" >AddAsset</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BillingItem.html" >BillingItem</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BillingItem.html" >BillingItem</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Billings.html" >Billings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Billings.html" >Billings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CountryRenewableElectricity.html" >CountryRenewableElectricity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CountryRenewableElectricityItem.html" >CountryRenewableElectricityItem</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CreateBlog.html" >CreateBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CreateBlogFail.html" >CreateBlogFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CreateBlogSuccess.html" >CreateBlogSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DeleteBlog.html" >DeleteBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/FetchBlog.html" >FetchBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/FetchBlogFail.html" >FetchBlogFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/FetchBlogSuccess.html" >FetchBlogSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadBillings.html" >LoadBillings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadBillingsFail.html" >LoadBillingsFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadBillingsSuccess.html" >LoadBillingsSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDevices.html" >LoadDevices</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDevicesSuccess.html" >LoadDevicesSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveIn.html" >LoadDriveIn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveInSuccess.html" >LoadDriveInSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveOut.html" >LoadDriveOut</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveOutFail.html" >LoadDriveOutFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveOutSuccess.html" >LoadDriveOutSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadMoreDriveIn.html" >LoadMoreDriveIn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadMoreDriveInFail.html" >LoadMoreDriveInFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadMoreDriveInSuccess.html" >LoadMoreDriveInSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadOrganizations.html" >LoadOrganizations</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadOrganizationsSuccess.html" >LoadOrganizationsSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadProfile.html" >LoadProfile</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadProfileFail.html" >LoadProfileFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadProfileSuccess.html" >LoadProfileSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadSpaces.html" >LoadSpaces</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadSpacesSuccess.html" >LoadSpacesSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadUsers.html" >LoadUsers</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadUsersSuccess.html" >LoadUsersSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogIn.html" >LogIn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogInFail.html" >LogInFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogInSuccess.html" >LogInSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogOut.html" >LogOut</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogOutFail.html" >LogOutFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogOutSuccess.html" >LogOutSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/RefreshToken.html" >RefreshToken</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/RefreshTokenSuccess.html" >RefreshTokenSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ResetInvalid.html" >ResetInvalid</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SelectedBlog.html" >SelectedBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SelectedSpaceId.html" >SelectedSpaceId</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SignUp.html" >SignUp</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SignUpFail.html" >SignUpFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SignUpSuccess.html" >SignUpSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/UploadAdapter.html" >UploadAdapter</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AdminGuard.html" >AdminGuard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthEffects.html" >AuthEffects</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthGuard.html" >AuthGuard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthInterceptor.html" >AuthInterceptor</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthService.html" >AuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BloggerGuard.html" >BloggerGuard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DashService.html" >DashService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ErrorInterceptor.html" >ErrorInterceptor</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HomeEffects.html" >HomeEffects</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HomeService.html" >HomeService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SharedService.html" >SharedService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SpacesEffects.html" >SpacesEffects</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StorageService.html" >StorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StoreService.html" >StoreService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/ActionExecutable.html" >ActionExecutable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AllUsersModel.html" >AllUsersModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AppState.html" >AppState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AuthState.html" >AuthState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BillingEntities.html" >BillingEntities</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BillingModel.html" >BillingModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BillingResponseModel.html" >BillingResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BlogEntity.html" >BlogEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BlogModel.html" >BlogModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BlogResponseModel.html" >BlogResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DashboardState.html" >DashboardState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DevicesModel.html" >DevicesModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DevicesResponseModel.html" >DevicesResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DevicesState.html" >DevicesState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveInModel.html" >DriveInModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveInResponseModel.html" >DriveInResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveInState.html" >DriveInState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveOutModel.html" >DriveOutModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveOutResponseModel.html" >DriveOutResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveOutState.html" >DriveOutState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ErrorModel.html" >ErrorModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HomeState.html" >HomeState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/KeyFeatures.html" >KeyFeatures</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LoginModel.html" >LoginModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LoginResponseModel.html" >LoginResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LogsEntities.html" >LogsEntities</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/OrganisationModel.html" >OrganisationModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/OrganisationResponseModel.html" >OrganisationResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/OrganizationsState.html" >OrganizationsState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PaymentChannelsModel.html" >PaymentChannelsModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceGroupDetail.html" >PriceGroupDetail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceScheduleResponseModel.html" >PriceScheduleResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PricingModel.html" >PricingModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PricingResponseModel.html" >PricingResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ProfileResponseModel.html" >ProfileResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RegisterModel.html" >RegisterModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RegisterResponseModel.html" >RegisterResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpaceImages.html" >SpaceImages</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpaceModel.html" >SpaceModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpaceModelResponse.html" >SpaceModelResponse</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpacesEntities.html" >SpacesEntities</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TokenModel.html" >TokenModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/UserModel.html" >UserModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/WCNModal.html" >WCNModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/carouselContent.html" >carouselContent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/jwtToken.html" >jwtToken</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <compodoc-menu mode="normal"></compodoc-menu>
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../">naiparq-frontend-pms documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AuthModule.html" >AuthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/DashboardModule.html" >DashboardModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HomeModule.html" >HomeModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SharedModule.html" >SharedModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AboutComponent.html" >AboutComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AccountComponent.html" >AccountComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AnalyticsComponent.html" >AnalyticsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AssetsManagementComponent.html" >AssetsManagementComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AuthComponent.html" >AuthComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BillingComponent.html" >BillingComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogComponent.html" >BlogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogCreateComponent.html"  class="active" >BlogCreateComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogDetailComponent.html" >BlogDetailComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogListComponent.html" >BlogListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CarouselComponent.html" >CarouselComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ConfirmResetComponent.html" >ConfirmResetComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ContactComponent.html" >ContactComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DashComponent.html" >DashComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DashboardComponent.html" >DashboardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DriveInComponent.html" >DriveInComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DriveOutComponent.html" >DriveOutComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HomeComponent.html" >HomeComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/InlineLoaderComponent.html" >InlineLoaderComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LandingComponent.html" >LandingComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LinearGraphComponent.html" >LinearGraphComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LogsComponent.html" >LogsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MotoristManagementComponent.html" >MotoristManagementComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PageNotFoundComponent.html" >PageNotFoundComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PmsComponent.html" >PmsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PremisesComponent.html" >PremisesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RegisterComponent.html" >RegisterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ReservationComponent.html" >ReservationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResetComponent.html" >ResetComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RevenuesComponent.html" >RevenuesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SideNavComponent.html" >SideNavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/UserManagementComponent.html" >UserManagementComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/VerifyComponent.html" >VerifyComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/AddAsset.html" >AddAsset</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BillingItem.html" >BillingItem</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BillingItem.html" >BillingItem</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Billings.html" >Billings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Billings.html" >Billings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CountryRenewableElectricity.html" >CountryRenewableElectricity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CountryRenewableElectricityItem.html" >CountryRenewableElectricityItem</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CreateBlog.html" >CreateBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CreateBlogFail.html" >CreateBlogFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CreateBlogSuccess.html" >CreateBlogSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DeleteBlog.html" >DeleteBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/FetchBlog.html" >FetchBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/FetchBlogFail.html" >FetchBlogFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/FetchBlogSuccess.html" >FetchBlogSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadBillings.html" >LoadBillings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadBillingsFail.html" >LoadBillingsFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadBillingsSuccess.html" >LoadBillingsSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDevices.html" >LoadDevices</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDevicesSuccess.html" >LoadDevicesSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveIn.html" >LoadDriveIn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveInSuccess.html" >LoadDriveInSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveOut.html" >LoadDriveOut</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveOutFail.html" >LoadDriveOutFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveOutSuccess.html" >LoadDriveOutSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadMoreDriveIn.html" >LoadMoreDriveIn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadMoreDriveInFail.html" >LoadMoreDriveInFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadMoreDriveInSuccess.html" >LoadMoreDriveInSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadOrganizations.html" >LoadOrganizations</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadOrganizationsSuccess.html" >LoadOrganizationsSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadProfile.html" >LoadProfile</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadProfileFail.html" >LoadProfileFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadProfileSuccess.html" >LoadProfileSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadSpaces.html" >LoadSpaces</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadSpacesSuccess.html" >LoadSpacesSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadUsers.html" >LoadUsers</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadUsersSuccess.html" >LoadUsersSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogIn.html" >LogIn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogInFail.html" >LogInFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogInSuccess.html" >LogInSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogOut.html" >LogOut</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogOutFail.html" >LogOutFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogOutSuccess.html" >LogOutSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/RefreshToken.html" >RefreshToken</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/RefreshTokenSuccess.html" >RefreshTokenSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ResetInvalid.html" >ResetInvalid</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SelectedBlog.html" >SelectedBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SelectedSpaceId.html" >SelectedSpaceId</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SignUp.html" >SignUp</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SignUpFail.html" >SignUpFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SignUpSuccess.html" >SignUpSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/UploadAdapter.html" >UploadAdapter</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AdminGuard.html" >AdminGuard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthEffects.html" >AuthEffects</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthGuard.html" >AuthGuard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthInterceptor.html" >AuthInterceptor</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthService.html" >AuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BloggerGuard.html" >BloggerGuard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DashService.html" >DashService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ErrorInterceptor.html" >ErrorInterceptor</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HomeEffects.html" >HomeEffects</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HomeService.html" >HomeService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SharedService.html" >SharedService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SpacesEffects.html" >SpacesEffects</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StorageService.html" >StorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StoreService.html" >StoreService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/ActionExecutable.html" >ActionExecutable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AllUsersModel.html" >AllUsersModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AppState.html" >AppState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AuthState.html" >AuthState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BillingEntities.html" >BillingEntities</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BillingModel.html" >BillingModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BillingResponseModel.html" >BillingResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BlogEntity.html" >BlogEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BlogModel.html" >BlogModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BlogResponseModel.html" >BlogResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DashboardState.html" >DashboardState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DevicesModel.html" >DevicesModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DevicesResponseModel.html" >DevicesResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DevicesState.html" >DevicesState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveInModel.html" >DriveInModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveInResponseModel.html" >DriveInResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveInState.html" >DriveInState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveOutModel.html" >DriveOutModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveOutResponseModel.html" >DriveOutResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveOutState.html" >DriveOutState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ErrorModel.html" >ErrorModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HomeState.html" >HomeState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/KeyFeatures.html" >KeyFeatures</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LoginModel.html" >LoginModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LoginResponseModel.html" >LoginResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LogsEntities.html" >LogsEntities</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/OrganisationModel.html" >OrganisationModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/OrganisationResponseModel.html" >OrganisationResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/OrganizationsState.html" >OrganizationsState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PaymentChannelsModel.html" >PaymentChannelsModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceGroupDetail.html" >PriceGroupDetail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceScheduleResponseModel.html" >PriceScheduleResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PricingModel.html" >PricingModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PricingResponseModel.html" >PricingResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ProfileResponseModel.html" >ProfileResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RegisterModel.html" >RegisterModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RegisterResponseModel.html" >RegisterResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpaceImages.html" >SpaceImages</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpaceModel.html" >SpaceModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpaceModelResponse.html" >SpaceModelResponse</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpacesEntities.html" >SpacesEntities</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TokenModel.html" >TokenModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/UserModel.html" >UserModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WCNModal.html" >WCNModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/carouselContent.html" >carouselContent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/jwtToken.html" >jwtToken</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
                </div>
-               <!-- START CONTENT -->
                <div class="content component">
                    <div class="content-data">
 
 
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Components</li>
-  <li class="breadcrumb-item"
-  >
-  BlogCreateComponent</li>
+  <li>Components</li>
+  <li>BlogCreateComponent</li>
 </ol>
 
-<ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a href="#info" class="nav-link active"
-                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
-        </li>
-        <li class="nav-item">
-            <a href="#source" class="nav-link"
-                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
-        </li>
-        <li class="nav-item">
-            <a href="#templateData" class="nav-link"
-                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li class="nav-item">
-            <a href="#styleData" class="nav-link"
-                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li class="nav-item">
-            <a href="#tree" class="nav-link"
-                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
-        </li>
-</ul>
 
-<div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        </li>
+        <li>
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="infos"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -74,18 +1261,9 @@
 
 
 
-
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                <code>OnInit</code>
-    </p>
-
-
-<section data-compodoc="block-metadata">
+<section>
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
+    <table class="table table-sm table-hover">
         <tbody>
 
 
@@ -104,1093 +1282,448 @@
                 <td class="col-md-9"><code>naiparq-blog-create</code></td>
             </tr>
 
-
-
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./blog-create.component.scss</code></td>
+                <td class="col-md-9"><code>blog-create.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./blog-create.component.html</code></td>
+                <td class="col-md-9"><code>blog-create.component.html</code></td>
             </tr>
 
 
-
-
-
-
-
-
         </tbody>
     </table>
 </section>
 
-    <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#blogContent" >blogContent</a>
-                            </li>
-                            <li>
-                                <a href="#blogForm" >blogForm</a>
-                            </li>
-                            <li>
-                                <a href="#blogFormData" >blogFormData</a>
-                            </li>
-                            <li>
-                                <a href="#coverImage" >coverImage</a>
-                            </li>
-                            <li>
-                                <a href="#coverImageName" >coverImageName</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#coverImgInput" >coverImgInput</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                <a href="#editor" >editor</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#Editor" >Editor</a>
-                            </li>
-                            <li>
-                                <a href="#loader" >loader</a>
-                            </li>
-                            <li>
-                                <a href="#preview" >preview</a>
-                            </li>
-                            <li>
-                                <a href="#submitting" >submitting</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#clickCoverImg" >clickCoverImg</a>
-                            </li>
-                            <li>
-                                <a href="#editMode" >editMode</a>
-                            </li>
-                            <li>
-                                <a href="#inputCoverImg" >inputCoverImg</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#onReady" >onReady</a>
-                            </li>
-                            <li>
-                                <a href="#onSubmit" >onSubmit</a>
-                            </li>
-                            <li>
-                                <a href="#patchFormValues" >patchFormValues</a>
-                            </li>
-                            <li>
-                                <a href="#resetCoverImg" >resetCoverImg</a>
-                            </li>
-                            <li>
-                                <a href="#togglePreview" >togglePreview</a>
-                            </li>
-                            <li>
-                                <a href="#upload" >upload</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(http: HttpClient, fb: UntypedFormBuilder, homeSrv: <a href="../injectables/HomeService.html" >HomeService</a>, sharedSrv: <a href="../injectables/SharedService.html" >SharedService</a>, router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank" >Router</a>, store: any)</code>
+                        </td>
+                    </tr>
+    
+                </tbody>
+            </table>
+    </section>
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> onReady</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>onReady(editor: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> editMode</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>editMode()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> patchFormValues</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>patchFormValues(blog: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> clickCoverImg</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>clickCoverImg()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> togglePreview</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>togglePreview()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> inputCoverImg</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>inputCoverImg(event: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> resetCoverImg</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>resetCoverImg()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> onSubmit</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>onSubmit()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> upload</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>upload(loader: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
-
-        </tbody>
-    </table>
-</section>
-
-    <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(http: HttpClient, fb: UntypedFormBuilder, homeSrv: <a href="../injectables/HomeService.html" target="_self">HomeService</a>, sharedSrv: <a href="../injectables/SharedService.html" target="_self">SharedService</a>, router: Router, store: <a href="../interfaces/AppState.html" target="_self">Store&lt;AppState&gt;</a>)</code>
-                    </td>
-                </tr>
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> blogContent</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>blogContent:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> blogForm</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>blogForm:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> blogFormData</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>blogFormData:     <code>FormData</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> coverImage</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>coverImage:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> coverImageName</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>coverImageName:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> coverImgInput</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>coverImgInput:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> editor</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>editor:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> Editor</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>Editor:     <code>typeof DecoupledEditor</code>
+    </bcode>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:52</a></div>
+                                <i>Default value: </i><code>DecoupledEditor</code>
                             </td>
                         </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>http</td>
-                                                  
-                                                        <td>
-                                                                    <code>HttpClient</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>fb</td>
-                                                  
-                                                        <td>
-                                                                    <code>UntypedFormBuilder</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>homeSrv</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/HomeService.html" target="_self" >HomeService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>sharedSrv</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/SharedService.html" target="_self" >SharedService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                    <code>Router</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>store</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../interfaces/AppState.html" target="_self" >Store&lt;AppState&gt;</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
-
-
-
-
-    <section data-compodoc="block-methods">
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="clickCoverImg"></a>
-                    <span class="name">
-                        <span ><b>clickCoverImg</b></span>
-                        <a href="#clickCoverImg"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>clickCoverImg()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:94</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="editMode"></a>
-                    <span class="name">
-                        <span ><b>editMode</b></span>
-                        <a href="#editMode"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>editMode()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:67</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="inputCoverImg"></a>
-                    <span class="name">
-                        <span ><b>inputCoverImg</b></span>
-                        <a href="#inputCoverImg"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>inputCoverImg(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:102</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>event</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:63</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onReady"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span ><b>onReady</b></span>
-                        <a href="#onReady"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>onReady(editor: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:39</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>editor</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onSubmit"></a>
-                    <span class="name">
-                        <span ><b>onSubmit</b></span>
-                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>onSubmit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="127"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:127</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="patchFormValues"></a>
-                    <span class="name">
-                        <span ><b>patchFormValues</b></span>
-                        <a href="#patchFormValues"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>patchFormValues(blog: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:85</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>blog</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resetCoverImg"></a>
-                    <span class="name">
-                        <span ><b>resetCoverImg</b></span>
-                        <a href="#resetCoverImg"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>resetCoverImg()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:125</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="togglePreview"></a>
-                    <span class="name">
-                        <span ><b>togglePreview</b></span>
-                        <a href="#togglePreview"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>togglePreview()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:98</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="upload"></a>
-                    <span class="name">
-                        <span ><b>upload</b></span>
-                        <a href="#upload"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>upload(loader: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="154"
-                            class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:154</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>loader</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section data-compodoc="block-properties">
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="blogContent"></a>
-                    <span class="name">
-                        <span ><b>blogContent</b></span>
-                        <a href="#blogContent"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:30</a></div>
+                            <b> loader</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="blogForm"></a>
-                    <span class="name">
-                        <span ><b>blogForm</b></span>
-                        <a href="#blogForm"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>this.fb.group({
-    title: [&#x27;&#x27;, Validators.required],
-    cover_image: [&#x27;&#x27;, Validators.required],
-    content: [&#x27;&#x27;, Validators.required],
-  })</code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:48</a></div>
+                            <code>loader:     <code>any</code>
+    </bcode>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="blogFormData"></a>
-                    <span class="name">
-                        <span ><b>blogFormData</b></span>
-                        <a href="#blogFormData"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormData()</code>
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:29</a></div>
+                            <b> preview</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="coverImage"></a>
-                    <span class="name">
-                        <span ><b>coverImage</b></span>
-                        <a href="#coverImage"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:36</a></div>
+                            <code>preview:     <code>boolean</code>
+    </bcode>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="coverImageName"></a>
-                    <span class="name">
-                        <span ><b>coverImageName</b></span>
-                        <a href="#coverImageName"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
-                    </td>
-                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:37</a></div>
+                            <b> submitting</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="coverImgInput"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>coverImgInput</b></span>
-                        <a href="#coverImgInput"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>ElementRef</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ViewChild(&#x27;coverImgInput&#x27;, {static: true})<br />
-                        </code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:26</a></div>
+                            <code>submitting:     <code>boolean</code>
+    </bcode>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="editor"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                        <span ><b>editor</b></span>
-                        <a href="#editor"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>ElementRef</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ViewChild(&#x27;editor&#x27;, {static: true})<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:25</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="Editor"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>Editor</b></span>
-                        <a href="#Editor"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>DecoupledEditor</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:28</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="loader"></a>
-                    <span class="name">
-                        <span ><b>loader</b></span>
-                        <a href="#loader"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:24</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="preview"></a>
-                    <span class="name">
-                        <span ><b>preview</b></span>
-                        <a href="#preview"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:34</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="submitting"></a>
-                    <span class="name">
-                        <span ><b>submitting</b></span>
-                        <a href="#submitting"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/home/components/blog/blog-create/blog-create.component.ts:32</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+        <div class="tab-pane fade tab-source-code" id="source">
+            <pre><code class="hljs javascript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { UploadAdapter } from &#x27;./UploadAdapter&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { UntypedFormBuilder, Validators } from &#x27;@angular/forms&#x27;;
@@ -1358,177 +1891,8 @@ export class BlogCreateComponent implements OnInit {
   }
 }
 </code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;naiparq-blog-create mt-[96px] min-h-[100vh]&quot;&gt;
-  &lt;div class&#x3D;&quot;content flex flex-col py-10 max-w-[900px] px-3 mx-auto&quot;&gt;
-    &lt;div class&#x3D;&quot;flex justify-end items-center py-2 mb-2 gap-2&quot;&gt;
-      &lt;button
-        (click)&#x3D;&quot;onSubmit()&quot;
-        [class.btn-loading]&#x3D;&quot;submitting&quot;
-        class&#x3D;&quot;px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]&quot;
-      &gt;
-        &lt;span class&#x3D;&quot;btn-text text-[#fff] font-[700]&quot;&gt;Publish&lt;/span&gt;
-      &lt;/button&gt;
-      &lt;button
-        (click)&#x3D;&quot;togglePreview()&quot;
-        class&#x3D;&quot;px-5 max-w-[200px] border naiparq-btn my-2 py-2 border-0 bg-[#fff] rounded text-[#000]&quot;
-      &gt;
-        &lt;span class&#x3D;&quot;btn-text text-[#000] font-base font-[700]&quot;&gt;{{
-          preview ? &quot;Close&quot; : &quot;Preview&quot;
-        }}&lt;/span&gt;
-      &lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div
-      [class.hidden]&#x3D;&quot;!preview&quot;
-      class&#x3D;&quot;naiparq-blog-create__preview pb-5 bg-[#fff] px-3 py-4 rounded-lg&quot;
-    &gt;
-      &lt;h2
-        class&#x3D;&quot;text-[30px] leading-[120%] font-[700] text-[#2F1C6A]&quot;
-        *ngIf&#x3D;&quot;!blogForm.get(&#x27;title&#x27;)?.value&quot;
-      &gt;
-        Preview Blog
-      &lt;/h2&gt;
-      &lt;h2
-        class&#x3D;&quot;text-[30px] leading-[120%] font-[700] text-[#2F1C6A]&quot;
-        *ngIf&#x3D;&quot;blogForm.get(&#x27;title&#x27;)?.value&quot;
-      &gt;
-        {{ blogForm.get(&quot;title&quot;)?.value }}
-      &lt;/h2&gt;
-      &lt;div
-        *ngIf&#x3D;&quot;coverImage&quot;
-        class&#x3D;&quot;naiparq-blog-create__preview-img h-[350px] overflow-hidden py-2&quot;
-      &gt;
-        &lt;img
-          class&#x3D;&quot;rounded-lg object-cover h-[100%]&quot;
-          [src]&#x3D;&quot;coverImage&quot;
-          alt&#x3D;&quot;&quot;
-        /&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;blog-content&quot; [innerHTML]&#x3D;&quot;blogContent&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div [class.hidden]&#x3D;&quot;preview&quot; class&#x3D;&quot;naiparq-blog-create__editor&quot;&gt;
-      &lt;form [formGroup]&#x3D;&quot;blogForm&quot; class&#x3D;&quot;flex flex-col gap-1.5&quot;&gt;
-        &lt;div class&#x3D;&quot;flex flex-col py-2 gap-1.5&quot;&gt;
-          &lt;label class&#x3D;&quot;text-base&quot; for&#x3D;&quot;bTitle&quot;&gt;Blog title&lt;/label&gt;
-          &lt;input
-            formControlName&#x3D;&quot;title&quot;
-            class&#x3D;&quot;py-1 px-3 rounded-lg w-[75%]&quot;
-            type&#x3D;&quot;text&quot;
-            id&#x3D;&quot;bTitle&quot;
-          /&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;flex flex-col py-2 gap-1.5&quot;&gt;
-          &lt;label class&#x3D;&quot;text-base&quot; for&#x3D;&quot;bTitle&quot;&gt;Cover Image&lt;/label&gt;
-          &lt;div
-            (click)&#x3D;&quot;clickCoverImg()&quot;
-            class&#x3D;&quot;img-box flex justify-center items-center w-[100%] h-[100px] rounded-lg border-dashed border-2 bg-sky-100 border-sky-400&quot;
-          &gt;
-            &lt;p *ngIf&#x3D;&quot;!coverImageName&quot; class&#x3D;&quot;font-[700] text-base&quot;&gt;
-              Drag &amp; Drop or &lt;span class&#x3D;&quot;text-sky-500&quot;&gt;Browse&lt;/span&gt;
-            &lt;/p&gt;
-            &lt;p
-              *ngIf&#x3D;&quot;coverImageName&quot;
-              class&#x3D;&quot;font-[700] text-base flex items-center gap-2&quot;
-            &gt;
-              {{ coverImageName }}
-              &lt;svg
-                (click)&#x3D;&quot;resetCoverImg()&quot;
-                class&#x3D;&quot;cursor-pointer&quot;
-                width&#x3D;&quot;30&quot;
-                height&#x3D;&quot;30&quot;
-                viewBox&#x3D;&quot;0 0 30 30&quot;
-                fill&#x3D;&quot;none&quot;
-                xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
-              &gt;
-                &lt;path
-                  d&#x3D;&quot;M19.6875 11.6813L16.3219 15L19.6875 18.3188C19.7812 18.4064 19.8559 18.5124 19.9069 18.6302C19.958 18.7479 19.9843 18.8748 19.9843 19.0031C19.9843 19.1314 19.958 19.2584 19.9069 19.3761C19.8559 19.4938 19.7812 19.5998 19.6875 19.6875C19.5999 19.7744 19.496 19.8431 19.3818 19.8898C19.2676 19.9364 19.1453 19.9601 19.0219 19.9594C18.776 19.9583 18.5403 19.8607 18.3657 19.6875L15 16.3219L11.6813 19.6875C11.5067 19.8607 11.271 19.9583 11.025 19.9594C10.9016 19.9601 10.7793 19.9364 10.6651 19.8898C10.5509 19.8431 10.447 19.7744 10.3594 19.6875C10.1848 19.5119 10.0868 19.2742 10.0868 19.0266C10.0868 18.7789 10.1848 18.5413 10.3594 18.3656L13.6782 15L10.3594 11.6813C10.2058 11.5019 10.1256 11.2712 10.1347 11.0353C10.1438 10.7993 10.2416 10.5755 10.4086 10.4085C10.5755 10.2416 10.7993 10.1438 11.0353 10.1347C11.2712 10.1255 11.5019 10.2058 11.6813 10.3594L15 13.6781L18.3188 10.3594C18.4056 10.2695 18.5092 10.1976 18.6238 10.1478C18.7384 10.098 18.8617 10.0712 18.9866 10.069C19.1115 10.0669 19.2356 10.0893 19.3519 10.1351C19.4681 10.1809 19.5742 10.2491 19.6641 10.3359C19.754 10.4227 19.8259 10.5264 19.8757 10.641C19.9255 10.7555 19.9523 10.8788 19.9544 11.0037C19.9566 11.1287 19.9342 11.2528 19.8884 11.369C19.8426 11.4853 19.7743 11.5914 19.6875 11.6813V11.6813ZM24.2813 24.2813C22.4457 26.1167 20.107 27.3666 17.561 27.8729C15.0151 28.3792 12.3761 28.1192 9.97795 27.1258C7.57975 26.1324 5.52998 24.4501 4.08784 22.2917C2.64571 20.1334 1.87598 17.5958 1.87598 15C1.87598 12.4042 2.64571 9.86665 4.08784 7.70828C5.52998 5.54992 7.57975 3.86765 9.97795 2.87422C12.3761 1.88078 15.0151 1.62078 17.561 2.1271C20.107 2.63342 22.4457 3.88333 24.2813 5.71876C25.5002 6.93754 26.4671 8.38449 27.1268 9.97698C27.7864 11.5695 28.126 13.2763 28.126 15C28.126 16.7237 27.7864 18.4305 27.1268 20.023C26.4671 21.6155 25.5002 23.0625 24.2813 24.2813V24.2813ZM22.9594 7.04063C21.3845 5.4712 19.3799 4.40362 17.1987 3.9727C15.0175 3.54178 12.7575 3.76684 10.7041 4.61948C8.65067 5.47211 6.89597 6.91407 5.66153 8.76328C4.42709 10.6125 3.76828 12.786 3.76828 15.0094C3.76828 17.2328 4.42709 19.4063 5.66153 21.2555C6.89597 23.1047 8.65067 24.5466 10.7041 25.3993C12.7575 26.2519 15.0175 26.477 17.1987 26.0461C19.3799 25.6151 21.3845 24.5476 22.9594 22.9781C24.0082 21.933 24.8404 20.691 25.4082 19.3236C25.976 17.9561 26.2683 16.49 26.2683 15.0094C26.2683 13.5287 25.976 12.0626 25.4082 10.6952C24.8404 9.32771 24.0082 8.08579 22.9594 7.04063V7.04063Z&quot;
-                  fill&#x3D;&quot;#004445&quot;
-                /&gt;
-              &lt;/svg&gt;
-            &lt;/p&gt;
-            &lt;input
-              #coverImgInput
-              (change)&#x3D;&quot;inputCoverImg($event)&quot;
-              accept&#x3D;&quot;image/*&quot;
-              type&#x3D;&quot;file&quot;
-              class&#x3D;&quot;hidden&quot;
-            /&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;ckeditor
-          [(ngModel)]&#x3D;&quot;blogContent&quot;
-          [ngModelOptions]&#x3D;&quot;{ standalone: true }&quot;
-          #editor
-          [editor]&#x3D;&quot;Editor&quot;
-          (ready)&#x3D;&quot;onReady($event)&quot;
-          data&#x3D;&quot;&quot;
-        &gt;&lt;/ckeditor&gt;
-        &lt;button
-          (click)&#x3D;&quot;onSubmit()&quot;
-          [class.btn-loading]&#x3D;&quot;submitting&quot;
-          class&#x3D;&quot;px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]&quot;
-        &gt;
-          &lt;span class&#x3D;&quot;btn-text text-[#fff] font-[700]&quot;&gt;Submit&lt;/span&gt;
-        &lt;/button&gt;
-      &lt;/form&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="styleData">
-                <p class="comment">
-                    <code>./blog-create.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">.blog-content {
-  p {
-    color: red !important;
-  }
-}
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
         </div>
     </div>
-
-    
-</div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><div class="naiparq-blog-create mt-[96px] min-h-[100vh]">  <div class="content flex flex-col py-10 max-w-[900px] px-3 mx-auto">    <div class="flex justify-end items-center py-2 mb-2 gap-2">      <button        (click)="onSubmit()"        [class.btn-loading]="submitting"        class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"      >        <span class="btn-text text-[#fff] font-[700]">Publish</span>      </button>      <button        (click)="togglePreview()"        class="px-5 max-w-[200px] border naiparq-btn my-2 py-2 border-0 bg-[#fff] rounded text-[#000]"      >        <span class="btn-text text-[#000] font-base font-[700]">{{          preview ? "Close" : "Preview"        }}</span>      </button>    </div>    <div      [class.hidden]="!preview"      class="naiparq-blog-create__preview pb-5 bg-[#fff] px-3 py-4 rounded-lg"    >      <h2        class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]"        *ngIf="!blogForm.get(\'title\')?.value"      >        Preview Blog      </h2>      <h2        class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]"        *ngIf="blogForm.get(\'title\')?.value"      >        {{ blogForm.get("title")?.value }}      </h2>      <div        *ngIf="coverImage"        class="naiparq-blog-create__preview-img h-[350px] overflow-hidden py-2"      >        <img          class="rounded-lg object-cover h-[100%]"          [src]="coverImage"          alt=""        />      </div>      <div class="blog-content" [innerHTML]="blogContent"></div>    </div>    <div [class.hidden]="preview" class="naiparq-blog-create__editor">      <form [formGroup]="blogForm" class="flex flex-col gap-1.5">        <div class="flex flex-col py-2 gap-1.5">          <label class="text-base" for="bTitle">Blog title</label>          <input            formControlName="title"            class="py-1 px-3 rounded-lg w-[75%]"            type="text"            id="bTitle"          />        </div>        <div class="flex flex-col py-2 gap-1.5">          <label class="text-base" for="bTitle">Cover Image</label>          <div            (click)="clickCoverImg()"            class="img-box flex justify-center items-center w-[100%] h-[100px] rounded-lg border-dashed border-2 bg-sky-100 border-sky-400"          >            <p *ngIf="!coverImageName" class="font-[700] text-base">              Drag & Drop or <span class="text-sky-500">Browse</span>            </p>            <p              *ngIf="coverImageName"              class="font-[700] text-base flex items-center gap-2"            >              {{ coverImageName }}              <svg                (click)="resetCoverImg()"                class="cursor-pointer"                width="30"                height="30"                viewBox="0 0 30 30"                fill="none"                xmlns="http://www.w3.org/2000/svg"              >                <path                  d="M19.6875 11.6813L16.3219 15L19.6875 18.3188C19.7812 18.4064 19.8559 18.5124 19.9069 18.6302C19.958 18.7479 19.9843 18.8748 19.9843 19.0031C19.9843 19.1314 19.958 19.2584 19.9069 19.3761C19.8559 19.4938 19.7812 19.5998 19.6875 19.6875C19.5999 19.7744 19.496 19.8431 19.3818 19.8898C19.2676 19.9364 19.1453 19.9601 19.0219 19.9594C18.776 19.9583 18.5403 19.8607 18.3657 19.6875L15 16.3219L11.6813 19.6875C11.5067 19.8607 11.271 19.9583 11.025 19.9594C10.9016 19.9601 10.7793 19.9364 10.6651 19.8898C10.5509 19.8431 10.447 19.7744 10.3594 19.6875C10.1848 19.5119 10.0868 19.2742 10.0868 19.0266C10.0868 18.7789 10.1848 18.5413 10.3594 18.3656L13.6782 15L10.3594 11.6813C10.2058 11.5019 10.1256 11.2712 10.1347 11.0353C10.1438 10.7993 10.2416 10.5755 10.4086 10.4085C10.5755 10.2416 10.7993 10.1438 11.0353 10.1347C11.2712 10.1255 11.5019 10.2058 11.6813 10.3594L15 13.6781L18.3188 10.3594C18.4056 10.2695 18.5092 10.1976 18.6238 10.1478C18.7384 10.098 18.8617 10.0712 18.9866 10.069C19.1115 10.0669 19.2356 10.0893 19.3519 10.1351C19.4681 10.1809 19.5742 10.2491 19.6641 10.3359C19.754 10.4227 19.8259 10.5264 19.8757 10.641C19.9255 10.7555 19.9523 10.8788 19.9544 11.0037C19.9566 11.1287 19.9342 11.2528 19.8884 11.369C19.8426 11.4853 19.7743 11.5914 19.6875 11.6813V11.6813ZM24.2813 24.2813C22.4457 26.1167 20.107 27.3666 17.561 27.8729C15.0151 28.3792 12.3761 28.1192 9.97795 27.1258C7.57975 26.1324 5.52998 24.4501 4.08784 22.2917C2.64571 20.1334 1.87598 17.5958 1.87598 15C1.87598 12.4042 2.64571 9.86665 4.08784 7.70828C5.52998 5.54992 7.57975 3.86765 9.97795 2.87422C12.3761 1.88078 15.0151 1.62078 17.561 2.1271C20.107 2.63342 22.4457 3.88333 24.2813 5.71876C25.5002 6.93754 26.4671 8.38449 27.1268 9.97698C27.7864 11.5695 28.126 13.2763 28.126 15C28.126 16.7237 27.7864 18.4305 27.1268 20.023C26.4671 21.6155 25.5002 23.0625 24.2813 24.2813V24.2813ZM22.9594 7.04063C21.3845 5.4712 19.3799 4.40362 17.1987 3.9727C15.0175 3.54178 12.7575 3.76684 10.7041 4.61948C8.65067 5.47211 6.89597 6.91407 5.66153 8.76328C4.42709 10.6125 3.76828 12.786 3.76828 15.0094C3.76828 17.2328 4.42709 19.4063 5.66153 21.2555C6.89597 23.1047 8.65067 24.5466 10.7041 25.3993C12.7575 26.2519 15.0175 26.477 17.1987 26.0461C19.3799 25.6151 21.3845 24.5476 22.9594 22.9781C24.0082 21.933 24.8404 20.691 25.4082 19.3236C25.976 17.9561 26.2683 16.49 26.2683 15.0094C26.2683 13.5287 25.976 12.0626 25.4082 10.6952C24.8404 9.32771 24.0082 8.08579 22.9594 7.04063V7.04063Z"                  fill="#004445"                />              </svg>            </p>            <input              #coverImgInput              (change)="inputCoverImg($event)"              accept="image/*"              type="file"              class="hidden"            />          </div>        </div>        <ckeditor          [(ngModel)]="blogContent"          [ngModelOptions]="{ standalone: true }"          #editor          [editor]="Editor"          (ready)="onReady($event)"          data=""        ></ckeditor>        <button          (click)="onSubmit()"          [class.btn-loading]="submitting"          class="px-5 max-w-[200px] naiparq-btn my-2 py-2 border-0 bg-[#000] rounded text-[#fff]"        >          <span class="btn-text text-[#fff] font-[700]">Submit</span>        </button>      </form>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'naiparq-about'},{'name': 'AccountComponent', 'selector': 'naiparq-account'},{'name': 'AnalyticsComponent', 'selector': 'naiparq-analytics'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssetsManagementComponent', 'selector': 'naiparq-assets-management'},{'name': 'AuthComponent', 'selector': 'naiparq-auth'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BlogComponent', 'selector': 'naiparq-blog'},{'name': 'BlogCreateComponent', 'selector': 'naiparq-blog-create'},{'name': 'BlogDetailComponent', 'selector': 'naiparq-blog-detail'},{'name': 'BlogListComponent', 'selector': 'naiparq-blog-list'},{'name': 'CarouselComponent', 'selector': 'naiparq-carousel'},{'name': 'ConfirmResetComponent', 'selector': 'naiparq-confirm-reset'},{'name': 'ContactComponent', 'selector': 'naiparq-contact'},{'name': 'DashboardComponent', 'selector': 'naiparq-app-dashboard'},{'name': 'DashComponent', 'selector': 'naiparq-app-dash'},{'name': 'DriveInComponent', 'selector': 'naiparq-drive-in-payment'},{'name': 'DriveOutComponent', 'selector': 'app-drive-out'},{'name': 'HomeComponent', 'selector': 'naiparq-home'},{'name': 'InlineLoaderComponent', 'selector': 'app-inline-loader'},{'name': 'LandingComponent', 'selector': 'naiparq-landing'},{'name': 'LinearGraphComponent', 'selector': 'naiparq-linear-graph'},{'name': 'LoginComponent', 'selector': 'naiparq-login'},{'name': 'LogsComponent', 'selector': 'naiparq-logs'},{'name': 'MotoristManagementComponent', 'selector': 'naiparq-motorist-management'},{'name': 'NotificationsComponent', 'selector': 'naiparq-notifications'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PmsComponent', 'selector': 'app-pms'},{'name': 'PremisesComponent', 'selector': 'naiparq-premises'},{'name': 'RegisterComponent', 'selector': 'naiparq-register'},{'name': 'ReservationComponent', 'selector': 'app-reservation'},{'name': 'ResetComponent', 'selector': 'naiparq-reset'},{'name': 'RevenuesComponent', 'selector': 'naiparq-revenues'},{'name': 'SettingsComponent', 'selector': 'naiparq-settings'},{'name': 'SideNavComponent', 'selector': 'naiparq-drawer'},{'name': 'UserManagementComponent', 'selector': 'naiparq-user-management'},{'name': 'VerifyComponent', 'selector': 'naiparq-verify'}];
-    var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'BlogCreateComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
-
 
 
 
@@ -1549,31 +1913,8 @@ export class BlogCreateComponent implements OnInit {
     </div>
 </div>
 </div>
-               <!-- END CONTENT -->
            </div>
        </div>
-
-          <label class="dark-mode-switch">
-               <input type="checkbox">
-               <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-               </span>
-          </label>
-
-       <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'BlogCreateComponent.html';
-            var MAX_SEARCH_RESULTS = 15;
-       </script>
-
-       <script src="../js/libs/custom-elements.min.js"></script>
-       <script src="../js/libs/lit-html.js"></script>
-
-       <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -1584,17 +1925,20 @@ export class BlogCreateComponent implements OnInit {
 
        <script src="../js/compodoc.js"></script>
 
-       <script src="../js/tabs.js"></script>
-       <script src="../js/menu.js"></script>
-       <script src="../js/libs/clipboard.min.js"></script>
-       <script src="../js/libs/prism.js"></script>
-       <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
-       <script src="../js/lazy-load-graphs.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/highlight.pack.js"></script>
+       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
 
     </body>
 </html>

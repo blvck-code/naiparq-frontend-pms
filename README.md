@@ -46,3 +46,11 @@ To run the frontend part of our code, we will use the Angular CLI:
     ng serve
 
 The application is visible at port 4200: [http://localhost:4200](http://localhost:4200)
+
+# To run documentation Serve
+To run the frontend documentation server, we will use the Compodoc:
+
+    compodoc -s
+
+
+The documentation is visible at port 8080: [http://localhost:8080/coverage.html](http://localhost:8080/coverage.html)

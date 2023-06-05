@@ -8,240 +8,1243 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css">
+	    <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="../" class="navbar-brand">naiparq-frontend-pms documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../">naiparq-frontend-pms documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AuthModule.html" >AuthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/DashboardModule.html" >DashboardModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HomeModule.html"  class="active" >HomeModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AboutComponent.html" >AboutComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AccountComponent.html" >AccountComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AnalyticsComponent.html" >AnalyticsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AssetsManagementComponent.html" >AssetsManagementComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AuthComponent.html" >AuthComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BillingComponent.html" >BillingComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogComponent.html" >BlogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogCreateComponent.html" >BlogCreateComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogDetailComponent.html" >BlogDetailComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/BlogListComponent.html" >BlogListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CarouselComponent.html" >CarouselComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ConfirmResetComponent.html" >ConfirmResetComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ContactComponent.html" >ContactComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DashComponent.html" >DashComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DashboardComponent.html" >DashboardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DriveInComponent.html" >DriveInComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DriveOutComponent.html" >DriveOutComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HomeComponent.html" >HomeComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/InlineLoaderComponent.html" >InlineLoaderComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LandingComponent.html" >LandingComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LinearGraphComponent.html" >LinearGraphComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LogsComponent.html" >LogsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MotoristManagementComponent.html" >MotoristManagementComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PageNotFoundComponent.html" >PageNotFoundComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PmsComponent.html" >PmsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PremisesComponent.html" >PremisesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RegisterComponent.html" >RegisterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ReservationComponent.html" >ReservationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResetComponent.html" >ResetComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RevenuesComponent.html" >RevenuesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SideNavComponent.html" >SideNavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/UserManagementComponent.html" >UserManagementComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/VerifyComponent.html" >VerifyComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/AddAsset.html" >AddAsset</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BillingItem.html" >BillingItem</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/BillingItem.html" >BillingItem</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Billings.html" >Billings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Billings.html" >Billings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CountryRenewableElectricity.html" >CountryRenewableElectricity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CountryRenewableElectricityItem.html" >CountryRenewableElectricityItem</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CreateBlog.html" >CreateBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CreateBlogFail.html" >CreateBlogFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CreateBlogSuccess.html" >CreateBlogSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DeleteBlog.html" >DeleteBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/FetchBlog.html" >FetchBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/FetchBlogFail.html" >FetchBlogFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/FetchBlogSuccess.html" >FetchBlogSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadBillings.html" >LoadBillings</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadBillingsFail.html" >LoadBillingsFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadBillingsSuccess.html" >LoadBillingsSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDevices.html" >LoadDevices</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDevicesSuccess.html" >LoadDevicesSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveIn.html" >LoadDriveIn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveInSuccess.html" >LoadDriveInSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveOut.html" >LoadDriveOut</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveOutFail.html" >LoadDriveOutFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadDriveOutSuccess.html" >LoadDriveOutSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadMoreDriveIn.html" >LoadMoreDriveIn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadMoreDriveInFail.html" >LoadMoreDriveInFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadMoreDriveInSuccess.html" >LoadMoreDriveInSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadOrganizations.html" >LoadOrganizations</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadOrganizationsSuccess.html" >LoadOrganizationsSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadProfile.html" >LoadProfile</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadProfileFail.html" >LoadProfileFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadProfileSuccess.html" >LoadProfileSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadSpaces.html" >LoadSpaces</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadSpacesSuccess.html" >LoadSpacesSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadUsers.html" >LoadUsers</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LoadUsersSuccess.html" >LoadUsersSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogIn.html" >LogIn</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogInFail.html" >LogInFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogInSuccess.html" >LogInSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogOut.html" >LogOut</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogOutFail.html" >LogOutFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/LogOutSuccess.html" >LogOutSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/RefreshToken.html" >RefreshToken</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/RefreshTokenSuccess.html" >RefreshTokenSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ResetInvalid.html" >ResetInvalid</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SelectedBlog.html" >SelectedBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SelectedSpaceId.html" >SelectedSpaceId</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SignUp.html" >SignUp</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SignUpFail.html" >SignUpFail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SignUpSuccess.html" >SignUpSuccess</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/UploadAdapter.html" >UploadAdapter</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AdminGuard.html" >AdminGuard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthEffects.html" >AuthEffects</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthGuard.html" >AuthGuard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthInterceptor.html" >AuthInterceptor</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthService.html" >AuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/BloggerGuard.html" >BloggerGuard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DashService.html" >DashService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ErrorInterceptor.html" >ErrorInterceptor</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HomeEffects.html" >HomeEffects</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HomeService.html" >HomeService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SharedService.html" >SharedService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SpacesEffects.html" >SpacesEffects</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StorageService.html" >StorageService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StoreService.html" >StoreService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/ActionExecutable.html" >ActionExecutable</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AllUsersModel.html" >AllUsersModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AppState.html" >AppState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/AuthState.html" >AuthState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BillingEntities.html" >BillingEntities</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BillingModel.html" >BillingModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BillingResponseModel.html" >BillingResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BlogEntity.html" >BlogEntity</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BlogModel.html" >BlogModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/BlogResponseModel.html" >BlogResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DashboardState.html" >DashboardState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DevicesModel.html" >DevicesModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DevicesResponseModel.html" >DevicesResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DevicesState.html" >DevicesState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveInModel.html" >DriveInModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveInResponseModel.html" >DriveInResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveInState.html" >DriveInState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveOutModel.html" >DriveOutModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveOutResponseModel.html" >DriveOutResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DriveOutState.html" >DriveOutState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ErrorModel.html" >ErrorModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/HomeState.html" >HomeState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/KeyFeatures.html" >KeyFeatures</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LoginModel.html" >LoginModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LoginResponseModel.html" >LoginResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/LogsEntities.html" >LogsEntities</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/OrganisationModel.html" >OrganisationModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/OrganisationResponseModel.html" >OrganisationResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/OrganizationsState.html" >OrganizationsState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PaymentChannelsModel.html" >PaymentChannelsModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceGroupDetail.html" >PriceGroupDetail</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PriceScheduleResponseModel.html" >PriceScheduleResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PricingModel.html" >PricingModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PricingResponseModel.html" >PricingResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ProfileResponseModel.html" >ProfileResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RegisterModel.html" >RegisterModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/RegisterResponseModel.html" >RegisterResponseModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpaceImages.html" >SpaceImages</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpaceModel.html" >SpaceModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpaceModelResponse.html" >SpaceModelResponse</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SpacesEntities.html" >SpacesEntities</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TokenModel.html" >TokenModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/UserModel.html" >UserModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/WCNModal.html" >WCNModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/carouselContent.html" >carouselContent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/jwtToken.html" >jwtToken</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <compodoc-menu mode="normal"></compodoc-menu>
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../">naiparq-frontend-pms documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AuthModule.html" >AuthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/DashboardModule.html" >DashboardModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HomeModule.html"  class="active" >HomeModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SharedModule.html" >SharedModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AboutComponent.html" >AboutComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AccountComponent.html" >AccountComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AnalyticsComponent.html" >AnalyticsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AssetsManagementComponent.html" >AssetsManagementComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AuthComponent.html" >AuthComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BillingComponent.html" >BillingComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogComponent.html" >BlogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogCreateComponent.html" >BlogCreateComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogDetailComponent.html" >BlogDetailComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/BlogListComponent.html" >BlogListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CarouselComponent.html" >CarouselComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ConfirmResetComponent.html" >ConfirmResetComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ContactComponent.html" >ContactComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DashComponent.html" >DashComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DashboardComponent.html" >DashboardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DriveInComponent.html" >DriveInComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DriveOutComponent.html" >DriveOutComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HomeComponent.html" >HomeComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/InlineLoaderComponent.html" >InlineLoaderComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LandingComponent.html" >LandingComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LinearGraphComponent.html" >LinearGraphComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LogsComponent.html" >LogsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MotoristManagementComponent.html" >MotoristManagementComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PageNotFoundComponent.html" >PageNotFoundComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PmsComponent.html" >PmsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PremisesComponent.html" >PremisesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RegisterComponent.html" >RegisterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ReservationComponent.html" >ReservationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResetComponent.html" >ResetComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RevenuesComponent.html" >RevenuesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SideNavComponent.html" >SideNavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/UserManagementComponent.html" >UserManagementComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/VerifyComponent.html" >VerifyComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/AddAsset.html" >AddAsset</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BillingItem.html" >BillingItem</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/BillingItem.html" >BillingItem</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Billings.html" >Billings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Billings.html" >Billings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CountryRenewableElectricity.html" >CountryRenewableElectricity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CountryRenewableElectricityItem.html" >CountryRenewableElectricityItem</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CreateBlog.html" >CreateBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CreateBlogFail.html" >CreateBlogFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CreateBlogSuccess.html" >CreateBlogSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DeleteBlog.html" >DeleteBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/FetchBlog.html" >FetchBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/FetchBlogFail.html" >FetchBlogFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/FetchBlogSuccess.html" >FetchBlogSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadBillings.html" >LoadBillings</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadBillingsFail.html" >LoadBillingsFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadBillingsSuccess.html" >LoadBillingsSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDevices.html" >LoadDevices</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDevicesSuccess.html" >LoadDevicesSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveIn.html" >LoadDriveIn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveInSuccess.html" >LoadDriveInSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveOut.html" >LoadDriveOut</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveOutFail.html" >LoadDriveOutFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadDriveOutSuccess.html" >LoadDriveOutSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadMoreDriveIn.html" >LoadMoreDriveIn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadMoreDriveInFail.html" >LoadMoreDriveInFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadMoreDriveInSuccess.html" >LoadMoreDriveInSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadOrganizations.html" >LoadOrganizations</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadOrganizationsSuccess.html" >LoadOrganizationsSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadProfile.html" >LoadProfile</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadProfileFail.html" >LoadProfileFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadProfileSuccess.html" >LoadProfileSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadSpaces.html" >LoadSpaces</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadSpacesSuccess.html" >LoadSpacesSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadUsers.html" >LoadUsers</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LoadUsersSuccess.html" >LoadUsersSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogIn.html" >LogIn</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogInFail.html" >LogInFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogInSuccess.html" >LogInSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogOut.html" >LogOut</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogOutFail.html" >LogOutFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/LogOutSuccess.html" >LogOutSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/RefreshToken.html" >RefreshToken</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/RefreshTokenSuccess.html" >RefreshTokenSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ResetInvalid.html" >ResetInvalid</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SelectedBlog.html" >SelectedBlog</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SelectedSpaceId.html" >SelectedSpaceId</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SignUp.html" >SignUp</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SignUpFail.html" >SignUpFail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SignUpSuccess.html" >SignUpSuccess</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/UploadAdapter.html" >UploadAdapter</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AdminGuard.html" >AdminGuard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthEffects.html" >AuthEffects</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthGuard.html" >AuthGuard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthInterceptor.html" >AuthInterceptor</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthService.html" >AuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/BloggerGuard.html" >BloggerGuard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DashService.html" >DashService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ErrorInterceptor.html" >ErrorInterceptor</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HomeEffects.html" >HomeEffects</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HomeService.html" >HomeService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SharedService.html" >SharedService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SpacesEffects.html" >SpacesEffects</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StorageService.html" >StorageService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StoreService.html" >StoreService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/ActionExecutable.html" >ActionExecutable</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AllUsersModel.html" >AllUsersModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AppState.html" >AppState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/AuthState.html" >AuthState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BillingEntities.html" >BillingEntities</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BillingModel.html" >BillingModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BillingResponseModel.html" >BillingResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BlogEntity.html" >BlogEntity</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BlogModel.html" >BlogModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/BlogResponseModel.html" >BlogResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DashboardState.html" >DashboardState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DevicesModel.html" >DevicesModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DevicesResponseModel.html" >DevicesResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DevicesState.html" >DevicesState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveInModel.html" >DriveInModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveInResponseModel.html" >DriveInResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveInState.html" >DriveInState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveOutModel.html" >DriveOutModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveOutResponseModel.html" >DriveOutResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DriveOutState.html" >DriveOutState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ErrorModel.html" >ErrorModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/HomeState.html" >HomeState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/KeyFeatures.html" >KeyFeatures</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LoginModel.html" >LoginModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LoginResponseModel.html" >LoginResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/LogsEntities.html" >LogsEntities</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/OrganisationModel.html" >OrganisationModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/OrganisationResponseModel.html" >OrganisationResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/OrganizationsState.html" >OrganizationsState</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PaymentChannelsModel.html" >PaymentChannelsModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceGroupDetail.html" >PriceGroupDetail</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceScheduleModel.html" >PriceScheduleModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PriceScheduleResponseModel.html" >PriceScheduleResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PricingModel.html" >PricingModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PricingResponseModel.html" >PricingResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ProfileResponseModel.html" >ProfileResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RegisterModel.html" >RegisterModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/RegisterResponseModel.html" >RegisterResponseModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpaceImages.html" >SpaceImages</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpaceModel.html" >SpaceModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpaceModelResponse.html" >SpaceModelResponse</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SpacesEntities.html" >SpacesEntities</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TokenModel.html" >TokenModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/UserModel.html" >UserModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WCNModal.html" >WCNModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/carouselContent.html" >carouselContent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/jwtToken.html" >jwtToken</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
                </div>
-               <!-- START CONTENT -->
                <div class="content module">
                    <div class="content-data">
 
-
-
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >HomeModule</li>
+  <li>Modules</li>
+  <li>HomeModule</li>
 </ol>
 
-<div class="text-center module-graph-container">
-    <div id="module-graph-svg">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.47.0 (20210316.0004)
- -->
-<!-- Title: dependencies Pages: 1 -->
-<svg width="1912pt" height="211pt"
- viewBox="0.00 0.00 1912.00 211.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 207)">
-<title>dependencies</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-207 1908,-207 1908,4 -4,4"/>
-<text text-anchor="start" x="931.01" y="-42.4" font-family="Times-12" font-weight="bold" font-size="14.00">Legend</text>
-<polygon fill="#ffffb3" stroke="transparent" points="718,-10 718,-30 738,-30 738,-10 718,-10"/>
-<text text-anchor="start" x="741.63" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Declarations</text>
-<polygon fill="#8dd3c7" stroke="transparent" points="831,-10 831,-30 851,-30 851,-10 831,-10"/>
-<text text-anchor="start" x="854.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Module</text>
-<polygon fill="#80b1d3" stroke="transparent" points="917,-10 917,-30 937,-30 937,-10 917,-10"/>
-<text text-anchor="start" x="940.78" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Bootstrap</text>
-<polygon fill="#fdb462" stroke="transparent" points="1014,-10 1014,-30 1034,-30 1034,-10 1014,-10"/>
-<text text-anchor="start" x="1037.67" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Providers</text>
-<polygon fill="#fb8072" stroke="transparent" points="1110,-10 1110,-30 1130,-30 1130,-10 1110,-10"/>
-<text text-anchor="start" x="1133.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
-<g id="clust1" class="cluster">
-<title>cluster_HomeModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-195 1896,-195 1896,-70 8,-70"/>
-</g>
-<g id="clust14" class="cluster">
-<title>cluster_HomeModule_imports</title>
-<polygon fill="none" stroke="black" points="1617,-78 1617,-130 1888,-130 1888,-78 1617,-78"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_HomeModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 1609,-130 1609,-78 16,-78"/>
-</g>
-<!-- AboutComponent -->
-<g id="node1" class="node">
-<title>AboutComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1601.33,-122 1484.67,-122 1484.67,-86 1601.33,-86 1601.33,-122"/>
-<text text-anchor="middle" x="1543" y="-99.8" font-family="Times,serif" font-size="14.00">AboutComponent</text>
-</g>
-<!-- HomeModule -->
-<g id="node12" class="node">
-<title>HomeModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="997.76,-187 994.76,-191 973.76,-191 970.76,-187 904.24,-187 904.24,-151 997.76,-151 997.76,-187"/>
-<text text-anchor="middle" x="951" y="-164.8" font-family="Times,serif" font-size="14.00">HomeModule</text>
-</g>
-<!-- AboutComponent&#45;&gt;HomeModule -->
-<g id="edge1" class="edge">
-<title>AboutComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M1543,-122.22C1543,-142.37 1543,-172 1543,-172 1543,-172 1007.95,-172 1007.95,-172"/>
-<polygon fill="black" stroke="black" points="1007.95,-168.5 997.95,-172 1007.95,-175.5 1007.95,-168.5"/>
-</g>
-<!-- BlogComponent -->
-<g id="node2" class="node">
-<title>BlogComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1467.06,-122 1358.94,-122 1358.94,-86 1467.06,-86 1467.06,-122"/>
-<text text-anchor="middle" x="1413" y="-99.8" font-family="Times,serif" font-size="14.00">BlogComponent</text>
-</g>
-<!-- BlogComponent&#45;&gt;HomeModule -->
-<g id="edge2" class="edge">
-<title>BlogComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M1413,-122.22C1413,-140.83 1413,-167 1413,-167 1413,-167 1007.84,-167 1007.84,-167"/>
-<polygon fill="black" stroke="black" points="1007.84,-163.5 997.84,-167 1007.84,-170.5 1007.84,-163.5"/>
-</g>
-<!-- BlogCreateComponent -->
-<g id="node3" class="node">
-<title>BlogCreateComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1340.59,-122 1195.41,-122 1195.41,-86 1340.59,-86 1340.59,-122"/>
-<text text-anchor="middle" x="1268" y="-99.8" font-family="Times,serif" font-size="14.00">BlogCreateComponent</text>
-</g>
-<!-- BlogCreateComponent&#45;&gt;HomeModule -->
-<g id="edge3" class="edge">
-<title>BlogCreateComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M1268,-122.03C1268,-139.06 1268,-162 1268,-162 1268,-162 1007.77,-162 1007.77,-162"/>
-<polygon fill="black" stroke="black" points="1007.77,-158.5 997.77,-162 1007.77,-165.5 1007.77,-158.5"/>
-</g>
-<!-- BlogDetailComponent -->
-<g id="node4" class="node">
-<title>BlogDetailComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1177.27,-122 1034.73,-122 1034.73,-86 1177.27,-86 1177.27,-122"/>
-<text text-anchor="middle" x="1106" y="-99.8" font-family="Times,serif" font-size="14.00">BlogDetailComponent</text>
-</g>
-<!-- BlogDetailComponent&#45;&gt;HomeModule -->
-<g id="edge4" class="edge">
-<title>BlogDetailComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M1106,-122.24C1106,-137.57 1106,-157 1106,-157 1106,-157 1007.93,-157 1007.93,-157"/>
-<polygon fill="black" stroke="black" points="1007.93,-153.5 997.93,-157 1007.93,-160.5 1007.93,-153.5"/>
-</g>
-<!-- BlogListComponent -->
-<g id="node5" class="node">
-<title>BlogListComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1016.34,-122 885.66,-122 885.66,-86 1016.34,-86 1016.34,-122"/>
-<text text-anchor="middle" x="951" y="-99.8" font-family="Times,serif" font-size="14.00">BlogListComponent</text>
-</g>
-<!-- BlogListComponent&#45;&gt;HomeModule -->
-<g id="edge5" class="edge">
-<title>BlogListComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M951,-122.11C951,-122.11 951,-140.99 951,-140.99"/>
-<polygon fill="black" stroke="black" points="947.5,-140.99 951,-150.99 954.5,-140.99 947.5,-140.99"/>
-</g>
-<!-- CarouselComponent -->
-<g id="node6" class="node">
-<title>CarouselComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="867.59,-122 736.41,-122 736.41,-86 867.59,-86 867.59,-122"/>
-<text text-anchor="middle" x="802" y="-99.8" font-family="Times,serif" font-size="14.00">CarouselComponent</text>
-</g>
-<!-- CarouselComponent&#45;&gt;HomeModule -->
-<g id="edge6" class="edge">
-<title>CarouselComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M802,-122.24C802,-137.57 802,-157 802,-157 802,-157 893.86,-157 893.86,-157"/>
-<polygon fill="black" stroke="black" points="893.86,-160.5 903.86,-157 893.86,-153.5 893.86,-160.5"/>
-</g>
-<!-- ContactComponent -->
-<g id="node7" class="node">
-<title>ContactComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="718.38,-122 593.62,-122 593.62,-86 718.38,-86 718.38,-122"/>
-<text text-anchor="middle" x="656" y="-99.8" font-family="Times,serif" font-size="14.00">ContactComponent</text>
-</g>
-<!-- ContactComponent&#45;&gt;HomeModule -->
-<g id="edge7" class="edge">
-<title>ContactComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M656,-122.03C656,-139.06 656,-162 656,-162 656,-162 893.93,-162 893.93,-162"/>
-<polygon fill="black" stroke="black" points="893.93,-165.5 903.93,-162 893.93,-158.5 893.93,-165.5"/>
-</g>
-<!-- HomeComponent -->
-<g id="node8" class="node">
-<title>HomeComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="575.55,-122 460.45,-122 460.45,-86 575.55,-86 575.55,-122"/>
-<text text-anchor="middle" x="518" y="-99.8" font-family="Times,serif" font-size="14.00">HomeComponent</text>
-</g>
-<!-- HomeComponent&#45;&gt;HomeModule -->
-<g id="edge8" class="edge">
-<title>HomeComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M518,-122.22C518,-140.83 518,-167 518,-167 518,-167 893.84,-167 893.84,-167"/>
-<polygon fill="black" stroke="black" points="893.84,-170.5 903.84,-167 893.84,-163.5 893.84,-170.5"/>
-</g>
-<!-- LandingComponent -->
-<g id="node9" class="node">
-<title>LandingComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="441.99,-122 314.01,-122 314.01,-86 441.99,-86 441.99,-122"/>
-<text text-anchor="middle" x="378" y="-99.8" font-family="Times,serif" font-size="14.00">LandingComponent</text>
-</g>
-<!-- LandingComponent&#45;&gt;HomeModule -->
-<g id="edge9" class="edge">
-<title>LandingComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M378,-122.22C378,-142.37 378,-172 378,-172 378,-172 894.11,-172 894.11,-172"/>
-<polygon fill="black" stroke="black" points="894.11,-175.5 904.11,-172 894.11,-168.5 894.11,-175.5"/>
-</g>
-<!-- PmsComponent -->
-<g id="node10" class="node">
-<title>PmsComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="295.95,-122 190.05,-122 190.05,-86 295.95,-86 295.95,-122"/>
-<text text-anchor="middle" x="243" y="-99.8" font-family="Times,serif" font-size="14.00">PmsComponent</text>
-</g>
-<!-- PmsComponent&#45;&gt;HomeModule -->
-<g id="edge10" class="edge">
-<title>PmsComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M243,-122.04C243,-143.66 243,-177 243,-177 243,-177 894,-177 894,-177"/>
-<polygon fill="black" stroke="black" points="894,-180.5 904,-177 894,-173.5 894,-180.5"/>
-</g>
-<!-- ReservationComponent -->
-<g id="node11" class="node">
-<title>ReservationComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="172.2,-122 23.8,-122 23.8,-86 172.2,-86 172.2,-122"/>
-<text text-anchor="middle" x="98" y="-99.8" font-family="Times,serif" font-size="14.00">ReservationComponent</text>
-</g>
-<!-- ReservationComponent&#45;&gt;HomeModule -->
-<g id="edge11" class="edge">
-<title>ReservationComponent&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M98,-122.09C98,-145.13 98,-182 98,-182 98,-182 894.23,-182 894.23,-182"/>
-<polygon fill="black" stroke="black" points="894.23,-185.5 904.23,-182 894.23,-178.5 894.23,-185.5"/>
-</g>
-<!-- HomeRoutingModule -->
-<g id="node13" class="node">
-<title>HomeRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1880.38,-122 1877.38,-126 1856.38,-126 1853.38,-122 1741.62,-122 1741.62,-86 1880.38,-86 1880.38,-122"/>
-<text text-anchor="middle" x="1811" y="-99.8" font-family="Times,serif" font-size="14.00">HomeRoutingModule</text>
-</g>
-<!-- HomeRoutingModule&#45;&gt;HomeModule -->
-<g id="edge12" class="edge">
-<title>HomeRoutingModule&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M1811,-122.09C1811,-145.13 1811,-182 1811,-182 1811,-182 1007.85,-182 1007.85,-182"/>
-<polygon fill="black" stroke="black" points="1007.85,-178.5 997.85,-182 1007.85,-185.5 1007.85,-178.5"/>
-</g>
-<!-- SharedModule -->
-<g id="node14" class="node">
-<title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1723.42,-122 1720.42,-126 1699.42,-126 1696.42,-122 1624.58,-122 1624.58,-86 1723.42,-86 1723.42,-122"/>
-<text text-anchor="middle" x="1674" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
-</g>
-<!-- SharedModule&#45;&gt;HomeModule -->
-<g id="edge13" class="edge">
-<title>SharedModule&#45;&gt;HomeModule</title>
-<path fill="none" stroke="black" d="M1674,-122.04C1674,-143.66 1674,-177 1674,-177 1674,-177 1007.88,-177 1007.88,-177"/>
-<polygon fill="black" stroke="black" points="1007.88,-173.5 997.88,-177 1007.88,-180.5 1007.88,-173.5"/>
-</g>
-</g>
-</svg>
-
-    </div>
-    <i id="fullscreen" class="icon ion-ios-resize module-graph-fullscreen-btn" aria-hidden="true"></i>
-    <div class="btn-group size-buttons">
+<div class="text-center">
+    <object id="demo-svg" type="image/svg+xml" data="../modules/HomeModule/dependencies.svg" style="width: 100%; height: 250px;">
+            Your browser does not support SVG
+    </object>
+    <div class="btn-group">
         <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
         <button id="reset" class="btn btn-default btn-sm">Reset</button>
         <button id="zoom-out" class="btn btn-default btn-sm">Zoom out</button>
@@ -251,23 +1254,16 @@
 <script src="../js/svg-pan-zoom.controls.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-        <a href="#info" 
-            class="nav-link"
-            class="nav-link active"
-            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
     </li>
-    <li class="nav-item">
-        <a href="#source" 
-            class="nav-link"
-            
-            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
-
+    <div class="tab-pane fade active in" id="infos">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -276,72 +1272,59 @@
         </p>
 
 
-
-
-
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module declarations"><span class="icon ion-ios-information-circle-outline"></span></a></h3>
+                    <h3>Declarations<a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html#!#declarations-anchor" target="_blank"><span class="fa fa-info-circle"></span></a></h3>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../components/AboutComponent.html">AboutComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/BlogComponent.html">BlogComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/BlogCreateComponent.html">BlogCreateComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/BlogDetailComponent.html">BlogDetailComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/BlogListComponent.html">BlogListComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/CarouselComponent.html">CarouselComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/ContactComponent.html">ContactComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/HomeComponent.html">HomeComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/LandingComponent.html">LandingComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/PmsComponent.html">PmsComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../components/ReservationComponent.html">ReservationComponent</a>
-                        </li>
+                            <li class="list-group-item">
+                                <a href="../components/LandingComponent.html">LandingComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/HomeComponent.html">HomeComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/ContactComponent.html">ContactComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/AboutComponent.html">AboutComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/BlogListComponent.html">BlogListComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/BlogCreateComponent.html">BlogCreateComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/BlogDetailComponent.html">BlogDetailComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/BlogComponent.html">BlogComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/PmsComponent.html">PmsComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/ReservationComponent.html">ReservationComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="../components/CarouselComponent.html">CarouselComponent</a>
+                            </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module imports"><span
-                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <h3>Imports<a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html#!#imports-anchor" target="_blank"><span class="fa fa-info-circle"></a></h3>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../modules/HomeRoutingModule.html">HomeRoutingModule</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/SharedModule.html">SharedModule</a>
-                        </li>
+                            <li class="list-group-item">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { LandingComponent } from &#x27;./components/landing/landing.component&#x27;;
 import { HomeComponent } from &#x27;./home.component&#x27;;
@@ -410,13 +1393,6 @@ export class HomeModule {}
 
 
 
-
-
-
-
-
-
-
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
@@ -427,31 +1403,8 @@ export class HomeModule {}
     </div>
 </div>
 </div>
-               <!-- END CONTENT -->
            </div>
        </div>
-
-          <label class="dark-mode-switch">
-               <input type="checkbox">
-               <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-               </span>
-          </label>
-
-       <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'HomeModule.html';
-            var MAX_SEARCH_RESULTS = 15;
-       </script>
-
-       <script src="../js/libs/custom-elements.min.js"></script>
-       <script src="../js/libs/lit-html.js"></script>
-
-       <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -462,17 +1415,20 @@ export class HomeModule {}
 
        <script src="../js/compodoc.js"></script>
 
-       <script src="../js/tabs.js"></script>
-       <script src="../js/menu.js"></script>
-       <script src="../js/libs/clipboard.min.js"></script>
-       <script src="../js/libs/prism.js"></script>
-       <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
-       <script src="../js/lazy-load-graphs.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/highlight.pack.js"></script>
+       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
 
     </body>
 </html>

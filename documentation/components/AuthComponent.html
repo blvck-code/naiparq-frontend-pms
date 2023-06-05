@@ -1260,6 +1260,11 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -1307,7 +1312,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(store: any, router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank" >Router</a>)</code>
+                            <code>constructor()</code>
                         </td>
                     </tr>
     
@@ -1315,90 +1320,23 @@
             </table>
     </section>
 
-    <section>
-        <h3 id="methods">Methods</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> redirectPage</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>redirectPage()</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
-    <section>
-        <h3 id="inputs">Properties</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> isLoggedIn$</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>isLoggedIn$:     <code>any</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
-// NgRx
-import { Store } from &#x27;@ngrx/store&#x27;;
-import * as authActions from &#x27;../auth/state/auth.actions&#x27;;
-import { AuthState } from &#x27;./state/auth.reducer&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { isLoggedIn } from &#x27;./state/auth.selector&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
-
+/**
+ * @ignore
+ */
 @Component({
   selector: &#x27;naiparq-auth&#x27;,
   templateUrl: &#x27;./auth.component.html&#x27;,
   styleUrls: [&#x27;./auth.component.scss&#x27;],
 })
 export class AuthComponent implements OnInit {
-  isLoggedIn$: Observable&lt;boolean&gt; &#x3D; this.store.select(isLoggedIn);
+  constructor() {}
 
-  constructor(private store: Store&lt;AuthState&gt;, private router: Router) {}
-
-  ngOnInit(): void {
-    this.redirectPage();
-  }
-
-  // Redirects to dashboard if logged in
-  redirectPage(): void {
-    this.isLoggedIn$.subscribe({
-      next: (isLoggedIn) &#x3D;&gt; {
-        if (!isLoggedIn) {
-          return;
-        }
-
-        this.router.navigate([&#x27;/dashboard&#x27;]);
-      },
-    });
-  }
+  ngOnInit(): void {}
 }
 </code></pre>
         </div>

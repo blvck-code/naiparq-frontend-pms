@@ -13,8 +13,19 @@ import { StorageService } from '../../shared/services/storage.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RegisterModel, RegisterResponseModel } from '../model/register.model';
 
+/**
+ * Auth Effects
+ */
 @Injectable()
 export class AuthEffects {
+  /**
+   *
+   * @param router
+   * @param actions$
+   * @param authSrv
+   * @param storage
+   * @param sharedSrv
+   */
   constructor(
     private router: Router,
     private actions$: Actions,
@@ -23,6 +34,11 @@ export class AuthEffects {
     private sharedSrv: SharedService
   ) {}
 
+  /**
+   *  Log in effect
+   *
+   *  @returns Observable
+   */
   logIn$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.LogIn>(authActions.AuthActionsTypes.LOGIN),
@@ -52,6 +68,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Requests for new token when token expires
+   *
+   *  @returns Observable
+   */
   refreshToken$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.RefreshToken>(
@@ -69,6 +90,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Redirects route after user is logged in successfully
+   *
+   *  @returns Observable
+   */
   loginRedirect$: Observable<Action> = createEffect(
     () => {
       return this.actions$.pipe(
@@ -83,6 +109,11 @@ export class AuthEffects {
     { dispatch: false }
   );
 
+  /**
+   *  Logs out user when logout is requested from the backend
+   *
+   *  @returns Observable
+   */
   logOut$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.LogOut>(authActions.AuthActionsTypes.LOGOUT),
@@ -108,6 +139,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Loads users on the system
+   *
+   *  @returns Observable
+   */
   loadUsers: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.LoadUsers>(authActions.AuthActionsTypes.LOAD_USERS),
@@ -125,6 +161,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Register users to the system
+   *
+   *  @returns Observable
+   */
   signUp$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.SignUp>(authActions.AuthActionsTypes.REGISTER),

@@ -1438,7 +1438,7 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Confirms the message from login<br>is an error message</p>
+                                <div class="io-description"><p>Confirms the message from login is an error message</p>
     </div>
                                 <div class="io-description">
                                 </div>
@@ -1512,7 +1512,7 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Reset error messages<br>when form is submitted</p>
+                                <div class="io-description"><p>Reset error messages when form is submitted</p>
     </div>
                                 <div class="io-description">
                                 </div>
@@ -1544,7 +1544,7 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Log in function fired when<br>user submits credentials</p>
+                                <div class="io-description"><p>Log in function fired when user submits credentials</p>
     </div>
                                 <div class="io-description">
                                 </div>
@@ -1584,7 +1584,7 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Boolean for showing loading<br>indicator in button</p>
+                            <div class="io-description"><p>Boolean for showing loading indicator in button</p>
     </div>
                         </td>
                     </tr>
@@ -1605,7 +1605,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Error message observable</p>
+                            <div class="io-description"><p>Login error message observable</p>
     </div>
                         </td>
                     </tr>
@@ -1673,7 +1673,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Form group for login<br>form data</p>
+                            <div class="io-description"><p>Form group for login form data</p>
     </div>
                         </td>
                     </tr>
@@ -1738,21 +1738,19 @@ export class LoginComponent implements OnInit {
    */
   formInvalid: boolean &#x3D; false;
   /**
-   *  Boolean for showing loading
-   *  indicator in button
+   *  Boolean for showing loading indicator in button
    */
   btnLoading: boolean &#x3D; false;
 
   /**
-   *  Form group for login
-   *  form data
+   *  Form group for login form data
    */
   loginForm &#x3D; this.formBuilder.group({
     phone: [&#x27;&#x27;, [Validators.required]],
     password: [&#x27;&#x27;, [Validators.required]],
   });
   /**
-   *  Error message observable
+   *  Login error message observable
    */
   errMsg$: Observable&lt;string&gt; &#x3D; this.store.select(authMessage);
   /**
@@ -1795,8 +1793,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *  Confirms the message from login
-   *  is an error message
+   *  Confirms the message from login is an error message
    *  @returns Resets form error messages
    */
   handleError(): void {
@@ -1822,8 +1819,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *  Reset error messages
-   *  when form is submitted
+   *  Reset error messages when form is submitted
    *  @returns Resets input error messages
    */
   resetInput(): void {
@@ -1831,8 +1827,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Log in function fired when
-   * user submits credentials
+   * Log in function fired when user submits credentials
    * @returns Log in user
    */
   login(): void {

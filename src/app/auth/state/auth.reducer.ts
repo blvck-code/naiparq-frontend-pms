@@ -2,16 +2,28 @@ import { TokenModel, UserModel } from '../model/user.model';
 import * as authActions from './auth.actions';
 
 export interface AuthState {
+  /**
+   * User details interface
+   * @interface
+   */
   userInfo: {
     user: UserModel;
     message: string;
     token: TokenModel | null;
   };
+  /**
+   *  Log In status interface
+   *  @interface
+   */
   loginStatus: {
     isLoading: boolean;
     isLoggedIn: boolean;
     invalid: boolean;
   };
+  /**
+   *  More user details content
+   *  @interface
+   */
   users: {
     loading: boolean;
     next?: string;

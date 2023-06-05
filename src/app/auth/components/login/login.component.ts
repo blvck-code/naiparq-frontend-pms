@@ -28,21 +28,19 @@ export class LoginComponent implements OnInit {
    */
   formInvalid: boolean = false;
   /**
-   *  Boolean for showing loading
-   *  indicator in button
+   *  Boolean for showing loading indicator in button
    */
   btnLoading: boolean = false;
 
   /**
-   *  Form group for login
-   *  form data
+   *  Form group for login form data
    */
   loginForm = this.formBuilder.group({
     phone: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
   /**
-   *  Error message observable
+   *  Login error message observable
    */
   errMsg$: Observable<string> = this.store.select(authMessage);
   /**
@@ -85,8 +83,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *  Confirms the message from login
-   *  is an error message
+   *  Confirms the message from login is an error message
    *  @returns Resets form error messages
    */
   handleError(): void {
@@ -112,8 +109,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *  Reset error messages
-   *  when form is submitted
+   *  Reset error messages when form is submitted
    *  @returns Resets input error messages
    */
   resetInput(): void {
@@ -121,8 +117,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Log in function fired when
-   * user submits credentials
+   * Log in function fired when user submits credentials
    * @returns Log in user
    */
   login(): void {

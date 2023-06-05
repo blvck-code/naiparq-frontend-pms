@@ -1261,6 +1261,13 @@
             <code>src/app/auth/state/auth.effects.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Auth Effects</p>
+
+            </p>
 
             <section>
                 <h3 id="constructor">Constructor</h3>
@@ -1272,6 +1279,55 @@
                                 </td>
                             </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>router</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>actions$</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>authSrv</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>storage</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>sharedSrv</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1307,6 +1363,12 @@
             </bcode>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Loads users on the system</p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1382,12 @@
                                 <td class="col-md-4">
                                     <code>logIn$:     <code>any</code>
             </bcode>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Log in effect</p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1337,6 +1405,12 @@
             </bcode>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Redirects route after user is logged in successfully</p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1350,6 +1424,12 @@
                                 <td class="col-md-4">
                                     <code>logOut$:     <code>any</code>
             </bcode>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Logs out user when logout is requested from the backend</p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1367,6 +1447,12 @@
             </bcode>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Requests for new token when token expires</p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1380,6 +1466,12 @@
                                 <td class="col-md-4">
                                     <code>signUp$:     <code>any</code>
             </bcode>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Register users to the system</p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1402,8 +1494,19 @@ import { StorageService } from &#x27;../../shared/services/storage.service&#x27;
 import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { RegisterModel, RegisterResponseModel } from &#x27;../model/register.model&#x27;;
 
+/**
+ * Auth Effects
+ */
 @Injectable()
 export class AuthEffects {
+  /**
+   *
+   * @param router
+   * @param actions$
+   * @param authSrv
+   * @param storage
+   * @param sharedSrv
+   */
   constructor(
     private router: Router,
     private actions$: Actions,
@@ -1412,6 +1515,11 @@ export class AuthEffects {
     private sharedSrv: SharedService
   ) {}
 
+  /**
+   *  Log in effect
+   *
+   *  @returns Observable
+   */
   logIn$: Observable&lt;Action&gt; &#x3D; createEffect(() &#x3D;&gt; {
     return this.actions$.pipe(
       ofType&lt;authActions.LogIn&gt;(authActions.AuthActionsTypes.LOGIN),
@@ -1441,6 +1549,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Requests for new token when token expires
+   *
+   *  @returns Observable
+   */
   refreshToken$: Observable&lt;Action&gt; &#x3D; createEffect(() &#x3D;&gt; {
     return this.actions$.pipe(
       ofType&lt;authActions.RefreshToken&gt;(
@@ -1458,6 +1571,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Redirects route after user is logged in successfully
+   *
+   *  @returns Observable
+   */
   loginRedirect$: Observable&lt;Action&gt; &#x3D; createEffect(
     () &#x3D;&gt; {
       return this.actions$.pipe(
@@ -1472,6 +1590,11 @@ export class AuthEffects {
     { dispatch: false }
   );
 
+  /**
+   *  Logs out user when logout is requested from the backend
+   *
+   *  @returns Observable
+   */
   logOut$: Observable&lt;Action&gt; &#x3D; createEffect(() &#x3D;&gt; {
     return this.actions$.pipe(
       ofType&lt;authActions.LogOut&gt;(authActions.AuthActionsTypes.LOGOUT),
@@ -1497,6 +1620,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Loads users on the system
+   *
+   *  @returns Observable
+   */
   loadUsers: Observable&lt;Action&gt; &#x3D; createEffect(() &#x3D;&gt; {
     return this.actions$.pipe(
       ofType&lt;authActions.LoadUsers&gt;(authActions.AuthActionsTypes.LOAD_USERS),
@@ -1514,6 +1642,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Register users to the system
+   *
+   *  @returns Observable
+   */
   signUp$: Observable&lt;Action&gt; &#x3D; createEffect(() &#x3D;&gt; {
     return this.actions$.pipe(
       ofType&lt;authActions.SignUp&gt;(authActions.AuthActionsTypes.REGISTER),

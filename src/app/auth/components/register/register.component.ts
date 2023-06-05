@@ -7,6 +7,9 @@ import { RegisterModel } from '../../model/register.model';
 import { Store } from '@ngrx/store';
 import * as authActions from '../../state/auth.actions';
 
+/**
+ * @ignore
+ */
 @Component({
   selector: 'naiparq-register',
   templateUrl: './register.component.html',

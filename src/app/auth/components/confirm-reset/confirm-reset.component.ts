@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
+/**
+ *  Confirm reset password component
+ */
 @Component({
   selector: 'naiparq-confirm-reset',
   templateUrl: './confirm-reset.component.html',

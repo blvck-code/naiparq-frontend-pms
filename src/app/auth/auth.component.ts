@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /**
- * @ignore
+ *  Main component for user management components
  */
 @Component({
   selector: 'naiparq-auth',

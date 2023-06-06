@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger } from '@angular/animations';
 import { RouterOutlet } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { SharedService } from './shared/services/shared.service';
 
+/**
+ *  Main app component
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'naiparq-frontend-pms';
-  public onlineStatus: boolean = true;
-  public 'online$': Subscription;
-  private 'offline$': Observable<string>;
-
+  /**
+   * Performs navigation animations
+   *
+   * @param outlet
+   */
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&
@@ -23,16 +23,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  constructor(private sharedSrv: SharedService) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  internetStatus(): void {
-    // Checks if internet connected after every 5 seconds
-    setInterval(() => {
-      if (!navigator.onLine) {
-        this.sharedSrv.showNotification('No internet connection!', 'info');
-      }
-    }, 5000);
-  }
 }

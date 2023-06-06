@@ -1,5 +1,3 @@
-import * as assert from 'assert';
-
 export interface BillingResponseModel {
   count?: number;
   next?: string;

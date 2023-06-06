@@ -6,5 +6,8 @@ import * as fromAuth from './auth/state/auth.reducer';
  *  @interface
  */
 export interface AppState {
+  /**
+   *  User details on the store set up
+   */
   userCenter: fromAuth.AuthState;
 }

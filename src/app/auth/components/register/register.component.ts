@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import * as authActions from '../../state/auth.actions';
 
 /**
- * @ignore
+ * Register user page component
  */
 @Component({
   selector: 'naiparq-register',
@@ -16,6 +16,9 @@ import * as authActions from '../../state/auth.actions';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  /**
+   *  Register form input content
+   */
   registerForm = this.formBuilder.group({
     first_name: ['', [Validators.required]],
     last_name: ['', [Validators.required]],
@@ -25,6 +28,13 @@ export class RegisterComponent implements OnInit {
     password2: ['', [Validators.required]],
   });
 
+  /**
+   *  Form builder lib
+   *  NgRx store
+   *
+   * @param formBuilder
+   * @param store
+   */
   constructor(
     private formBuilder: UntypedFormBuilder,
     private store: Store<AuthService>
@@ -32,6 +42,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   *  Register user function
+   */
   register(): void {
     const sigUpContent: RegisterModel = {
       first_name: this.registerForm.value.first_name,

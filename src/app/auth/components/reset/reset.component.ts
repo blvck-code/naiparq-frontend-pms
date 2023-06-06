@@ -4,6 +4,10 @@ import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../../shared/services/shared.service';
 import { Router } from '@angular/router';
 
+/**
+ *  Reset password component
+ */
+
 @Component({
   selector: 'naiparq-reset',
   templateUrl: './reset.component.html',

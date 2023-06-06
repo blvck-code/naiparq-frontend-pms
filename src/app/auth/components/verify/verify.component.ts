@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 /**
- * @ignore
+ * Verify password component
  */
 @Component({
   selector: 'naiparq-verify',

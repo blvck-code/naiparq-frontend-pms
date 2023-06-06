@@ -13,6 +13,9 @@ import { AuthState } from '../../state/auth.reducer';
 import { Observable } from 'rxjs';
 import { authMessage, isLoggedInLoading } from '../../state/auth.selector';
 
+/**
+ *  Log in component
+ */
 @Component({
   selector: 'naiparq-login',
   templateUrl: './login.component.html',

@@ -1294,6 +1294,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Count number of organizations</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1326,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Organization next page link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,6 +1358,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Previous pagination link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1372,6 +1390,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Organization array content</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1380,24 +1404,83 @@
         <pre><code class="hljs javascript">import { UserModel } from &#x27;../../auth/model/user.model&#x27;;
 
 export interface OrganisationResponseModel {
+  /**
+   * Count number of organizations
+   * @type number
+   */
   count?: number;
+  /**
+   * Organization next page link
+   * @type string
+   */
   next?: string;
+  /**
+   *  Previous pagination link
+   *  @type string
+   */
   previous?: string;
+  /**
+   *  Organization array content
+   *  @type OrganisationModel[]
+   */
   results: OrganisationModel[];
 }
 
 export interface OrganisationModel {
+  /**
+   * Org id
+   * @type string
+   */
   id: string;
+  /**
+   *  Space to the org
+   *  @type string
+   */
   space: string;
+  /**
+   *  Org name
+   *  @type string
+   */
   name: string;
+  /**
+   *  Org floor number
+   *  @type number
+   */
   floor: number;
+  /**
+   *  Org owner details
+   *  @type UserModel
+   */
   owner_detail: UserModel;
+  /**
+   *  Space detail
+   */
   space_detail: {
+    /**
+     *  Space id
+     *  @type string
+     */
     id: string;
+    /**
+     *  Space detail title
+     *  @type string
+     */
     title: string;
+    /**
+     *  Space detail type
+     *  @type string
+     */
     type: string;
+    /**
+     *  Space address
+     *  @type string
+     */
     address: string;
   };
+  /**
+   *  Space created time
+   *  @type string
+   */
   created_at: string;
 }
 </code></pre>

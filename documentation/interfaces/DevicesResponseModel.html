@@ -1294,6 +1294,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Count number of devices</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1326,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Next pagination link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,6 +1358,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Previous navigation link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1372,6 +1390,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Devices array content</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1380,28 +1404,107 @@
         <pre><code class="hljs javascript">import { UserModel } from &#x27;../../auth/model/user.model&#x27;;
 
 export interface DevicesResponseModel {
+  /**
+   *  Count number of devices
+   *  @type number
+   */
   count?: number;
+  /**
+   * Next pagination link
+   * @type string
+   */
   next?: string;
+  /**
+   * Previous navigation link
+   * @type string
+   */
   previous?: string;
+  /**
+   *  Devices array content
+   *  @type DevicesModel[]
+   */
   results: DevicesModel[];
 }
 
 export interface DevicesModel {
+  /**
+   *  Device id
+   *  @type string
+   */
   id: string;
+  /**
+   *  Device name
+   *  @type string
+   */
   name: string;
+  /**
+   *  Description of device
+   *  @type string
+   */
   description: string;
+  /**
+   *  Asset type
+   *  @type string
+   */
   asset_type: string;
+  /**
+   *  Device brand
+   *  @type string
+   */
   brand: string;
+  /**
+   *  Device model
+   *  @type string
+   */
   model: string;
+  /**
+   *  Device serial number
+   *  @type string
+   */
   serial_number: string;
+  /**
+   *  Id address for device
+   *  @type string
+   */
   ip_address: string;
+  /**
+   *  Device mac address
+   *  @type string
+   */
   mac_address: string;
+  /**
+   *  Device sensor id
+   *  @type string
+   */
   sensor_id: string;
+  /**
+   *  Device online status
+   *  @type string
+   */
   status: string;
+  /**
+   *  Device purpose
+   *  @type string
+   */
   purpose: string;
+  /**
+   *  Device allocated space
+   *  @type string
+   */
   space: string;
+  /**
+   * Device owner details
+   * @type UserModel
+   */
   owner_details: UserModel;
+  /**
+   *  Device meta data
+   */
   metadata: any;
+  /**
+   *  Device created time
+   *  @type string
+   */
   create_at: string;
 }
 </code></pre>

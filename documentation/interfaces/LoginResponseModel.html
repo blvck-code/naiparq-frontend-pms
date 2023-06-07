@@ -1264,6 +1264,13 @@
             <code>src/app/auth/model/login.model.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Login Response model interface</p>
+
+            </p>
 
 
 
@@ -1294,6 +1301,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Message response after log in</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1333,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>User token data</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,22 +1365,53 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>User details response after login success</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">import {TokenModel, UserModel} from &quot;./user.model&quot;;
+        <pre><code class="hljs javascript">import { TokenModel, UserModel } from &#x27;./user.model&#x27;;
 
+/**
+ * Login Model Interface
+ *
+ * @interface
+ */
 export interface LoginModel {
-  phone_number: string,
-  password: string
+  /**
+   *  Phone number {string} input during log in
+   */
+  phone_number: string;
+  /**
+   *  Password { string} input during log in
+   */
+  password: string;
 }
 
+/**
+ * Login Response model interface
+ *
+ * @interface
+ */
 export interface LoginResponseModel {
-  user: UserModel,
-  message: string,
-  token: TokenModel
+  /**
+   *  User details response after login success
+   */
+  user: UserModel;
+  /**
+   *  Message response after log in
+   */
+  message: string;
+  /**
+   *  User token data
+   */
+  token: TokenModel;
 }
 </code></pre>
     </div>

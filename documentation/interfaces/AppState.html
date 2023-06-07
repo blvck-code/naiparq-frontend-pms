@@ -1264,6 +1264,13 @@
             <code>src/app/app.state.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface for AppState content</p>
+
+            </p>
 
 
 
@@ -1294,6 +1301,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>User details on the store set up</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1301,7 +1314,15 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre><code class="hljs javascript">import * as fromAuth from &#x27;./auth/state/auth.reducer&#x27;;
 
+/**
+ *  Interface for AppState content
+ *
+ *  @interface
+ */
 export interface AppState {
+  /**
+   *  User details on the store set up
+   */
   userCenter: fromAuth.AuthState;
 }
 </code></pre>

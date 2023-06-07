@@ -1264,6 +1264,13 @@
             <code>src/app/auth/state/auth.actions.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Looping interface for auth actions</p>
+
+            </p>
 
 
 
@@ -1306,6 +1313,11 @@ import { RegisterModel, RegisterResponseModel } from &#x27;../model/register.mod
 import { ProfileResponseModel } from &#x27;../model/profile.model&#x27;;
 import { AllUsersModel, TokenModel } from &#x27;../model/user.model&#x27;;
 
+/**
+ * Looping interface for auth actions
+ *
+ * @interface
+ */
 export interface ActionExecutable&lt;T&gt; extends Action {
   execute: (state: T) &#x3D;&gt; T;
 }
@@ -1368,6 +1380,9 @@ export class ResetInvalid implements ActionExecutable&lt;AuthState&gt; {
 }
 
 // Log In
+/**
+ *  This class is fired when user logs in before response comes from server
+ */
 export class LogIn implements ActionExecutable&lt;AuthState&gt; {
   readonly type &#x3D; AuthActionsTypes.LOGIN;
   constructor(public payload: any) {}
@@ -1383,6 +1398,10 @@ export class LogIn implements ActionExecutable&lt;AuthState&gt; {
     };
   }
 }
+
+/**
+ * The class fired when user logs ib successfully
+ */
 export class LogInSuccess implements ActionExecutable&lt;AuthState&gt; {
   readonly type &#x3D; AuthActionsTypes.LOGIN_SUCCESS;
   constructor(public payload: LoginResponseModel) {}
@@ -1399,6 +1418,11 @@ export class LogInSuccess implements ActionExecutable&lt;AuthState&gt; {
     };
   }
 }
+
+/**
+ The class fired when user logs in fails
+ *
+ */
 export class LogInFail implements ActionExecutable&lt;AuthState&gt; {
   readonly type &#x3D; AuthActionsTypes.LOGIN_FAIL;
   constructor(public payload: string) {}

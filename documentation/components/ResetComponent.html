@@ -1259,6 +1259,13 @@
     <code>src/app/auth/components/reset/reset.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Reset password component</p>
+
+    </p>
 
 
 <section>
@@ -1311,6 +1318,47 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>sharedSrv</b>
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>fb</b>
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>authSrv</b>
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>router</b>
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -1333,10 +1381,29 @@
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Shows form input when invalid or not</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>fieldName</b>
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>boolean</code>
     
                                 </div>
+                                    <div class="io-description">
+                                        <p>True or false when form input invalid or valid</p>
+    
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1358,9 +1425,26 @@
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>Target</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>link to be redirected to</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1381,6 +1465,8 @@
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Resets the error messages for the form</p>
+    </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
     
@@ -1406,6 +1492,12 @@
     </bcode>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Reset form data input</p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -1426,6 +1518,12 @@
                                 <i>Default value: </i><code>false</code>
                             </td>
                         </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Boolean for showing submitting indicator on button</p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -1437,17 +1535,34 @@ import { AuthService } from &#x27;../../services/auth.service&#x27;;
 import { SharedService } from &#x27;../../../shared/services/shared.service&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 
+/**
+ *  Reset password component
+ */
+
 @Component({
   selector: &#x27;naiparq-reset&#x27;,
   templateUrl: &#x27;./reset.component.html&#x27;,
   styleUrls: [&#x27;./reset.component.scss&#x27;],
 })
 export class ResetComponent implements OnInit {
+  /**
+   *  Reset form data input
+   */
   resetForm &#x3D; this.fb.group({
     phone_number: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9 ]{10}&#x27;)]],
   });
+  /**
+   *  Boolean for showing submitting indicator on button
+   */
   submitting: boolean &#x3D; false;
 
+  /**
+   *
+   * @param sharedSrv
+   * @param fb
+   * @param authSrv
+   * @param router
+   */
   constructor(
     private sharedSrv: SharedService,
     private fb: UntypedFormBuilder,
@@ -1457,6 +1572,12 @@ export class ResetComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   *  Shows form input when invalid or not
+   * @param fieldName
+   *
+   * @returns True or false when form input invalid or valid
+   */
   isValid(fieldName: any): boolean {
     return (
       this.resetForm.controls[fieldName].invalid &amp;&amp;
@@ -1465,10 +1586,18 @@ export class ResetComponent implements OnInit {
     );
   }
 
+  /**
+   *
+   * @param { string } Target link to be redirected to
+   *
+   */
   redirectRoute(link: string): void {
     this.authSrv.redirectRoute(link);
   }
 
+  /**
+   *  Resets the error messages for the form
+   */
   resetSubmit(): void {
     this.submitting &#x3D; true;
 

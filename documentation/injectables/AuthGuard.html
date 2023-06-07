@@ -1272,6 +1272,31 @@
                                 </td>
                             </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>authService</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>router</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1294,10 +1319,36 @@
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Activates routes when logged in</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>route</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>state</b>
+                                                            </div>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>any</code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1424,11 +1475,18 @@ import { AuthService } from &#x27;./auth.service&#x27;;
 export class AuthGuard
   implements CanActivate, CanActivateChild, CanDeactivate&lt;unknown&gt;, CanLoad
 {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  /**
+   *
+   * @param authService
+   * @param router
+   */
+  constructor(private authService: AuthService, private router: Router) {}
 
+  /**
+   * Activates routes when logged in
+   * @param route
+   * @param state
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

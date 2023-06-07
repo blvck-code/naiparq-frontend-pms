@@ -1,12 +1,37 @@
-import {TokenModel, UserModel} from "./user.model";
+import { TokenModel, UserModel } from './user.model';
 
+/**
+ * Login Model Interface
+ *
+ * @interface
+ */
 export interface LoginModel {
-  phone_number: string,
-  password: string
+  /**
+   *  Phone number {string} input during log in
+   */
+  phone_number: string;
+  /**
+   *  Password { string} input during log in
+   */
+  password: string;
 }
 
+/**
+ * Login Response model interface
+ *
+ * @interface
+ */
 export interface LoginResponseModel {
-  user: UserModel,
-  message: string,
-  token: TokenModel
+  /**
+   *  User details response after login success
+   */
+  user: UserModel;
+  /**
+   *  Message response after log in
+   */
+  message: string;
+  /**
+   *  User token data
+   */
+  token: TokenModel;
 }

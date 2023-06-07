@@ -1259,6 +1259,13 @@
     <code>src/app/auth/components/confirm-reset/confirm-reset.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Confirm reset password component</p>
+
+    </p>
 
 
 <section>
@@ -1311,6 +1318,25 @@
                         </td>
                     </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>authSrv</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Imported auth service</p>
+    <p>Imported auth services</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -1333,10 +1359,30 @@
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Takes in link as a parameter and opens that link</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>target</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>link to the to be redirected to</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
     
                                 </div>
+                                    <div class="io-description">
+                                        <p>Redirects page</p>
+    
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1348,16 +1394,33 @@
             <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { AuthService } from &#x27;../../services/auth.service&#x27;;
 
+/**
+ *  Confirm reset password component
+ */
 @Component({
   selector: &#x27;naiparq-confirm-reset&#x27;,
   templateUrl: &#x27;./confirm-reset.component.html&#x27;,
   styleUrls: [&#x27;./confirm-reset.component.scss&#x27;],
 })
 export class ConfirmResetComponent implements OnInit {
+  /**
+   *
+   * @param authSrv Imported auth service
+   *
+   * Imported auth services
+   */
   constructor(private authSrv: AuthService) {}
 
   ngOnInit(): void {}
 
+  /**
+   *  Takes in link as a parameter and opens that link
+   *
+   * @param { string } target link to the to be redirected to
+   *
+   * @returns Redirects page
+   *
+   */
   redirectRoute(link: string): void {
     this.authSrv.redirectRoute(link);
   }

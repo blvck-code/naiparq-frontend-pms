@@ -5,6 +5,11 @@ import { RegisterModel, RegisterResponseModel } from '../model/register.model';
 import { ProfileResponseModel } from '../model/profile.model';
 import { AllUsersModel, TokenModel } from '../model/user.model';
 
+/**
+ * Looping interface for auth actions
+ *
+ * @interface
+ */
 export interface ActionExecutable<T> extends Action {
   execute: (state: T) => T;
 }
@@ -67,6 +72,9 @@ export class ResetInvalid implements ActionExecutable<AuthState> {
 }
 
 // Log In
+/**
+ *  This class is fired when user logs in before response comes from server
+ */
 export class LogIn implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGIN;
   constructor(public payload: any) {}
@@ -82,6 +90,10 @@ export class LogIn implements ActionExecutable<AuthState> {
     };
   }
 }
+
+/**
+ * The class fired when user logs ib successfully
+ */
 export class LogInSuccess implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGIN_SUCCESS;
   constructor(public payload: LoginResponseModel) {}
@@ -98,6 +110,11 @@ export class LogInSuccess implements ActionExecutable<AuthState> {
     };
   }
 }
+
+/**
+ The class fired when user logs in fails
+ *
+ */
 export class LogInFail implements ActionExecutable<AuthState> {
   readonly type = AuthActionsTypes.LOGIN_FAIL;
   constructor(public payload: string) {}

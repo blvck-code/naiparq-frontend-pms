@@ -4,17 +4,34 @@ import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../../shared/services/shared.service';
 import { Router } from '@angular/router';
 
+/**
+ *  Reset password component
+ */
+
 @Component({
   selector: 'naiparq-reset',
   templateUrl: './reset.component.html',
   styleUrls: ['./reset.component.scss'],
 })
 export class ResetComponent implements OnInit {
+  /**
+   *  Reset form data input
+   */
   resetForm = this.fb.group({
     phone_number: ['', [Validators.required, Validators.pattern('[0-9 ]{10}')]],
   });
+  /**
+   *  Boolean for showing submitting indicator on button
+   */
   submitting: boolean = false;
 
+  /**
+   *
+   * @param sharedSrv
+   * @param fb
+   * @param authSrv
+   * @param router
+   */
   constructor(
     private sharedSrv: SharedService,
     private fb: UntypedFormBuilder,
@@ -24,6 +41,12 @@ export class ResetComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   *  Shows form input when invalid or not
+   * @param fieldName
+   *
+   * @returns True or false when form input invalid or valid
+   */
   isValid(fieldName: any): boolean {
     return (
       this.resetForm.controls[fieldName].invalid &&
@@ -32,10 +55,18 @@ export class ResetComponent implements OnInit {
     );
   }
 
+  /**
+   *
+   * @param { string } Target link to be redirected to
+   *
+   */
   redirectRoute(link: string): void {
     this.authSrv.redirectRoute(link);
   }
 
+  /**
+   *  Resets the error messages for the form
+   */
   resetSubmit(): void {
     this.submitting = true;
 

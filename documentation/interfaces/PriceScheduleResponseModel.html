@@ -1264,6 +1264,13 @@
             <code>src/app/dashboard/models/priceSchedule.model.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Price schedule response interface</p>
+
+            </p>
 
 
 
@@ -1271,20 +1278,68 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre><code class="hljs javascript">import { UserModel } from &#x27;../../auth/model/user.model&#x27;;
 
+/**
+ *  Price schedule response interface
+ *  @interface
+ */
 export interface PriceScheduleResponseModel {}
+/**
+ *  Price schedule interface
+ *  @interface
+ */
 export interface PriceScheduleModel {
+  /**
+   *  Pricing schedule id
+   *  @type string
+   */
   id: string;
+  /**
+   *  Pricing label
+   *  @type string
+   */
   label: string;
+  /**
+   *  Pricing space group price
+   *  @type string[]
+   */
   spacePriceGroup: string[];
+  /**
+   *  Pricing group data
+   *  @type PriceGroupDetail[]
+   */
   price_group_detail: PriceGroupDetail[];
+  /**
+   *  Owner details
+   *  @type UserModel
+   */
   owner_detail: UserModel;
 }
 
 export interface PriceGroupDetail {
+  /**
+   *  Pricing group detail
+   *  @type string
+   */
   id: string;
+  /**
+   *  Pricing group detail min time
+   *  @type string
+   */
   min_time: string;
+  /**
+   *  Pricing group detail max time
+   *  @type string
+   */
   max_time: string;
+  /**
+   *  Pricing group detail price
+   *  @type number
+   */
   price: number;
+  /**
+   *  Pricing group detail owner
+   *  @type UserModel
+   */
   owner_detail: UserModel;
 }
 </code></pre>

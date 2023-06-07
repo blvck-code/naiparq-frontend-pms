@@ -1294,6 +1294,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Count number of blogs</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1326,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Next pagination link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,6 +1358,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Previous pagination link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1372,6 +1390,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog array content</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1380,21 +1404,69 @@
         <pre><code class="hljs javascript">import { UserModel } from &#x27;../../auth/model/user.model&#x27;;
 
 export interface BlogResponseModel {
+  /**
+   *  Count number of blogs
+   */
   count?: number;
+  /**
+   * Next pagination link
+   */
   next?: string;
+  /**
+   * Previous pagination link
+   */
   previous?: string;
+  /**
+   *  Blog array content
+   */
   results: BlogModel[];
 }
 
 export interface BlogModel {
+  /**
+   * Blog id
+   * @type string
+   */
   id: string;
+  /**
+   * Blog title
+   * @type string
+   */
   title: string;
+  /**
+   * Blog cover image
+   * @type string
+   */
   cover_image: string;
+  /**
+   * Blog slug
+   * @type string
+   */
   slug: string;
+  /**
+   * Blog content
+   * @type string
+   */
   content: string;
+  /**
+   * Blog status
+   * @type string
+   */
   status: string;
+  /**
+   * Blog author
+   * @type UserModel
+   */
   author_details: UserModel;
+  /**
+   * Blog created date
+   * @type string
+   */
   created_at: string;
+  /**
+   * Blog updated date
+   * @type string
+   */
   updated_at: string;
 }
 </code></pre>

@@ -1294,6 +1294,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog author</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1326,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog content</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,6 +1358,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog cover image</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1372,6 +1390,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog created date</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1398,6 +1422,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog id</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1424,6 +1454,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog slug</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1450,6 +1486,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog status</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1476,6 +1518,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog title</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1502,6 +1550,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Blog updated date</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1510,21 +1564,69 @@
         <pre><code class="hljs javascript">import { UserModel } from &#x27;../../auth/model/user.model&#x27;;
 
 export interface BlogResponseModel {
+  /**
+   *  Count number of blogs
+   */
   count?: number;
+  /**
+   * Next pagination link
+   */
   next?: string;
+  /**
+   * Previous pagination link
+   */
   previous?: string;
+  /**
+   *  Blog array content
+   */
   results: BlogModel[];
 }
 
 export interface BlogModel {
+  /**
+   * Blog id
+   * @type string
+   */
   id: string;
+  /**
+   * Blog title
+   * @type string
+   */
   title: string;
+  /**
+   * Blog cover image
+   * @type string
+   */
   cover_image: string;
+  /**
+   * Blog slug
+   * @type string
+   */
   slug: string;
+  /**
+   * Blog content
+   * @type string
+   */
   content: string;
+  /**
+   * Blog status
+   * @type string
+   */
   status: string;
+  /**
+   * Blog author
+   * @type UserModel
+   */
   author_details: UserModel;
+  /**
+   * Blog created date
+   * @type string
+   */
   created_at: string;
+  /**
+   * Blog updated date
+   * @type string
+   */
   updated_at: string;
 }
 </code></pre>

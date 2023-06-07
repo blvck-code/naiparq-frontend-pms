@@ -1294,6 +1294,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Pricing id</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1326,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Pricing max time</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,6 +1358,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Pricing min time</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1372,6 +1390,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Pricing owner</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1398,6 +1422,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Pricing</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1406,17 +1436,53 @@
         <pre><code class="hljs javascript">import { UserModel } from &#x27;../../auth/model/user.model&#x27;;
 
 export interface PricingResponseModel {
+  /**
+   *  Count number of pricing content
+   *  @type number
+   */
   count?: number;
+  /**
+   *  Next pricing pagination
+   *  @type string
+   */
   next?: string;
+  /**
+   *  Previous pagination link
+   *  @type string
+   */
   previous?: string;
+  /**
+   *  Pricing array content
+   *  @type PricingModel[]
+   */
   results: PricingModel[];
 }
 
 export interface PricingModel {
+  /**
+   *  Pricing id
+   *  @type string
+   */
   id: string;
+  /**
+   *  Pricing min time
+   *  @type string
+   */
   min_time: string;
+  /**
+   *  Pricing max time
+   *  @type string
+   */
   max_time: string;
+  /**
+   *  Pricing
+   *  @type number
+   */
   price: number;
+  /**
+   *  Pricing owner
+   *  @type UserModel
+   */
   owner_detail?: UserModel;
 }
 </code></pre>

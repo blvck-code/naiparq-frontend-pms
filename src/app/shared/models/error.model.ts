@@ -1,4 +1,12 @@
 export interface ErrorModel {
-  message?: string,
-  status?: number
+  /**
+   *  Error message
+   *  @type string
+   */
+  message?: string;
+  /**
+   *  Error status code
+   *  @type number
+   */
+  status?: number;
 }

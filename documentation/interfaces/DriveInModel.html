@@ -1294,6 +1294,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive on check in time</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1320,6 +1326,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in created time</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1346,6 +1358,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in extra details</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1372,6 +1390,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in screenshot link</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1398,6 +1422,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in id</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1424,6 +1454,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in license plate</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1450,6 +1486,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in space name</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1476,6 +1518,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in space details</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1502,6 +1550,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Drive in status</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1510,26 +1564,77 @@
         <pre><code class="hljs javascript">import { DriveOutModel } from &#x27;./driveOut.model&#x27;;
 
 export interface DriveInResponseModel {
+  /**
+   * Count number of Drive in
+   */
   count?: number;
+  /**
+   * Next drive in pagination
+   */
   next?: string;
+  /**
+   * Previous drive in pagination link
+   */
   previous?: string;
+  /**
+   *  Drive in list array
+   */
   results: DriveInModel[];
 }
 
 export interface DriveInModel {
+  /**
+   *  Drive in id
+   */
   id: string;
+  /**
+   *  Drive in license plate
+   */
   license_plate: string;
+  /**
+   *  Drive on check in time
+   */
   check_in_time: string;
+  /**
+   *  Drive in space name
+   */
   space: string;
+  /**
+   *  Drive in screenshot link
+   */
   entry_screenshot: string;
+  /**
+   * Drive in created time
+   */
   create_at: string;
+  /**
+   *  Drive in space details
+   */
   space_details: {
+    /**
+     *  Space id
+     */
     id: string;
+    /**
+     *  Space title
+     */
     title: string;
+    /**
+     *  Space type
+     */
     type: string;
+    /**
+     *  Space address
+     */
     address: string;
   };
+  /**
+   *  Drive in status
+   */
   status: string;
+  /**
+   *  Drive in extra details
+   */
   driveOut?: DriveOutModel;
 }
 </code></pre>

@@ -1478,9 +1478,21 @@ export class LogOutFail implements ActionExecutable&lt;AuthState&gt; {
 }
 
 // Load Users
+/**
+ *  Load Application Users
+ */
 export class LoadUsers implements ActionExecutable&lt;AuthState&gt; {
   readonly type &#x3D; AuthActionsTypes.LOAD_USERS;
+
+  /**
+   *
+   */
   constructor() {}
+
+  /**
+   *  Sets loading users to true for loading animation
+   *  @param state
+   */
   execute(state: AuthState): AuthState {
     return {
       ...state,

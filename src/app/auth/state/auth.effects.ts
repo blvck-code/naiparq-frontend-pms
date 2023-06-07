@@ -186,6 +186,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Load user profile details
+   *
+   *  @returns Observable
+   */
   loadProfile$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<authActions.LoadProfile>(

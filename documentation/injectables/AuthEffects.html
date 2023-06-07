@@ -1348,6 +1348,12 @@
             </bcode>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Load user profile details</p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -1667,6 +1673,11 @@ export class AuthEffects {
     );
   });
 
+  /**
+   *  Load user profile details
+   *
+   *  @returns Observable
+   */
   loadProfile$: Observable&lt;Action&gt; &#x3D; createEffect(() &#x3D;&gt; {
     return this.actions$.pipe(
       ofType&lt;authActions.LoadProfile&gt;(

@@ -47,14 +47,28 @@
     </div>
     <div [class.hidden]="preview" class="naiparq-blog-create__editor">
       <form [formGroup]="blogForm" class="flex flex-col gap-1.5">
-        <div class="flex flex-col py-2 gap-1.5">
-          <label class="text-base" for="bTitle">Blog title</label>
-          <input
-            formControlName="title"
-            class="py-1 px-3 rounded-lg w-[75%]"
-            type="text"
-            id="bTitle"
-          />
+        <div class="flex flex-row items-center gap-2 w-full">
+          <div class="flex flex-col py-2 gap-1.5 w-[75%]">
+            <label class="text-base" for="bTitle">Blog title</label>
+            <input
+              formControlName="title"
+              class="py-1 px-3 rounded-lg w-full"
+              type="text"
+              id="bTitle"
+            />
+          </div>
+          <div class="flex flex-col py-2 gap-1.5 w-[25%]">
+            <label class="text-base" for="bTitle">Company name</label>
+            <select
+              class="form-select border-0"
+              aria-label="Default select example"
+              formControlName="company"
+            >
+              <option *ngFor="let firm of firms$ | async" value="{{ firm.id }}">
+                {{ firm.name }}
+              </option>
+            </select>
+          </div>
         </div>
         <div class="flex flex-col py-2 gap-1.5">
           <label class="text-base" for="bTitle">Cover Image</label>

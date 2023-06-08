@@ -66,6 +66,7 @@ export const environment = {
   // Naiparq Blog
   naiparqCreateBlog: naiparqBaseURL + 'blog/article/',
   naiparqBlogList: naiparqBaseURL + 'blog/article',
+  naiparqCompanyList: naiparqBaseURL + 'blog/company',
 };
 
 /*

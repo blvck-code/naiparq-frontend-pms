@@ -1,6 +1,7 @@
 import { BlogModel } from '../model/blog.model';
 
 import * as fromBlogEnt from './entities/blog.entity';
+import * as fromCompany from './entities/company.entity';
 import {
   ActionReducerMap,
   createFeatureSelector,
@@ -10,10 +11,12 @@ import { blogAdapter } from './entities/blog.entity';
 
 export interface HomeState {
   blog: fromBlogEnt.BlogEntity;
+  firms: fromCompany.CompanyState;
 }
 
 export const homeReducer: ActionReducerMap<HomeState> = {
   blog: fromBlogEnt.blogReducer,
+  firms: fromCompany.companyEntity,
 };
 
 // Selectors
@@ -44,3 +47,15 @@ export const selectedBlogId = createSelector(
   blogStateKey,
   (state) => state.selectedBlogId
 );
+
+export const firmStateKey = createSelector(
+  homeStateKey,
+  (state) => state.firms
+);
+
+export const firmsLoaded = createSelector(
+  firmStateKey,
+  (state) => state.loaded
+);
+export const firms = createSelector(firmStateKey, (state) => state.companies);
+export const firmsError = createSelector(firmStateKey, (state) => state.error);

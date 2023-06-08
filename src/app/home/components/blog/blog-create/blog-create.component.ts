@@ -12,8 +12,15 @@ import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
 import * as homeActions from '../../../state/home.actions';
-import { selectedBlog, selectedBlogId } from '../../../state/home.reducer';
+import {
+  firms,
+  firmsLoaded,
+  selectedBlog,
+  selectedBlogId,
+} from '../../../state/home.reducer';
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import { CompanyModel } from '../../../model/company.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'naiparq-blog-create',
@@ -36,6 +43,9 @@ export class BlogCreateComponent implements OnInit {
   coverImage: string = '';
   coverImageName: string = '';
 
+  firmsLoaded$: Observable<boolean> = this.store.select(firmsLoaded);
+  firms$: Observable<CompanyModel[]> = this.store.select(firms);
+
   public onReady(editor: any) {
     editor.ui
       .getEditableElement()
@@ -47,6 +57,7 @@ export class BlogCreateComponent implements OnInit {
 
   blogForm = this.fb.group({
     title: ['', Validators.required],
+    company: ['', Validators.required],
     cover_image: ['', Validators.required],
     content: ['', Validators.required],
   });
@@ -62,6 +73,7 @@ export class BlogCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.editMode();
+    this.store.dispatch(new homeActions.LoadFirms());
   }
 
   editMode(): void {
@@ -129,6 +141,7 @@ export class BlogCreateComponent implements OnInit {
 
     this.submitting = true;
     this.blogFormData.append('title', this.blogForm.get('title')?.value);
+    this.blogFormData.append('company', this.blogForm.get('company')?.value);
     this.blogFormData.append('content', this.blogContent);
 
     this.homeSrv.createArticle(this.blogFormData).subscribe({

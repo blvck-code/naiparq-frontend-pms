@@ -5,6 +5,7 @@ import { Action } from '@ngrx/store';
 import * as homeActions from './home.actions';
 import { HomeService } from '../services/home.service';
 import { BlogResponseModel } from '../model/blog.model';
+import { CompanyResponseModel } from '../model/company.model';
 
 @Injectable()
 export class HomeEffects {
@@ -22,6 +23,25 @@ export class HomeEffects {
           // @ts-ignore
           catchError((err: any) => {
             console.log('Get blog error ==>>', err);
+            return;
+          })
+        )
+      )
+    )
+  );
+
+  loadFirms$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<homeActions.LoadFirms>(homeActions.HomeActionsTypes.LOAD_FIRMS),
+      switchMap((action: homeActions.LoadFirms) =>
+        this.homeSrv.companyList().pipe(
+          map(
+            (firms: CompanyResponseModel) =>
+              new homeActions.LoadFirmsSuccess(firms)
+          ),
+          // @ts-ignore
+          catchError((err: any) => {
+            console.log('Getting firms fail ==>>', err);
             return;
           })
         )

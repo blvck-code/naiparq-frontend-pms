@@ -1,5 +1,5 @@
 <div class="naiparq-blog-create mt-[96px] min-h-[100vh]">
-  <div class="content flex flex-col py-10 max-w-[900px] px-3 mx-auto">
+  <div class="content flex flex-col py-10 max-w-[1200px] px-3 mx-auto">
     <div class="flex justify-end items-center py-2 mb-2 gap-2">
       <button
         (click)="onSubmit()"
@@ -17,9 +17,10 @@
         }}</span>
       </button>
     </div>
+
     <div
       [class.hidden]="!preview"
-      class="naiparq-blog-create__preview pb-5 bg-[#fff] px-3 py-4 rounded-lg"
+      class="naiparq-blog-create__preview pb-5 px-3 py-4 rounded-lg"
     >
       <h2
         class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]"
@@ -27,24 +28,78 @@
       >
         Preview Blog
       </h2>
-      <h2
-        class="text-[30px] leading-[120%] font-[700] text-[#2F1C6A]"
-        *ngIf="blogForm.get('title')?.value"
-      >
-        {{ blogForm.get("title")?.value }}
-      </h2>
+
+      <!--    Blog Image -->
       <div
         *ngIf="coverImage"
-        class="naiparq-blog-create__preview-img h-[350px] overflow-hidden py-2"
+        class="naiparq-blog-create__preview-img py-3 laptop:h-[585px] tabletLand:h-[250px] mobile:h-[250px] sm:h-[200px] overflow-hidden py-2"
       >
         <img
-          class="rounded-lg object-cover h-[100%]"
+          class="rounded-2xl object-cover h-[100%]"
           [src]="coverImage"
-          alt=""
+          alt="Blog image"
         />
       </div>
-      <div class="blog-content" [innerHTML]="blogContent"></div>
+
+      <div class="max-w-[900px] mx-auto py-3">
+        <div class="flex flex-col pb-3">
+          <h2
+            *ngIf="blogForm.get('title')?.value"
+            class="text-[26px] py-2 leading-[31px] font-[700] text-[#000]"
+          >
+            {{ blogForm.get("title")?.value }}
+          </h2>
+          <div class="flex items-center gap-3.5 py-2">
+            <p
+              class="m-0 text-[14px] leading-[16px] italic text-[#000] font-[600]"
+            >
+              {{ today | date : "MMM d, y" }}
+            </p>
+            <p class="m-0 text-[14px] leading-[16px] text-[#000] font-[600]">
+              By {{ userName$ | async | titlecase }}
+            </p>
+          </div>
+        </div>
+        <div class="blog-content" [innerHTML]="blogContent"></div>
+      </div>
+
+      <div class="max-w-[900px] mx-auto py-3">
+        <p class="text-[14px] leading-[16px] text-[#000] font-[600] italic">
+          Share this:
+        </p>
+        <div class="flex items-center gap-3 pt-4">
+          <a href="">
+            <svg
+              width="33"
+              height="33"
+              viewBox="0 0 33 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.1223 3.02292C12.7354 3.02298 9.48016 4.33483 7.03965 6.68319C4.59913 9.03155 3.16302 12.2339 3.03267 15.6183C2.90231 19.0026 4.08783 22.3059 6.34047 24.8351C8.59311 27.3642 11.7378 28.9226 15.1146 29.1832V19.1453H12.0917C11.8245 19.1453 11.5682 19.0391 11.3792 18.8501C11.1902 18.6612 11.0841 18.4049 11.0841 18.1376C11.0841 17.8704 11.1902 17.6141 11.3792 17.4251C11.5682 17.2361 11.8245 17.13 12.0917 17.13H15.1146V14.1071C15.1158 13.0385 15.5409 12.014 16.2965 11.2584C17.0521 10.5028 18.0766 10.0777 19.1452 10.0765H21.1604C21.4277 10.0765 21.684 10.1827 21.873 10.3716C22.0619 10.5606 22.1681 10.8169 22.1681 11.0841C22.1681 11.3514 22.0619 11.6077 21.873 11.7967C21.684 11.9856 21.4277 12.0918 21.1604 12.0918H19.1452C18.6109 12.0924 18.0986 12.3049 17.7208 12.6827C17.343 13.0605 17.1305 13.5728 17.1299 14.1071V17.13H20.1528C20.42 17.13 20.6763 17.2361 20.8653 17.4251C21.0543 17.6141 21.1604 17.8704 21.1604 18.1376C21.1604 18.4049 21.0543 18.6612 20.8653 18.8501C20.6763 19.0391 20.42 19.1453 20.1528 19.1453H17.1299V29.1831C20.5067 28.9226 23.6514 27.3642 25.904 24.8351C28.1566 22.3059 29.3421 19.0026 29.2118 15.6183C29.0814 12.2339 27.6453 9.03157 25.2048 6.68321C22.7643 4.33484 19.5091 3.02299 16.1223 3.02292Z"
+                fill="black"
+              />
+            </svg>
+          </a>
+          <a href="">
+            <svg
+              width="33"
+              height="33"
+              viewBox="0 0 33 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M31.037 7.03718C30.91 6.86726 30.7326 6.74177 30.5301 6.6786C30.3275 6.61543 30.1102 6.61781 29.9091 6.68539C28.6731 7.10103 27.3886 7.35566 26.0875 7.44296C25.3529 6.40884 24.3117 5.63195 23.1112 5.22226C21.9107 4.81256 20.6117 4.79082 19.3982 5.16011C18.1846 5.52941 17.118 6.27102 16.3492 7.27998C15.5804 8.28895 15.1484 9.51415 15.1144 10.7822C13.1482 10.383 11.2815 9.59542 9.62372 8.46554C7.96589 7.33566 6.55027 5.88624 5.45982 4.20221C5.35401 4.03963 5.20352 3.91105 5.02642 3.8319C4.84933 3.75275 4.65315 3.7264 4.46144 3.75601C4.26974 3.78562 4.09065 3.86994 3.94569 3.99884C3.80073 4.12773 3.69606 4.29573 3.64423 4.48266C2.75871 7.68353 2.82125 11.0726 3.82428 14.2386C4.8273 17.4047 6.72768 20.2115 9.2948 22.3186C7.13469 23.5074 4.71553 24.1472 2.25012 24.1817C2.02801 24.185 1.81322 24.2616 1.6391 24.3996C1.46498 24.5375 1.34128 24.7291 1.28719 24.9445C1.2331 25.16 1.25166 25.3873 1.33998 25.5911C1.42831 25.7949 1.58145 25.9639 1.77564 26.0717C4.30113 27.4698 7.13892 28.2072 10.0256 28.2153C12.9122 28.2234 15.7541 27.5021 18.2874 26.1183C20.8207 24.7344 22.9634 22.733 24.5164 20.2997C26.0694 17.8664 26.9824 15.0802 27.1707 12.1997C28.6745 11.0938 29.9868 9.74891 31.0555 8.2185C31.1772 8.04472 31.2409 7.83697 31.2376 7.62485C31.2343 7.41273 31.1641 7.20707 31.037 7.03718Z"
+                fill="black"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
+
     <div [class.hidden]="preview" class="naiparq-blog-create__editor">
       <form [formGroup]="blogForm" class="flex flex-col gap-1.5">
         <div class="flex flex-row items-center gap-2 w-full">

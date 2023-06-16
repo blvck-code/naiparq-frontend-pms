@@ -6,7 +6,11 @@ import { HomeService } from '../../../services/home.service';
 import { SharedService } from '../../../../shared/services/shared.service';
 import { BlogModel } from '../../../model/blog.model';
 import { Router } from '@angular/router';
-import { isLoggedIn, userInfo } from '../../../../auth/state/auth.selector';
+import {
+  isLoggedIn,
+  userInfo,
+  userName,
+} from '../../../../auth/state/auth.selector';
 
 // NgRx
 import { Store } from '@ngrx/store';
@@ -45,6 +49,9 @@ export class BlogCreateComponent implements OnInit {
 
   firmsLoaded$: Observable<boolean> = this.store.select(firmsLoaded);
   firms$: Observable<CompanyModel[]> = this.store.select(firms);
+
+  today = new Date();
+  userName$: Observable<string> = this.store.select(userName);
 
   public onReady(editor: any) {
     editor.ui

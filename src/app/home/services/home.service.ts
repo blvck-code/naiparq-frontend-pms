@@ -20,7 +20,7 @@ export class HomeService {
   // Blog
   fetchBlogs(): Observable<BlogResponseModel> {
     let params = new HttpParams();
-    params = params.append('company_name', 'naiparq');
+    params = params.append('company_name', 'Naiparq');
     return this.http.get<BlogResponseModel>(env.naiparqBlogList, {
       params: params,
     });

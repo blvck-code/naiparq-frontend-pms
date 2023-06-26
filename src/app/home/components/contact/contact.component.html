@@ -51,7 +51,11 @@
     <div
       class="naiparq-form-wrap z-10 bg-white bg-[rgba(0, 0, 0, 0.1)] shadow shadow-indigo-500/50 rounded-[20px] mt-20"
     >
-      <form class="w-[75%] z-0 mx-auto" action="">
+      <form
+        class="w-[75%] z-0 mx-auto"
+        [formGroup]="contactForm"
+        (ngSubmit)="submit()"
+      >
         <h1 class="text-[40px] leading-[45px] font-bold text-center py-8">
           Get customer support
         </h1>
@@ -65,6 +69,7 @@
               class="bg-[#F5F8FA] py-2.5 px-3 focus:outline focus:outline-offset-2 focus:outline-blue-300 rounded-lg"
               type="text"
               id="cName"
+              formControlName="full_name"
             />
           </div>
           <div class="flex flex-col gap-1 py-2.5">
@@ -73,6 +78,7 @@
               class="bg-[#F5F8FA] py-2.5 px-3 focus:outline focus:outline-offset-2 focus:outline-blue-300 rounded-lg"
               type="text"
               id="cEmail"
+              formControlName="email"
             />
           </div>
         </div>
@@ -82,11 +88,12 @@
           >
           <textarea
             id="cMessage"
+            formControlName="message"
             class="bg-[#F5F8FA] py-2.5 px-3 focus:outline focus:outline-offset-2 focus:outline-blue-300 rounded-lg h-[207px]"
           ></textarea>
         </div>
-        <div class="naiparq-GIT-btn my-4">
-          <button>
+        <div [class.btn-loading]="submittingForm" class="naiparq-GIT-btn my-4">
+          <button [disabled]="!contactForm.valid" type="submit">
             <span>Send Message</span>
             <svg
               width="32"
@@ -127,7 +134,7 @@
       <div class="naiparq-FAQs py-3">
         <h2 class="text-[30px] font-[700] leading-[35px]">Motorists</h2>
         <div
-          *ngFor="let faq of motoristsFAQs"
+          *ngFor="let faq of motoristsFAQs()"
           class="naiparq-FAQS__item bg-white p-4 rounded-lg my-3"
         >
           <div
@@ -201,7 +208,7 @@
       <div class="naiparq-FAQs py-3">
         <h2 class="text-[30px] font-[700] leading-[35px]">Space Owners</h2>
         <div
-          *ngFor="let faq of operatorsFAQs"
+          *ngFor="let faq of operatorsFAQs()"
           class="naiparq-FAQS__item bg-white p-4 rounded-lg my-3"
         >
           <div

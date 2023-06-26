@@ -53,7 +53,8 @@ export class AuthInterceptor implements HttpInterceptor {
       request.url.includes(env.naiparqCheckout) ||
       request.url.includes('/api/v1/accounts/register') ||
       request.url.includes('/api/v1/accounts/password/reset/') ||
-      request.url.includes(env.naiparqResetPass)
+      request.url.includes(env.naiparqResetPass) ||
+      request.url.includes(env.naiparqContactUs)
     );
   }
 

@@ -37,6 +37,32 @@
   background: #000000;
   color: #ffffff;
   border-radius: 30px;
+  position: relative;
+
+  &.btn-loading {
+    opacity: 0.65;
+    cursor: not-allowed;
+
+    svg {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      width: 30px;
+      height: 30px;
+      top: 5px;
+      right: 20px;
+      bottom: 0;
+      border: 2px solid transparent;
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: btn-loading-spinner 1s ease infinite;
+    }
+  }
 
   button {
     display: flex;
@@ -46,6 +72,11 @@
     gap: 10px;
     padding: 5px 22px;
     transition: all 0.5s ease-in-out;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
 
     &:hover {
       gap: 30px;

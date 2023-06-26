@@ -25,6 +25,10 @@ export const environment = {
   naiparqCreateBlogger: naiparqBaseURL + 'accounts/register/blogger/',
   naiparqCreateAttendant: naiparqBaseURL + 'accounts/register/attendant/',
   naiparqUsers: naiparqBaseURL + 'accounts/users/',
+
+  // Contact Us
+  naiparqContactUs: naiparqBaseURL + 'accounts/contact/us/',
+
   // Spaces
   naiparqListSpaces: naiparqBaseURL + 'spaces/space',
   naiparqCreateSpace: naiparqBaseURL + 'spaces/space/',

@@ -9,19 +9,29 @@ export class SharedService {
 
   showNotification(message: string, type?: string): void {
     if (type === 'success') {
-      this.toast.success(message);
+      this.toast.success(message, {
+        duration: 3000,
+      });
     } else if (type === 'warning') {
-      this.toast.warning(message);
+      this.toast.warning(message, {
+        duration: 3000,
+      });
     } else if (type === 'error') {
-      this.toast.error(message);
+      this.toast.error(message, {
+        duration: 3000,
+      });
     } else if (type === 'loading') {
       this.toast.loading(message, {
         duration: 3000,
       });
     } else if (type === 'info') {
-      this.toast.info(message);
+      this.toast.info(message, {
+        duration: 3000,
+      });
     } else {
-      this.toast.show(message);
+      this.toast.show(message, {
+        duration: 3000,
+      });
     }
   }
 }

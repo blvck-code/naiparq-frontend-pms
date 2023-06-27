@@ -220,7 +220,7 @@ export class DriveInComponent implements OnInit {
     this.isSubmitting = true;
 
     this.dashSrv.createDriveIn(this.driveInForm.value).subscribe({
-      next: (resp) => {
+      next: () => {
         this.isSubmitting = false;
         this.sharedSrv.showNotification(
           'New drive in added successfully',
@@ -228,7 +228,7 @@ export class DriveInComponent implements OnInit {
         );
         this.closeDriveIn.nativeElement.click();
       },
-      error: (err) => {
+      error: () => {
         this.isSubmitting = false;
         this.sharedSrv.showNotification(
           'Failed to add new drive, please try again.',
@@ -271,14 +271,17 @@ export class DriveInComponent implements OnInit {
     // }
 
     this.dashSrv.createWhiteList(this.whiteListForm.value).subscribe({
-      next: (resp) => {
+      next: () => {
         this.sharedSrv.showNotification(
           `${this.numberPlate.toUpperCase()} added to white list successfully.`,
           'success'
         );
         this.whiteListForm.reset();
+        // Close modal
+        this.closeDriveIn.nativeElement.click();
       },
-      error: (err) => {
+      error: (err: { message: string; status: number }) => {
+        this.sharedSrv.showNotification(err.message, 'error');
         console.log('Create whitelist failed ==>>', err);
       },
     });

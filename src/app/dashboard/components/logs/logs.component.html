@@ -1,32 +1,31 @@
 <div class="naiparq-drivein">
   <div class="naiparq-table-wrap naiparq-scrollbar">
-    <div class="naiparq-table-title">
+    <div class="naiparq-table-title w-full">
       <p class="naiparq-table-date">
         {{ todayDate() | date : "MMMM dd, yyyy" }}
       </p>
 
-      <div class="cash-table-btns d-flex">
+      <div class="filter-btns flex flex-row items-center gap-2">
+        <button class="form-select min-w-[136px] text-[14px]">
+          Number Plate
+        </button>
+
+        <button class="form-select min-w-[101px] text-[14px]">Building</button>
+
+        <button class="form-select min-w-[124px] w-full text-[14px]">
+          Time In/Out
+        </button>
+
+        <button class="form-select min-w-[95px] text-[14px]">Status</button>
+
+        <button class="form-select min-w-[95px] text-[14px]">Guests</button>
+
         <button
           data-bs-toggle="modal"
           data-bs-target="#addNumberPlate"
-          class="naiparq-btn naiparq-btn-primary me-2"
+          class="naiparq-btn naiparq-btn-primary min-w-[160px]"
         >
           Add Number Plate
-        </button>
-
-        <button class="filter-btn alt-btn">
-          <svg
-            width="14"
-            height="10"
-            viewBox="0 0 14 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
-            />
-          </svg>
-          Filters
         </button>
       </div>
     </div>
@@ -46,6 +45,9 @@
             </th>
             <th scope="col">
               <span class="table-title"> Time Out </span>
+            </th>
+            <th scope="col">
+              <span class="table-title"> Status </span>
             </th>
             <th scope="col">
               <span class="table-title"> Action </span>
@@ -122,7 +124,7 @@
           *ngIf="(driveOutLoaded$ | async) && (driveOuts$ | async)?.length"
           class="table-body"
         >
-          <tr *ngFor="let driveIn of driveOuts$ | async">
+          <tr *ngFor="let driveIn of driveOuts$ | async; let index = index">
             <td>
               <div class="table-text">
                 <span>{{ driveIn.drive_in_details.license_plate }}</span>
@@ -146,6 +148,25 @@
                 <span>{{
                   driveIn.check_out_time | date : "MMM d, y, h:mm a"
                 }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <button
+                  *ngIf="
+                    driveIn.drive_in_details.status === 'active' && index !== 2
+                  "
+                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60]"
+                >
+                  Active
+                </button>
+
+                <button
+                  *ngIf="index === 2"
+                  class="p-2 rounded-[8px] bg-[#4087c9]/[0.1] text-[#4087c9]"
+                >
+                  Completed
+                </button>
               </div>
             </td>
             <td>
@@ -244,6 +265,12 @@
                   | date : "EEEE, dd MMM, YYYY, h:mm a"
               }}
             </h5>
+          </div>
+          <div class="flex items-center space-titles justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Status
+            </h5>
+            <h5 class="font-normal text-lg leading-6">Active</h5>
           </div>
         </div>
         <div

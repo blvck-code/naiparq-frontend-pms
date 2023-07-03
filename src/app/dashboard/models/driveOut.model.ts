@@ -63,6 +63,11 @@ export interface DriveOutModel {
      */
     space: string;
     /**
+     *  Drive out status
+     *  @type string
+     */
+    status: string;
+    /**
      *  Drive out entry screenshot link
      *  @type string
      */

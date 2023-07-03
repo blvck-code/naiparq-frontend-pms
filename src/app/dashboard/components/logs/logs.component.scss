@@ -1,3 +1,5 @@
+@tailwind components;
+
 .naiparq-cash-payment {
   width: 100%;
   display: flex;
@@ -9,5 +11,11 @@
     font-weight: 400;
     font-size: 21px;
     line-height: 20px;
+  }
+}
+
+@layer components {
+  .plate-content {
+    @apply min-w-[252px] rounded-[8px] p-2.5;
   }
 }

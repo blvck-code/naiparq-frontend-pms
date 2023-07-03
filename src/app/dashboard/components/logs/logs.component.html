@@ -6,18 +6,176 @@
       </p>
 
       <div class="filter-btns flex flex-row items-center gap-2">
-        <button class="form-select min-w-[136px] text-[14px]">
-          Number Plate
-        </button>
+        <!--        Number Plate -->
+        <div class="dropdown">
+          <button
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="form-select min-w-[136px] text-[14px]"
+          >
+            Number Plate
+          </button>
+          <div class="dropdown-menu plate-content">
+            <div
+              class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                  stroke="#363A3F"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.9999 20.9999L16.6499 16.6499"
+                  stroke="#363A3F"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search number plate..."
+                class="bg-transparent outline-0"
+              />
+            </div>
+            <ul>
+              <li
+                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
+              >
+                KAA 123A
+              </li>
+              <li
+                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
+              >
+                KAA 123A
+              </li>
+              <li
+                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
+              >
+                KAA 123A
+              </li>
+              <li class="text-base text-[#3D4A5C] p-2 hover:bg-[#F9FAFB]">
+                KAA 123A
+              </li>
+            </ul>
+          </div>
+        </div>
 
-        <button class="form-select min-w-[101px] text-[14px]">Building</button>
+        <!--        Buildings -->
+        <div class="dropdown">
+          <button
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="form-select min-w-[101px] text-[14px]"
+          >
+            Building
+          </button>
+          <div class="dropdown-menu plate-content">
+            <div
+              class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                  stroke="#363A3F"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.9999 20.9999L16.6499 16.6499"
+                  stroke="#363A3F"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search building..."
+                class="bg-transparent outline-0"
+              />
+            </div>
+            <ul>
+              <li
+                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
+              >
+                Complex Building
+              </li>
+            </ul>
+          </div>
+        </div>
 
-        <button class="form-select min-w-[124px] w-full text-[14px]">
-          Time In/Out
-        </button>
+        <!--        Time In/Out -->
+        <div class="dropdown">
+          <button
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="form-select min-w-[124px] w-full text-[14px]"
+          >
+            Time In/Out
+          </button>
+          <div class="dropdown-menu plate-conte nt">
+            <div
+              class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                  stroke="#363A3F"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.9999 20.9999L16.6499 16.6499"
+                  stroke="#363A3F"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search building..."
+                class="bg-transparent outline-0"
+              />
+            </div>
+            <ul>
+              <li
+                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
+              >
+                Complex Building
+              </li>
+            </ul>
+          </div>
+        </div>
 
+        <!--        Status -->
         <button class="form-select min-w-[95px] text-[14px]">Status</button>
 
+        <!--        Guests -->
         <button class="form-select min-w-[95px] text-[14px]">Guests</button>
 
         <button

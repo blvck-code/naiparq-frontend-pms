@@ -48,24 +48,9 @@
               />
             </div>
             <ul>
-              <li
-                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
-              >
-                KAA 123A
-              </li>
-              <li
-                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
-              >
-                KAA 123A
-              </li>
-              <li
-                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
-              >
-                KAA 123A
-              </li>
-              <li class="text-base text-[#3D4A5C] p-2 hover:bg-[#F9FAFB]">
-                KAA 123A
-              </li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">KAA 123A</li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">KAA 123A</li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">KAA 123A</li>
             </ul>
           </div>
         </div>
@@ -112,64 +97,31 @@
               />
             </div>
             <ul>
-              <li
-                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
-              >
-                Complex Building
-              </li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">Complex Building</li>
             </ul>
           </div>
         </div>
 
         <!--        Time In/Out -->
-        <div class="dropdown">
+        <div class="dropdown ngx-daterangepicker-action">
           <button
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            class="form-select w-full text-[14px]"
+            class="form-select w-full text-[14px] ngx-daterangepicker-action"
+            (click)="openDatepicker()"
           >
-            Time In/Out
+            24 Apr - 20 Jun
           </button>
-          <div class="dropdown-menu plate-content mt-2">
-            <div
-              class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                  stroke="#363A3F"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M20.9999 20.9999L16.6499 16.6499"
-                  stroke="#363A3F"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search building..."
-                class="bg-transparent outline-0"
-              />
-            </div>
-            <ul>
-              <li
-                class="text-base text-[#3D4A5C] p-2 border-b-2 hover:bg-[#F9FAFB]"
-              >
-                Complex Building
-              </li>
-            </ul>
-          </div>
+          <input
+            style="display: none"
+            ngxDaterangepickerMd
+            [closeOnAutoApply]="true"
+            [autoApply]="true"
+            [singleDatePicker]="false"
+            [linkedCalendars]="true"
+            (change)="handleDate($event)"
+            class="datepicker-calendar-icon"
+          />
         </div>
 
         <!--        Status -->

@@ -20,6 +20,10 @@
   }
 }
 
+.md-drppicker {
+  top: 50px !important;
+}
+
 @layer components {
   .plate-content {
     @apply min-w-[252px] rounded-[8px] p-2.5;

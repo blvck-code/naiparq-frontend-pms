@@ -20,7 +20,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
@@ -61,6 +60,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     IgxLegendModule,
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule,
+    NgxDaterangepickerMd.forRoot(),
     NgxSkeletonLoaderModule.forRoot({
       animation: 'pulse',
       loadingText: 'This item is actually loading...',
@@ -68,6 +68,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     StoreModule.forFeature(dashboard, dashboardReducer),
     EffectsModule.forFeature([SpacesEffects]),
     SharedModule,
+    NgxDaterangepickerMd.forRoot(),
   ],
 })
 export class DashboardModule {}

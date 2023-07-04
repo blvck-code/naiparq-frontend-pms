@@ -7,6 +7,7 @@ import { DriveOutModel } from '../../models/driveOut.model';
 import { DashService } from '../../services/dash.service';
 import { BehaviorSubject } from 'rxjs';
 import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'naiparq-logs',
@@ -24,6 +25,14 @@ export class LogsComponent implements OnInit {
   currentImg: any;
   slideIndex: number = 0;
   images: any[] = [];
+
+  filterParams = this.formBuilder.group({
+    number_plate: ['', Validators.required],
+    building: ['', Validators.required],
+    timeInOut: ['', Validators.required],
+    status: ['', Validators.required],
+    driver_type: ['', Validators.required],
+  });
 
   selectedDriveOut = {
     id: '',
@@ -59,7 +68,8 @@ export class LogsComponent implements OnInit {
   constructor(
     private storeSrv: StoreService,
     private dashSrv: DashService,
-    private store: Store
+    private store: Store,
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +83,10 @@ export class LogsComponent implements OnInit {
 
   openDatepicker(): void {
     this.pickerDirective.open();
+  }
+
+  handleDate(event: any): void {
+    console.log('Event ==>>', event);
   }
 
   changeSlider(n: number): void {

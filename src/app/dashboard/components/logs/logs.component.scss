@@ -24,4 +24,10 @@
   .plate-content {
     @apply min-w-[252px] rounded-[8px] p-2.5;
   }
+  .btnActive {
+    @apply bg-[#27AE60]/[0.1] text-[#27AE60];
+  }
+  .btnComplete {
+    @apply bg-[#4087c9]/[0.1] text-[#4087c9];
+  }
 }

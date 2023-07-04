@@ -15,7 +15,7 @@
           >
             Number Plate
           </button>
-          <div class="dropdown-menu plate-content">
+          <div class="dropdown-menu plate-content mt-2">
             <div
               class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
             >
@@ -79,7 +79,7 @@
           >
             Building
           </button>
-          <div class="dropdown-menu plate-content">
+          <div class="dropdown-menu plate-content mt-2">
             <div
               class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
             >
@@ -130,7 +130,7 @@
           >
             Time In/Out
           </button>
-          <div class="dropdown-menu plate-conte nt">
+          <div class="dropdown-menu plate-content mt-2">
             <div
               class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
             >
@@ -173,17 +173,45 @@
         </div>
 
         <!--        Status -->
-        <button class="form-select text-[14px]">Status</button>
-
+        <div class="dropdown">
+          <button
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="form-select text-[14px]"
+          >
+            Status
+          </button>
+          <div class="dropdown-menu plate-content mt-2">
+            <ul>
+              <li class="text-[14px] text-[#3D4A5C] p-1">Active</li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">Complete</li>
+            </ul>
+          </div>
+        </div>
         <!--        Guests -->
-        <button class="form-select text-[14px]">Guests</button>
+        <div class="dropdown">
+          <button
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="form-select text-[14px]"
+          >
+            Guests
+          </button>
+          <div class="dropdown-menu plate-content mt-2">
+            <ul>
+              <li class="text-[14px] text-[#3D4A5C] p-1">Customers</li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">Guests</li>
+              <li class="text-[14px] text-[#3D4A5C] p-1">Staff</li>
+            </ul>
+          </div>
+        </div>
 
         <button
           data-bs-toggle="modal"
           data-bs-target="#addNumberPlate"
-          class="naiparq-btn naiparq-btn-primary min-w-[160px]"
+          class="naiparq-btn naiparq-btn-primary min-w-[90px]"
         >
-          Add Number Plate
+          Search
         </button>
       </div>
     </div>
@@ -206,6 +234,9 @@
             </th>
             <th scope="col">
               <span class="table-title"> Status </span>
+            </th>
+            <th scope="col">
+              <span class="table-title"> Driver Type </span>
             </th>
             <th scope="col">
               <span class="table-title"> Action </span>
@@ -290,7 +321,7 @@
             </td>
             <td>
               <div class="table-text">
-                <span>{{ driveIn?.metadata?.space_name }}</span>
+                <span>{{ driveIn.drive_in_details.space_details.title }}</span>
               </div>
             </td>
             <td>
@@ -310,18 +341,23 @@
             </td>
             <td>
               <div class="table-text">
-                <!--                <button-->
-                <!--                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60]"-->
-                <!--                >-->
-                <!--                  {{ driveIn.drive_in_details.status }}-->
-                <!--                </button>-->
-
-                <!--                <button-->
-                <!--                  *ngIf="index === 2"-->
-                <!--                  class="p-2 rounded-[8px] bg-[#4087c9]/[0.1] text-[#4087c9]"-->
-                <!--                >-->
-                <!--                  Completed-->
-                <!--                </button>-->
+                <button
+                  [ngClass]="
+                    driveIn.drive_in_details.status === 'active'
+                      ? 'btnActive'
+                      : 'btnComplete'
+                  "
+                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60] w-[85px] text-center"
+                >
+                  {{ driveIn.drive_in_details.status | titlecase }}
+                </button>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{
+                  driveIn.drive_in_details.driver_type | titlecase
+                }}</span>
               </div>
             </td>
             <td>

@@ -78,6 +78,10 @@ export interface DriveOutModel {
      */
     created_at: string;
     /**
+     * Driver type
+     */
+    driver_type: string;
+    /**
      *  Space details
      */
     space_details: {
@@ -103,10 +107,6 @@ export interface DriveOutModel {
       type: string;
     };
   };
-  /**
-   * Driver type
-   */
-  driver_type: string;
   /**
    *  Drive out meta data
    */

@@ -1,3 +1,5 @@
+@tailwind components;
+
 .naiparq-cash-payment {
   width: 100%;
   display: flex;
@@ -9,5 +11,27 @@
     font-weight: 400;
     font-size: 21px;
     line-height: 20px;
+  }
+}
+
+.filter-btns {
+  button {
+    width: max-content;
+  }
+}
+
+.md-drppicker {
+  top: 50px !important;
+}
+
+@layer components {
+  .plate-content {
+    @apply min-w-[252px] rounded-[8px] p-2.5;
+  }
+  .btnActive {
+    @apply bg-[#27AE60]/[0.1] text-[#27AE60];
+  }
+  .btnComplete {
+    @apply bg-[#4087c9]/[0.1] text-[#4087c9];
   }
 }

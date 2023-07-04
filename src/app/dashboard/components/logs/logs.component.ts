@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { StoreService } from '../../state/store.service';
 import { Store } from '@ngrx/store';
@@ -6,6 +6,8 @@ import * as driveInActions from '../../state/actions/driveIn.actions';
 import { DriveOutModel } from '../../models/driveOut.model';
 import { DashService } from '../../services/dash.service';
 import { BehaviorSubject } from 'rxjs';
+import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'naiparq-logs',
@@ -13,6 +15,9 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./logs.component.scss'],
 })
 export class LogsComponent implements OnInit {
+  @ViewChild(DaterangepickerDirective, { static: false })
+  'pickerDirective': DaterangepickerDirective;
+
   driveOuts$: Observable<DriveOutModel[]> = this.storeSrv.driveOut();
   driveOutLoaded$: Observable<boolean> = this.storeSrv.driveOutLoaded();
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
@@ -20,6 +25,14 @@ export class LogsComponent implements OnInit {
   currentImg: any;
   slideIndex: number = 0;
   images: any[] = [];
+
+  filterParams = this.formBuilder.group({
+    number_plate: ['', Validators.required],
+    building: ['', Validators.required],
+    timeInOut: ['', Validators.required],
+    status: ['', Validators.required],
+    driver_type: ['', Validators.required],
+  });
 
   selectedDriveOut = {
     id: '',
@@ -55,7 +68,8 @@ export class LogsComponent implements OnInit {
   constructor(
     private storeSrv: StoreService,
     private dashSrv: DashService,
-    private store: Store
+    private store: Store,
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +79,14 @@ export class LogsComponent implements OnInit {
   }
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  openDatepicker(): void {
+    this.pickerDirective.open();
+  }
+
+  handleDate(event: any): void {
+    console.log('Event ==>>', event);
   }
 
   changeSlider(n: number): void {

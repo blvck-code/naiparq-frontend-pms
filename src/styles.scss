@@ -1446,6 +1446,11 @@ table {
     background: rgba(0, 0, 0, 0.05);
   }
 }
+.md-drppicker td.active,
+.md-drppicker td.in-range {
+  background-color: #fbce33 !important;
+  color: #000 !important;
+}
 
 @layer components {
   .page-title {

@@ -20,7 +20,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
@@ -33,6 +32,7 @@ import { SpacesEffects } from './state/effects/spaces.effects';
 import { SharedModule } from '../shared/shared.module';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { LinearGraphComponent } from './components/analytics/linear-graph/linear-graph.component';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   declarations: [
@@ -56,9 +56,11 @@ import { LinearGraphComponent } from './components/analytics/linear-graph/linear
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
+    NgxDaterangepickerMd,
     IgxLegendModule,
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule,
+    NgxDaterangepickerMd.forRoot(),
     NgxSkeletonLoaderModule.forRoot({
       animation: 'pulse',
       loadingText: 'This item is actually loading...',
@@ -66,6 +68,7 @@ import { LinearGraphComponent } from './components/analytics/linear-graph/linear
     StoreModule.forFeature(dashboard, dashboardReducer),
     EffectsModule.forFeature([SpacesEffects]),
     SharedModule,
+    NgxDaterangepickerMd.forRoot(),
   ],
 })
 export class DashboardModule {}

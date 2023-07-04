@@ -33,6 +33,7 @@ import { SpacesEffects } from './state/effects/spaces.effects';
 import { SharedModule } from '../shared/shared.module';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { LinearGraphComponent } from './components/analytics/linear-graph/linear-graph.component';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { LinearGraphComponent } from './components/analytics/linear-graph/linear
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
+    NgxDaterangepickerMd,
     IgxLegendModule,
     IgxCategoryChartModule,
     IgxDataChartInteractivityModule,

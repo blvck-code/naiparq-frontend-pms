@@ -14,6 +14,12 @@
   }
 }
 
+.filter-btns {
+  button {
+    width: max-content;
+  }
+}
+
 @layer components {
   .plate-content {
     @apply min-w-[252px] rounded-[8px] p-2.5;

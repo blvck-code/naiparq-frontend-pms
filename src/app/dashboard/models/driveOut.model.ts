@@ -104,6 +104,10 @@ export interface DriveOutModel {
     };
   };
   /**
+   * Driver type
+   */
+  driver_type: string;
+  /**
    *  Drive out meta data
    */
   metadata?: {

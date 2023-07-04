@@ -11,7 +11,7 @@
           <button
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            class="form-select min-w-[136px] text-[14px]"
+            class="form-select text-[14px]"
           >
             Number Plate
           </button>
@@ -75,7 +75,7 @@
           <button
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            class="form-select min-w-[101px] text-[14px]"
+            class="form-select text-[14px]"
           >
             Building
           </button>
@@ -126,7 +126,7 @@
           <button
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            class="form-select min-w-[124px] w-full text-[14px]"
+            class="form-select w-full text-[14px]"
           >
             Time In/Out
           </button>
@@ -173,10 +173,10 @@
         </div>
 
         <!--        Status -->
-        <button class="form-select min-w-[95px] text-[14px]">Status</button>
+        <button class="form-select text-[14px]">Status</button>
 
         <!--        Guests -->
-        <button class="form-select min-w-[95px] text-[14px]">Guests</button>
+        <button class="form-select text-[14px]">Guests</button>
 
         <button
           data-bs-toggle="modal"
@@ -310,21 +310,18 @@
             </td>
             <td>
               <div class="table-text">
-                <button
-                  *ngIf="
-                    driveIn.drive_in_details.status === 'active' && index !== 2
-                  "
-                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60]"
-                >
-                  Active
-                </button>
+                <!--                <button-->
+                <!--                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60]"-->
+                <!--                >-->
+                <!--                  {{ driveIn.drive_in_details.status }}-->
+                <!--                </button>-->
 
-                <button
-                  *ngIf="index === 2"
-                  class="p-2 rounded-[8px] bg-[#4087c9]/[0.1] text-[#4087c9]"
-                >
-                  Completed
-                </button>
+                <!--                <button-->
+                <!--                  *ngIf="index === 2"-->
+                <!--                  class="p-2 rounded-[8px] bg-[#4087c9]/[0.1] text-[#4087c9]"-->
+                <!--                >-->
+                <!--                  Completed-->
+                <!--                </button>-->
               </div>
             </td>
             <td>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { StoreService } from '../../state/store.service';
 import { Store } from '@ngrx/store';
@@ -6,6 +6,7 @@ import * as driveInActions from '../../state/actions/driveIn.actions';
 import { DriveOutModel } from '../../models/driveOut.model';
 import { DashService } from '../../services/dash.service';
 import { BehaviorSubject } from 'rxjs';
+import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
 
 @Component({
   selector: 'naiparq-logs',
@@ -13,6 +14,9 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./logs.component.scss'],
 })
 export class LogsComponent implements OnInit {
+  @ViewChild(DaterangepickerDirective, { static: false })
+  'pickerDirective': DaterangepickerDirective;
+
   driveOuts$: Observable<DriveOutModel[]> = this.storeSrv.driveOut();
   driveOutLoaded$: Observable<boolean> = this.storeSrv.driveOutLoaded();
   loadNextPage$: Observable<string> = this.storeSrv.driveInNext();
@@ -65,6 +69,10 @@ export class LogsComponent implements OnInit {
   }
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  openDatepicker(): void {
+    this.pickerDirective.open();
   }
 
   changeSlider(n: number): void {

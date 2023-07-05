@@ -29,7 +29,8 @@ export class LogsComponent implements OnInit {
   filterParams = this.formBuilder.group({
     number_plate: ['', Validators.required],
     building: ['', Validators.required],
-    timeInOut: ['', Validators.required],
+    checkIn: ['', Validators.required],
+    checkOut: ['', Validators.required],
     status: ['', Validators.required],
     driver_type: ['', Validators.required],
   });
@@ -79,6 +80,10 @@ export class LogsComponent implements OnInit {
   }
   numSeq(n: number): Array<number> {
     return Array(n);
+  }
+
+  returnFilterValue(type: string): string {
+    return this.filterParams.get(type)?.value;
   }
 
   openDatepicker(): void {

@@ -1446,6 +1446,15 @@ table {
     background: rgba(0, 0, 0, 0.05);
   }
 }
+
+.md-drppicker {
+  top: 55px !important;
+}
+
+.md-drppicker.shown {
+  border: 1px solid #ccc;
+}
+
 .md-drppicker td.active,
 .md-drppicker td.in-range {
   background-color: #fbce33 !important;

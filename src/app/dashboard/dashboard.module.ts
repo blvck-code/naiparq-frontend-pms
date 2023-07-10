@@ -20,7 +20,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DriveInComponent } from './components/drive-in/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // NgRx
@@ -69,6 +69,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     EffectsModule.forFeature([SpacesEffects]),
     SharedModule,
     NgxDaterangepickerMd.forRoot(),
+    FormsModule,
   ],
 })
 export class DashboardModule {}

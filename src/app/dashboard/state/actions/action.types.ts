@@ -30,6 +30,10 @@ export enum DashActionTypes {
   LOAD_DRIVE_OUT_SUCCESS = 'driveOut/loadDriveOutSuccess',
   LOAD_DRIVE_OUT_FAIL = 'driveOut/loadDriveOutFail',
 
+  FILTER_DRIVE_OUT = 'driveOut/filter',
+  FILTER_DRIVE_OUT_SUCCESS = 'driveOut/filterSuccess',
+  FILTER_DRIVE_OUT_FAIL = 'driveOut/filterFail',
+
   // Assets
   LOAD_DEVICES = 'devices/loadDevices',
   LOAD_DEVICES_SUCCESS = 'devices/loadDevicesSuccess',

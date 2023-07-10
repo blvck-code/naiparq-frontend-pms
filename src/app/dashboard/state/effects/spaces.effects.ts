@@ -130,6 +130,27 @@ export class SpacesEffects {
     )
   );
 
+  // Filter Drive Out
+  filterDriveOut$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<driveInActions.filterDriveOut>(
+        dashActions.DashActionTypes.FILTER_DRIVE_OUT
+      ),
+      switchMap((params: any) =>
+        this.dashSrv.filterDriveOut(params).pipe(
+          map(
+            (driveOut: DriveOutResponseModel) =>
+              new driveInActions.filterDriveOutSuccess(driveOut)
+          ),
+          //@ts-ignore
+          catchError((err) => {
+            console.log('Getting drive out failed ===>>>', err);
+          })
+        )
+      )
+    )
+  );
+
   // Billings
   loadBillings$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(

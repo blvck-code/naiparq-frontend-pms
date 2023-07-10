@@ -1,11 +1,16 @@
 <div class="naiparq-drivein">
   <div class="naiparq-table-wrap naiparq-scrollbar">
-    <div class="naiparq-table-title w-full">
+    <div class="naiparq-table-title flex flex-row justify-between w-full">
       <p class="naiparq-table-date">
+        {{ todayDate() | date : "MMMM dd, yyyy" }} -
         {{ todayDate() | date : "MMMM dd, yyyy" }}
       </p>
 
-      <div class="filter-btns flex flex-row items-center gap-2">
+      <form
+        [formGroup]="filterParamsForm"
+        (ngSubmit)="submitFilter()"
+        class="filter-btns w-auto flex flex-row items-center gap-2"
+      >
         <!--        Number Plate -->
         <div class="dropdown">
           <button
@@ -13,7 +18,11 @@
             aria-expanded="false"
             class="form-select text-[14px]"
           >
-            Number Plate
+            {{
+              returnFilterValue("number_plate")
+                ? returnFilterValue("number_plate")
+                : "Number Plate"
+            }}
           </button>
           <div class="dropdown-menu plate-content mt-2">
             <div
@@ -45,12 +54,27 @@
                 type="text"
                 placeholder="Search number plate..."
                 class="bg-transparent outline-0"
+                [(ngModel)]="plateSearchTerm"
+                [ngModelOptions]="{ standalone: true }"
               />
             </div>
-            <ul>
-              <li class="text-[14px] text-[#3D4A5C] p-1">KAA 123A</li>
-              <li class="text-[14px] text-[#3D4A5C] p-1">KAA 123A</li>
-              <li class="text-[14px] text-[#3D4A5C] p-1">KAA 123A</li>
+            <ul class="max-h-[300px] overflow-scroll">
+              <li
+                *ngFor="
+                  let plate of driveOuts$
+                    | async
+                    | driveOutPlateFilter : plateSearchTerm
+                "
+                (click)="
+                  handlePatchFilter(
+                    'plate',
+                    plate.drive_in_details.license_plate
+                  )
+                "
+                class="text-[14px] text-[#3D4A5C] p-1"
+              >
+                {{ plate.drive_in_details.license_plate }}
+              </li>
             </ul>
           </div>
         </div>
@@ -62,7 +86,11 @@
             aria-expanded="false"
             class="form-select text-[14px]"
           >
-            Building
+            {{
+              returnFilterValue("building")
+                ? returnFilterValue("building")
+                : "Building"
+            }}
           </button>
           <div class="dropdown-menu plate-content mt-2">
             <div
@@ -94,15 +122,25 @@
                 type="text"
                 placeholder="Search building..."
                 class="bg-transparent outline-0"
+                [(ngModel)]="spaceSearchTerm"
+                [ngModelOptions]="{ standalone: true }"
               />
             </div>
-            <ul>
-              <li class="text-[14px] text-[#3D4A5C] p-1">Complex Building</li>
+            <ul class="max-h-[300px] overflow-scroll">
+              <li
+                (click)="handlePatchFilter('space', space.title)"
+                class="text-[14px] text-[#3D4A5C] p-1"
+                *ngFor="
+                  let space of spaces$ | async | spaceFilter : spaceSearchTerm
+                "
+              >
+                {{ space.title }}
+              </li>
             </ul>
           </div>
         </div>
 
-        <!--        Time In/Out -->
+        <!--        Time In -->
         <div class="dropdown ngx-daterangepicker-action">
           <button
             data-bs-toggle="dropdown"
@@ -110,7 +148,11 @@
             class="form-select w-full text-[14px] ngx-daterangepicker-action"
             (click)="openDatepicker()"
           >
-            24 Apr - 20 Jun
+            {{
+              returnFilterValue("checkIn")
+                ? returnFilterValue("checkIn")
+                : "Check In"
+            }}
           </button>
           <input
             style="display: none"
@@ -124,22 +166,32 @@
           />
         </div>
 
-        <!--        Status -->
-        <div class="dropdown">
+        <!--        Time Out -->
+        <div class="dropdown ngx-daterangepicker-action">
           <button
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            class="form-select text-[14px]"
+            class="form-select w-full text-[14px] ngx-daterangepicker-action"
+            (click)="openDatepicker()"
           >
-            Status
+            {{
+              returnFilterValue("checkOut")
+                ? returnFilterValue("checkOut")
+                : "Check Out"
+            }}
           </button>
-          <div class="dropdown-menu plate-content mt-2">
-            <ul>
-              <li class="text-[14px] text-[#3D4A5C] p-1">Active</li>
-              <li class="text-[14px] text-[#3D4A5C] p-1">Complete</li>
-            </ul>
-          </div>
+          <input
+            style="display: none"
+            ngxDaterangepickerMd
+            [closeOnAutoApply]="true"
+            [autoApply]="true"
+            [singleDatePicker]="false"
+            [linkedCalendars]="true"
+            (change)="handleDate($event)"
+            class="datepicker-calendar-icon"
+          />
         </div>
+
         <!--        Guests -->
         <div class="dropdown">
           <button
@@ -147,25 +199,43 @@
             aria-expanded="false"
             class="form-select text-[14px]"
           >
-            Guests
+            {{
+              returnFilterValue("driver_type")
+                ? returnFilterValue("driver_type")
+                : "Guests"
+            }}
           </button>
           <div class="dropdown-menu plate-content mt-2">
             <ul>
-              <li class="text-[14px] text-[#3D4A5C] p-1">Customers</li>
-              <li class="text-[14px] text-[#3D4A5C] p-1">Guests</li>
-              <li class="text-[14px] text-[#3D4A5C] p-1">Staff</li>
+              <li
+                (click)="handlePatchFilter('driver_type', 'Customers')"
+                class="text-[14px] text-[#3D4A5C] p-1 cursor-pointer"
+              >
+                Customers
+              </li>
+              <li
+                (click)="handlePatchFilter('driver_type', 'Guests')"
+                class="text-[14px] text-[#3D4A5C] p-1 cursor-pointer"
+              >
+                Guests
+              </li>
+              <li
+                (click)="handlePatchFilter('driver_type', 'Staff')"
+                class="text-[14px] text-[#3D4A5C] p-1 cursor-pointer"
+              >
+                Staff
+              </li>
             </ul>
           </div>
         </div>
 
         <button
-          data-bs-toggle="modal"
-          data-bs-target="#addNumberPlate"
+          type="submit"
           class="naiparq-btn naiparq-btn-primary min-w-[90px]"
         >
           Search
         </button>
-      </div>
+      </form>
     </div>
 
     <div class="naiparq-table-content">

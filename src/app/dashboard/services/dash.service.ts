@@ -24,90 +24,6 @@ import { AllUsersModel } from '../../auth/model/user.model';
 export class DashService {
   currentDate = new Date();
   constructor(private http: HttpClient, private store: Store<AppState>) {}
-  timeIntervals = [
-    {
-      key: '0 mins',
-      value: 0,
-    },
-    {
-      key: '30 mins',
-      value: 0.5,
-    },
-    {
-      key: '1 hr',
-      value: 1,
-    },
-    {
-      key: '1hr 30 mins',
-      value: 1.5,
-    },
-    {
-      key: '2hr',
-      value: 2,
-    },
-    {
-      key: '2hr 30 mins',
-      value: 2.5,
-    },
-    {
-      key: '3hr',
-      value: 3,
-    },
-    {
-      key: '3hr 30 mins',
-      value: 3.5,
-    },
-    {
-      key: '4hr',
-      value: 4,
-    },
-    {
-      key: '4hr 30 mins',
-      value: 4.5,
-    },
-    {
-      key: 'More',
-      value: 86400,
-    },
-  ];
-  spaceFeatures = [
-    {
-      key: '24 Hour Surveillance',
-      value: '24hr_surveillance',
-    },
-    {
-      key: 'On Street',
-      value: 'on_street',
-    },
-    {
-      key: 'Off Street',
-      value: 'off_street',
-    },
-    {
-      key: 'CCTV',
-      value: 'cctv',
-    },
-    {
-      key: 'Disabled',
-      value: 'disabled',
-    },
-    {
-      key: 'Driveway',
-      value: 'driveway',
-    },
-    {
-      key: 'Gate',
-      value: 'gate',
-    },
-    {
-      key: 'Field',
-      value: 'field',
-    },
-    {
-      key: 'Yard',
-      value: 'yard',
-    },
-  ];
 
   getUsers(): Observable<AllUsersModel> {
     return this.http.get<AllUsersModel>(env.naiparqUsers);
@@ -255,6 +171,12 @@ export class DashService {
     );
   }
 
+  // Filter Drive Out
+  filterDriveOut(params: any): Observable<DriveOutResponseModel> {
+    console.log('Searching....', params);
+    return this.http.get<DriveOutResponseModel>(env.naiparqDriveOut);
+  }
+
   fetchBillings(payload: { days: number }): Observable<BillingResponseModel> {
     if (payload.days === 100) {
       return this.http.get<BillingResponseModel>(env.naiparqBillingList);
@@ -273,4 +195,89 @@ export class DashService {
   createParkingAttendant(content: any): Observable<any> {
     return this.http.post(env.naiparqCreateAttendant, content);
   }
+
+  timeIntervals = [
+    {
+      key: '0 mins',
+      value: 0,
+    },
+    {
+      key: '30 mins',
+      value: 0.5,
+    },
+    {
+      key: '1 hr',
+      value: 1,
+    },
+    {
+      key: '1hr 30 mins',
+      value: 1.5,
+    },
+    {
+      key: '2hr',
+      value: 2,
+    },
+    {
+      key: '2hr 30 mins',
+      value: 2.5,
+    },
+    {
+      key: '3hr',
+      value: 3,
+    },
+    {
+      key: '3hr 30 mins',
+      value: 3.5,
+    },
+    {
+      key: '4hr',
+      value: 4,
+    },
+    {
+      key: '4hr 30 mins',
+      value: 4.5,
+    },
+    {
+      key: 'More',
+      value: 86400,
+    },
+  ];
+  spaceFeatures = [
+    {
+      key: '24 Hour Surveillance',
+      value: '24hr_surveillance',
+    },
+    {
+      key: 'On Street',
+      value: 'on_street',
+    },
+    {
+      key: 'Off Street',
+      value: 'off_street',
+    },
+    {
+      key: 'CCTV',
+      value: 'cctv',
+    },
+    {
+      key: 'Disabled',
+      value: 'disabled',
+    },
+    {
+      key: 'Driveway',
+      value: 'driveway',
+    },
+    {
+      key: 'Gate',
+      value: 'gate',
+    },
+    {
+      key: 'Field',
+      value: 'field',
+    },
+    {
+      key: 'Yard',
+      value: 'yard',
+    },
+  ];
 }

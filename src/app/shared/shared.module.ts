@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BillingComponent } from './components/billing/billing.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SpaceFilter } from './pipes/space.filter';
+import { DriveOutPlateFilter } from './pipes/driveOutPlate.filter';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     DriveOutComponent,
     BillingComponent,
     PageNotFoundComponent,
+    SpaceFilter,
+    DriveOutPlateFilter,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  exports: [TruncatePipe, InlineLoaderComponent],
+  exports: [
+    TruncatePipe,
+    InlineLoaderComponent,
+    SpaceFilter,
+    DriveOutPlateFilter,
+  ],
 })
 export class SharedModule {}

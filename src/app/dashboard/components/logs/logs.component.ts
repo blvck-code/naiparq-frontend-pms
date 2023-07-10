@@ -8,6 +8,7 @@ import { DashService } from '../../services/dash.service';
 import { BehaviorSubject } from 'rxjs';
 import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { SpaceModel } from '../../models/spaces.model';
 
 @Component({
   selector: 'naiparq-logs',
@@ -26,13 +27,20 @@ export class LogsComponent implements OnInit {
   slideIndex: number = 0;
   images: any[] = [];
 
-  filterParams = this.formBuilder.group({
+  // Filtering
+  filterParamsForm = this.formBuilder.group({
     number_plate: ['', Validators.required],
     building: ['', Validators.required],
-    timeInOut: ['', Validators.required],
+    checkIn: ['', Validators.required],
+    checkOut: ['', Validators.required],
     status: ['', Validators.required],
     driver_type: ['', Validators.required],
   });
+
+  spaceSearchTerm: string = '';
+  spaces$: Observable<SpaceModel[]> = this.storeSrv.getSpaces();
+
+  plateSearchTerm: string = '';
 
   selectedDriveOut = {
     id: '',
@@ -81,12 +89,38 @@ export class LogsComponent implements OnInit {
     return Array(n);
   }
 
+  handlePatchFilter(type: string, target: any): void {
+    if (type === 'space') {
+      this.filterParamsForm.patchValue({
+        building: target,
+      });
+    } else if (type === 'plate') {
+      this.filterParamsForm.patchValue({
+        number_plate: target,
+      });
+    } else if (type === 'driver_type') {
+      this.filterParamsForm.patchValue({
+        driver_type: target,
+      });
+    }
+  }
+
+  returnFilterValue(type: string): string {
+    return this.filterParamsForm.get(type)?.value;
+  }
+
   openDatepicker(): void {
     this.pickerDirective.open();
   }
 
   handleDate(event: any): void {
     console.log('Event ==>>', event);
+  }
+
+  submitFilter(): void {
+    this.store.dispatch(
+      new driveInActions.filterDriveOut(this.filterParamsForm.value)
+    );
   }
 
   changeSlider(n: number): void {
@@ -133,4 +167,6 @@ export class LogsComponent implements OnInit {
       driveOut.exit_screenshot,
     ];
   }
+
+  protected readonly event = event;
 }

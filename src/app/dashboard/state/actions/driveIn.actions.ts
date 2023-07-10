@@ -45,3 +45,11 @@ export class LoadDriveOutFail implements Action {
     console.log('Get drive out error ===>>>', payload);
   }
 }
+export class filterDriveOut implements Action {
+  readonly type = DashActionTypes.FILTER_DRIVE_OUT;
+  constructor(public payload: any) {}
+}
+export class filterDriveOutSuccess implements Action {
+  readonly type = DashActionTypes.FILTER_DRIVE_OUT_SUCCESS;
+  constructor(public payload: any) {}
+}

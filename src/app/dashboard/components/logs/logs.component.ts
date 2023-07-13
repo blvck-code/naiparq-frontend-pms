@@ -163,6 +163,7 @@ export class LogsComponent implements OnInit {
   }
 
   submitFilter(): void {
+    console.log('Logs ==>>', this.filterParamsForm.value);
     this.store.dispatch(
       new driveInActions.FilterDriveOut(this.filterParamsForm.value)
     );

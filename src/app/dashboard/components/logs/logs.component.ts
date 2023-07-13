@@ -102,6 +102,10 @@ export class LogsComponent implements OnInit {
       this.filterParamsForm.patchValue({
         driver_type: target,
       });
+    } else if (type === 'status') {
+      this.filterParamsForm.patchValue({
+        driver_type: target,
+      });
     }
   }
 
@@ -115,11 +119,53 @@ export class LogsComponent implements OnInit {
 
   handleDate(event: any): void {
     console.log('Event ==>>', event);
+    this.handleStartDate(event.startDate);
+    this.handleEndDate(event.endDate);
+  }
+
+  handleStartDate(checkIn: any): void {
+    let startDay = checkIn.$D;
+    let startMonth = checkIn.$M + 1;
+    const startYear = checkIn.$y;
+
+    if (startDay < 10) {
+      startDay = `0${startDay}`;
+    }
+
+    if (startMonth < 10) {
+      startMonth = `0${startMonth}`;
+    }
+
+    const date = `${startYear}-${startMonth}-${startDay}`;
+    this.filterParamsForm.patchValue({
+      checkIn: date,
+    });
+  }
+
+  handleEndDate(checkOut: any): void {
+    // const day = date.console.log('handle end date =>>', date);
+    let endDay = checkOut.$D;
+    let endMonth = checkOut.$M + 1;
+    const endYear = checkOut.$y;
+
+    if (endDay < 10) {
+      endDay = `0${endDay}`;
+    }
+
+    if (endMonth < 10) {
+      endMonth = `0${endMonth}`;
+    }
+
+    const date = `${endYear}-${endMonth}-${endDay}`;
+    this.filterParamsForm.patchValue({
+      checkOut: date,
+    });
   }
 
   submitFilter(): void {
+    console.log('Logs ==>>', this.filterParamsForm.value);
     this.store.dispatch(
-      new driveInActions.filterDriveOut(this.filterParamsForm.value)
+      new driveInActions.FilterDriveOut(this.filterParamsForm.value)
     );
   }
 

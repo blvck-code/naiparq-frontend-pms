@@ -143,3 +143,9 @@ export interface DriveOutModel {
    */
   message?: string;
 }
+
+export interface FilterPayloadModel {
+  check_out_time: string;
+  license_plate: string;
+  status: string;
+}

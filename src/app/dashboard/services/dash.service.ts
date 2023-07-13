@@ -4,7 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { DriveInResponseModel } from '../models/driveIn.model';
 import { SpaceModelResponse } from '../models/spaces.model';
-import { DriveOutModel, DriveOutResponseModel } from '../models/driveOut.model';
+import {
+  DriveOutModel,
+  DriveOutResponseModel,
+  FilterPayloadModel,
+} from '../models/driveOut.model';
 import { BillingModel, BillingResponseModel } from '../models/billing.model';
 import { DevicesModel, DevicesResponseModel } from '../models/devices.model';
 import { PricingModel } from '../models/pricing.model';
@@ -172,9 +176,10 @@ export class DashService {
   }
 
   // Filter Drive Out
-  filterDriveOut(params: any): Observable<DriveOutResponseModel> {
-    console.log('Searching....', params);
-    return this.http.get<DriveOutResponseModel>(env.naiparqDriveOut);
+  filterDriveOut(payload: any): Observable<DriveOutResponseModel> {
+    console.log('Searching....', payload);
+    const filterUrl: string = `${env.naiparqDriveOut}/?check_out_time=${payload.checkOut}&license_plate=${payload.number_plate}&status=${payload.status}`;
+    return this.http.get<DriveOutResponseModel>(filterUrl);
   }
 
   fetchBillings(payload: { days: number }): Observable<BillingResponseModel> {

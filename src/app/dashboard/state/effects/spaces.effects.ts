@@ -133,14 +133,15 @@ export class SpacesEffects {
   // Filter Drive Out
   filterDriveOut$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
-      ofType<driveInActions.filterDriveOut>(
+      ofType<driveInActions.FilterDriveOut>(
         dashActions.DashActionTypes.FILTER_DRIVE_OUT
       ),
+      map((payload: driveInActions.FilterDriveOut) => payload.payload),
       switchMap((params: any) =>
         this.dashSrv.filterDriveOut(params).pipe(
           map(
             (driveOut: DriveOutResponseModel) =>
-              new driveInActions.filterDriveOutSuccess(driveOut)
+              new driveInActions.FilterDriveOutSuccess(driveOut)
           ),
           //@ts-ignore
           catchError((err) => {

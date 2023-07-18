@@ -123,6 +123,10 @@ export class LogsComponent implements OnInit {
     this.handleEndDate(event.endDate);
   }
 
+  handleFilterDate(event: any): any {
+    console.log('Filtered date gap ==>> ', event);
+  }
+
   handleStartDate(checkIn: any): void {
     let startDay = checkIn.$D;
     let startMonth = checkIn.$M + 1;

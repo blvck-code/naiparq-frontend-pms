@@ -55,41 +55,6 @@
 
       <div class="form-row">
         <fieldset class="form-row-item">
-          <label for="birthDay">Date of Birth</label>
-          <div class="form-item-group post">
-            <input
-              formControlName="date_of_birth"
-              class="naiparq-form-input"
-              type="date"
-              id="birthDay"
-            />
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.66667 1.66667V4.16667V1.66667ZM13.3333 1.66667V4.16667V1.66667ZM2.91667 7.57497H17.0833H2.91667ZM17.5 7.08333V14.1667C17.5 16.6667 16.25 18.3333 13.3333 18.3333H6.66667C3.75 18.3333 2.5 16.6667 2.5 14.1667V7.08333C2.5 4.58333 3.75 2.91667 6.66667 2.91667H13.3333C16.25 2.91667 17.5 4.58333 17.5 7.08333Z"
-                stroke="#A2A2A8"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M6.91211 13.9167H6.91959M13.0791 11.4167H13.0866H13.0791ZM13.0791 13.9167H13.0866H13.0791ZM9.99643 11.4167H10.0039H9.99643ZM9.99643 13.9167H10.0039H9.99643ZM6.91211 11.4167H6.91959H6.91211Z"
-                stroke="#A2A2A8"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-        </fieldset>
-
-        <fieldset class="form-row-item">
           <label for="userPhone">Mobile Number</label>
           <input
             formControlName="phone_number"
@@ -98,31 +63,7 @@
             id="userPhone"
           />
         </fieldset>
-      </div>
-
-      <div class="form-row">
         <fieldset class="form-row-item">
-          <label for="idNumber">ID Number</label>
-          <div class="form-item-group post">
-            <input
-              formControlName="id_number"
-              class="naiparq-form-input"
-              type="text"
-              id="idNumber"
-            />
-          </div>
-        </fieldset>
-
-        <fieldset class="form-row-item">
-          <label for="mNumber">Mobile Number</label>
-          <div class="form-item-group post">
-            <input class="naiparq-form-input" type="text" id="mNumber" />
-          </div>
-        </fieldset>
-      </div>
-
-      <div class="form-row">
-        <fieldset class="form-row-item form-row-email">
           <label for="userEmail">Email</label>
           <div class="form-item-group post">
             <input
@@ -162,28 +103,98 @@
         </fieldset>
       </div>
 
-      <fieldset class="form-row">
-        <div class="form-row-item">
-          <label for="password1">New Password</label>
-          <input
-            formControlName="first_name"
-            class="naiparq-form-input"
-            type="text"
-            id="password1"
-          />
-        </div>
-        <div class="form-row-item">
-          <label for="password2">Confirm Password</label>
-          <input
-            formControlName="last_name"
-            class="naiparq-form-input"
-            type="text"
-            id="password2"
-          />
-        </div>
-      </fieldset>
-
-      <button type="submit">Update</button>
+      <div class="flex flex-row gap-2 items-center">
+        <button type="submit">Update Account</button>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#changePass"
+          type="submit"
+        >
+          Update Password
+        </button>
+      </div>
     </div>
   </form>
+</div>
+
+<!--Change Password Modal-->
+<div
+  class="modal fade change-pass"
+  id="changePass"
+  tabindex="-1"
+  aria-labelledby="changePass"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form [formGroup]="changePassForm" (ngSubmit)="submitChangePass()">
+        <div class="modal-body py-0">
+          <div class="naiparq-form-group">
+            <label for="oldPass">Old Password</label>
+            <input
+              formControlName="old_password"
+              type="text"
+              class="naiparq-form-input"
+              id="oldPass"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label for="newPass">New Password</label>
+            <input
+              formControlName="new_password"
+              type="text"
+              class="naiparq-form-input"
+              id="newPass"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label for="confirmPass">Confirm Password</label>
+            <input
+              formControlName="confirm_password"
+              type="text"
+              class="naiparq-form-input"
+              id="confirmPass"
+            />
+          </div>
+        </div>
+        <div class="modal-footer flex flex-row items-center justify-between">
+          <button
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+          >
+            Cancel
+          </button>
+          <button class="naiparq-btn naiparq-btn-primary" type="submit">
+            <span class="btn-text">Change Password</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

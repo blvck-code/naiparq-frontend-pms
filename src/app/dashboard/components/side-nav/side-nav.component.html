@@ -158,10 +158,10 @@
       </div>
 
       <div
-        *ngIf="adminRights()"
         class="dash-nav-item"
         routerLink="/dashboard/asset-management"
         routerLinkActive="active-nav"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <svg
           width="20"
@@ -183,7 +183,6 @@
       </div>
 
       <div
-        *ngIf="adminRights()"
         class="dash-nav-item"
         routerLink="/dashboard/user-management"
         routerLinkActive="active-nav"

@@ -62,7 +62,6 @@ const dashRoutes: Routes = [
       {
         path: 'user-management',
         component: UserManagementComponent,
-        canActivate: [AdminGuard],
       },
       {
         path: 'settings',
@@ -75,7 +74,6 @@ const dashRoutes: Routes = [
       {
         path: 'asset-management',
         component: AssetsManagementComponent,
-        canActivate: [AdminGuard],
       },
     ],
   },

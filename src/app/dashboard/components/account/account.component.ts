@@ -37,6 +37,15 @@ export class AccountComponent implements OnInit {
   });
 
   /**
+   *  User Password Form to be filled
+   */
+  changePassForm = this.formBuilder.group({
+    old_password: ['', Validators.required],
+    new_password: ['', Validators.required],
+    confirm_password: ['', Validators.required],
+  });
+
+  /**
    * @ignore
    */
   ngOnInit(): void {
@@ -57,5 +66,9 @@ export class AccountComponent implements OnInit {
         });
       },
     });
+  }
+
+  submitChangePass(): void {
+    console.log(this.changePassForm.value);
   }
 }

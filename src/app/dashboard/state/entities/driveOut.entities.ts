@@ -33,6 +33,19 @@ export function driveOutReducer(
         next: action.payload.next,
         driveOut: action.payload.results,
       };
+
+    case dashActions.DashActionTypes.FILTER_DRIVE_OUT:
+      return {
+        ...state,
+        loaded: false,
+      };
+    case dashActions.DashActionTypes.FILTER_DRIVE_OUT_SUCCESS:
+      return {
+        ...state,
+        loaded: true,
+        next: action.payload.next,
+        driveOut: action.payload.results,
+      };
     default:
       return state;
   }

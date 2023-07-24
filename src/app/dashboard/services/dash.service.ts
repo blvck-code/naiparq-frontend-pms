@@ -178,7 +178,7 @@ export class DashService {
   // Filter Drive Out
   filterDriveOut(payload: any): Observable<DriveOutResponseModel> {
     console.log('Searching....', payload);
-    const filterUrl: string = `${env.naiparqDriveOut}/?check_out_time=${payload.checkOut}&license_plate=${payload.number_plate}&status=${payload.status}`;
+    const filterUrl: string = `${env.naiparqDriveOut}/?check_out_time=${payload.checkOut}&check_in_time=${payload.checkIn}&&license_plate=${payload.number_plate}&status=${payload.status}`;
     return this.http.get<DriveOutResponseModel>(filterUrl);
   }
 

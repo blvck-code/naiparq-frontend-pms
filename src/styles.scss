@@ -725,6 +725,13 @@ form {
 .table {
   background: var(--bkg-four-color) !important;
   --bs-table-bg: var(--bkg-four-color) !important;
+  --bs-table-color: var(--text-secondary);
+
+  thead {
+    color: var(--text-secondary);
+    background: var(--bkg-four-color);
+  }
+
   .sticky-top {
     z-index: 3 !important;
   }

@@ -131,16 +131,12 @@
             <td>
               <div class="table-text">
                 <button
-                  *ngIf="driveIn.status === 'active'"
-                  class="naiparq-btn naiparq-btn-success"
+                  [ngClass]="
+                    driveIn.status === 'active' ? 'btnActive' : 'btnComplete'
+                  "
+                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60] w-[85px] text-center"
                 >
-                  <span>{{ driveIn.status | titlecase }}</span>
-                </button>
-                <button
-                  *ngIf="driveIn.status === 'complete'"
-                  class="naiparq-btn naiparq-btn-dark"
-                >
-                  <span>{{ driveIn.status | titlecase }}</span>
+                  {{ driveIn.status | titlecase }}
                 </button>
               </div>
             </td>

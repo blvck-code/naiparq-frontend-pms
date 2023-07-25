@@ -117,7 +117,7 @@
           <th scope="col">
             <span class="table-title">Status</span>
           </th>
-          <th scope="col">
+          <th *ngIf="adminRights()" scope="col">
             <span class="table-title">Action</span>
           </th>
         </tr>
@@ -189,6 +189,18 @@
           </td>
 
           <td class="w-[182px]">
+            <div class="table-text">
+              <ngx-skeleton-loader
+                [theme]="{
+                  'width.px': 120,
+                  'borderRadius.px': 10
+                }"
+                animation="pulse"
+              ></ngx-skeleton-loader>
+            </div>
+          </td>
+
+          <td *ngIf="adminRights()" class="w-[182px]">
             <div class="table-text">
               <ngx-skeleton-loader
                 [theme]="{
@@ -286,27 +298,27 @@
           </td>
 
           <!--        Actions -->
-          <td>
+          <td *ngIf="adminRights()">
             <div class="table-text table-actions flex flex-row gap-3">
-              <svg
-                *ngIf="!adminRights()"
-                data-bs-toggle="modal"
-                data-bs-target="#addNumberPlate"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                (click)="updateAsset(device)"
-              >
-                <path
-                  d="M17.5 5.99113L14.0089 2.5C13.8928 2.38392 13.755 2.29184 13.6034 2.22902C13.4517 2.1662 13.2892 2.13387 13.125 2.13387C12.9609 2.13387 12.7983 2.1662 12.6467 2.22902C12.495 2.29184 12.3572 2.38392 12.2411 2.5L10.1832 4.55795L10.1831 4.55807L10.183 4.55818L2.86618 11.875C2.74972 11.9908 2.6574 12.1285 2.59454 12.2802C2.53169 12.432 2.49956 12.5946 2.5 12.7589V16.25C2.50038 16.5814 2.6322 16.8991 2.86654 17.1335C3.10088 17.3678 3.4186 17.4996 3.75 17.5H7.24114C7.40536 17.5004 7.56803 17.4683 7.71975 17.4055C7.87146 17.3426 8.00921 17.2503 8.125 17.1339L17.5 7.75886C17.7341 7.52426 17.8655 7.20639 17.8655 6.87499C17.8655 6.5436 17.7341 6.22573 17.5 5.99113ZM15 8.49113L11.5089 5L13.125 3.38387L16.6161 6.875L15 8.49113Z"
-                  fill="#4BC1F1"
-                />
-              </svg>
+              <button>
+                <svg
+                  data-bs-toggle="modal"
+                  data-bs-target="#addNumberPlate"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  (click)="updateAsset(device)"
+                >
+                  <path
+                    d="M17.5 5.99113L14.0089 2.5C13.8928 2.38392 13.755 2.29184 13.6034 2.22902C13.4517 2.1662 13.2892 2.13387 13.125 2.13387C12.9609 2.13387 12.7983 2.1662 12.6467 2.22902C12.495 2.29184 12.3572 2.38392 12.2411 2.5L10.1832 4.55795L10.1831 4.55807L10.183 4.55818L2.86618 11.875C2.74972 11.9908 2.6574 12.1285 2.59454 12.2802C2.53169 12.432 2.49956 12.5946 2.5 12.7589V16.25C2.50038 16.5814 2.6322 16.8991 2.86654 17.1335C3.10088 17.3678 3.4186 17.4996 3.75 17.5H7.24114C7.40536 17.5004 7.56803 17.4683 7.71975 17.4055C7.87146 17.3426 8.00921 17.2503 8.125 17.1339L17.5 7.75886C17.7341 7.52426 17.8655 7.20639 17.8655 6.87499C17.8655 6.5436 17.7341 6.22573 17.5 5.99113ZM15 8.49113L11.5089 5L13.125 3.38387L16.6161 6.875L15 8.49113Z"
+                    fill="#4BC1F1"
+                  />
+                </svg>
+              </button>
 
               <button
-                *ngIf="!adminRights()"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteAsset"
                 (click)="deleteAsset(device)"

@@ -10,12 +10,13 @@
     height: 100%;
     width: 262px;
     background: var(--bkg-two-color);
-    transition: all 0.2s ease-in-out;
+    transition: all 2s ease-in-out;
     overflow-y: scroll;
 
     &.hide {
       width: 100px;
       display: none;
+      transition: all 2s ease-in-out;
 
       @include respond(phone) {
         position: absolute;

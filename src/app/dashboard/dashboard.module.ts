@@ -17,7 +17,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { DashComponent } from './components/dash/dash.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DriveInComponent } from './components/drive-in/drive-in.component';
+import { DriveInComponent } from './components/staff-visitor/drive-in.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

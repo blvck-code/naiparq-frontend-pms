@@ -2,8 +2,88 @@
   <div class="naiparq-table-title">
     <p class="naiparq-table-date"></p>
 
-    <div class="cash-table-btns d-flex">
+    <div class="cash-table-btns flex flex-row items-center gap-2">
+      <!--        Time Out -->
+      <div class="dropdown">
+        <button
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          class="form-select w-full text-[14px] ngx-daterangepicker-action"
+        >
+          Space
+        </button>
+
+        <div class="dropdown-menu plate-content m-2">
+          <div
+            class="flex flex-row items-center gap-3 bg-[#F8F8F8] px-3 py-2 my-1.5 rounded-2"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                stroke="#363A3F"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M20.9999 20.9999L16.6499 16.6499"
+                stroke="#363A3F"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search building..."
+              class="bg-transparent outline-0"
+              [(ngModel)]="spaceSearchTerm"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+          <ul class="max-h-[300px] overflow-scroll px-2.5">
+            <li
+              class="text-[14px] text-[#3D4A5C] p-1"
+              *ngFor="
+                let space of spaces$ | async | spaceFilter : spaceSearchTerm
+              "
+            >
+              {{ space.title }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--        Guests -->
+      <div class="dropdown">
+        <button
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          class="form-select text-[14px]"
+        >
+          Type
+        </button>
+        <div class="dropdown-menu plate-content mt-2">
+          <ul>
+            <li class="text-[14px] text-[#3D4A5C] p-1 cursor-pointer">
+              Customers
+            </li>
+            <li class="text-[14px] text-[#3D4A5C] p-1 cursor-pointer">
+              Guests
+            </li>
+            <li class="text-[14px] text-[#3D4A5C] p-1 cursor-pointer">Staff</li>
+          </ul>
+        </div>
+      </div>
+
       <button
+        *ngIf="adminRights()"
         data-bs-toggle="modal"
         data-bs-target="#addDevice"
         class="naiparq-btn naiparq-btn-primary me-2"
@@ -11,21 +91,6 @@
         #addDeviceBtn
       >
         Add Device
-      </button>
-
-      <button class="filter-btn alt-btn">
-        <svg
-          width="14"
-          height="10"
-          viewBox="0 0 14 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
-          />
-        </svg>
-        Filters
       </button>
     </div>
   </div>
@@ -210,16 +275,12 @@
           <td>
             <div class="table-button">
               <button
-                *ngIf="device.status === 'online'"
-                class="naiparq-btn naiparq-btn-success"
+                [ngClass]="
+                  device.status === 'online' ? 'btnOnline' : 'btnOffline'
+                "
+                class="p-2 rounded-[8px] w-[85px] text-center"
               >
-                Online
-              </button>
-              <button
-                *ngIf="device.status === 'offline'"
-                class="naiparq-btn naiparq-btn-danger"
-              >
-                Offline
+                {{ device.status | titlecase }}
               </button>
             </div>
           </td>
@@ -228,6 +289,7 @@
           <td>
             <div class="table-text table-actions flex flex-row gap-3">
               <svg
+                *ngIf="!adminRights()"
                 data-bs-toggle="modal"
                 data-bs-target="#addNumberPlate"
                 width="20"
@@ -244,6 +306,7 @@
               </svg>
 
               <button
+                *ngIf="!adminRights()"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteAsset"
                 (click)="deleteAsset(device)"
@@ -295,9 +358,7 @@
       </tbody>
     </table>
     <div *ngIf="(devicesLoaded$ | async) && !(devices$ | async)?.length">
-      <h4 class="dark:text-[#FFF] text-lg">
-        No devices/assets in your profile.
-      </h4>
+      <h4 class="no-assets">No devices/assets in your profile.</h4>
     </div>
 
     <!--    Todo show when loading more content -->

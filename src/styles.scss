@@ -825,6 +825,24 @@ form {
   }
 }
 
+@layer components {
+  .plate-content {
+    @apply min-w-[252px] rounded-[8px] p-2.5;
+  }
+  .btnActive {
+    @apply bg-[#27AE60]/[0.1] text-[#27AE60];
+  }
+  .btnComplete {
+    @apply bg-[#4087c9]/[0.1] text-[#4087c9];
+  }
+  .btnOnline {
+    @apply bg-[#27AE60]/[0.1] text-[#27AE60];
+  }
+  .btnOffline {
+    @apply bg-[#ff0000]/[0.1] text-[#ff0000];
+  }
+}
+
 // Naiparq Animations
 @keyframes slideRight {
   0% {

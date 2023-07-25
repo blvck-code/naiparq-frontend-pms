@@ -24,6 +24,7 @@ export class AssetsManagementComponent implements OnInit {
   @ViewChild('closeDeleteAsset') 'closeDeleteAsset': ElementRef;
   @ViewChild('addDeviceBtn') 'addDeviceBtn': ElementRef;
 
+  spaceSearchTerm: string = '';
   selectedAssetType: any;
   submitting: boolean = false;
   formInvalid: boolean = false;
@@ -114,6 +115,11 @@ export class AssetsManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDevices();
+  }
+
+  // Limits only admin to see certains
+  adminRights(): boolean {
+    return this.dashSrv.adminRights();
   }
 
   selectAssetType(type: { key: string; value: string }): void {

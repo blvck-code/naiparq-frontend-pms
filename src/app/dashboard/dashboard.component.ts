@@ -125,8 +125,8 @@ export class DashboardComponent implements OnInit {
       newUrl = 'Drive In';
     } else if (url === '/dashboard/motorist-management') {
       newUrl = 'Motorist Management';
-    } else if (url === '/dashboard/drive-in') {
-      newUrl = 'Drive In';
+    } else if (url === '/dashboard/staff-visitor') {
+      newUrl = 'Staff/Visitor';
     } else if (url === '/dashboard/settings') {
       newUrl = 'Settings';
     } else if (url === '/dashboard/account') {

@@ -7,17 +7,10 @@
       <div class="cash-table-btns d-flex">
         <button
           data-bs-toggle="modal"
-          data-bs-target="#addNumberPlate"
-          class="naiparq-btn naiparq-btn-primary me-2"
-        >
-          Add Number Plate
-        </button>
-        <button
-          data-bs-toggle="modal"
           data-bs-target="#addWhiteList"
           class="naiparq-btn naiparq-btn-primary me-2"
         >
-          Add To Whitelist
+          Add Staff/Visitor
         </button>
 
         <button class="filter-btn alt-btn">
@@ -42,13 +35,19 @@
         <thead class="table-nav sticky-top">
           <tr>
             <th scope="col">
-              <span class="table-title">Number Plate</span>
+              <span class="table-title">Organisation Name</span>
             </th>
             <th scope="col">
-              <span class="table-title">Space</span>
+              <span class="table-title">License plate</span>
             </th>
             <th scope="col">
-              <span class="table-title">Time In</span>
+              <span class="table-title">Start Date</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">End Date</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Category</span>
             </th>
             <th scope="col">
               <span class="table-title">Status</span>
@@ -117,6 +116,28 @@
                 ></ngx-skeleton-loader>
               </div>
             </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
           </tr>
         </tbody>
         <!--        Content Loaded -->
@@ -124,42 +145,77 @@
           <tr *ngFor="let driveIn of driveIns$ | async">
             <td>
               <div class="table-text">
-                <span>{{ driveIn.license_plate }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="table-text">
                 <span>{{ driveIn.space_details.title }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>{{
-                  driveIn.check_in_time | date : "MMM d, y, h:mm a"
-                }}</span>
+                <span>{{ driveIn.license_plate }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn.check_in_time | date : "MMM d, y" }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn.check_in_time | date : "MMM d, y" }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>Staff</span>
               </div>
             </td>
             <td>
               <div class="table-text">
                 <button
                   [ngClass]="
-                    driveIn.status === 'active' ? 'btnActive' : 'btnComplete'
+                    driveIn.status === 'active' ? 'btnOnline' : 'btnComplete'
                   "
-                  class="p-2 rounded-[8px] bg-[#27AE60]/[0.1] text-[#27AE60] w-[85px] text-center"
+                  class="p-2 rounded-[8px] w-[85px] text-center"
                 >
                   {{ driveIn.status | titlecase }}
                 </button>
               </div>
             </td>
             <td>
-              <button
-                (click)="clickDriveIn(driveIn)"
-                data-bs-toggle="modal"
-                data-bs-target="#previewDriveIn"
-                class="naiparq-btn naiparq-btn-primary px-3"
-              >
-                View
-              </button>
+              <div class="table-text table-actions flex flex-row gap-3">
+                <svg
+                  data-bs-toggle="modal"
+                  data-bs-target="#addNumberPlate"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.5 5.99113L14.0089 2.5C13.8928 2.38392 13.755 2.29184 13.6034 2.22902C13.4517 2.1662 13.2892 2.13387 13.125 2.13387C12.9609 2.13387 12.7983 2.1662 12.6467 2.22902C12.495 2.29184 12.3572 2.38392 12.2411 2.5L10.1832 4.55795L10.1831 4.55807L10.183 4.55818L2.86618 11.875C2.74972 11.9908 2.6574 12.1285 2.59454 12.2802C2.53169 12.432 2.49956 12.5946 2.5 12.7589V16.25C2.50038 16.5814 2.6322 16.8991 2.86654 17.1335C3.10088 17.3678 3.4186 17.4996 3.75 17.5H7.24114C7.40536 17.5004 7.56803 17.4683 7.71975 17.4055C7.87146 17.3426 8.00921 17.2503 8.125 17.1339L17.5 7.75886C17.7341 7.52426 17.8655 7.20639 17.8655 6.87499C17.8655 6.5436 17.7341 6.22573 17.5 5.99113ZM15 8.49113L11.5089 5L13.125 3.38387L16.6161 6.875L15 8.49113Z"
+                    fill="#4BC1F1"
+                  />
+                </svg>
+
+                <button data-bs-toggle="modal" data-bs-target="#deleteAsset">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.875 2.5H13.125C13.2908 2.5 13.4497 2.43415 13.5669 2.31694C13.6842 2.19973 13.75 2.04076 13.75 1.875C13.75 1.70924 13.6842 1.55027 13.5669 1.43306C13.4497 1.31585 13.2908 1.25 13.125 1.25H6.875C6.70924 1.25 6.55027 1.31585 6.43306 1.43306C6.31585 1.55027 6.25 1.70924 6.25 1.875C6.25 2.04076 6.31585 2.19973 6.43306 2.31694C6.55027 2.43415 6.70924 2.5 6.875 2.5Z"
+                      fill="#4BC1F1"
+                    />
+                    <path
+                      d="M16.875 3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75033 16.5814 3.88213 16.8992 4.11648 17.1335C4.35083 17.3679 4.66858 17.4997 5 17.5H15C15.3314 17.4997 15.6492 17.3679 15.8835 17.1335C16.1179 16.8992 16.2497 16.5814 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125Z"
+                      fill="#4BC1F1"
+                    />
+                  </svg>
+                </button>
+              </div>
             </td>
           </tr>
           <div id="bottomPageDriveIn"></div>

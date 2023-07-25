@@ -15,9 +15,9 @@ import { OrganisationModel } from '../../models/organisation.model';
 import { selectedSpaceOrgs } from '../../state/entities/organizations.entities';
 
 @Component({
-  selector: 'naiparq-drive-in-payment',
-  templateUrl: './drive-in.component.html',
-  styleUrls: ['./drive-in.component.scss'],
+  selector: 'naiparq-staff-visitor-payment',
+  templateUrl: './staff-visitor.component.html',
+  styleUrls: ['./staff-visitor.component.scss'],
 })
 export class DriveInComponent implements OnInit {
   /**

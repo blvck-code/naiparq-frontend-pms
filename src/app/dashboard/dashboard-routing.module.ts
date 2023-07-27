@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AccountComponent } from './components/account/account.component';
 import { AssetsManagementComponent } from './components/assets-management/assets-management.component';
-import { DriveInComponent } from './components/staff-visitor/drive-in.component';
+import { StaffVisitorComponent } from './components/staff-visitor/staff-visitor.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { AuthGuard } from '../auth/services/auth.guard';
@@ -53,7 +53,7 @@ const dashRoutes: Routes = [
       },
       {
         path: 'staff-visitor',
-        component: DriveInComponent,
+        component: StaffVisitorComponent,
       },
       {
         path: 'motorist-management',

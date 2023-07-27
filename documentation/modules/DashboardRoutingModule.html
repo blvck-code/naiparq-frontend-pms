@@ -41,15 +41,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-        <a href="#info" 
+        <a href="#info"
             class="nav-link"
             class="nav-link active"
             role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
     </li>
     <li class="nav-item">
-        <a href="#source" 
+        <a href="#source"
             class="nav-link"
-            
+
             role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
     </li>
 </ul>
@@ -85,7 +85,7 @@ import { NgModule } from &#x27;@angular/core&#x27;;
 import { SettingsComponent } from &#x27;./components/settings/settings.component&#x27;;
 import { AccountComponent } from &#x27;./components/account/account.component&#x27;;
 import { AssetsManagementComponent } from &#x27;./components/assets-management/assets-management.component&#x27;;
-import { DriveInComponent } from &#x27;./components/drive-in/drive-in.component&#x27;;
+import { StaffVisitorComponent } from &#x27;./components/drive-in/drive-in.component&#x27;;
 import { MotoristManagementComponent } from &#x27;./components/motorist-management/motorist-management.component&#x27;;
 import { NotificationsComponent } from &#x27;./components/notifications/notifications.component&#x27;;
 import { AuthGuard } from &#x27;../auth/services/auth.guard&#x27;;
@@ -133,7 +133,7 @@ const dashRoutes: Routes &#x3D; [
       },
       {
         path: &#x27;drive-in&#x27;,
-        component: DriveInComponent,
+        component: StaffVisitorComponent,
       },
       {
         path: &#x27;motorist-management&#x27;,

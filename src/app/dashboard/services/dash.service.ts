@@ -2,25 +2,27 @@ import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
-import { DriveInResponseModel } from '../models/driveIn.model';
-import { SpaceModelResponse } from '../models/spaces.model';
-import {
-  DriveOutModel,
-  DriveOutResponseModel,
-  FilterPayloadModel,
-} from '../models/driveOut.model';
-import { BillingModel, BillingResponseModel } from '../models/billing.model';
-import { DevicesModel, DevicesResponseModel } from '../models/devices.model';
-import { PricingModel } from '../models/pricing.model';
-import { PriceScheduleModel } from '../models/priceSchedule.model';
-import {
-  OrganisationModel,
-  OrganisationResponseModel,
-} from '../models/organisation.model';
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { userInfo } from '../../auth/state/auth.selector';
+
+// Models
 import { AllUsersModel } from '../../auth/model/user.model';
+import {
+  GuestsModelResponse,
+  DriveInResponseModel,
+  SpaceModelResponse,
+  BillingResponseModel,
+  DevicesModel,
+  DevicesResponseModel,
+  DriveOutModel,
+  PricingModel,
+  PriceScheduleModel,
+  DriveOutResponseModel,
+  OrganisationModel,
+  OrganisationResponseModel,
+} from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -65,6 +67,16 @@ export class DashService {
     return this.http.get(
       "https://canvasjs.com/data/gallery/angular/btcusd2021.json'"
     );
+  }
+
+  // guests/Staff
+  loadGuests(): Observable<GuestsModelResponse> {
+    return this.http.get<GuestsModelResponse>(env.naiparqGuests);
+  }
+
+  // Create white list
+  createWhiteList(content: any): Observable<any> {
+    return this.http.post(env.naiparqCreateWhiteList, content);
   }
 
   // Space Drive Out
@@ -161,11 +173,6 @@ export class DashService {
   }
   fetchOrganizations(): Observable<OrganisationResponseModel> {
     return this.http.get<OrganisationResponseModel>(env.naiparqOrgList);
-  }
-
-  // Create white list
-  createWhiteList(content: any): Observable<any> {
-    return this.http.post(env.naiparqCreateWhiteList, content);
   }
 
   // Billings and Payments

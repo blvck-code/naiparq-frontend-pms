@@ -40,15 +40,16 @@ export const environment = {
   naiparqCreateOrg: naiparqBaseURL + 'guest/org/',
   naiparqOrgList: naiparqBaseURL + 'guest/org',
 
-  // Whitelist
-  naiparqCreateWhiteList: naiparqBaseURL + 'guest/guest/',
-
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',
 
   // Drive Out Model URLS
   naiparqDriveOut: naiparqBaseURL + 'spaces/drive/out',
   naiparqGuestDriveOut: naiparqBaseURL + 'guest/drive/out',
+
+  // Whitelist
+  naiparqCreateWhiteList: naiparqBaseURL + 'guest/guest/',
+  naiparqGuests: naiparqBaseURL + 'guest/guest',
 
   // Billing Module URLS
   naiparqBillingList: naiparqBaseURL + 'bill/billings',

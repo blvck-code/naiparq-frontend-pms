@@ -59,7 +59,7 @@
         </thead>
 
         <!--        Loading Indicator -->
-        <tbody *ngIf="!(driveInLoaded$ | async)" class="table-body">
+        <tbody *ngIf="guestsLoading$ | async" class="table-body">
           <tr *ngFor="let item of numSeq(12)">
             <td>
               <div class="table-text">
@@ -142,41 +142,41 @@
         </tbody>
         <!--        Content Loaded -->
         <tbody class="table-body">
-          <tr *ngFor="let driveIn of driveIns$ | async">
+          <tr *ngFor="let guest of guests$ | async">
             <td>
               <div class="table-text">
-                <span>{{ driveIn.space_details.title }}</span>
+                <span>{{ guest.organisation_detail.name }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>{{ driveIn.license_plate }}</span>
+                <span>{{ guest.license_plate }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>{{ driveIn.check_in_time | date : "MMM d, y" }}</span>
+                <span>{{ guest.start_date | date : "MMM d, y" }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>{{ driveIn.check_in_time | date : "MMM d, y" }}</span>
+                <span>{{ guest.end_date | date : "MMM d, y" }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
-                <span>Staff</span>
+                <span>{{ guest.person_type | titlecase }}</span>
               </div>
             </td>
             <td>
               <div class="table-text">
                 <button
                   [ngClass]="
-                    driveIn.status === 'active' ? 'btnOnline' : 'btnComplete'
+                    guest.status === 'active' ? 'btnOnline' : 'btnComplete'
                   "
                   class="p-2 rounded-[8px] w-[85px] text-center"
                 >
-                  {{ driveIn.status | titlecase }}
+                  {{ guest.status | titlecase }}
                 </button>
               </div>
             </td>

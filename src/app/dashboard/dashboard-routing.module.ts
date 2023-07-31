@@ -17,11 +17,11 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { AdminGuard } from '../auth/services/admin.guard';
 
 const dashRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'premises',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'premises',
+  //   pathMatch: 'full',
+  // },
   {
     path: '',
     component: DashboardComponent,

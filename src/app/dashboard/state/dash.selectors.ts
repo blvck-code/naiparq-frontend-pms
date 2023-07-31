@@ -35,3 +35,8 @@ export const billingStateKey = createSelector(
   dashboardStateKey,
   (state: DashboardState) => state.billing
 );
+
+export const guestStateKey = createSelector(
+  dashboardStateKey,
+  (state: DashboardState) => state.guests
+);

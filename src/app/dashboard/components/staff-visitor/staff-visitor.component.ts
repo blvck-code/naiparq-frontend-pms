@@ -6,7 +6,7 @@ import { SharedService } from '../../../shared/services/shared.service';
 import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
 
 // Models
-import { OrganisationModel, SpaceModel } from '../../models';
+import { GuestsModel, OrganisationModel, SpaceModel } from '../../models';
 
 // NgRx
 import { Store } from '@ngrx/store';
@@ -33,10 +33,13 @@ export class StaffVisitorComponent implements OnInit {
    * Drive in observable
    */
   driveIns$: Observable<DriveInModel[]> = this.storeSrv.driveIn();
+  guests$: Observable<GuestsModel[]> = this.storeSrv.guests();
   /**
    *  Drive in loaded observable
    */
   driveInLoaded$: Observable<boolean> = this.storeSrv.driveInLoaded();
+  guestsLoaded$: Observable<boolean> = this.storeSrv.guestsLoaded();
+  guestsLoading$: Observable<boolean> = this.storeSrv.guestsLoading();
   /**
    *  New page observable
    */

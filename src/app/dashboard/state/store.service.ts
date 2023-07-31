@@ -15,6 +15,12 @@ import {
 import { DriveInModel } from '../models/driveIn.model';
 import { driveOutLoaded, driveOuts } from './entities/driveOut.entities';
 import { DriveOutModel } from '../models/driveOut.model';
+import {
+  getGuests,
+  guestsLoaded,
+  guestsLoading,
+} from './entities/guests.entities';
+import { GuestsModel } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -50,5 +56,16 @@ export class StoreService {
 
   driveOut(): Observable<DriveOutModel[]> {
     return this.store.pipe(select(driveOuts));
+  }
+
+  // Guests
+  guestsLoaded(): Observable<boolean> {
+    return this.store.pipe(select(guestsLoaded));
+  }
+  guestsLoading(): Observable<boolean> {
+    return this.store.pipe(select(guestsLoading));
+  }
+  guests(): Observable<GuestsModel[]> {
+    return this.store.pipe(select(getGuests));
   }
 }

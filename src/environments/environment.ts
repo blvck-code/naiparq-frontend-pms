@@ -47,6 +47,7 @@ export const environment = {
 
   // Whitelist
   naiparqCreateWhiteList: naiparqBaseURL + 'guest/guest/',
+  naiparqGuests: naiparqBaseURL + 'guest/guest',
 
   // Drive In Module URLS
   naiparqDriveIn: naiparqBaseURL + 'spaces/drive/in',

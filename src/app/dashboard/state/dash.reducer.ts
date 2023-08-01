@@ -4,16 +4,21 @@ import {
   createSelector,
 } from '@ngrx/store';
 
-import * as fromSpaceEnt from './entities/spaces.entities';
-import * as fromDriveIn from './entities/driveIn.entities';
-import * as fromDriveOut from './entities/driveOut.entities';
-import * as fromDevices from './entities/devices.entities';
-import * as fromOrg from './entities/organizations.entities';
-import * as fromBilling from './entities/bill.entities';
+import {
+  fromSpaceEnt,
+  fromDriveIn,
+  fromDriveOut,
+  fromDevices,
+  fromOrg,
+  fromBilling,
+  guestsEnt,
+} from './entities';
+import { guestsReducer } from './entities/guests.entities';
 
 export interface DashboardState {
   spaces: fromSpaceEnt.SpacesEntities;
   organizations: fromOrg.OrganizationsState;
+  guests: guestsEnt.GuestsEntities;
   driveIn: fromDriveIn.DriveInState;
   driveOut: fromDriveOut.DriveOutState;
   billing: fromBilling.BillingEntities;
@@ -23,6 +28,7 @@ export interface DashboardState {
 export const dashboardReducer: ActionReducerMap<DashboardState> = {
   spaces: fromSpaceEnt.spaceReducer,
   organizations: fromOrg.organizationReducer,
+  guests: guestsEnt.guestsReducer,
   driveIn: fromDriveIn.driveInReducer,
   driveOut: fromDriveOut.driveOutReducer,
   billing: fromBilling.billingReducer,

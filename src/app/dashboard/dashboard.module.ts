@@ -17,7 +17,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { DashComponent } from './components/dash/dash.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DriveInComponent } from './components/staff-visitor/drive-in.component';
+import { StaffVisitorComponent } from './components/staff-visitor/staff-visitor.component';
 import { MotoristManagementComponent } from './components/motorist-management/motorist-management.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,7 +46,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     SettingsComponent,
     DashComponent,
     DashboardComponent,
-    DriveInComponent,
+    StaffVisitorComponent,
     MotoristManagementComponent,
     NotificationsComponent,
     SideNavComponent,

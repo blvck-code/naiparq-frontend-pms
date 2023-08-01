@@ -3,12 +3,12 @@ import { forkJoin, Observable } from 'rxjs';
 import { StoreService } from '../../state/store.service';
 import { Store } from '@ngrx/store';
 import * as driveInActions from '../../state/actions/driveIn.actions';
-import { DriveOutModel } from '../../models/driveOut.model';
+import { DriveOutModel } from '../../models';
 import { DashService } from '../../services/dash.service';
 import { BehaviorSubject } from 'rxjs';
 import { DaterangepickerDirective } from 'ngx-daterangepicker-material';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { SpaceModel } from '../../models/spaces.model';
+import { SpaceModel } from '../../models';
 
 @Component({
   selector: 'naiparq-logs',
@@ -121,10 +121,6 @@ export class LogsComponent implements OnInit {
     console.log('Event ==>>', event);
     this.handleStartDate(event.startDate);
     this.handleEndDate(event.endDate);
-  }
-
-  handleFilterDate(event: any): any {
-    console.log('Filtered date gap ==>> ', event);
   }
 
   handleStartDate(checkIn: any): void {

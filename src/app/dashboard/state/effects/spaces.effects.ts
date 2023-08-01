@@ -6,19 +6,25 @@ import { DashService } from '../../services/dash.service';
 import { SharedService } from '../../../shared/services/shared.service';
 
 // Actions
-import * as dashActions from '../actions/action.types';
-import * as spaceActions from '../actions/spaces.actions';
-import * as driveInActions from '../actions/driveIn.actions';
-import * as devicesActions from '../actions/assets.actions';
-import * as billingActions from '../actions/billing.actions';
+import {
+  dashActions,
+  spaceActions,
+  driveInActions,
+  devicesActions,
+  billingActions,
+  guestActions,
+} from '../actions';
 
-import { SpaceModelResponse } from '../../models/spaces.model';
-import { LoadMoreDriveIn } from '../actions/driveIn.actions';
-import { DriveInResponseModel } from '../../models/driveIn.model';
-import { DriveOutResponseModel } from '../../models/driveOut.model';
-import { LoadDevicesSuccess } from '../actions/assets.actions';
-import { DevicesResponseModel } from '../../models/devices.model';
-import { BillingResponseModel } from '../../models/billing.model';
+// Models
+import {
+  GuestsModel,
+  GuestsModelResponse,
+  BillingResponseModel,
+  SpaceModelResponse,
+  DriveInResponseModel,
+  DriveOutResponseModel,
+  DevicesResponseModel,
+} from '../../models';
 
 @Injectable()
 export class SpacesEffects {
@@ -63,6 +69,23 @@ export class SpacesEffects {
           // @ts-ignore
           catchError((err: any) => {
             console.log('Getting spaces failed ===>>', err);
+            return;
+          })
+        )
+      )
+    )
+  );
+
+  // Load Guests/Staff
+  loadGuests$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType<guestActions.LoadGuests>(dashActions.DashActionTypes.LOAD_GUESTS),
+      switchMap((action: guestActions.LoadGuests) =>
+        this.dashSrv.loadGuests().pipe(
+          map((guests) => new guestActions.LoadGuestSuccess(guests)),
+          // @ts-ignore
+          catchError((err: any) => {
+            console.log('Guests error ==>>', err);
             return;
           })
         )

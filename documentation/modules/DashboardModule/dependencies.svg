@@ -158,15 +158,15 @@
 <path fill="none" stroke="black" d="M2768,-122.03C2768,-138.4 2768,-160 2768,-160 2768,-160 2308.28,-160 2308.28,-160"/>
 <polygon fill="black" stroke="black" points="2308.28,-156.5 2298.28,-160 2308.28,-163.5 2308.28,-156.5"/>
 </g>
-<!-- DriveInComponent -->
+<!-- StaffVisitorComponent -->
 <g id="node11" class="node">
-<title>DriveInComponent</title>
+<title>StaffVisitorComponent</title>
 <polygon fill="#ffffb3" stroke="black" points="2679.37,-122 2554.63,-122 2554.63,-86 2679.37,-86 2679.37,-122"/>
-<text text-anchor="middle" x="2617" y="-99.8" font-family="Times,serif" font-size="14.00">DriveInComponent</text>
+<text text-anchor="middle" x="2617" y="-99.8" font-family="Times,serif" font-size="14.00">StaffVisitorComponent</text>
 </g>
-<!-- DriveInComponent&#45;&gt;DashboardModule -->
+<!-- StaffVisitorComponent&#45;&gt;DashboardModule -->
 <g id="edge11" class="edge">
-<title>DriveInComponent&#45;&gt;DashboardModule</title>
+<title>StaffVisitorComponent&#45;&gt;DashboardModule</title>
 <path fill="none" stroke="black" d="M2617,-122.24C2617,-137.57 2617,-157 2617,-157 2617,-157 2308.47,-157 2308.47,-157"/>
 <polygon fill="black" stroke="black" points="2308.47,-153.5 2298.47,-157 2308.47,-160.5 2308.47,-153.5"/>
 </g>

@@ -3,15 +3,19 @@ import { DashService } from '../../services/dash.service';
 import { DriveInModel } from '../../models/driveIn.model';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../../shared/services/shared.service';
+import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
+
+// Models
+import { GuestsModel, OrganisationModel, SpaceModel } from '../../models';
 
 // NgRx
-import * as driveInActions from '../../state/actions/driveIn.actions';
-import * as spaceActions from '../../state/actions/spaces.actions';
 import { Store } from '@ngrx/store';
+import {
+  driveInActions,
+  spaceActions,
+  guestActions,
+} from '../../state/actions';
 import { StoreService } from '../../state/store.service';
-import { distinctUntilChanged, map, Observable, switchMap } from 'rxjs';
-import { SpaceModel } from '../../models/spaces.model';
-import { OrganisationModel } from '../../models/organisation.model';
 import { selectedSpaceOrgs } from '../../state/entities/organizations.entities';
 
 @Component({
@@ -19,7 +23,7 @@ import { selectedSpaceOrgs } from '../../state/entities/organizations.entities';
   templateUrl: './staff-visitor.component.html',
   styleUrls: ['./staff-visitor.component.scss'],
 })
-export class DriveInComponent implements OnInit {
+export class StaffVisitorComponent implements OnInit {
   /**
    *  Close modal view child
    */
@@ -29,10 +33,13 @@ export class DriveInComponent implements OnInit {
    * Drive in observable
    */
   driveIns$: Observable<DriveInModel[]> = this.storeSrv.driveIn();
+  guests$: Observable<GuestsModel[]> = this.storeSrv.guests();
   /**
    *  Drive in loaded observable
    */
   driveInLoaded$: Observable<boolean> = this.storeSrv.driveInLoaded();
+  guestsLoaded$: Observable<boolean> = this.storeSrv.guestsLoaded();
+  guestsLoading$: Observable<boolean> = this.storeSrv.guestsLoading();
   /**
    *  New page observable
    */
@@ -187,6 +194,7 @@ export class DriveInComponent implements OnInit {
     this.store.dispatch(new driveInActions.LoadDriveIn());
     this.store.dispatch(new driveInActions.LoadDriveOut());
     this.store.dispatch(new spaceActions.LoadOrganizations());
+    this.store.dispatch(new guestActions.LoadGuests());
   }
 
   // handleDriveInList(): void {

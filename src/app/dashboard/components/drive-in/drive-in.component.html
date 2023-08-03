@@ -1,0 +1,477 @@
+<div class="naiparq-drivein">
+  <div class="naiparq-table-wrap naiparq-scrollbar">
+    <div class="naiparq-table-title">
+      <p class="naiparq-table-date">
+        {{ todayDate() | date : "MMMM dd, yyyy" }}
+      </p>
+      <div class="cash-table-btns d-flex">
+        <!--        <button-->
+        <!--          data-bs-toggle="modal"-->
+        <!--          data-bs-target="#addWhiteList"-->
+        <!--          class="naiparq-btn naiparq-btn-primary me-2"-->
+        <!--        >-->
+        <!--          Add Staff/Visitor-->
+        <!--        </button>-->
+
+        <button class="filter-btn alt-btn">
+          <svg
+            width="14"
+            height="10"
+            viewBox="0 0 14 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.83325 4.16668H11.1666V5.83334H2.83325V4.16668ZM0.333252 0.833344H13.6666V2.50001H0.333252V0.833344ZM5.33325 7.50001H8.66658V9.16668H5.33325V7.50001Z"
+            />
+          </svg>
+          Filters
+        </button>
+      </div>
+    </div>
+
+    <div class="naiparq-table-content">
+      <table class="table">
+        <thead class="table-nav sticky-top">
+          <tr>
+            <th scope="col">
+              <span class="table-title">Organisation Name</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">License plate</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Start Date</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Status</span>
+            </th>
+            <th scope="col">
+              <span class="table-title">Action</span>
+            </th>
+          </tr>
+        </thead>
+
+        <!--        Loading Indicator -->
+        <tbody *ngIf="guestsLoading$ | async" class="table-body">
+          <tr *ngFor="let item of numSeq(12)">
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <ngx-skeleton-loader
+                  [theme]="{
+                    'width.px': 120,
+                    'borderRadius.px': 10
+                  }"
+                  animation="pulse"
+                ></ngx-skeleton-loader>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <!--        Content Loaded -->
+        <tbody class="table-body">
+          <tr *ngFor="let driveIn of driveIns$ | async">
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn.space_details.title }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{ driveIn.license_plate }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="table-text">
+                <span>{{
+                  driveIn.check_in_time | date : "MMM d, y, h:mm a"
+                }}</span>
+              </div>
+            </td>
+
+            <td>
+              <div class="table-text">
+                <button
+                  [ngClass]="
+                    driveIn.status === 'active' ? 'btnOnline' : 'btnComplete'
+                  "
+                  class="p-2 rounded-[8px] w-[85px] text-center"
+                >
+                  {{ driveIn.status | titlecase }}
+                </button>
+              </div>
+            </td>
+            <td>
+              <div class="table-text table-actions flex flex-row gap-3">
+                <button
+                  (click)="clickDriveIn(driveIn)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#previewDriveIn"
+                  class="naiparq-btn naiparq-btn-primary px-3"
+                >
+                  View
+                </button>
+              </div>
+            </td>
+          </tr>
+          <div id="bottomPageDriveIn"></div>
+        </tbody>
+      </table>
+      <app-inline-loader *ngIf="loadingMoreDriveIn"></app-inline-loader>
+    </div>
+  </div>
+  <!--  <div class="naiparq-cash-payment">-->
+  <!--    <p>Total: KES 10, 000</p>-->
+  <!--  </div>-->
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade add-plate-modal"
+  id="addNumberPlate"
+  tabindex="-1"
+  aria-labelledby="addNumberPlate"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Number Plate</h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form
+        [formGroup]="driveInForm"
+        (ngSubmit)="onSubmit()"
+        class="modal-body"
+      >
+        <div class="naiparq-form-group">
+          <label for="nPlate">Space</label>
+          <select
+            class="form-select h-[48px] mt-1.5"
+            aria-label="Default select example"
+            formControlName="space"
+          >
+            <option
+              *ngFor="let space of spaces$ | async"
+              value="{{ space.id }}"
+            >
+              {{ space.title | titlecase }}
+            </option>
+          </select>
+        </div>
+        <div class="naiparq-form-group">
+          <label for="nPlate"> Number Plate </label>
+          <input
+            formControlName="license_plate"
+            type="text"
+            id="nPlate"
+            class="naiparq-form-input"
+          />
+        </div>
+
+        <div class="naiparq-form-group">
+          <button
+            [class.btn-loading]="isSubmitting"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade add-plate-modal"
+  id="addWhiteList"
+  tabindex="-1"
+  aria-labelledby="addNumberPlate"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add To White List</h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <form
+        [formGroup]="whiteListForm"
+        (ngSubmit)="onSubmitWhiteList()"
+        class="modal-body"
+      >
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div class="naiparq-form-group">
+            <label for="nPlate">Space Name</label>
+            <select
+              class="bg-transparent px-2 py-1.5 my-1.5 rounded border"
+              formControlName="space"
+              (change)="handleSelectedSpace($event)"
+            >
+              <option
+                *ngFor="let space of spaces$ | async"
+                value="{{ space.id }}"
+              >
+                {{ space.title }}
+              </option>
+            </select>
+          </div>
+          <div class="naiparq-form-group">
+            <label for="nPlate">Organisation</label>
+            <select
+              formControlName="organisation"
+              class="bg-transparent px-2 py-1.5 my-1.5 rounded border"
+            >
+              <option
+                *ngFor="let org of organizations$ | async"
+                value="{{ org.id }}"
+              >
+                {{ org.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div class="flex flex-col">
+            <label>Start Date</label>
+            <input
+              formControlName="start_date"
+              type="datetime-local"
+              name="start-date"
+              class="p-2 my-1.5 rounded border"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label>End Date</label>
+            <input
+              formControlName="end_date"
+              type="datetime-local"
+              name="end-date"
+              class="p-2 my-1.5 rounded border"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 py-1 gap-3">
+          <div class="naiparq-form-group">
+            <label>License plate</label>
+            <input
+              formControlName="license_plate"
+              type="text"
+              class="px-2 py-1.5 my-1.5 rounded border"
+              (keyup)="handleNum($event)"
+              [value]="numberPlate.toLocaleUpperCase()"
+            />
+          </div>
+          <div class="naiparq-form-group">
+            <label>Status</label>
+            <select
+              class="bg-transparent px-2 py-1.5 my-1.5 rounded border"
+              formControlName="status"
+            >
+              <option value="active">Active</option>
+              <option value="expired">Expired</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="naiparq-form-group">
+          <button
+            [class.btn-loading]="isSubmitting"
+            class="naiparq-btn naiparq-btn-primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            <span class="btn-text">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  -->
+<div
+  class="modal fade add-plate-modal"
+  id="previewDriveIn"
+  tabindex="-1"
+  aria-labelledby="previewDriveIn"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button
+          type="button"
+          class="btn-close naiparq-close-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeDriveIn
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Number Plate
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
+              {{ selectedDriveIn?.license_plate }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Space Name
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
+              {{ selectedDriveIn?.space_details?.title }}
+            </h5>
+          </div>
+          <div class="flex items-center justify-between">
+            <h5 class="font-extrabold space-titles text-lg leading-6">
+              Time In
+            </h5>
+            <h5 class="font-normal space-titles text-lg leading-6">
+              {{
+                selectedDriveIn?.check_in_time
+                  | date : "EEEE, dd MMM, YYYY, h:mm a"
+              }}
+            </h5>
+          </div>
+        </div>
+        <div
+          class="rounded-lg relative overflow-hidden h-[250px] bg-sky-100 mt-2"
+        >
+          <img
+            *ngIf="selectedDriveIn?.entry_screenshot"
+            [src]="selectedDriveIn?.entry_screenshot"
+            class="w-[100%] object-cover ease-in-out duration-500"
+            alt=""
+          />
+          <img
+            *ngIf="!selectedDriveIn?.entry_screenshot"
+            src="
+              assets/images/no-image.jpg
+            "
+            class="h-[100%] object-cover"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

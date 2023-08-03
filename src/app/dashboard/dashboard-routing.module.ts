@@ -15,6 +15,7 @@ import { RevenuesComponent } from './components/revenues/revenues.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { AdminGuard } from '../auth/services/admin.guard';
+import { DriveInComponent } from './components/drive-in/drive-in.component';
 
 const dashRoutes: Routes = [
   // {
@@ -50,6 +51,10 @@ const dashRoutes: Routes = [
       {
         path: 'notifications',
         component: NotificationsComponent,
+      },
+      {
+        path: 'drive-in',
+        component: DriveInComponent,
       },
       {
         path: 'staff-visitor',

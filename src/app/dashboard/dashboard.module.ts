@@ -33,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { LinearGraphComponent } from './components/analytics/linear-graph/linear-graph.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { DriveInComponent } from './components/drive-in/drive-in.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     NotificationsComponent,
     SideNavComponent,
     LinearGraphComponent,
+    DriveInComponent,
   ],
   imports: [
     CommonModule,

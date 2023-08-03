@@ -52,6 +52,7 @@ export class LogsComponent implements OnInit {
       license_plate: '',
       check_in_time: '',
       space: '',
+      status: '',
       entry_screenshot: '',
       create_at: '',
       space_details: {

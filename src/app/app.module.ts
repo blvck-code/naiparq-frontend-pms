@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { environment } from '../environments/environment';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 // Setting user details on localstorage
 export function localStorageSyncReducer(

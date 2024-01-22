@@ -19,7 +19,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { environment } from '../environments/environment';
-import { HotToastModule } from '@ngneat/hot-toast';
+// import { HotToastModule } from '@ngneat/hot-toast';
+import {ToastrModule} from "ngx-toastr";
 
 // Setting user details on localstorage
 export function localStorageSyncReducer(
@@ -32,6 +33,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

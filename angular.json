@@ -37,7 +37,9 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/leaflet/dist/leaflet.css",
-              "src/styles.scss"],
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.scss",
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/assets/styles"
@@ -104,13 +106,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "naiparq-frontend-pms:build:production"
+              "buildTarget": "naiparq-frontend-pms:build:production"
             },
             "development": {
-              "browserTarget": "naiparq-frontend-pms:build:development"
+              "buildTarget": "naiparq-frontend-pms:build:development"
             },
             "staging": {
-              "browserTarget": "naiparq-frontend-pms:build:staging"
+              "buildTarget": "naiparq-frontend-pms:build:staging"
             }
           },
           "defaultConfiguration": "development"
@@ -118,7 +120,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "naiparq-frontend-pms:build"
+            "buildTarget": "naiparq-frontend-pms:build"
           }
         },
         "test": {
@@ -134,6 +136,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": []

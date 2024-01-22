@@ -20,7 +20,7 @@ import { DriveOutPlateFilter } from './pipes/driveOutPlate.filter';
     SpaceFilter,
     DriveOutPlateFilter,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [ CommonModule, RouterModule, ReactiveFormsModule,],
   exports: [
     TruncatePipe,
     InlineLoaderComponent,

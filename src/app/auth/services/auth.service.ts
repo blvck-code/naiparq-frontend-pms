@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginModel, LoginResponseModel } from '../model/login.model';
 import { environment as env } from '../../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../shared/services/storage.service';
 import { Router } from '@angular/router';
@@ -22,6 +22,30 @@ export class AuthService {
     private router: Router,
     private storageService: StorageService
   ) {}
+
+  errorHandler(error: HttpErrorResponse): string {
+    console.log('Error handler ', error);
+    const errorInfo = error.error;
+
+    const errorProperties = [
+      'email',
+      'detail',
+      'message',
+      'phone_number',
+      'non_field_errors',
+      'user',
+      'role',
+      'provider',
+    ];
+
+    for (const prop of errorProperties) {
+      if (errorInfo[prop]) {
+        return errorInfo[prop];
+      }
+    }
+
+    return 'Unknown error has occurred, please try again.';
+  }
 
   getHeaders(): any {
     return {
